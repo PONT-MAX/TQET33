@@ -1,0 +1,57 @@
+% cosanalysis.m
+% Chin, Oct 1, 2010
+
+
+function [xhat,shat] = cosanalysis(yy, Phi, W, K, Its, x0);
+
+yy = yy(:); % 
+[M,N] = size(Phi);
+
+xcosamp = zeros(N,Its);
+kk=1; 
+maxiter= 1000;
+verbose= 0;
+tol= 1e-3;
+s = zeros(N,1);
+x = 0*s;
+s0 = W*x0;
+
+while le(kk,Its),
+    
+    %-----Backprojection---%
+    res = yy - Phi*(x);
+    proxynew = Phi'*(res);
+    
+    % apply analysis, merge supports
+    [trash,ww]= sort(abs(W*proxynew),'descend');
+    tt = union(find(ne(s,0)),ww(1:(2*K)));
+    B = Phi*inv(W'*W)*W(:,tt);
+    
+    %------Estimate------%
+    %[w, r, iter] = cgsolve(PhiWinv(:,tt)'*PhiWinv(:,tt), PhiWinv(:,tt)'*yy,...
+    %       tol,maxiter, verbose);
+    
+    w = B\yy;
+    
+    bb2= zeros(N,1);
+    bb2(tt)= w;
+    
+    %---Prune----%
+    kk = kk+1;   
+    [trash,ww2]= sort(abs(bb2),'descend'); s=0*bb2;
+    s(ww2(1:K))= bb2(ww2(1:K));
+
+    x = W\s;
+    
+    xcosamp(:,kk) = x; % current signal estimate
+    if (norm(xcosamp(:,kk)-xcosamp(:,kk-1)) < 1e-2*norm(xcosamp(:,kk)))
+       break;
+    end
+    
+    figure(22), clf, hold on
+    plot(s0), plot(s,'r--.'), axis([0 N -5 5])
+    pause(0.2)
+    
+end
+xcosamp(:,kk+1:end)=[];
+xhat = xcosamp(:,end);
