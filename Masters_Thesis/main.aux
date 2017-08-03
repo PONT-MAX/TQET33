@@ -1,0 +1,166 @@
+\relax 
+\abx@aux@sortscheme{none}
+\@writefile{toc}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
+\@writefile{lof}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
+\@writefile{lot}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Single pixel camera architecture}{1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Compressive sensing}{1}}
+\newlabel{eq:CS1}{{1}{1}}
+\newlabel{eq:CS2}{{2}{1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Measurement matrix}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.1}Random}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.2}Walsh Hadamard}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Reconstruction methods}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.4.1}$\ell _1$ minimization}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.4.2}Greedy algorithms}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.4.3}Total variation}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Aim}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Research questions}{2}}
+\newlabel{sec:RQ}{{1.6}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.7}Limitations}{2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.8}Thesis outline}{2}}
+\abx@aux@cite{article:CS_donoho1}
+\abx@aux@cite{article:SRM}
+\abx@aux@cite{book:image_processing}
+\abx@aux@cite{article:il_niqe}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Compressed imaging}{3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Evaluation}{3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Analysis}{3}}
+\abx@aux@cite{article:foiSPIS}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Single pixel camera architecture and hardware}{4}}
+\newlabel{sec:system}{{3.1}{4}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Single pixel imaging system (SPIS), adopted from \cite {article:foiSPIS}.\relax }}{4}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:system1}{{1}{4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Hardware}{4}}
+\newlabel{sec:hardware}{{3.1.1}{4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Newtonian telescope}{4}}
+\abx@aux@cite{manual:DLP}
+\abx@aux@cite{website:SWIR_objective}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}DLP and DMD}{5}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces DMD matrix, left shows each tiles index and right shows second row and second column in black.\relax }}{5}}
+\newlabel{fig:dmd_index}{{2}{5}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces DMD matrix, left shows each tiles index and right shows second row and second column in black.\relax }}{5}}
+\newlabel{fig:dmd_index2}{{3}{5}}
+\abx@aux@cite{manual:PDA}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Lens}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.5}Single pixel sensor}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.6}Signal spectrum}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}System overview}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Measurement matrix}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Reconstruction algorithm}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Evaluation}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Method criticism}{6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4}Evaluation}{7}}
+\newlabel{sec:Evaluation}{{4}{7}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Synthetic data}{7}}
+\newlabel{sec:SD}{{4.1}{7}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}PSNR, SNR, SSIM}{7}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Peak SNR result depending on number of measurements and simulated noise level.\relax }}{7}}
+\newlabel{fig:psnr_3d}{{4}{7}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces SNR result depending on number of measurements and simulated noise level.\relax }}{8}}
+\newlabel{fig:snr_3d}{{5}{8}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces SSIM result depending on number of measurements and simulated noise level.\relax }}{8}}
+\newlabel{fig:snr_3d}{{6}{8}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}No Reference quality assessment}{8}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces BRISQUE result depending on number of measurements and simulated noise level. Lower surface is reference image score.\relax }}{9}}
+\newlabel{fig:Brisque_3d}{{7}{9}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces BRISQUE result depending on number of measurements for different simulated noise levels.\relax }}{9}}
+\newlabel{fig:Brisque_2d}{{8}{9}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Dynamics in scene}{9}}
+\newlabel{fig:local_1}{{9a}{10}}
+\newlabel{sub@fig:local_1}{{a}{10}}
+\newlabel{fig:local_2}{{9b}{10}}
+\newlabel{sub@fig:local_2}{{b}{10}}
+\newlabel{fig:local_3}{{9c}{10}}
+\newlabel{sub@fig:local_3}{{c}{10}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Local movement\relax }}{10}}
+\newlabel{fig:local_dyn}{{9}{10}}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Effects comparing non perturbed reconstructed image against reconstructed image with local movement\relax }}{10}}
+\newlabel{tab:local_dyn}{{1}{10}}
+\newlabel{fig:local_sig_1}{{10a}{11}}
+\newlabel{sub@fig:local_sig_1}{{a}{11}}
+\newlabel{fig:local_sig_2}{{10b}{11}}
+\newlabel{sub@fig:local_sig_2}{{b}{11}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Local movement, acquired signal\relax }}{11}}
+\newlabel{fig:local_sig}{{10}{11}}
+\newlabel{fig:fly_1}{{11a}{11}}
+\newlabel{sub@fig:fly_1}{{a}{11}}
+\newlabel{fig:fly_2}{{11b}{11}}
+\newlabel{sub@fig:fly_2}{{b}{11}}
+\newlabel{fig:fly_3}{{11c}{11}}
+\newlabel{sub@fig:fly_3}{{c}{11}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Object passing trough scene.\relax }}{11}}
+\newlabel{fig:fly_dyn}{{11}{11}}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Effects comparing non perturbed reconstructed image against reconstructed image with local movement\relax }}{12}}
+\newlabel{tab:fly_dyn}{{2}{12}}
+\newlabel{fig:local_sig_1}{{12a}{12}}
+\newlabel{sub@fig:local_sig_1}{{a}{12}}
+\newlabel{fig:local_sig_2}{{12b}{12}}
+\newlabel{sub@fig:local_sig_2}{{b}{12}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Global movement, acquired signal\relax }}{12}}
+\newlabel{fig:local_sig}{{12}{12}}
+\newlabel{fig:lum_1}{{13a}{13}}
+\newlabel{sub@fig:lum_1}{{a}{13}}
+\newlabel{fig:lum_2}{{13b}{13}}
+\newlabel{sub@fig:lum_2}{{b}{13}}
+\newlabel{fig:lum_3}{{13c}{13}}
+\newlabel{sub@fig:lum_3}{{c}{13}}
+\newlabel{fig:lum_4}{{13d}{13}}
+\newlabel{sub@fig:lum_4}{{d}{13}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Global luminance change in scene.\relax }}{13}}
+\newlabel{fig:lum_dyn}{{13}{13}}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Effects comparing non perturbed reconstructed image against reconstructed image with global luminance change\relax }}{13}}
+\newlabel{tab:lum_dyn}{{3}{13}}
+\newlabel{fig:lum_sig_1}{{14a}{14}}
+\newlabel{sub@fig:lum_sig_1}{{a}{14}}
+\newlabel{fig:lum_sig_2}{{14b}{14}}
+\newlabel{sub@fig:lum_sig_2}{{b}{14}}
+\newlabel{fig:lum_sig_3}{{14c}{14}}
+\newlabel{sub@fig:lum_sig_3}{{c}{14}}
+\newlabel{fig:lum_sig_4}{{14d}{14}}
+\newlabel{sub@fig:lum_sig_4}{{d}{14}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Global movement, acquired signal\relax }}{14}}
+\newlabel{fig:lum_sig}{{14}{14}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SPC evaluation}{14}}
+\newlabel{sec:eval_spc}{{4.2}{14}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Soft chessboard}{14}}
+\@writefile{tdo}{\defcounter {refsection}{0}\relax }\@writefile{tdo}{\contentsline {todo}{Todo: Skapa rekonstruerade bilder fr\IeC {\r a}n homagraphin och j\IeC {\"a}mnf\IeC {\"o}r de rekonstruerade med referensbilden}{14}}
+\pgfsyspdfmark {pgfid1}{20112834}{8029793}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces The reconstructed images with different number of measurements and the reference image transformed to fit the SPC images using homography.\relax }}{15}}
+\newlabel{fig:hom_over_im}{{15}{15}}
+\newlabel{fig:hom_psnr}{{16a}{16}}
+\newlabel{sub@fig:hom_psnr}{{a}{16}}
+\newlabel{fig:hom_snr}{{16b}{16}}
+\newlabel{sub@fig:hom_snr}{{b}{16}}
+\newlabel{fig:hom_ssim}{{16c}{16}}
+\newlabel{sub@fig:hom_ssim}{{c}{16}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Signal quality of SPC images compared to reference image\relax }}{16}}
+\newlabel{fig:hom_score}{{16}{16}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}No reference quality assessment}{16}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces BRISQUE result.\relax }}{17}}
+\newlabel{fig:brisque_plot}{{17}{17}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Example of 'good' images corresponding to the green lines in figure\nobreakspace  {}17\hbox {}.\relax }}{17}}
+\newlabel{fig:good_plot}{{18}{17}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Example of 'medium good' images corresponding to the yellow lines in figure\nobreakspace  {}17\hbox {}.\relax }}{17}}
+\newlabel{fig:half_plot}{{19}{17}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Example of 'bad' images corresponding to the red lines in figure\nobreakspace  {}17\hbox {}.\relax }}{18}}
+\newlabel{fig:bad_plot}{{20}{18}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Modulation Transfer Function}{18}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Printed targets with markings where the MTF measurements was performed\relax }}{18}}
+\newlabel{fig:mtf_target}{{21}{18}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces SPC and state of the art SWIR camera output images. (OBS! Bilder fr\IeC {\r a}n Raptorn ska l\IeC {\"a}ggas till)\relax }}{19}}
+\newlabel{fig:mtf_target_im}{{22}{19}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}MTF}{19}}
+\newlabel{fig:mtf30}{{23a}{19}}
+\newlabel{sub@fig:mtf30}{{a}{19}}
+\newlabel{fig:i2}{{23b}{19}}
+\newlabel{sub@fig:i2}{{b}{19}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces MTF results. (OBS! inte r\IeC {\"a}tt figurer)\relax }}{19}}
+\newlabel{fig:mtf50}{{23}{19}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Edge response}{19}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces 10-90\% rise in pixels. (OBS! inte r\IeC {\"a}tt figur)\relax }}{20}}
+\newlabel{fig:rise}{{24}{20}}

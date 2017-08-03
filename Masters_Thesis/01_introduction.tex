@@ -1,0 +1,70 @@
+\section{Introduction}
+The development and research of compressed sensing applied to a single pixel camera (SPC) is a relative new area in signal processing with the first functioning camera architecture in 2006. Since then numerous improvements and methods have been proposed how to capture images. In this section a introduction to the SPC architecture and the theory of compressed sensing is presented followed by the aim, research questions and thesis outline of this master's thesis. 
+
+\subsection{Single pixel camera architecture}
+
+
+\subsection{Compressive sensing}
+Compressive sensing is a relative new sampling strategy which reconstructs a compressible or spares signal by finding solution to undetermined linear system. The signal is encoded by a number of measurements using measurement matrices and can then be reconstructed from that encoded signal. Two constraints need to be fulfilled to apply compressed sensing sampling: the sampled signal needs to be spares in some basis e.g. Fourier, or gradient, the second condition is that the measurement matrix must be incoherent with the sparse transform.\\[0.1in]
+
+The CS sampling model is defined as
+
+\begin{equation}
+\label{eq:CS1}
+   \mathbf{ y = \Phi x + \epsilon}\text{,}
+\end{equation}\\[0.1in]
+
+where, $\mathbf{x}_{N\times1}$ is the signal with $N$ samples, $\mathbf{y}_{M\times1}$ is the vector with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix as a column vector $1 \times N$) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the signal is. The signal $\mathbf{x}$ can be represented as  
+
+\begin{equation}
+\label{eq:CS2}
+   \mathbf{ \Psi \theta = x }\text{,}
+\end{equation}\\[0.1in]
+
+where, $\mathbf{\Psi}_{N \times N}$ is some  basis matrix and
+$\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-sparse. $K$-sparse means that the signal $\mathbf{x}$ has $K$ non zero elements in basis $\mathbf{\Psi}$, $||\mathbf{\theta}||_0 = K$. Given equation~\ref{eq:CS2}, equation~\ref{eq:CS1} can be expand to
+
+
+\begin{equation}
+   \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \theta + \epsilon = A \theta + \epsilon }\text{,}
+\end{equation}\\[0.1in]
+
+where, $A_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and the reconstructed with reconstruction matrix $A$ in a basis where $x$ is sparse.
+
+\subsection{Measurement matrix}
+\subsubsection{Random}
+
+\subsubsection{Walsh Hadamard}
+
+
+\subsection{Reconstruction methods}
+
+\subsubsection{$\ell_1$ minimization}
+
+\subsubsection{Greedy algorithms}
+
+\subsubsection{Total variation}
+
+
+\subsection{Aim} 
+What image quality can be achieved in natural images captured with a single pixel camera in daylight using state of the art methods?  
+
+
+\subsection{Research questions} 
+\label{sec:RQ}
+\begin{itemize}
+    \item How can the quality of images reconstructed by CS or a SPC be evaluated?
+    \item What is the state of the art method to capture and reconstruct images using a SPC architecture?
+    \item What image quality is achieved using state of the art methods applied to the SPC?
+\end{itemize}
+
+
+\subsection{Limitations}
+\begin{itemize}
+    \item The hardware rig provided by FOI
+    \item 
+\end{itemize}
+
+
+
+\subsection{Thesis outline}
