@@ -1,49 +1,52 @@
 \section{Introduction}
-The development and research of compressed sensing applied to a single pixel camera (SPC) is a relative new area in signal processing with the first functioning camera architecture in 2006. Since then numerous improvements and methods have been proposed how to capture images. In this section a introduction to the SPC architecture and the theory of compressed sensing is presented followed by the aim, research questions and thesis outline of this master's thesis. 
+The development and research of compressed sensing applied to a single pixel camera (SPC) is a relative new area in signal processing with the first functioning camera architecture in 2006. Since then numerous improvements and methods have been proposed how to capture images. In this section a introduction to the SPC architecture and a brief introduction of compressed imaging is presented followed by the aim, research questions and thesis outline. 
 
-\subsection{Single pixel camera architecture}
+\subsection{Compressive sensing \& imaging}
+Compressive sensing is a new sampling strategy which reconstructs a compressible or sparse signal by finding solution to undetermined linear system. Two constraints need to be fulfilled to apply compressed sensing sampling: the sampled signal needs to be spares in some basis e.g. Fourier or gradient, the second condition is that the measurement matrix must be incoherent with the sparse transform. The characteristic  undetermined linear system in CS is defined as $ \mathbf{y} = \mathbf{\phi}\mathbf{x}$ where $\mathbf{y}$ contains the measurements from the measurement matrix $\mathbf{\phi}$ sensing the signal $\mathbf{x}$. In figure~\ref{fig:CS_eq_sys} such linear equation system is shown.
 
-
-\subsection{Compressive sensing}
-Compressive sensing is a relative new sampling strategy which reconstructs a compressible or spares signal by finding solution to undetermined linear system. The signal is encoded by a number of measurements using measurement matrices and can then be reconstructed from that encoded signal. Two constraints need to be fulfilled to apply compressed sensing sampling: the sampled signal needs to be spares in some basis e.g. Fourier, or gradient, the second condition is that the measurement matrix must be incoherent with the sparse transform.\\[0.1in]
-
-The CS sampling model is defined as
-
-\begin{equation}
-\label{eq:CS1}
-   \mathbf{ y = \Phi x + \epsilon}\text{,}
-\end{equation}\\[0.1in]
-
-where, $\mathbf{x}_{N\times1}$ is the signal with $N$ samples, $\mathbf{y}_{M\times1}$ is the vector with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix as a column vector $1 \times N$) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the signal is. The signal $\mathbf{x}$ can be represented as  
-
-\begin{equation}
-\label{eq:CS2}
-   \mathbf{ \Psi \theta = x }\text{,}
-\end{equation}\\[0.1in]
-
-where, $\mathbf{\Psi}_{N \times N}$ is some  basis matrix and
-$\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-sparse. $K$-sparse means that the signal $\mathbf{x}$ has $K$ non zero elements in basis $\mathbf{\Psi}$, $||\mathbf{\theta}||_0 = K$. Given equation~\ref{eq:CS2}, equation~\ref{eq:CS1} can be expand to
+\begin{figure}[H]
+	\includegraphics[scale=0.5]{gfx/CS_eq.eps}
+	\caption{CS undetermined linear system}
+	\label{fig:CS_eq_sys}
+\end{figure}
 
 
-\begin{equation}
-   \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \theta + \epsilon = A \theta + \epsilon }\text{,}
-\end{equation}\\[0.1in]
 
-where, $A_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and the reconstructed with reconstruction matrix $A$ in a basis where $x$ is sparse.
+Scientists at Rice university in Texas, USA realized that the new method could be used to create a new camera architecture with a single photo diode in the sensor, the single pixel camera was born and thus a new sub field of compressed sensing was created called compressive imaging.\\[0.1in] 
+
+To be able to apply CS to imaging in the first place the constraints in CS needs to hold for images as well. The first requirement is that the signal needs to be compressible or sparse in some basis which natural images is known to be because they can be compressed using for example JPEG (Descrete cosine transform), JPEG2000 (Wavelet). The second constraint is that the measurement matrix must be incoherent with the sparse transform which for example white noise or some structure with the same property as white noise.\\[0.1in]
+
+\subsection{System architecture}
+The SPC in this master's thesis was designed with reflecting telescope optics to act as a lens to focus the scene. As seen in figure~\ref{fig:system_overview} light from the scene enters through the aperture in the camera where the primary mirror focus the light the via the secondary mirror onto the DMD. To this point, the SPC works like a conventional camera with the  with the difference 
+the image sensor where the DMD i placed.
+
+ where the DMD sits would be a picture sensor in a conventional camera and this is where the two cameras differ. 
+
+ camera arcitecture was 
+The system architecture is basically the same as a regular camera with two major differences. 
+
+\begin{figure}[H]
+\includegraphics[width = \linewidth]{gfx/System_gif.eps}
+	\caption{System overview}
+	\label{fig:system_overview}
+\end{figure}	
+
+ 
+
+\begin{itemize}
+\item Why?
+\item Compress before the images is taken
+\item Cheaper and in some cases only possible case to go to larger resolutions
+\item It is more effective then scanning each pixel one by one because the one need to do N samples.
+\end{itemize}
+
+
+
+
 
 \subsection{Measurement matrix}
-\subsubsection{Random}
-
-\subsubsection{Walsh Hadamard}
-
 
 \subsection{Reconstruction methods}
-
-\subsubsection{$\ell_1$ minimization}
-
-\subsubsection{Greedy algorithms}
-
-\subsubsection{Total variation}
 
 
 \subsection{Aim} 

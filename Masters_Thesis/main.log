@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.16)  3 AUG 2017 12:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.16)  3 AUG 2017 21:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1236,30 +1236,64 @@ Package caption Info: End \AtBeginDocument code.
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (./01_introduction.tex
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 12.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 5.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 12.
+LaTeX Font Info:    Try loading font information for U+msa on input line 5.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 12.
+LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 56.
+)
+Package epstopdf Info: Source file: <gfx/CS_eq.eps>
+(epstopdf)                    date: 2017-08-03 20:26:44
+(epstopdf)                    size: 624590 bytes
+(epstopdf)             Output file: <gfx/CS_eq-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 20:26:49
+(epstopdf)                    size: 15715 bytes
+(epstopdf)             Command: <repstopdf --outfile=gfx/CS_eq-eps-converted-to
+.pdf gfx/CS_eq.eps>
+(epstopdf)             \includegraphics on input line 8.
+Package epstopdf Info: Output file is already uptodate.
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+<gfx/CS_eq-eps-converted-to.pdf, id=11, 309.155pt x 203.76125pt>
+File: gfx/CS_eq-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gfx/CS_eq-eps-converted-to.pdf>
+Package pdftex.def Info: gfx/CS_eq-eps-converted-to.pdf used on input line 8.
+(pdftex.def)             Requested size: 154.57712pt x 101.88037pt.
+Package epstopdf Info: Source file: <gfx/System_gif.eps>
+(epstopdf)                    date: 2017-08-03 20:53:32
+(epstopdf)                    size: 4424374 bytes
+(epstopdf)             Output file: <gfx/System_gif-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 20:55:17
+(epstopdf)                    size: 212749 bytes
+(epstopdf)             Command: <repstopdf --outfile=gfx/System_gif-eps-convert
+ed-to.pdf gfx/System_gif.eps>
+(epstopdf)             \includegraphics on input line 24.
+Package epstopdf Info: Output file is already uptodate.
+
+<gfx/System_gif-eps-converted-to.pdf, id=12, 1278.7775pt x 503.8825pt>
+File: gfx/System_gif-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gfx/System_gif-eps-converted-to.pdf>
+Package pdftex.def Info: gfx/System_gif-eps-converted-to.pdf used on input line
+ 24.
+(pdftex.def)             Requested size: 443.57848pt x 174.78534pt.
+ [1 <./gfx/CS_eq-eps-converted-to.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 32.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 56.
-) [2]
-(./02_related_work.tex
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
+) [2 <./gfx/System_gif-eps-converted-to.pdf>] (./02_related_work.tex
 
 LaTeX Warning: Citation 'article:CS_donoho1' on page 3 undefined on input line 
 7.
@@ -1275,7 +1309,7 @@ ne 20.
 LaTeX Warning: Citation 'article:il_niqe' on page 3 undefined on input line 22.
 
 
-) [3] (./03_method.tex <gfx/SPC.png, id=26, 1027.84pt x 618.31pt>
+) [3] (./03_method.tex <gfx/SPC.png, id=118, 1027.84pt x 618.31pt>
 File: gfx/SPC.png Graphic file (type png)
 
 <use gfx/SPC.png>
@@ -1294,13 +1328,13 @@ LaTeX Warning: Citation 'article:foiSPIS' on page 4 undefined on input line 12.
 
 LaTeX Warning: Citation 'manual:DLP' on page 5 undefined on input line 29.
 
-<gfx/DMD_grid.png, id=30, 1003.75pt x 474.77374pt>
+<gfx/DMD_grid.png, id=122, 1003.75pt x 474.77374pt>
 File: gfx/DMD_grid.png Graphic file (type png)
  <use gfx/DMD_grid.png>
 Package pdftex.def Info: gfx/DMD_grid.png used on input line 34.
 (pdftex.def)             Requested size: 354.86412pt x 167.854pt.
 
-<gfx/DMD_grid2.png, id=32, 1027.84pt x 371.3875pt>
+<gfx/DMD_grid2.png, id=124, 1027.84pt x 371.3875pt>
 File: gfx/DMD_grid2.png Graphic file (type png)
  <use gfx/DMD_grid2.png>
 Package pdftex.def Info: gfx/DMD_grid2.png used on input line 41.
@@ -1314,26 +1348,23 @@ ine 50.
 
 LaTeX Warning: Citation 'manual:PDA' on page 6 undefined on input line 53.
 
-) [6] (./04_evaluation.tex
+[6]) [7] (./04_evaluation.tex
 Package epstopdf Info: Source file: <result/synt_sss/PSNR_fit.eps>
 (epstopdf)                    date: 2017-08-03 10:05:42
 (epstopdf)                    size: 806650 bytes
 (epstopdf)             Output file: <result/synt_sss/PSNR_fit-eps-converted-to.
 pdf>
+(epstopdf)                    date: 2017-08-03 12:40:55
+(epstopdf)                    size: 73075 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/synt_sss/PSNR_fit-e
 ps-converted-to.pdf result/synt_sss/PSNR_fit.eps>
 (epstopdf)             \includegraphics on input line 14.
-runsystem(repstopdf --outfile=result/synt_sss/PSNR_fit-eps-converted-to.pdf res
-ult/synt_sss/PSNR_fit.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/synt_sss/PSNR_fit-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2017-08-03 12:40:55
-(epstopdf)                    size: 73075 bytes.
-
-<result/synt_sss/PSNR_fit-eps-converted-to.pdf, id=42, 421.575pt x 316.18124pt>
+<result/synt_sss/PSNR_fit-eps-converted-to.pdf, id=140, 421.575pt x 316.18124pt
+>
 File: result/synt_sss/PSNR_fit-eps-converted-to.pdf Graphic file (type pdf)
-<use result/synt_sss/PSNR_fit-eps-converted-to.pdf>
+ <use result/synt_sss/PSNR_fit-eps-converted-to.pdf>
 Package pdftex.def Info: result/synt_sss/PSNR_fit-eps-converted-to.pdf used on 
 input line 14.
 (pdftex.def)             Requested size: 310.50357pt x 232.88011pt.
@@ -1342,44 +1373,36 @@ Package epstopdf Info: Source file: <result/synt_sss/SNR_fit.eps>
 (epstopdf)                    size: 801279 bytes
 (epstopdf)             Output file: <result/synt_sss/SNR_fit-eps-converted-to.p
 df>
+(epstopdf)                    date: 2017-08-03 12:40:55
+(epstopdf)                    size: 72847 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/synt_sss/SNR_fit-ep
 s-converted-to.pdf result/synt_sss/SNR_fit.eps>
 (epstopdf)             \includegraphics on input line 21.
-runsystem(repstopdf --outfile=result/synt_sss/SNR_fit-eps-converted-to.pdf resu
-lt/synt_sss/SNR_fit.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/synt_sss/SNR_fit-eps-converted-to.p
-df>
-(epstopdf)                    date: 2017-08-03 12:40:55
-(epstopdf)                    size: 72847 bytes.
-
-<result/synt_sss/SNR_fit-eps-converted-to.pdf, id=43, 421.575pt x 316.18124pt>
+<result/synt_sss/SNR_fit-eps-converted-to.pdf, id=141, 421.575pt x 316.18124pt>
 File: result/synt_sss/SNR_fit-eps-converted-to.pdf Graphic file (type pdf)
-
 <use result/synt_sss/SNR_fit-eps-converted-to.pdf>
 Package pdftex.def Info: result/synt_sss/SNR_fit-eps-converted-to.pdf used on i
 nput line 21.
 (pdftex.def)             Requested size: 310.50357pt x 232.88011pt.
- [7 <./result/synt_sss/PSNR_fit-eps-converted-to.pdf>]
+ [8 <./result/synt_sss/PSNR_fit-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <result/synt_sss/SSIM_fit.eps>
 (epstopdf)                    date: 2017-08-03 10:05:42
 (epstopdf)                    size: 802414 bytes
 (epstopdf)             Output file: <result/synt_sss/SSIM_fit-eps-converted-to.
 pdf>
+(epstopdf)                    date: 2017-08-03 12:40:56
+(epstopdf)                    size: 73125 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/synt_sss/SSIM_fit-e
 ps-converted-to.pdf result/synt_sss/SSIM_fit.eps>
 (epstopdf)             \includegraphics on input line 28.
-runsystem(repstopdf --outfile=result/synt_sss/SSIM_fit-eps-converted-to.pdf res
-ult/synt_sss/SSIM_fit.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/synt_sss/SSIM_fit-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2017-08-03 12:40:56
-(epstopdf)                    size: 73125 bytes.
-
-<result/synt_sss/SSIM_fit-eps-converted-to.pdf, id=52, 421.575pt x 316.18124pt>
+<result/synt_sss/SSIM_fit-eps-converted-to.pdf, id=150, 421.575pt x 316.18124pt
+>
 File: result/synt_sss/SSIM_fit-eps-converted-to.pdf Graphic file (type pdf)
-<use result/synt_sss/SSIM_fit-eps-converted-to.pdf>
+ <use result/synt_sss/SSIM_fit-eps-converted-to.pdf>
 Package pdftex.def Info: result/synt_sss/SSIM_fit-eps-converted-to.pdf used on 
 input line 28.
 (pdftex.def)             Requested size: 310.50357pt x 232.88011pt.
@@ -1388,45 +1411,37 @@ Package epstopdf Info: Source file: <result/synt_brisque/BRISQUE_fit.eps>
 (epstopdf)                    size: 1582783 bytes
 (epstopdf)             Output file: <result/synt_brisque/BRISQUE_fit-eps-conver
 ted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:40:57
+(epstopdf)                    size: 143032 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/synt_brisque/BRISQU
 E_fit-eps-converted-to.pdf result/synt_brisque/BRISQUE_fit.eps>
 (epstopdf)             \includegraphics on input line 38.
-runsystem(repstopdf --outfile=result/synt_brisque/BRISQUE_fit-eps-converted-to.
-pdf result/synt_brisque/BRISQUE_fit.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/synt_brisque/BRISQUE_fit-eps-conver
-ted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:40:57
-(epstopdf)                    size: 143032 bytes.
-
-<result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf, id=53, 399.4925pt x 289.
-08pt>
+<result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf, id=151, 399.4925pt x 289
+.08pt>
 File: result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf Graphic file (type p
 df)
  <use result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf>
 Package pdftex.def Info: result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf u
 sed on input line 38.
 (pdftex.def)             Requested size: 310.50357pt x 224.69632pt.
- [8 <./result/synt_sss/SNR_fit-eps-converted-to.pdf> <./result/synt_sss/SSIM_fi
+ [9 <./result/synt_sss/SNR_fit-eps-converted-to.pdf> <./result/synt_sss/SSIM_fi
 t-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <result/synt_brisque/Brisque_fit_flat.eps>
 (epstopdf)                    date: 2017-08-03 10:05:42
 (epstopdf)                    size: 125123 bytes
 (epstopdf)             Output file: <result/synt_brisque/Brisque_fit_flat-eps-c
 onverted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:40:57
+(epstopdf)                    size: 45756 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/synt_brisque/Brisqu
 e_fit_flat-eps-converted-to.pdf result/synt_brisque/Brisque_fit_flat.eps>
 (epstopdf)             \includegraphics on input line 45.
-runsystem(repstopdf --outfile=result/synt_brisque/Brisque_fit_flat-eps-converte
-d-to.pdf result/synt_brisque/Brisque_fit_flat.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/synt_brisque/Brisque_fit_flat-eps-c
-onverted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:40:57
-(epstopdf)                    size: 45756 bytes.
-
-<result/synt_brisque/Brisque_fit_flat-eps-converted-to.pdf, id=67, 375.4025pt x
- 295.1025pt>
+<result/synt_brisque/Brisque_fit_flat-eps-converted-to.pdf, id=165, 375.4025pt 
+x 295.1025pt>
 File: result/synt_brisque/Brisque_fit_flat-eps-converted-to.pdf Graphic file (t
 ype pdf)
  <use result/synt_brisque/Brisque_fit_flat-eps-converted-to.pdf>
@@ -1434,9 +1449,9 @@ Package pdftex.def Info: result/synt_brisque/Brisque_fit_flat-eps-converted-to.
 pdf used on input line 45.
 (pdftex.def)             Requested size: 310.50357pt x 244.10196pt.
 
-[9 <./result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf> <./result/synt_bris
-que/Brisque_fit_flat-eps-converted-to.pdf>]
-<result/dynamic/local/local_whole_time_org.png, id=81, 256.96pt x 256.96pt>
+[10 <./result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf> <./result/synt_bri
+sque/Brisque_fit_flat-eps-converted-to.pdf>]
+<result/dynamic/local/local_whole_time_org.png, id=179, 256.96pt x 256.96pt>
 File: result/dynamic/local/local_whole_time_org.png Graphic file (type png)
 
 <use result/dynamic/local/local_whole_time_org.png>
@@ -1448,7 +1463,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-<result/dynamic/local/local_whole_time_ref.png, id=82, 256.96pt x 256.96pt>
+<result/dynamic/local/local_whole_time_ref.png, id=180, 256.96pt x 256.96pt>
 File: result/dynamic/local/local_whole_time_ref.png Graphic file (type png)
 
 <use result/dynamic/local/local_whole_time_ref.png>
@@ -1461,8 +1476,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
  []
 
 
-<result/dynamic/local/local_whole_time_res_psnr_29_snr_25_sssim_91.png, id=83, 
-256.96pt x 256.96pt>
+<result/dynamic/local/local_whole_time_res_psnr_29_snr_25_sssim_91.png, id=181,
+ 256.96pt x 256.96pt>
 File: result/dynamic/local/local_whole_time_res_psnr_29_snr_25_sssim_91.png Gra
 phic file (type png)
 
@@ -1476,7 +1491,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--71
  []
 
 
-LaTeX Warning: Reference `fig:local_signal' on page 10 undefined on input line 
+LaTeX Warning: Reference `fig:local_signal' on page 11 undefined on input line 
 92.
 
 Package epstopdf Info: Source file: <result/dynamic/local/local_whole_time.eps>
@@ -1485,20 +1500,15 @@ Package epstopdf Info: Source file: <result/dynamic/local/local_whole_time.eps>
 (epstopdf)                    size: 716090 bytes
 (epstopdf)             Output file: <result/dynamic/local/local_whole_time-eps-
 converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:40:58
+(epstopdf)                    size: 247996 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/local/local
 _whole_time-eps-converted-to.pdf result/dynamic/local/local_whole_time.eps>
 (epstopdf)             \includegraphics on input line 97.
-runsystem(repstopdf --outfile=result/dynamic/local/local_whole_time-eps-convert
-ed-to.pdf result/dynamic/local/local_whole_time.eps)...executed safely (allowed
-).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/local/local_whole_time-eps-
-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:40:58
-(epstopdf)                    size: 247996 bytes.
-
-<result/dynamic/local/local_whole_time-eps-converted-to.pdf, id=84, 425.59pt x 
-258.9675pt>
+<result/dynamic/local/local_whole_time-eps-converted-to.pdf, id=182, 425.59pt x
+ 258.9675pt>
 File: result/dynamic/local/local_whole_time-eps-converted-to.pdf Graphic file (
 type pdf)
  <use result/dynamic/local/local_whole_time-eps-converted-to.pdf>
@@ -1516,21 +1526,16 @@ eps>
 (epstopdf)                    size: 18261 bytes
 (epstopdf)             Output file: <result/dynamic/local/local_whole_time_win-
 eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:40:58
+(epstopdf)                    size: 9069 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/local/local
 _whole_time_win-eps-converted-to.pdf result/dynamic/local/local_whole_time_win.
 eps>
 (epstopdf)             \includegraphics on input line 102.
-runsystem(repstopdf --outfile=result/dynamic/local/local_whole_time_win-eps-con
-verted-to.pdf result/dynamic/local/local_whole_time_win.eps)...executed safely 
-(allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/local/local_whole_time_win-
-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:40:58
-(epstopdf)                    size: 9069 bytes.
-
-<result/dynamic/local/local_whole_time_win-eps-converted-to.pdf, id=85, 381.425
-pt x 307.1475pt>
+<result/dynamic/local/local_whole_time_win-eps-converted-to.pdf, id=183, 381.42
+5pt x 307.1475pt>
 File: result/dynamic/local/local_whole_time_win-eps-converted-to.pdf Graphic fi
 le (type pdf)
 
@@ -1543,10 +1548,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
-[10 <./result/dynamic/local/local_whole_time_org.png> <./result/dynamic/local/l
+[11 <./result/dynamic/local/local_whole_time_org.png> <./result/dynamic/local/l
 ocal_whole_time_ref.png> <./result/dynamic/local/local_whole_time_res_psnr_29_s
 nr_25_sssim_91.png>]
-<result/dynamic/fly/flyby_1sec_org.png, id=93, 256.96pt x 256.96pt>
+<result/dynamic/fly/flyby_1sec_org.png, id=191, 256.96pt x 256.96pt>
 File: result/dynamic/fly/flyby_1sec_org.png Graphic file (type png)
 
 <use result/dynamic/fly/flyby_1sec_org.png>
@@ -1558,7 +1563,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
-<result/dynamic/fly/flyby_1sec_ref.png, id=94, 256.96pt x 256.96pt>
+<result/dynamic/fly/flyby_1sec_ref.png, id=192, 256.96pt x 256.96pt>
 File: result/dynamic/fly/flyby_1sec_ref.png Graphic file (type png)
 
 <use result/dynamic/fly/flyby_1sec_ref.png>
@@ -1571,8 +1576,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--128
  []
 
 
-<result/dynamic/fly/flyby_1sec_res_psnr_23_snr_18_sssim_58.png, id=95, 256.96pt
- x 256.96pt>
+<result/dynamic/fly/flyby_1sec_res_psnr_23_snr_18_sssim_58.png, id=193, 256.96p
+t x 256.96pt>
 File: result/dynamic/fly/flyby_1sec_res_psnr_23_snr_18_sssim_58.png Graphic fil
 e (type png)
 
@@ -1585,12 +1590,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-[11 <./result/dynamic/local/local_whole_time-eps-converted-to.pdf> <./result/dy
+[12 <./result/dynamic/local/local_whole_time-eps-converted-to.pdf> <./result/dy
 namic/local/local_whole_time_win-eps-converted-to.pdf> <./result/dynamic/fly/fl
 yby_1sec_org.png> <./result/dynamic/fly/flyby_1sec_ref.png> <./result/dynamic/f
 ly/flyby_1sec_res_psnr_23_snr_18_sssim_58.png>]
 
-LaTeX Warning: Reference `fig:fly_signal' on page 12 undefined on input line 15
+LaTeX Warning: Reference `fig:fly_signal' on page 13 undefined on input line 15
 6.
 
 Package epstopdf Info: Source file: <result/dynamic/fly/flyby_sig.eps>
@@ -1598,18 +1603,14 @@ Package epstopdf Info: Source file: <result/dynamic/fly/flyby_sig.eps>
 (epstopdf)                    size: 711302 bytes
 (epstopdf)             Output file: <result/dynamic/fly/flyby_sig-eps-converted
 -to.pdf>
+(epstopdf)                    date: 2017-08-03 12:40:59
+(epstopdf)                    size: 241964 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/fly/flyby_s
 ig-eps-converted-to.pdf result/dynamic/fly/flyby_sig.eps>
 (epstopdf)             \includegraphics on input line 162.
-runsystem(repstopdf --outfile=result/dynamic/fly/flyby_sig-eps-converted-to.pdf
- result/dynamic/fly/flyby_sig.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/fly/flyby_sig-eps-converted
--to.pdf>
-(epstopdf)                    date: 2017-08-03 12:40:59
-(epstopdf)                    size: 241964 bytes.
-
-<result/dynamic/fly/flyby_sig-eps-converted-to.pdf, id=118, 425.59pt x 258.9675
+<result/dynamic/fly/flyby_sig-eps-converted-to.pdf, id=218, 425.59pt x 258.9675
 pt>
 File: result/dynamic/fly/flyby_sig-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1627,18 +1628,14 @@ Package epstopdf Info: Source file: <result/dynamic/fly/flyby_plot_win.eps>
 (epstopdf)                    size: 84422 bytes
 (epstopdf)             Output file: <result/dynamic/fly/flyby_plot_win-eps-conv
 erted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:40:59
+(epstopdf)                    size: 37451 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/fly/flyby_p
 lot_win-eps-converted-to.pdf result/dynamic/fly/flyby_plot_win.eps>
 (epstopdf)             \includegraphics on input line 167.
-runsystem(repstopdf --outfile=result/dynamic/fly/flyby_plot_win-eps-converted-t
-o.pdf result/dynamic/fly/flyby_plot_win.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/fly/flyby_plot_win-eps-conv
-erted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:40:59
-(epstopdf)                    size: 37451 bytes.
-
-<result/dynamic/fly/flyby_plot_win-eps-converted-to.pdf, id=119, 389.455pt x 30
+<result/dynamic/fly/flyby_plot_win-eps-converted-to.pdf, id=219, 389.455pt x 30
 7.1475pt>
 File: result/dynamic/fly/flyby_plot_win-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1651,7 +1648,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
 
-<result/dynamic/lum/intense_change_org.png, id=120, 256.96pt x 256.96pt>
+<result/dynamic/lum/intense_change_org.png, id=220, 256.96pt x 256.96pt>
 File: result/dynamic/lum/intense_change_org.png Graphic file (type png)
 
 <use result/dynamic/lum/intense_change_org.png>
@@ -1663,7 +1660,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 187--188
 
  []
 
-<result/dynamic/lum/intense_change.png, id=121, 256.96pt x 256.96pt>
+<result/dynamic/lum/intense_change.png, id=221, 256.96pt x 256.96pt>
 File: result/dynamic/lum/intense_change.png Graphic file (type png)
 
 <use result/dynamic/lum/intense_change.png>
@@ -1676,7 +1673,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 192--193
  []
 
 
-<result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png, id=122, 256.96p
+<result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png, id=222, 256.96p
 t x 256.96pt>
 File: result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png Graphic fil
 e (type png)
@@ -1691,7 +1688,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--198
  []
 
 
-<result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png, id=123
+<result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png, id=223
 , 256.96pt x 256.96pt>
 File: result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png Gr
 aphic file (type png)
@@ -1705,10 +1702,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 202--203
 
  []
 
-[12 <./result/dynamic/fly/flyby_sig-eps-converted-to.pdf> <./result/dynamic/fly
+[13 <./result/dynamic/fly/flyby_sig-eps-converted-to.pdf> <./result/dynamic/fly
 /flyby_plot_win-eps-converted-to.pdf>]
 
-LaTeX Warning: Reference `fig:lum_signal' on page 13 undefined on input line 22
+LaTeX Warning: Reference `fig:lum_signal' on page 14 undefined on input line 22
 8.
 
 Package epstopdf Info: Source file: <result/dynamic/lum/intense_change.eps>
@@ -1716,18 +1713,14 @@ Package epstopdf Info: Source file: <result/dynamic/lum/intense_change.eps>
 (epstopdf)                    size: 714965 bytes
 (epstopdf)             Output file: <result/dynamic/lum/intense_change-eps-conv
 erted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:00
+(epstopdf)                    size: 248454 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/lum/intense
 _change-eps-converted-to.pdf result/dynamic/lum/intense_change.eps>
 (epstopdf)             \includegraphics on input line 234.
-runsystem(repstopdf --outfile=result/dynamic/lum/intense_change-eps-converted-t
-o.pdf result/dynamic/lum/intense_change.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/lum/intense_change-eps-conv
-erted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:00
-(epstopdf)                    size: 248454 bytes.
-
-<result/dynamic/lum/intense_change-eps-converted-to.pdf, id=144, 425.59pt x 258
+<result/dynamic/lum/intense_change-eps-converted-to.pdf, id=243, 425.59pt x 258
 .9675pt>
 File: result/dynamic/lum/intense_change-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1745,18 +1738,14 @@ Package epstopdf Info: Source file: <result/dynamic/lum/intense_change_sp.eps>
 (epstopdf)                    size: 714290 bytes
 (epstopdf)             Output file: <result/dynamic/lum/intense_change_sp-eps-c
 onverted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:00
+(epstopdf)                    size: 261551 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/lum/intense
 _change_sp-eps-converted-to.pdf result/dynamic/lum/intense_change_sp.eps>
 (epstopdf)             \includegraphics on input line 239.
-runsystem(repstopdf --outfile=result/dynamic/lum/intense_change_sp-eps-converte
-d-to.pdf result/dynamic/lum/intense_change_sp.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/lum/intense_change_sp-eps-c
-onverted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:00
-(epstopdf)                    size: 261551 bytes.
-
-<result/dynamic/lum/intense_change_sp-eps-converted-to.pdf, id=145, 407.5225pt 
+<result/dynamic/lum/intense_change_sp-eps-converted-to.pdf, id=244, 407.5225pt 
 x 307.1475pt>
 File: result/dynamic/lum/intense_change_sp-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -1775,20 +1764,15 @@ ps>
 (epstopdf)                    size: 715781 bytes
 (epstopdf)             Output file: <result/dynamic/lum/intense_change_sp_ref-e
 ps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:01
+(epstopdf)                    size: 253903 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/lum/intense
 _change_sp_ref-eps-converted-to.pdf result/dynamic/lum/intense_change_sp_ref.ep
 s>
 (epstopdf)             \includegraphics on input line 244.
-runsystem(repstopdf --outfile=result/dynamic/lum/intense_change_sp_ref-eps-conv
-erted-to.pdf result/dynamic/lum/intense_change_sp_ref.eps)...executed safely (a
-llowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/lum/intense_change_sp_ref-e
-ps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:01
-(epstopdf)                    size: 253903 bytes.
-
-<result/dynamic/lum/intense_change_sp_ref-eps-converted-to.pdf, id=146, 419.567
+<result/dynamic/lum/intense_change_sp_ref-eps-converted-to.pdf, id=245, 419.567
 5pt x 307.1475pt>
 File: result/dynamic/lum/intense_change_sp_ref-eps-converted-to.pdf Graphic fil
 e (type pdf)
@@ -1808,20 +1792,15 @@ in.eps>
 (epstopdf)                    size: 17781 bytes
 (epstopdf)             Output file: <result/dynamic/lum/intense_change_sp_ref_w
 in-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:01
+(epstopdf)                    size: 9995 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/dynamic/lum/intense
 _change_sp_ref_win-eps-converted-to.pdf result/dynamic/lum/intense_change_sp_re
 f_win.eps>
 (epstopdf)             \includegraphics on input line 249.
-runsystem(repstopdf --outfile=result/dynamic/lum/intense_change_sp_ref_win-eps-
-converted-to.pdf result/dynamic/lum/intense_change_sp_ref_win.eps)...executed s
-afely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/dynamic/lum/intense_change_sp_ref_w
-in-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:01
-(epstopdf)                    size: 9995 bytes.
-
-<result/dynamic/lum/intense_change_sp_ref_win-eps-converted-to.pdf, id=147, 419
+<result/dynamic/lum/intense_change_sp_ref_win-eps-converted-to.pdf, id=246, 419
 .5675pt x 307.1475pt>
 File: result/dynamic/lum/intense_change_sp_ref_win-eps-converted-to.pdf Graphic
  file (type pdf)
@@ -1835,31 +1814,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 249--250
 
  []
 
-[13 <./result/dynamic/lum/intense_change_org.png> <./result/dynamic/lum/intense
+[14 <./result/dynamic/lum/intense_change_org.png> <./result/dynamic/lum/intense
 _change.png> <./result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png> 
 <./result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png>]
 Package epstopdf Info: Source file: <result/homo/Hom_im.eps>
 (epstopdf)                    date: 2017-08-03 10:05:40
 (epstopdf)                    size: 3905302 bytes
 (epstopdf)             Output file: <result/homo/Hom_im-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:02
+(epstopdf)                    size: 646479 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/homo/Hom_im-eps-con
 verted-to.pdf result/homo/Hom_im.eps>
 (epstopdf)             \includegraphics on input line 274.
-runsystem(repstopdf --outfile=result/homo/Hom_im-eps-converted-to.pdf result/ho
-mo/Hom_im.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/homo/Hom_im-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:02
-(epstopdf)                    size: 646479 bytes.
-
-<result/homo/Hom_im-eps-converted-to.pdf, id=155, 1095.09125pt x 390.45876pt>
+<result/homo/Hom_im-eps-converted-to.pdf, id=254, 1095.09125pt x 390.45876pt>
 File: result/homo/Hom_im-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/Hom_im-eps-converted-to.pdf>
 Package pdftex.def Info: result/homo/Hom_im-eps-converted-to.pdf used on input 
 line 274.
 (pdftex.def)             Requested size: 443.57848pt x 158.15875pt.
- [14 <./result/dynamic/lum/intense_change-eps-converted-to.pdf> <./result/dynam
+ [15 <./result/dynamic/lum/intense_change-eps-converted-to.pdf> <./result/dynam
 ic/lum/intense_change_sp-eps-converted-to.pdf> <./result/dynamic/lum/intense_ch
 ange_sp_ref-eps-converted-to.pdf> <./result/dynamic/lum/intense_change_sp_ref_w
 in-eps-converted-to.pdf>]
@@ -1868,18 +1844,14 @@ Package epstopdf Info: Source file: <result/homo/hom_PSNR.eps>
 (epstopdf)                    size: 15810 bytes
 (epstopdf)             Output file: <result/homo/hom_PSNR-eps-converted-to.pdf>
 
+(epstopdf)                    date: 2017-08-03 12:41:03
+(epstopdf)                    size: 7378 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/homo/hom_PSNR-eps-c
 onverted-to.pdf result/homo/hom_PSNR.eps>
 (epstopdf)             \includegraphics on input line 282.
-runsystem(repstopdf --outfile=result/homo/hom_PSNR-eps-converted-to.pdf result/
-homo/hom_PSNR.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/homo/hom_PSNR-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2017-08-03 12:41:03
-(epstopdf)                    size: 7378 bytes.
-
-<result/homo/hom_PSNR-eps-converted-to.pdf, id=191, 421.575pt x 316.18124pt>
+<result/homo/hom_PSNR-eps-converted-to.pdf, id=290, 421.575pt x 316.18124pt>
 File: result/homo/hom_PSNR-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/hom_PSNR-eps-converted-to.pdf>
@@ -1895,16 +1867,13 @@ Package epstopdf Info: Source file: <result/homo/hom_SNR.eps>
 (epstopdf)                    date: 2017-08-03 10:05:40
 (epstopdf)                    size: 16196 bytes
 (epstopdf)             Output file: <result/homo/hom_SNR-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:03
+(epstopdf)                    size: 6534 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/homo/hom_SNR-eps-co
 nverted-to.pdf result/homo/hom_SNR.eps>
 (epstopdf)             \includegraphics on input line 287.
-runsystem(repstopdf --outfile=result/homo/hom_SNR-eps-converted-to.pdf result/h
-omo/hom_SNR.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <result/homo/hom_SNR-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:03
-(epstopdf)                    size: 6534 bytes.
-<result/homo/hom_SNR-eps-converted-to.pdf, id=192, 421.575pt x 316.18124pt>
+Package epstopdf Info: Output file is already uptodate.
+<result/homo/hom_SNR-eps-converted-to.pdf, id=291, 421.575pt x 316.18124pt>
 File: result/homo/hom_SNR-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/hom_SNR-eps-converted-to.pdf>
@@ -1921,17 +1890,13 @@ Package epstopdf Info: Source file: <result/homo/hom_SSIM.eps>
 (epstopdf)                    size: 16210 bytes
 (epstopdf)             Output file: <result/homo/hom_SSIM-eps-converted-to.pdf>
 
+(epstopdf)                    date: 2017-08-03 12:41:04
+(epstopdf)                    size: 6758 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/homo/hom_SSIM-eps-c
 onverted-to.pdf result/homo/hom_SSIM.eps>
 (epstopdf)             \includegraphics on input line 292.
-runsystem(repstopdf --outfile=result/homo/hom_SSIM-eps-converted-to.pdf result/
-homo/hom_SSIM.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <result/homo/hom_SSIM-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2017-08-03 12:41:04
-(epstopdf)                    size: 6758 bytes.
-<result/homo/hom_SSIM-eps-converted-to.pdf, id=193, 421.575pt x 316.18124pt>
+Package epstopdf Info: Output file is already uptodate.
+<result/homo/hom_SSIM-eps-converted-to.pdf, id=292, 421.575pt x 316.18124pt>
 File: result/homo/hom_SSIM-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/hom_SSIM-eps-converted-to.pdf>
@@ -1943,49 +1908,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 292--293
 
  []
 
-[15 <./result/homo/Hom_im-eps-converted-to.pdf>]
+[16 <./result/homo/Hom_im-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <result/SPC_NRQA/plot.eps>
 (epstopdf)                    date: 2017-08-03 10:05:42
 (epstopdf)                    size: 39004 bytes
 (epstopdf)             Output file: <result/SPC_NRQA/plot-eps-converted-to.pdf>
 
+(epstopdf)                    date: 2017-08-03 12:41:04
+(epstopdf)                    size: 10624 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/SPC_NRQA/plot-eps-c
 onverted-to.pdf result/SPC_NRQA/plot.eps>
 (epstopdf)             \includegraphics on input line 306.
-runsystem(repstopdf --outfile=result/SPC_NRQA/plot-eps-converted-to.pdf result/
-SPC_NRQA/plot.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/SPC_NRQA/plot-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2017-08-03 12:41:04
-(epstopdf)                    size: 10624 bytes.
-
-<result/SPC_NRQA/plot-eps-converted-to.pdf, id=212, 499.8675pt x 422.57875pt>
+<result/SPC_NRQA/plot-eps-converted-to.pdf, id=310, 499.8675pt x 422.57875pt>
 File: result/SPC_NRQA/plot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/plot-eps-converted-to.pdf>
 Package pdftex.def Info: result/SPC_NRQA/plot-eps-converted-to.pdf used on inpu
 t line 306.
 (pdftex.def)             Requested size: 310.50357pt x 262.50551pt.
- [16 <./result/homo/hom_PSNR-eps-converted-to.pdf> <./result/homo/hom_SNR-eps-c
+ [17 <./result/homo/hom_PSNR-eps-converted-to.pdf> <./result/homo/hom_SNR-eps-c
 onverted-to.pdf> <./result/homo/hom_SSIM-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <result/SPC_NRQA/good.eps>
 (epstopdf)                    date: 2017-08-03 10:05:42
 (epstopdf)                    size: 3046746 bytes
 (epstopdf)             Output file: <result/SPC_NRQA/good-eps-converted-to.pdf>
 
+(epstopdf)                    date: 2017-08-03 12:41:05
+(epstopdf)                    size: 358303 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/SPC_NRQA/good-eps-c
 onverted-to.pdf result/SPC_NRQA/good.eps>
 (epstopdf)             \includegraphics on input line 313.
-runsystem(repstopdf --outfile=result/SPC_NRQA/good-eps-converted-to.pdf result/
-SPC_NRQA/good.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/SPC_NRQA/good-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2017-08-03 12:41:05
-(epstopdf)                    size: 358303 bytes.
-
-<result/SPC_NRQA/good-eps-converted-to.pdf, id=240, 559.08875pt x 128.48pt>
+<result/SPC_NRQA/good-eps-converted-to.pdf, id=338, 559.08875pt x 128.48pt>
 File: result/SPC_NRQA/good-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/good-eps-converted-to.pdf>
@@ -1997,18 +1954,14 @@ Package epstopdf Info: Source file: <result/SPC_NRQA/half.eps>
 (epstopdf)                    size: 3007986 bytes
 (epstopdf)             Output file: <result/SPC_NRQA/half-eps-converted-to.pdf>
 
+(epstopdf)                    date: 2017-08-03 12:41:05
+(epstopdf)                    size: 344740 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/SPC_NRQA/half-eps-c
 onverted-to.pdf result/SPC_NRQA/half.eps>
 (epstopdf)             \includegraphics on input line 320.
-runsystem(repstopdf --outfile=result/SPC_NRQA/half-eps-converted-to.pdf result/
-SPC_NRQA/half.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/SPC_NRQA/half-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2017-08-03 12:41:05
-(epstopdf)                    size: 344740 bytes.
-
-<result/SPC_NRQA/half-eps-converted-to.pdf, id=241, 559.08875pt x 128.48pt>
+<result/SPC_NRQA/half-eps-converted-to.pdf, id=339, 559.08875pt x 128.48pt>
 File: result/SPC_NRQA/half-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/half-eps-converted-to.pdf>
@@ -2019,40 +1972,34 @@ Package epstopdf Info: Source file: <result/SPC_NRQA/bad.eps>
 (epstopdf)                    date: 2017-08-03 10:05:42
 (epstopdf)                    size: 3014842 bytes
 (epstopdf)             Output file: <result/SPC_NRQA/bad-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:06
+(epstopdf)                    size: 392428 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/SPC_NRQA/bad-eps-co
 nverted-to.pdf result/SPC_NRQA/bad.eps>
 (epstopdf)             \includegraphics on input line 327.
-runsystem(repstopdf --outfile=result/SPC_NRQA/bad-eps-converted-to.pdf result/S
-PC_NRQA/bad.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/SPC_NRQA/bad-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:06
-(epstopdf)                    size: 392428 bytes.
-
-<result/SPC_NRQA/bad-eps-converted-to.pdf, id=242, 559.08875pt x 128.48pt>
+<result/SPC_NRQA/bad-eps-converted-to.pdf, id=340, 559.08875pt x 128.48pt>
 File: result/SPC_NRQA/bad-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/bad-eps-converted-to.pdf>
 Package pdftex.def Info: result/SPC_NRQA/bad-eps-converted-to.pdf used on input
  line 327.
 (pdftex.def)             Requested size: 443.57848pt x 101.93918pt.
- [17 <./result/SPC_NRQA/plot-eps-converted-to.pdf> <./result/SPC_NRQA/good-eps-
+ [18 <./result/SPC_NRQA/plot-eps-converted-to.pdf> <./result/SPC_NRQA/good-eps-
 converted-to.pdf> <./result/SPC_NRQA/half-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <result/mtf/Target.eps>
 (epstopdf)                    date: 2017-08-03 10:05:40
 (epstopdf)                    size: 770114 bytes
 (epstopdf)             Output file: <result/mtf/Target-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:06
+(epstopdf)                    size: 16809 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/mtf/Target-eps-conv
 erted-to.pdf result/mtf/Target.eps>
 (epstopdf)             \includegraphics on input line 350.
-runsystem(repstopdf --outfile=result/mtf/Target-eps-converted-to.pdf result/mtf
-/Target.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/mtf/Target-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:06
-(epstopdf)                    size: 16809 bytes.
-
-<result/mtf/Target-eps-converted-to.pdf, id=274, 528.97626pt x 257.96375pt>
+<result/mtf/Target-eps-converted-to.pdf, id=373, 528.97626pt x 257.96375pt>
 File: result/mtf/Target-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/Target-eps-converted-to.pdf>
@@ -2064,41 +2011,34 @@ Package epstopdf Info: Source file: <result/mtf/Target_im.eps>
 (epstopdf)                    size: 2903090 bytes
 (epstopdf)             Output file: <result/mtf/Target_im-eps-converted-to.pdf>
 
+(epstopdf)                    date: 2017-08-03 12:41:07
+(epstopdf)                    size: 140206 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/mtf/Target_im-eps-c
 onverted-to.pdf result/mtf/Target_im.eps>
 (epstopdf)             \includegraphics on input line 359.
-runsystem(repstopdf --outfile=result/mtf/Target_im-eps-converted-to.pdf result/
-mtf/Target_im.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/mtf/Target_im-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2017-08-03 12:41:07
-(epstopdf)                    size: 140206 bytes.
-
-<result/mtf/Target_im-eps-converted-to.pdf, id=275, 540.0175pt x 128.48pt>
+<result/mtf/Target_im-eps-converted-to.pdf, id=374, 540.0175pt x 128.48pt>
 File: result/mtf/Target_im-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/Target_im-eps-converted-to.pdf>
 Package pdftex.def Info: result/mtf/Target_im-eps-converted-to.pdf used on inpu
 t line 359.
 (pdftex.def)             Requested size: 443.57848pt x 105.53659pt.
- [18 <./result/SPC_NRQA/bad-eps-converted-to.pdf> <./result/mtf/Target-eps-conv
+ [19 <./result/SPC_NRQA/bad-eps-converted-to.pdf> <./result/mtf/Target-eps-conv
 erted-to.pdf>]
 Package epstopdf Info: Source file: <result/mtf/mtf30.eps>
 (epstopdf)                    date: 2017-08-03 10:05:38
 (epstopdf)                    size: 18138 bytes
 (epstopdf)             Output file: <result/mtf/mtf30-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:07
+(epstopdf)                    size: 7392 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/mtf/mtf30-eps-conve
 rted-to.pdf result/mtf/mtf30.eps>
 (epstopdf)             \includegraphics on input line 371.
-runsystem(repstopdf --outfile=result/mtf/mtf30-eps-converted-to.pdf result/mtf/
-mtf30.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/mtf/mtf30-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:07
-(epstopdf)                    size: 7392 bytes.
-
-<result/mtf/mtf30-eps-converted-to.pdf, id=299, 504.88625pt x 422.57875pt>
+<result/mtf/mtf30-eps-converted-to.pdf, id=397, 504.88625pt x 422.57875pt>
 File: result/mtf/mtf30-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/mtf30-eps-converted-to.pdf>
@@ -2114,16 +2054,13 @@ Package epstopdf Info: Source file: <result/mtf/mtf50.eps>
 (epstopdf)                    date: 2017-08-03 10:05:40
 (epstopdf)                    size: 19823 bytes
 (epstopdf)             Output file: <result/mtf/mtf50-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-03 12:41:08
+(epstopdf)                    size: 7682 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/mtf/mtf50-eps-conve
 rted-to.pdf result/mtf/mtf50.eps>
 (epstopdf)             \includegraphics on input line 376.
-runsystem(repstopdf --outfile=result/mtf/mtf50-eps-converted-to.pdf result/mtf/
-mtf50.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <result/mtf/mtf50-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 12:41:08
-(epstopdf)                    size: 7682 bytes.
-<result/mtf/mtf50-eps-converted-to.pdf, id=300, 504.88625pt x 422.57875pt>
+Package epstopdf Info: Output file is already uptodate.
+<result/mtf/mtf50-eps-converted-to.pdf, id=398, 504.88625pt x 422.57875pt>
 File: result/mtf/mtf50-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/mtf50-eps-converted-to.pdf>
@@ -2140,25 +2077,21 @@ Package epstopdf Info: Source file: <result/mtf/10-90_rise.eps>
 (epstopdf)                    size: 18544 bytes
 (epstopdf)             Output file: <result/mtf/10-90_rise-eps-converted-to.pdf
 >
+(epstopdf)                    date: 2017-08-03 12:41:08
+(epstopdf)                    size: 8188 bytes
 (epstopdf)             Command: <repstopdf --outfile=result/mtf/10-90_rise-eps-
 converted-to.pdf result/mtf/10-90_rise.eps>
 (epstopdf)             \includegraphics on input line 389.
-runsystem(repstopdf --outfile=result/mtf/10-90_rise-eps-converted-to.pdf result
-/mtf/10-90_rise.eps)...executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <result/mtf/10-90_rise-eps-converted-to.pdf
->
-(epstopdf)                    date: 2017-08-03 12:41:08
-(epstopdf)                    size: 8188 bytes.
-
-<result/mtf/10-90_rise-eps-converted-to.pdf, id=301, 496.85625pt x 422.57875pt>
+<result/mtf/10-90_rise-eps-converted-to.pdf, id=399, 496.85625pt x 422.57875pt>
 File: result/mtf/10-90_rise-eps-converted-to.pdf Graphic file (type pdf)
 <use result/mtf/10-90_rise-eps-converted-to.pdf>
 Package pdftex.def Info: result/mtf/10-90_rise-eps-converted-to.pdf used on inp
 ut line 389.
 (pdftex.def)             Requested size: 221.78923pt x 188.63693pt.
- [19 <./result/mtf/Target_im-eps-converted-to.pdf> <./result/mtf/mtf30-eps-conv
-erted-to.pdf> <./result/mtf/mtf50-eps-converted-to.pdf>]) [20 <./result/mtf/10-
+ [20 <./result/mtf/Target_im-eps-converted-to.pdf> <./result/mtf/mtf30-eps-conv
+erted-to.pdf> <./result/mtf/mtf50-eps-converted-to.pdf>]) [21 <./result/mtf/10-
 90_rise-eps-converted-to.pdf>]
 
 LaTeX Warning: Empty bibliography on input line 43.
@@ -2180,10 +2113,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23191 strings out of 493089
- 432458 string characters out of 6134841
- 829835 words of memory out of 5000000
- 26177 multiletter control sequences out of 15000+600000
+ 23203 strings out of 493089
+ 432815 string characters out of 6134841
+ 829855 words of memory out of 5000000
+ 26187 multiletter control sequences out of 15000+600000
  12988 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,8n,94p,974b,866s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2196,10 +2129,10 @@ sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
 cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (21 pages, 5707583 bytes).
+Output written on main.pdf (22 pages, 5929576 bytes).
 PDF statistics:
- 371 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
+ 469 PDF objects out of 1000 (max. 8388607)
+ 262 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 208 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 218 words of extra memory for PDF output out of 10000 (max. 10000000)
 
