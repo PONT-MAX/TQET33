@@ -2,7 +2,7 @@
 The development and research of compressed sensing applied to a single pixel camera (SPC) is a relative new area in signal processing with the first functioning camera architecture in 2006. Since then numerous improvements and methods have been proposed how to capture images. In this section a introduction to the SPC architecture and a brief introduction of compressed imaging is presented followed by the aim, research questions and thesis outline. 
 
 \subsection{Compressive sensing \& imaging}
-Compressive sensing is a new sampling strategy which reconstructs a compressible or sparse signal by finding solution to undetermined linear system. Two constraints need to be fulfilled to apply compressed sensing sampling: the sampled signal needs to be spares in some basis e.g. Fourier or gradient, the second condition is that the measurement matrix must be incoherent with the sparse transform. The characteristic  undetermined linear system in CS is defined as $ \mathbf{y} = \mathbf{\phi}\mathbf{x}$ where $\mathbf{y}$ contains the measurements from the measurement matrix $\mathbf{\phi}$ sensing the signal $\mathbf{x}$. In figure~\ref{fig:CS_eq_sys} such linear equation system is shown.
+Compressive sensing is a new sampling strategy which reconstructs a compressible or sparse signal by finding solution to undetermined linear system where the number of measurements $M$ is less then the number of data points $N$ in signal. Two constraints need to be fulfilled to apply compressed sensing sampling: the sampled signal needs to be spares in some basis e.g. Fourier or gradient, the second condition is that the measurement matrix must be incoherent with the sparse transform. The characteristic  undetermined linear system in CS is defined as $ \mathbf{y} = \mathbf{\Phi}\mathbf{x}$ where $\mathbf{y}$ contains the measurements from the measurement matrix $\mathbf{\Phi}$ sensing the signal $\mathbf{x}$. In figure~\ref{fig:CS_eq_sys} such linear equation system is shown.
 
 \begin{figure}[H]
 	\includegraphics[scale=0.5]{gfx/CS_eq.eps}
@@ -17,13 +17,8 @@ Scientists at Rice university in Texas, USA realized that the new method could b
 To be able to apply CS to imaging in the first place the constraints in CS needs to hold for images as well. The first requirement is that the signal needs to be compressible or sparse in some basis which natural images is known to be because they can be compressed using for example JPEG (Descrete cosine transform), JPEG2000 (Wavelet). The second constraint is that the measurement matrix must be incoherent with the sparse transform which for example white noise or some structure with the same property as white noise.\\[0.1in]
 
 \subsection{System architecture}
-The SPC in this master's thesis was designed with reflecting telescope optics to act as a lens to focus the scene. As seen in figure~\ref{fig:system_overview} light from the scene enters through the aperture in the camera where the primary mirror focus the light the via the secondary mirror onto the DMD. To this point, the SPC works like a conventional camera with the  with the difference 
-the image sensor where the DMD i placed.
+The SPC in this master's thesis was designed with reflecting telescope optics to act as a lens to focus the scene. As seen in figure~\ref{fig:system_overview} light from the scene enters through the aperture in the camera where the primary mirror focus the light the via the secondary mirror onto the DMD. To this point, the SPC works like a conventional camera with a DMD where the image sensor would be placed in the convectional camera. So the SPC has an digital micromirror array in the focal point which resemble an image sensor but instead of photo diodes for each pixel there is a tiny mirror which individually can ether reflect light 12 degrees to the right or left as seen in figure~\ref{fig:system_overview}. The incomming focused light can ether be dumped or it can be reflected into the single pixel detector through an lens. 
 
- where the DMD sits would be a picture sensor in a conventional camera and this is where the two cameras differ. 
-
- camera arcitecture was 
-The system architecture is basically the same as a regular camera with two major differences. 
 
 \begin{figure}[H]
 \includegraphics[width = \linewidth]{gfx/System_gif.eps}
@@ -31,7 +26,32 @@ The system architecture is basically the same as a regular camera with two major
 	\label{fig:system_overview}
 \end{figure}	
 
+To connect the architecture with the math from CS it can be interpreted as, the light from the scene which is focused on the DMD is the desired signal $\mathbf{x}$, the image. The DMD can individually set each mirror the ether direct the light from each 'pixel' to the single pixel sensor or dump the light i.e a spatial light modulator (SLM). The DMD sets a pattern of pixel of intress which is a measurement matrix $\Phi_m$ to be summarized in the single pixel sensor $y_m$ as a measurement. One measurement is the inner product of a measurement matrix and the signal, $\Phi_m \times x = y_m$. To complete a full measurement the process is repeated with different measurement matrices set on the DMD to the full undetermined linear system $ \mathbf{y} = \mathbf{\Phi}\mathbf{x}$.
+
+\subsection{Measurement matrix \& reconstruction}
+How is the measurement matrix chosen? As told before the measurement matrix needs to be incoherent with the sparse transform and the DMD can only direct he light or not which mathematically is ether a zero or a one. The research tells that for example a i.i.d. Gaussian distribution with equal probability of a zero or one will with high probability be incoherent with a natural image scene. But how about the first constraint that the signal $\mathbf{x}$ needs to be sparse or compressible in some basis? Often natural images is not sparse in the spatial domain unless the scene is for example the night sky, well a good property of CS that the scene can be transformed to an other basis like this,
+
+\begin{equation}
+\label{eq:CS_1}
+\mathbf{y} = \mathbf{\Phi} \mathbf{x} \Leftrightarrow \mathbf{y} = \mathbf{\Phi} \mathbf{\Psi} \mathbf{\Theta},
+\end{equation}
+
+where $\mathbf{\Psi}$ is a sparsitfying basis for example to the DCT or Wavelet basis. And $\mathbf{\Theta}$ is the coefficients vector which is more sparse then the spatial coefficent vector $\mathbf{x}$. And the transformation will not comprimize the incoherence between the reconstruction matrix $A = \Psi\Phi$ and the coeficents $\Theta$ in the new basis. This means that the signal $\mathbf{x}$ will be reconstructed with optimization in a more sparse basis $\Theta$ and then transformed back to the spatial domain.\\[0.1in]
+
+What i special about CS is not just how the problem is presented but also how to solve it. It is known that an undetermined linear system as infinite many solution so how does the signal get recovered? CS exploit the characteristics of the signal $x$ which is known to be sparse in some basis. With for example $\ell_1$ optimization,
+
+\begin{equation}
+\label{eq:l1_1}
+\widehat{\mathbf{\Theta}} = \text{arg min} ||\mathbf{\Theta} ||_{\ell_1} \text{ subject to } \mathbf{\Psi} \mathbf{\Theta} \Theta = y,
+\end{equation}    
+
+which means that $\ell_1$ optimization minimizes the non zero elements of $\Theta$ and can exactly reconstruct a K-spares vector or approximate a compressible vector. The exact recovery can be accomplished with high probability using $M \geq \mathcal{O}(K\text{log}(N/K))$ measurements. This is why CS is powerful, it enables sub-Nyquist measurements with exact recovery in the noiseless case which can be approximated in real applications.\\[0.1in]
+
+In the compressed imaging case where noise is present an other optimization algorithm has shown to be more successful at recovering images: total variation. Total variation regularization minimizes the magnitude of the gradient in the image and doing so it preserve edges and piece-wise constant structure in the image which is desired.     
+
  
+\subsection{Motivation}
+Why would a SPC be beneficial to a conventional camera? The SPC has more components to work and several measurements have to be made over time while a regular camera measures all pixels on the sensor at the same time and the reconstruction shifts burden to the processor.
 
 \begin{itemize}
 \item Why?
@@ -39,14 +59,6 @@ The system architecture is basically the same as a regular camera with two major
 \item Cheaper and in some cases only possible case to go to larger resolutions
 \item It is more effective then scanning each pixel one by one because the one need to do N samples.
 \end{itemize}
-
-
-
-
-
-\subsection{Measurement matrix}
-
-\subsection{Reconstruction methods}
 
 
 \subsection{Aim} 
