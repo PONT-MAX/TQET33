@@ -1,32 +1,31 @@
 \section{Method}
-In order to answer the research questions stated in section~\ref{sec:RQ} a state of the art SPC, experiments and evaluation methods needs to be set up. In this section the SPC hardware and image sensing and reconstruction scheme is described as well as the different evaluation metrics and methods.
+\todo[inline]{New method introduction depending on how the disposition will be in the final form}
+In order to answer the research questions stated in section~\ref{sec:RQ} a state of the art SPC, experiments and evaluation methods needs to be set up. In this section the SPC hardware and image sensing and reconstruction scheme is described.
 
 
-\subsection{Single pixel camera architecture and hardware}
+\subsection{Single pixel camera architecture \& hardware}
 \label{sec:system}
-FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a single pixel detector which are further described in section~\ref{sec:hardware}. The system also has a reference camera in the visual spectrum  which can capture images if all micro mirrors in the DMD are turned away from the single pixel sensor and towards the reference camera, it can also be used to check that the patterns are displayed correct.  
+FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a single pixel SWIR detector. The system also has a reference camera in the visual spectrum  which can capture images if all micro mirrors in the DMD are turned away from the single pixel sensor and towards the reference camera, it can also be used to check that the patterns are displayed correct on the DMD.  
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.8\textwidth]{gfx/SPC.png}
+    \includegraphics[width = 0.9\textwidth]{gfx/SPC.png}
     \caption{Single pixel imaging system (SPIS), adopted from \cite{article:foiSPIS}.}
     \label{fig:system1}
 \end{figure}
 
 
 
-As seen in figure~\ref{fig:system1} light from the scene is focused by the Newtonian telescope and reflected onto the DMD. The mirrors on the DMD can turned individually either into the single pixel sensor or the reference camera. The DMD acts as a Spatial Light Modulator (SLM) and reflects different patterns which is 'summed up' in the single pixel sensor as an intensity. The reconstructed image from the system will have the same resolution as the DMD patterns. The DLP is the DMD control unit which controls which patterns that are displayed on the DMD either by reading images from memory or the video port.   
+As seen in figure~\ref{fig:system1} light from the scene is focused by the Newtonian telescope and reflected onto the DMD. The mirrors on the DMD can turned individually either into the single pixel sensor or the reference camera. The DMD acts as a Spatial Light Modulator (SLM) and reflects different patterns which is 'summed up' in the single pixel sensor as an intensity. The reconstructed image from the system will have the same resolution as the DMD patterns. The DLP is the DMD control unit which controls which patterns are displayed on the DMD either by reading images from memory or the video port.   
 
-\subsubsection{Hardware}
-\label{sec:hardware}
+
 \subsubsection{Newtonian telescope}
 A Newtonian telescope is a reflecting telescope, using a concave primary mirror and a flat diagonal secondary mirror, see figure~\ref{fig:system1}. In this set-up the telescope act as a lens focusing the scene onto the DMD. The motivation to use a Newtonian telescope instead of a lens system is partly that chromatic aberration is eliminated and partly that a reflective optical system works over a greater range of wavelengths that includes SWIR, near infrared (NIR) and the visible spectrum.
 
 \subsubsection{DLP and DMD}
-The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP LightCrafter 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster then the video port but due to constraints in both memory and memory bandwidth the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time, which gives a maximum measurement matrix rate at $120 * 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz.  
+The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP LightCrafter 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster than the video port but due to constraints in both memory and memory bandwidth the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time from a $24$ bit signal, which gives a maximum measurement matrix rate at $120 \times 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz. At this rate with the number of measurements relative to number of pixels in reconstructed image between $20\% - 30\%$ a $256\times256$ pixel images data would be acquired in $9 - 13$ seconds and for a $512\times512$ pixel image $36-53$ seconds. To control the DMD the software 'DLP LightCrafter 4500 Control Software' is used.\\[0.1in] 
 
-
-Because the diamond shape of the mirrors and how their index is defined in the DLP where one column is two mirror column arrays wide, see figure~\ref{fig:dmd_index}, the reconstructed image needs to be reshaped to a Cartesian grid. To control the DMD the software 'DLP LightCrafter 4500 Control Software' is used. \cite{manual:DLP}
+The DMD in the setup is constructed with a diamond shaped pattern instead of a regular square grid which is used in regular camera image sensors. The diamond shape causes the index of each mirror to be skewed against what a normal grid would look like. As seen in figure~\ref{fig:dmd_index} the indexes of the mirrors column is two mirror column arrays wide while a row is a single row. 
 
 
 \begin{figure}[H]
@@ -36,36 +35,48 @@ Because the diamond shape of the mirrors and how their index is defined in the D
     \label{fig:dmd_index}
 \end{figure}
 
+Because the reconstruction algorithm and measurement matrix needs to be a square matrix with the side length with a power of 2 the resulting images ratio would be 2 to 1 while the image should have the ratio 1 to 1. The resulting image would need to be transformed into the real ratio where information potentially gets lost. Therefore the index of mirrors was changed so that each 'pixel' gets two mirrors as seen in figure~\ref{fig:dmd_index2}. This will result in rows and columns gets equal amount of space and the aspect ratio will be preserved to 1 to 1. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.8\textwidth]{gfx/DMD_grid2.png}
-    \caption{DMD matrix, left shows each tiles index and right shows second row and second column in black.}
+    \caption{DMD matrix, left shows each tiles index and right shows third row and third column in black.}
     \label{fig:dmd_index2}
 \end{figure}
 
+\todo[inline]{Connect the DMD to CS and the physical aspect (every mirror is an pixel)} 
 
-How does this effect the result?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.5\textwidth]{gfx/DMD_pattern.png}
+    \caption{A typical measurement matrix presented on the DMD with the resolution $256 \times 256$ pixels.}
+    \label{fig:dmd_pattern}
+\end{figure}
+
+
 
 \subsubsection{Lens}
-The lens mounted on the single pixel sensor is an 50mm SWIR Fixed Focal Length Lens f1.4 designed for wavelengths raging from the 800 nm in the visual spectrum to 2000 nm in the SWIR spectrum. \cite{website:SWIR_objective}
+The lens mounted on the single pixel sensor is an 50mm SWIR Fixed Focal Length Lens with an variable appature from f1.4 designed for wavelengths raging from the 800 nm in the visual spectrum to 2000 nm in the SWIR spectrum. \cite{website:SWIR_objective}
 
 \subsubsection{Single pixel sensor}
-The single pixel sensor is a Thorlabs PDA20C/M and is sensitive in wavelength range 800-1700 nm which is beyond the visual spectrum (390-700 nm). \cite{manual:PDA}
+The single pixel sensor is a Thorlabs PDA20C/M and is sensitive in wavelength range 800-1700 nm which is beyond the visual spectrum (390-700 nm). The sensor outputs an analog signal in volt which the sampler converts to a discret value. \cite{manual:PDA}
 
 \subsubsection{Signal spectrum}
-All components characteristics assembled should capture signals in 800-1700 nm spectrum.
+All components characteristics assembled the wavelengths that pass trough the system and measured in the single pixel sensor is between 800-1700 nm.
 
 
 
-\subsection{Compressed imaging}
-The CS sampling model is defined as
+\subsection{Compressive imaging}
+\todo[inline]{Write introduction to CS, create some intuition}
+The single pixel sensor captures a scene by measuring the light intensity focused into the detector reflected from the DMD matrix. The DMD sensing matrix changes to obtain new measurements, $M$ unique sensing matrix measurements is captured to reconstruct an image with $N$ pixels. Each sensing matrix index is encoded either  by a one or a zero (turning the mirror onto or away from the sensor). The compressive imaging sampling model is defined as
 
 \begin{equation}
 \label{eq:CS1}
    \mathbf{ y = \Phi x + \epsilon}\text{,}
 \end{equation}\\[0.1in]
 
-where, $\mathbf{x}_{N\times1}$ is the signal with $N$ samples, $\mathbf{y}_{M\times1}$ is the vector with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix as a column vector $1 \times N$) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the signal is. The signal $\mathbf{x}$ can be represented as  
+where, $\mathbf{x}_{N\times1}$ is the signal (image) with $N$ samples (pixels), $\mathbf{y}_{M\times1}$ is the vector with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix $\Phi_{1 \times N}$ as a row vector) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the signal is. The signal $\mathbf{x}$ can be represented as  
 
 \begin{equation}
 \label{eq:CS2}
@@ -80,22 +91,115 @@ $\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-
    \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \theta + \epsilon = A \theta + \epsilon }\text{,}
 \end{equation}\\[0.1in]
 
-where, $A_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and the reconstructed with reconstruction matrix $A$ in a basis where $x$ is sparse.
+where, $A_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $A$ in a basis where $x$ is sparse or compressible.
 \subsection{Measurement matrix}
-\subsubsection{Random}
+\todo[inline]{Introduce the topic, write why the measurement matrix needs to be random and pass over to SOWHMM and present RIP. }
 
-\subsubsection{Walsh Hadamard}
+\subsubsection{Restricted isometry property (RIP)}
+In the noiseless case exact recovery of the image $\mathbf{x}$ is achievable if RIP holds for the sampling matrix $\mathbf{\Phi} \Rightarrow \mathbf{\Phi\Psi = A}$, i.e.
+
+\begin{equation}
+    (1-\delta_K)||\mathbf{x}||_2^2\leq||\mathbf{Ax}||_2^2\leq(1+\delta_K)||\mathbf{x}||_2^2 \text{,}
+\end{equation}\\[0.1in]
+
+where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal measurement matrix) but if $\mathbf{\Psi}$ is constructed using i.i.d. Gaussian or Bernoulli distributions with an orthonormal basis $\mathbf{\Psi}$, gives $\delta_K << 1$ with high probability. Another sensing matrix that satisfies RIP is the permutated sequency ordered Walsh Hadamard matrix which has several advantages over the purely random matrix.
+
+\subsubsection{Sequency ordered Walsh Hadamard measurement matrix}
+
+\begin{itemize}
+\item The SOWHMM has the same characteristics and properties of an i.i.d random matrix.
+\item fulfills RIP with high probability.
+\item Research shows no significant loss in recovery of the signal relativ i.i.d random measurement matrix. \todo{find the source ref}
+\item Dont need to store the whole measurement matrix in memory (Holds true for both taking the measurements and reconstruction) the matrix is constant, only the two permutation vectors needs to be stored of size $N + M$.
+\item The reconstruction algorithm takes advantage of the FWHT which reduces time complexity from $\mathcal{O}(N^2)$ to $\mathcal{O}(N\text{log}(N))$
+\item Easy to modify the -1, 1 to the DMD
+\end{itemize}
 
 
-\subsection{Reconstruction methods}
+The naturally ordered Hadamard matrix of dimension $2^k$, $k \in \mathbb{N}$ are constructed by the recursive formula    
 
-\subsubsection{$\ell_1$ minimization}
+\begin{equation}
+    H_0 = 1,
+\end{equation}
 
-\subsubsection{Greedy algorithms}
+\begin{equation}
+    H_1 = \begin{bmatrix}
+       1 & 1 \\
+       1 & -1\\
+     \end{bmatrix},
+\end{equation}
+
+and in general,
+
+\begin{equation}
+        H_k = \begin{bmatrix}
+       H_{k-1} & H_{k-1} \\
+       H_{k-1} & -H_{k-1}\\
+       \end{bmatrix} = H_1 \oplus H_{k-1}
+\end{equation}
+
+where $\oplus$ denotes the Kronecker product. To construct the sequency ordered Walsh Hadamard matrix from the naturally ordered Hadamard matrix three steps is required:
+
+\begin{itemize}
+    \item Convert row index to binary.
+    \item Convert the binary row index to gray code.
+    \item Apply bit reverse on the gray code index.
+\end{itemize}
+
+then order the rows after the bit reverse to obtain the sequency ordered Walsh Hadamard matrix.
+
+\begin{table}[H]
+\begin{tabular}{|r|c|c|c|c|}
+\hline
+    $n_H$        & 0    & 1     & 2     & 3     \\ \hline
+    Binary       & 00   & 01    & 10    & 11    \\ \hline
+    Gray code    & 00   & 01    & 11    & 10    \\ \hline
+    Bit-reverse  & 00   & 10    & 11    & 01    \\ \hline
+    $n_W$        & 0    & 2     & 3     & 1     \\ \hline
+    
+\end{tabular}
+\label{tab:Hadamard_2_Walsh}
+\caption{How to convert a naturally ordered Hadamard matrix to a sequency ordered Walsh Hadamard matrix by shifting row with index $n_W$ to $n_H$}
+\end{table}
+
+for example
+
+\begin{equation}
+    H_2 =  \begin{bmatrix}
+       1 & 1 & 1 & 1 \\
+       1 & -1 & 1 & -1 \\
+       1 & 1 & -1 & -1 \\
+       1 & -1 & -1 & 1 
+       \end{bmatrix} \Rightarrow W_2 = \begin{bmatrix}
+       1 & 1 & 1 & 1 \\
+       1 & 1 & -1 & -1  \\
+       1 & -1 & -1 & 1  \\
+       1 & -1 & 1 & -1 
+       \end{bmatrix}.
+\end{equation}
+
+To use the sequency ordered Walsh Hadamard matrix as an sampling matrix permutations to the rows and columns is performed and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition. How the matrix was permutated is stored because the reconstruction algorithm uses that information to speed up the process.
+
+\cite{article:WalshHadamard_Max_Length, article:TVAL3}. 
+
+\subsection{Reconstruction method}
+\todo[inline]{How does reconstruction work, with some intuition}
 
 \subsubsection{Total variation}
+\todo[inline]{A closer look at the TVAL3 algorithm}
 
-\subsection{Evaluation}
+\subsection{Image capturing and processing chain}
+\todo[inline]{A section describing the process from sampling the signal to complete image. Which algorithms was used and an introduction to how the signal looks at different stages of the process.}
+
+\begin{itemize}
+\item Acquire signal: Start sampling signal from the single pixel sensor, and start chain of measurement matrices.
+\item From the raw signal: Extract value from each measurement matrix, Signal processing compensating for illumination change and delete if necessary disruption. We use the knowledge that the signal should be stationary.
+\item Reconstruct image from signal.
+\item Image processing: median filter. 
+\end{itemize}
+
+\pagebreak
+\subsection{Evaluation: Image quality assessment}
 The evaluation will be divided in to two categories: reconstructed images from synthetic data and images reconstructed from data acquired by the SPC.\\[0.1in] 
 
 The evaluation on synthetic data is focused on evaluating the performance of the measurement matrix and reconstruction algorithm. Evaluating synthetic data gives two possibilities that can not be achieved with images reconstructed using the SPC which is that there is a reference image which the resulting image can be compared to.

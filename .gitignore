@@ -1,3 +1,10 @@
 /Synt_test/*
 *.ai
 /Kod/*
+*.aux
+*.log
+*.bcf
+*.nlo
+*.xml
+*.bbl
+*.blg
