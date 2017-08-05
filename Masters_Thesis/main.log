@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.16)  4 AUG 2017 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.16)  5 AUG 2017 12:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1269,32 +1269,32 @@ File: gfx/CS_eq-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: gfx/CS_eq-eps-converted-to.pdf used on input line 8.
 (pdftex.def)             Requested size: 154.57712pt x 101.88037pt.
 Package epstopdf Info: Source file: <gfx/System_gif.eps>
-(epstopdf)                    date: 2017-08-03 20:53:32
-(epstopdf)                    size: 4424374 bytes
+(epstopdf)                    date: 2017-08-05 12:05:14
+(epstopdf)                    size: 4870550 bytes
 (epstopdf)             Output file: <gfx/System_gif-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-03 20:55:17
-(epstopdf)                    size: 212749 bytes
+(epstopdf)                    date: 2017-08-05 12:05:26
+(epstopdf)                    size: 254003 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/System_gif-eps-convert
 ed-to.pdf gfx/System_gif.eps>
 (epstopdf)             \includegraphics on input line 24.
 Package epstopdf Info: Output file is already uptodate.
 
-<gfx/System_gif-eps-converted-to.pdf, id=12, 1278.7775pt x 503.8825pt>
+<gfx/System_gif-eps-converted-to.pdf, id=12, 1278.7775pt x 464.73625pt>
 File: gfx/System_gif-eps-converted-to.pdf Graphic file (type pdf)
 
 <use gfx/System_gif-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/System_gif-eps-converted-to.pdf used on input line
  24.
-(pdftex.def)             Requested size: 443.57848pt x 174.78534pt.
+(pdftex.def)             Requested size: 443.57848pt x 161.2064pt.
  [1 <./gfx/CS_eq-eps-converted-to.pdf>] [2 <./gfx/System_gif-eps-converted-to.p
 df>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 57.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 63.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 57.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
 ) [3]
 (./02_related_work.tex
 
@@ -1312,7 +1312,7 @@ ne 20.
 LaTeX Warning: Citation 'article:il_niqe' on page 4 undefined on input line 22.
 
 
-) [4] (./03_method.tex <gfx/SPC.png, id=125, 1027.84pt x 618.31pt>
+) [4] (./03_method.tex <gfx/SPC.png, id=135, 1027.84pt x 618.31pt>
 File: gfx/SPC.png Graphic file (type png)
 
 <use gfx/SPC.png>
@@ -1331,13 +1331,13 @@ LaTeX Warning: Citation 'article:foiSPIS' on page 5 undefined on input line 12.
 
 LaTeX Warning: Citation 'manual:DLP' on page 6 undefined on input line 29.
 
-<gfx/DMD_grid.png, id=129, 1003.75pt x 474.77374pt>
+<gfx/DMD_grid.png, id=139, 1003.75pt x 474.77374pt>
 File: gfx/DMD_grid.png Graphic file (type png)
  <use gfx/DMD_grid.png>
 Package pdftex.def Info: gfx/DMD_grid.png used on input line 34.
 (pdftex.def)             Requested size: 354.86412pt x 167.854pt.
 
-<gfx/DMD_grid2.png, id=131, 1027.84pt x 371.3875pt>
+<gfx/DMD_grid2.png, id=141, 1027.84pt x 371.3875pt>
 File: gfx/DMD_grid2.png Graphic file (type png)
  <use gfx/DMD_grid2.png>
 Package pdftex.def Info: gfx/DMD_grid2.png used on input line 41.
@@ -1364,7 +1364,7 @@ ps-converted-to.pdf result/synt_sss/PSNR_fit.eps>
 (epstopdf)             \includegraphics on input line 14.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/synt_sss/PSNR_fit-eps-converted-to.pdf, id=145, 421.575pt x 316.18124pt
+<result/synt_sss/PSNR_fit-eps-converted-to.pdf, id=155, 421.575pt x 316.18124pt
 >
 File: result/synt_sss/PSNR_fit-eps-converted-to.pdf Graphic file (type pdf)
  <use result/synt_sss/PSNR_fit-eps-converted-to.pdf>
@@ -1383,7 +1383,7 @@ s-converted-to.pdf result/synt_sss/SNR_fit.eps>
 (epstopdf)             \includegraphics on input line 21.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/synt_sss/SNR_fit-eps-converted-to.pdf, id=146, 421.575pt x 316.18124pt>
+<result/synt_sss/SNR_fit-eps-converted-to.pdf, id=156, 421.575pt x 316.18124pt>
 File: result/synt_sss/SNR_fit-eps-converted-to.pdf Graphic file (type pdf)
 <use result/synt_sss/SNR_fit-eps-converted-to.pdf>
 Package pdftex.def Info: result/synt_sss/SNR_fit-eps-converted-to.pdf used on i
@@ -1402,7 +1402,7 @@ ps-converted-to.pdf result/synt_sss/SSIM_fit.eps>
 (epstopdf)             \includegraphics on input line 28.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/synt_sss/SSIM_fit-eps-converted-to.pdf, id=155, 421.575pt x 316.18124pt
+<result/synt_sss/SSIM_fit-eps-converted-to.pdf, id=165, 421.575pt x 316.18124pt
 >
 File: result/synt_sss/SSIM_fit-eps-converted-to.pdf Graphic file (type pdf)
  <use result/synt_sss/SSIM_fit-eps-converted-to.pdf>
@@ -1421,7 +1421,7 @@ E_fit-eps-converted-to.pdf result/synt_brisque/BRISQUE_fit.eps>
 (epstopdf)             \includegraphics on input line 38.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf, id=156, 399.4925pt x 289
+<result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf, id=166, 399.4925pt x 289
 .08pt>
 File: result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf Graphic file (type p
 df)
@@ -1443,7 +1443,7 @@ e_fit_flat-eps-converted-to.pdf result/synt_brisque/Brisque_fit_flat.eps>
 (epstopdf)             \includegraphics on input line 45.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/synt_brisque/Brisque_fit_flat-eps-converted-to.pdf, id=170, 375.4025pt 
+<result/synt_brisque/Brisque_fit_flat-eps-converted-to.pdf, id=180, 375.4025pt 
 x 295.1025pt>
 File: result/synt_brisque/Brisque_fit_flat-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -1454,7 +1454,7 @@ pdf used on input line 45.
 
 [11 <./result/synt_brisque/BRISQUE_fit-eps-converted-to.pdf> <./result/synt_bri
 sque/Brisque_fit_flat-eps-converted-to.pdf>]
-<result/dynamic/local/local_whole_time_org.png, id=184, 256.96pt x 256.96pt>
+<result/dynamic/local/local_whole_time_org.png, id=194, 256.96pt x 256.96pt>
 File: result/dynamic/local/local_whole_time_org.png Graphic file (type png)
 
 <use result/dynamic/local/local_whole_time_org.png>
@@ -1466,7 +1466,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-<result/dynamic/local/local_whole_time_ref.png, id=185, 256.96pt x 256.96pt>
+<result/dynamic/local/local_whole_time_ref.png, id=195, 256.96pt x 256.96pt>
 File: result/dynamic/local/local_whole_time_ref.png Graphic file (type png)
 
 <use result/dynamic/local/local_whole_time_ref.png>
@@ -1479,7 +1479,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
  []
 
 
-<result/dynamic/local/local_whole_time_res_psnr_29_snr_25_sssim_91.png, id=186,
+<result/dynamic/local/local_whole_time_res_psnr_29_snr_25_sssim_91.png, id=196,
  256.96pt x 256.96pt>
 File: result/dynamic/local/local_whole_time_res_psnr_29_snr_25_sssim_91.png Gra
 phic file (type png)
@@ -1510,7 +1510,7 @@ _whole_time-eps-converted-to.pdf result/dynamic/local/local_whole_time.eps>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/local/local_whole_time-eps-converted-to.pdf, id=187, 425.59pt x
+<result/dynamic/local/local_whole_time-eps-converted-to.pdf, id=197, 425.59pt x
  258.9675pt>
 File: result/dynamic/local/local_whole_time-eps-converted-to.pdf Graphic file (
 type pdf)
@@ -1537,7 +1537,7 @@ eps>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/local/local_whole_time_win-eps-converted-to.pdf, id=188, 381.42
+<result/dynamic/local/local_whole_time_win-eps-converted-to.pdf, id=198, 381.42
 5pt x 307.1475pt>
 File: result/dynamic/local/local_whole_time_win-eps-converted-to.pdf Graphic fi
 le (type pdf)
@@ -1554,7 +1554,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--103
 [12 <./result/dynamic/local/local_whole_time_org.png> <./result/dynamic/local/l
 ocal_whole_time_ref.png> <./result/dynamic/local/local_whole_time_res_psnr_29_s
 nr_25_sssim_91.png>]
-<result/dynamic/fly/flyby_1sec_org.png, id=197, 256.96pt x 256.96pt>
+<result/dynamic/fly/flyby_1sec_org.png, id=207, 256.96pt x 256.96pt>
 File: result/dynamic/fly/flyby_1sec_org.png Graphic file (type png)
 
 <use result/dynamic/fly/flyby_1sec_org.png>
@@ -1566,7 +1566,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
-<result/dynamic/fly/flyby_1sec_ref.png, id=198, 256.96pt x 256.96pt>
+<result/dynamic/fly/flyby_1sec_ref.png, id=208, 256.96pt x 256.96pt>
 File: result/dynamic/fly/flyby_1sec_ref.png Graphic file (type png)
 
 <use result/dynamic/fly/flyby_1sec_ref.png>
@@ -1579,7 +1579,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--128
  []
 
 
-<result/dynamic/fly/flyby_1sec_res_psnr_23_snr_18_sssim_58.png, id=199, 256.96p
+<result/dynamic/fly/flyby_1sec_res_psnr_23_snr_18_sssim_58.png, id=209, 256.96p
 t x 256.96pt>
 File: result/dynamic/fly/flyby_1sec_res_psnr_23_snr_18_sssim_58.png Graphic fil
 e (type png)
@@ -1613,7 +1613,7 @@ ig-eps-converted-to.pdf result/dynamic/fly/flyby_sig.eps>
 (epstopdf)             \includegraphics on input line 162.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/fly/flyby_sig-eps-converted-to.pdf, id=223, 425.59pt x 258.9675
+<result/dynamic/fly/flyby_sig-eps-converted-to.pdf, id=233, 425.59pt x 258.9675
 pt>
 File: result/dynamic/fly/flyby_sig-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1638,7 +1638,7 @@ lot_win-eps-converted-to.pdf result/dynamic/fly/flyby_plot_win.eps>
 (epstopdf)             \includegraphics on input line 167.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/fly/flyby_plot_win-eps-converted-to.pdf, id=224, 389.455pt x 30
+<result/dynamic/fly/flyby_plot_win-eps-converted-to.pdf, id=234, 389.455pt x 30
 7.1475pt>
 File: result/dynamic/fly/flyby_plot_win-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1651,7 +1651,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
 
-<result/dynamic/lum/intense_change_org.png, id=225, 256.96pt x 256.96pt>
+<result/dynamic/lum/intense_change_org.png, id=235, 256.96pt x 256.96pt>
 File: result/dynamic/lum/intense_change_org.png Graphic file (type png)
 
 <use result/dynamic/lum/intense_change_org.png>
@@ -1663,7 +1663,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 187--188
 
  []
 
-<result/dynamic/lum/intense_change.png, id=226, 256.96pt x 256.96pt>
+<result/dynamic/lum/intense_change.png, id=236, 256.96pt x 256.96pt>
 File: result/dynamic/lum/intense_change.png Graphic file (type png)
 
 <use result/dynamic/lum/intense_change.png>
@@ -1676,7 +1676,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 192--193
  []
 
 
-<result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png, id=227, 256.96p
+<result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png, id=237, 256.96p
 t x 256.96pt>
 File: result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png Graphic fil
 e (type png)
@@ -1691,7 +1691,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--198
  []
 
 
-<result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png, id=228
+<result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png, id=238
 , 256.96pt x 256.96pt>
 File: result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png Gr
 aphic file (type png)
@@ -1723,7 +1723,7 @@ _change-eps-converted-to.pdf result/dynamic/lum/intense_change.eps>
 (epstopdf)             \includegraphics on input line 234.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/lum/intense_change-eps-converted-to.pdf, id=248, 425.59pt x 258
+<result/dynamic/lum/intense_change-eps-converted-to.pdf, id=258, 425.59pt x 258
 .9675pt>
 File: result/dynamic/lum/intense_change-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1748,7 +1748,7 @@ _change_sp-eps-converted-to.pdf result/dynamic/lum/intense_change_sp.eps>
 (epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/lum/intense_change_sp-eps-converted-to.pdf, id=249, 407.5225pt 
+<result/dynamic/lum/intense_change_sp-eps-converted-to.pdf, id=259, 407.5225pt 
 x 307.1475pt>
 File: result/dynamic/lum/intense_change_sp-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -1775,7 +1775,7 @@ s>
 (epstopdf)             \includegraphics on input line 244.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/lum/intense_change_sp_ref-eps-converted-to.pdf, id=250, 419.567
+<result/dynamic/lum/intense_change_sp_ref-eps-converted-to.pdf, id=260, 419.567
 5pt x 307.1475pt>
 File: result/dynamic/lum/intense_change_sp_ref-eps-converted-to.pdf Graphic fil
 e (type pdf)
@@ -1803,7 +1803,7 @@ f_win.eps>
 (epstopdf)             \includegraphics on input line 249.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/dynamic/lum/intense_change_sp_ref_win-eps-converted-to.pdf, id=251, 419
+<result/dynamic/lum/intense_change_sp_ref_win-eps-converted-to.pdf, id=261, 419
 .5675pt x 307.1475pt>
 File: result/dynamic/lum/intense_change_sp_ref_win-eps-converted-to.pdf Graphic
  file (type pdf)
@@ -1831,7 +1831,7 @@ verted-to.pdf result/homo/Hom_im.eps>
 (epstopdf)             \includegraphics on input line 274.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/homo/Hom_im-eps-converted-to.pdf, id=259, 1095.09125pt x 390.45876pt>
+<result/homo/Hom_im-eps-converted-to.pdf, id=269, 1095.09125pt x 390.45876pt>
 File: result/homo/Hom_im-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/Hom_im-eps-converted-to.pdf>
@@ -1854,7 +1854,7 @@ onverted-to.pdf result/homo/hom_PSNR.eps>
 (epstopdf)             \includegraphics on input line 282.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/homo/hom_PSNR-eps-converted-to.pdf, id=295, 421.575pt x 316.18124pt>
+<result/homo/hom_PSNR-eps-converted-to.pdf, id=305, 421.575pt x 316.18124pt>
 File: result/homo/hom_PSNR-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/hom_PSNR-eps-converted-to.pdf>
@@ -1876,7 +1876,7 @@ Package epstopdf Info: Source file: <result/homo/hom_SNR.eps>
 nverted-to.pdf result/homo/hom_SNR.eps>
 (epstopdf)             \includegraphics on input line 287.
 Package epstopdf Info: Output file is already uptodate.
-<result/homo/hom_SNR-eps-converted-to.pdf, id=296, 421.575pt x 316.18124pt>
+<result/homo/hom_SNR-eps-converted-to.pdf, id=306, 421.575pt x 316.18124pt>
 File: result/homo/hom_SNR-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/hom_SNR-eps-converted-to.pdf>
@@ -1899,7 +1899,7 @@ Package epstopdf Info: Source file: <result/homo/hom_SSIM.eps>
 onverted-to.pdf result/homo/hom_SSIM.eps>
 (epstopdf)             \includegraphics on input line 292.
 Package epstopdf Info: Output file is already uptodate.
-<result/homo/hom_SSIM-eps-converted-to.pdf, id=297, 421.575pt x 316.18124pt>
+<result/homo/hom_SSIM-eps-converted-to.pdf, id=307, 421.575pt x 316.18124pt>
 File: result/homo/hom_SSIM-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/homo/hom_SSIM-eps-converted-to.pdf>
@@ -1924,7 +1924,7 @@ onverted-to.pdf result/SPC_NRQA/plot.eps>
 (epstopdf)             \includegraphics on input line 306.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/SPC_NRQA/plot-eps-converted-to.pdf, id=315, 499.8675pt x 422.57875pt>
+<result/SPC_NRQA/plot-eps-converted-to.pdf, id=325, 499.8675pt x 422.57875pt>
 File: result/SPC_NRQA/plot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/plot-eps-converted-to.pdf>
@@ -1945,7 +1945,7 @@ onverted-to.pdf result/SPC_NRQA/good.eps>
 (epstopdf)             \includegraphics on input line 313.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/SPC_NRQA/good-eps-converted-to.pdf, id=344, 559.08875pt x 128.48pt>
+<result/SPC_NRQA/good-eps-converted-to.pdf, id=354, 559.08875pt x 128.48pt>
 File: result/SPC_NRQA/good-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/good-eps-converted-to.pdf>
@@ -1964,7 +1964,7 @@ onverted-to.pdf result/SPC_NRQA/half.eps>
 (epstopdf)             \includegraphics on input line 320.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/SPC_NRQA/half-eps-converted-to.pdf, id=345, 559.08875pt x 128.48pt>
+<result/SPC_NRQA/half-eps-converted-to.pdf, id=355, 559.08875pt x 128.48pt>
 File: result/SPC_NRQA/half-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/half-eps-converted-to.pdf>
@@ -1982,7 +1982,7 @@ nverted-to.pdf result/SPC_NRQA/bad.eps>
 (epstopdf)             \includegraphics on input line 327.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/SPC_NRQA/bad-eps-converted-to.pdf, id=346, 559.08875pt x 128.48pt>
+<result/SPC_NRQA/bad-eps-converted-to.pdf, id=356, 559.08875pt x 128.48pt>
 File: result/SPC_NRQA/bad-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/SPC_NRQA/bad-eps-converted-to.pdf>
@@ -2002,7 +2002,7 @@ erted-to.pdf result/mtf/Target.eps>
 (epstopdf)             \includegraphics on input line 350.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/mtf/Target-eps-converted-to.pdf, id=378, 528.97626pt x 257.96375pt>
+<result/mtf/Target-eps-converted-to.pdf, id=388, 528.97626pt x 257.96375pt>
 File: result/mtf/Target-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/Target-eps-converted-to.pdf>
@@ -2021,7 +2021,7 @@ onverted-to.pdf result/mtf/Target_im.eps>
 (epstopdf)             \includegraphics on input line 359.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/mtf/Target_im-eps-converted-to.pdf, id=379, 540.0175pt x 128.48pt>
+<result/mtf/Target_im-eps-converted-to.pdf, id=389, 540.0175pt x 128.48pt>
 File: result/mtf/Target_im-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/Target_im-eps-converted-to.pdf>
@@ -2041,7 +2041,7 @@ rted-to.pdf result/mtf/mtf30.eps>
 (epstopdf)             \includegraphics on input line 371.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/mtf/mtf30-eps-converted-to.pdf, id=403, 504.88625pt x 422.57875pt>
+<result/mtf/mtf30-eps-converted-to.pdf, id=413, 504.88625pt x 422.57875pt>
 File: result/mtf/mtf30-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/mtf30-eps-converted-to.pdf>
@@ -2063,7 +2063,7 @@ Package epstopdf Info: Source file: <result/mtf/mtf50.eps>
 rted-to.pdf result/mtf/mtf50.eps>
 (epstopdf)             \includegraphics on input line 376.
 Package epstopdf Info: Output file is already uptodate.
-<result/mtf/mtf50-eps-converted-to.pdf, id=404, 504.88625pt x 422.57875pt>
+<result/mtf/mtf50-eps-converted-to.pdf, id=414, 504.88625pt x 422.57875pt>
 File: result/mtf/mtf50-eps-converted-to.pdf Graphic file (type pdf)
 
 <use result/mtf/mtf50-eps-converted-to.pdf>
@@ -2087,7 +2087,7 @@ converted-to.pdf result/mtf/10-90_rise.eps>
 (epstopdf)             \includegraphics on input line 389.
 Package epstopdf Info: Output file is already uptodate.
 
-<result/mtf/10-90_rise-eps-converted-to.pdf, id=405, 496.85625pt x 422.57875pt>
+<result/mtf/10-90_rise-eps-converted-to.pdf, id=415, 496.85625pt x 422.57875pt>
 File: result/mtf/10-90_rise-eps-converted-to.pdf Graphic file (type pdf)
 <use result/mtf/10-90_rise-eps-converted-to.pdf>
 Package pdftex.def Info: result/mtf/10-90_rise-eps-converted-to.pdf used on inp
@@ -2122,7 +2122,7 @@ Here is how much of TeX's memory you used:
  26189 multiletter control sequences out of 15000+600000
  12988 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,8n,94p,974b,866s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,8n,94p,1064b,866s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -2134,10 +2134,10 @@ al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (23 pages, 5949078 bytes).
+Output written on main.pdf (23 pages, 5990210 bytes).
 PDF statistics:
- 480 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
+ 490 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  218 words of extra memory for PDF output out of 10000 (max. 10000000)
 
