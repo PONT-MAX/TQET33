@@ -80,40 +80,34 @@ where, $\mathbf{x}_{N\times1}$ is the signal (image) with $N$ samples (pixels), 
 
 \begin{equation}
 \label{eq:CS2}
-   \mathbf{ \Psi \theta = x }\text{,}
+   \mathbf{ \Psi \Theta = x }\text{,}
 \end{equation}\\[0.1in]
 
 where, $\mathbf{\Psi}_{N \times N}$ is some  basis matrix and
-$\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-sparse. $K$-sparse means that the signal $\mathbf{x}$ has $K$ non zero elements in basis $\mathbf{\Psi}$, $||\mathbf{\theta}||_0 = K$. Given equation~\ref{eq:CS2}, equation~\ref{eq:CS1} can be expand to
+$\mathbf{\Theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-sparse. $K$-sparse means that the signal $\mathbf{x}$ has $K$ non zero elements in basis $\mathbf{\Psi}$, $||\mathbf{\Theta}||_0 = K$. Given equation~\ref{eq:CS2}, equation~\ref{eq:CS1} can be expand to
 
 
 \begin{equation}
-   \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \theta + \epsilon = A \theta + \epsilon }\text{,}
+   \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \Theta + \epsilon = A \Theta + \epsilon }\text{,}
 \end{equation}\\[0.1in]
 
-where, $A_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $A$ in a basis where $x$ is sparse or compressible.
-\subsection{Measurement matrix}
-\todo[inline]{Introduce the topic, write why the measurement matrix needs to be random and pass over to SOWHMM and present RIP. }
+where, $\textbf{A}_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible.
+\subsection{Measurement matrix \& Restricted isometry property (RIP)}
+\todo[inline]{Introduce the topic.}
 
-\subsubsection{Restricted isometry property (RIP)}
-In the noiseless case exact recovery of the image $\mathbf{x}$ is achievable if RIP holds for the sampling matrix $\mathbf{\Phi} \Rightarrow \mathbf{\Phi\Psi = A}$, i.e.
+In the noiseless case exact recovery of the image $\mathbf{x}$ is achievable if RIP holds for the reconstruction matrix $\mathbf{\Phi} \Rightarrow \mathbf{\Phi\Psi = A}$, the constraint is defined as,
 
 \begin{equation}
-    (1-\delta_K)||\mathbf{x}||_2^2\leq||\mathbf{Ax}||_2^2\leq(1+\delta_K)||\mathbf{x}||_2^2 \text{,}
+    (1-\delta_K)||\mathbf{x}||_{\ell_2}^2\leq||\mathbf{Ax}||_{\ell_2}^2\leq(1+\delta_K)||\mathbf{x}||_{\ell_2}^2 \text{,}
 \end{equation}\\[0.1in]
 
-where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal measurement matrix) but if $\mathbf{\Psi}$ is constructed using i.i.d. Gaussian or Bernoulli distributions with an orthonormal basis $\mathbf{\Psi}$, gives $\delta_K << 1$ with high probability. Another sensing matrix that satisfies RIP is the permutated sequency ordered Walsh Hadamard matrix which has several advantages over the purely random matrix.
+where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal reconstruction matrix) and generally $\textbf{x}$ is not known and varies which means that there are no general optimal reconstruction matrices for natural images. The solution is to find a general reconstruction matrix that satisfies RIP with high probability. The solution which also should be incoherent with the base matrix $\Psi$ is to construct the measurement matrix using a i.i.d random distribution which gives $\delta_K << 1$ with high probability. Using random measurement matrices the number of measurements needed to satisfy RIP with high probability is $M \geq O(K\text{log}(N/K) \ll N$.\\[0.1in]
+
+The problem using random matrices is that they need to be stored i memory for the reconstruction algorithm, when the image resolution is increased the measurement matrix increases exponentially. For images with resolution of $512\times 512$ and larger the data gets infeasible for a normal computer to handle.  Fortunately using fast transforms in the reconstruction algorithm can exclude using vector multiplication resulting in faster reconstruction and the need to store the measurement matrix in memory. But in order to do so special measurement matrices are used, in this master's thesis the sequency ordered Walsh Hadamard measurement matrix will be used with the TVAL3 reconstruction algorithm described in section~\ref{sec:TV}.   
+
 
 \subsubsection{Sequency ordered Walsh Hadamard measurement matrix}
-
-\begin{itemize}
-\item The SOWHMM has the same characteristics and properties of an i.i.d random matrix.
-\item fulfills RIP with high probability.
-\item Research shows no significant loss in recovery of the signal relativ i.i.d random measurement matrix. \todo{find the source ref}
-\item Dont need to store the whole measurement matrix in memory (Holds true for both taking the measurements and reconstruction) the matrix is constant, only the two permutation vectors needs to be stored of size $N + M$.
-\item The reconstruction algorithm takes advantage of the FWHT which reduces time complexity from $\mathcal{O}(N^2)$ to $\mathcal{O}(N\text{log}(N))$
-\item Easy to modify the -1, 1 to the DMD
-\end{itemize}
+Besides from eliminating the need to store the measuring matrix for reconstruction the sequency ordered Walsh Hadamard (SOWH) matrix can be generated when sent to the DMD eliminating the need to store the matrix at all. SOWH has the same characteristics and properties of an i.i.d random matrix and therefore also fulfills the RIP condition with high probability and research has shown that there is no significant loss in recovery of the signal relative i.i.d random measurement matrix. \todo{find the source ref} An other property of SOHW is that it only contains -1 an 1 which easily be converted to 0 and 1 when sent to the DMD. \\[0.1in]
 
 
 The naturally ordered Hadamard matrix of dimension $2^k$, $k \in \mathbb{N}$ are constructed by the recursive formula    
@@ -178,20 +172,25 @@ for example
        \end{bmatrix}.
 \end{equation}
 
-To use the sequency ordered Walsh Hadamard matrix as an sampling matrix permutations to the rows and columns is performed and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition. How the matrix was permutated is stored because the reconstruction algorithm uses that information to speed up the process.
-
-\cite{article:WalshHadamard_Max_Length, article:TVAL3}. 
+To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition. How the matrix was permutated is stored because the reconstruction algorithm uses that information. \cite{article:WalshHadamard_Max_Length, article:TVAL3}. 
 
 \subsection{Reconstruction method}
+The CS problem is by default a undetermined linear system which means that there are infinite solutions to the system. In compressive imaging the fist step to 
+
+
 \todo[inline]{How does reconstruction work, with some intuition}
 
 \subsubsection{Total variation}
+\label{sec:TV}
 \todo[inline]{A closer look at the TVAL3 algorithm}
+The reconstruction algorithm that was chosen in this Master's thesis was a total variation regularization algorithm. Natural images often contains sharp edges and piecewise smooth areas  which the TV regularization algorithm is good at preserving. 
 
 \subsection{Image capturing and processing chain}
 \todo[inline]{A section describing the process from sampling the signal to complete image. Which algorithms was used and an introduction to how the signal looks at different stages of the process.}
-
+\todo[inline]{Flowchart of the whole process.}
 \begin{itemize}
+\item A video containing the measurement matrix with 24 matrices per frame was streamed was stream through a HDMI port with the software MPC-HC. The DLP shows one bit plane at the time on the DMD until next frame arrives. 
+\item MATLAB was used for signal processing.
 \item Acquire signal: Start sampling signal from the single pixel sensor, and start chain of measurement matrices.
 \item From the raw signal: Extract value from each measurement matrix, Signal processing compensating for illumination change and delete if necessary disruption. We use the knowledge that the signal should be stationary.
 \item Reconstruct image from signal.
