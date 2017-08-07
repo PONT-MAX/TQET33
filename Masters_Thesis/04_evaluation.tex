@@ -27,7 +27,7 @@ This section is structured as, for each experiment and setup a detailed explanat
     \centering
     \includegraphics[width = 0.7\linewidth]{result/synt_sss/SSIM_fit.eps}
     \caption{SSIM result depending on number of measurements and simulated noise level.}
-    \label{fig:snr_3d}
+    \label{fig:ssim_3d}
 \end{figure}
 
 \subsubsection{No Reference quality assessment}
@@ -89,7 +89,7 @@ The difference between figure~\ref{fig:local_2} and \ref{fig:local_3} is visible
     \label{tab:local_dyn}
 \end{table}
 
-Commenting the result from the table... In figure~\ref{fig:local_signal} the effects of the movement is shown plotted against the non perturbed signal.\\[0.1in]
+Commenting the result from the table... In figure~\ref{fig:local_sig} the effects of the movement is shown plotted against the non perturbed signal.\\[0.1in]
 
 \begin{figure}[H]
     \centering
@@ -153,7 +153,7 @@ The difference between figure~\ref{fig:fly_2} and \ref{fig:fly_3} is visible wit
 \end{table}
 
 
-Commenting the result from the table... In figure~\ref{fig:fly_signal} the effects of the movement is shown plotted against the non perturbed signal.\\[0.1in]
+Commenting the result from the table... In figure~\ref{fig:fly_sig} the effects of the movement is shown plotted against the non perturbed signal.\\[0.1in]
 
 
 \begin{figure}[H]
@@ -161,15 +161,15 @@ Commenting the result from the table... In figure~\ref{fig:fly_signal} the effec
 \begin{minipage}[t]{0.495\textwidth}
     \includegraphics[width=1\textwidth]{result/dynamic/fly/flyby_sig.eps}
     \subcaption{Signal.}
-    \label{fig:local_sig_1}
+    \label{fig:fly_sig_1}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
     \includegraphics[width = \textwidth]{result/dynamic/fly/flyby_plot_win.eps}
     \subcaption{Zoomed in view of the signal.}
-    \label{fig:local_sig_2}
+    \label{fig:fly_sig_2}
 \end{minipage}
     \caption{Global movement, acquired signal}
-    \label{fig:local_sig}
+    \label{fig:fly_sig}
 \end{figure}
 
 \begin{itemize}
@@ -225,7 +225,7 @@ The difference between figure~\ref{fig:lum_2} and \ref{fig:lum_3} is visible wit
 \end{table}
 
 
-Commenting the result from the table... In figure~\ref{fig:lum_signal} the effects of global luminance is shown plotted against the non perturbed signal.\\[0.1in]
+Commenting the result from the table... In figure~\ref{fig:lum_sig} the effects of global luminance is shown plotted against the non perturbed signal.\\[0.1in]
 
 
 \begin{figure}[H]
@@ -264,6 +264,8 @@ Commenting the result from the table... In figure~\ref{fig:lum_signal} the effec
 
 \subsection{SPC evaluation}
 \label{sec:eval_spc}
+
+\subsubsection{Number of measurements}
 
 \subsubsection{Soft chessboard}
 \todo[inline]{Todo: Skapa rekonstruerade bilder från homagraphin och jämnför de rekonstruerade med referensbilden}
