@@ -197,6 +197,12 @@ In 2006 Donoho~\cite{article:CS_donoho1} for the fist time guarantied theoretica
 \todo[inline]{A closer look at the TVAL3 algorithm}
 The reconstruction algorithm that was chosen in this Master's thesis was a total variation regularization algorithm. Natural images often contains sharp edges and piecewise smooth areas  which the TV regularization algorithm is good at preserving. 
 
+\begin{equation}
+\text{min}_\mathbf{x} \Sigma_i ||D_i \mathbf{x} || \text{, subject to } \mathbf{\Phi x} = 	y \text{, } \mathbf{x} \geq 0 \text{,} 
+\end{equation}
+
+where 
+
 TV
 AL  Augmented Lagrangian - \todo[inline]{Augmented Lagrangian methods are a certain class of algorithms for solving constrained optimization problems. They have similarities to penalty methods in that they replace a constrained optimization problem by a series of unconstrained problems and add a penalty term to the objective; the difference is that the augmented Lagrangian method adds yet another term, designed to mimic a Lagrange multiplier.}
 AL  Alternating Direction - \todo[inline]{Alternating direction methods are a common tool for general mathematical programming and
