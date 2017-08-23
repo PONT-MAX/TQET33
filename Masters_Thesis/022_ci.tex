@@ -1,0 +1,153 @@
+\section{Compressive imaging}
+\todo[inline]{Write introduction to CS, create some intuition}
+The single pixel sensor captures a scene by measuring the light intensity focused into the detector reflected from the DMD matrix. The DMD sensing matrix changes to obtain new measurements, $M$ unique sensing matrix measurements is captured to reconstruct an image with $N$ pixels. Each sensing matrix index is encoded either  by a one or a zero (turning the mirror onto or away from the sensor). The compressive imaging sampling model is defined as
+
+\begin{equation}
+\label{eq:CS1}
+   \mathbf{ y = \Phi x + \epsilon}\text{,}
+\end{equation}\\[0.1in]
+
+where, $\mathbf{x}_{N\times1}$ is the signal (image) with $N$ samples (pixels), $\mathbf{y}_{M\times1}$ is the vector with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix $\Phi_{1 \times N}$ as a row vector) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the signal is. The signal $\mathbf{x}$ can be represented as  
+
+\begin{equation}
+\label{eq:CS2}
+   \mathbf{ \Psi \Theta = x }\text{,}
+\end{equation}\\[0.1in]
+
+where, $\mathbf{\Psi}_{N \times N}$ is some  basis matrix and
+$\mathbf{\Theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-sparse. $K$-sparse means that the signal $\mathbf{x}$ has $K$ non zero elements in basis $\mathbf{\Psi}$, $||\mathbf{\Theta}||_0 = K$. Given equation~\ref{eq:CS2}, equation~\ref{eq:CS1} can be expand to
+
+
+\begin{equation}
+   \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \Theta + \epsilon = A \Theta + \epsilon }\text{,}
+\end{equation}\\[0.1in]
+
+where, $\textbf{A}_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible.
+\subsection{Measurement matrix \& Restricted isometry property (RIP)}
+\todo[inline]{Introduce the topic.}
+
+In the noiseless case exact recovery of the image $\mathbf{x}$ is achievable if RIP holds for the reconstruction matrix $\mathbf{\Phi} \Rightarrow \mathbf{\Phi\Psi = A}$, the constraint is defined as,
+
+\begin{equation}
+    (1-\delta_K)||\mathbf{x}||_{\ell_2}^2\leq||\mathbf{Ax}||_{\ell_2}^2\leq(1+\delta_K)||\mathbf{x}||_{\ell_2}^2 \text{,}
+\end{equation}\\[0.1in]
+
+where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal reconstruction matrix) and generally $\textbf{x}$ is not known and varies which means that there are no general optimal reconstruction matrices for natural images. The solution is to find a general reconstruction matrix that satisfies RIP with high probability. The solution which also should be incoherent with the base matrix $\Psi$ is to construct the measurement matrix using a i.i.d random distribution which gives $\delta_K << 1$ with high probability. Using random measurement matrices the number of measurements needed to satisfy RIP with high probability is $M \geq O(K\text{log}(N/K) \ll N$.\\[0.1in]
+
+The problem using random matrices is that they need to be stored i memory for the reconstruction algorithm, when the image resolution is increased the measurement matrix increases exponentially. For images with resolution of $512\times 512$ and larger the data gets infeasible for a normal computer to handle.  Fortunately using fast transforms in the reconstruction algorithm can exclude using vector multiplication resulting in faster reconstruction and the need to store the measurement matrix in memory. But in order to do so special measurement matrices are used, in this master's thesis the sequency ordered Walsh Hadamard measurement matrix will be used with the TVAL3 reconstruction algorithm described in section~\ref{sec:TV}.   
+
+
+\subsubsection{Sequency ordered Walsh Hadamard measurement matrix}
+Besides from eliminating the need to store the measuring matrix for reconstruction the sequency ordered Walsh Hadamard (SOWH) matrix can be generated when sent to the DMD eliminating the need to store the matrix at all. SOWH has the same characteristics and properties of an i.i.d random matrix and therefore also fulfills the RIP condition with high probability and research has shown that there is no significant loss in recovery of the signal relative i.i.d random measurement matrix. \todo{find the source ref} An other property of SOHW is that it only contains -1 an 1 which easily be converted to 0 and 1 when sent to the DMD. \\[0.1in]
+
+
+The naturally ordered Hadamard matrix of dimension $2^k$, $k \in \mathbb{N}$ are constructed by the recursive formula    
+
+\begin{equation}
+    H_0 = 1,
+\end{equation}
+
+\begin{equation}
+    H_1 = \begin{bmatrix}
+       1 & 1 \\
+       1 & -1\\
+     \end{bmatrix},
+\end{equation}
+
+and in general,
+
+\begin{equation}
+        H_k = \begin{bmatrix}
+       H_{k-1} & H_{k-1} \\
+       H_{k-1} & -H_{k-1}\\
+       \end{bmatrix} = H_1 \oplus H_{k-1}
+\end{equation}
+
+where $\oplus$ denotes the Kronecker product. To construct the sequency ordered Walsh Hadamard matrix from the naturally ordered Hadamard matrix three steps is required:
+
+\begin{itemize}
+    \item Convert row index to binary.
+    \item Convert the binary row index to gray code.
+    \item Apply bit reverse on the gray code index.
+\end{itemize}
+
+then order the rows after the bit reverse to obtain the sequency ordered Walsh Hadamard matrix.
+
+\begin{table}[H]
+\begin{tabular}{|r|c|c|c|c|}
+\hline
+    $n_H$        & 0    & 1     & 2     & 3     \\ \hline
+    Binary       & 00   & 01    & 10    & 11    \\ \hline
+    Gray code    & 00   & 01    & 11    & 10    \\ \hline
+    Bit-reverse  & 00   & 10    & 11    & 01    \\ \hline
+    $n_W$        & 0    & 2     & 3     & 1     \\ \hline
+    
+\end{tabular}
+\label{tab:Hadamard_2_Walsh}
+\caption{How to convert a naturally ordered Hadamard matrix to a sequency ordered Walsh Hadamard matrix by shifting row with index $n_W$ to $n_H$}
+\end{table}
+
+for example
+
+\begin{equation}
+    H_2 =  \begin{bmatrix}
+       1 & 1 & 1 & 1 \\
+       1 & -1 & 1 & -1 \\
+       1 & 1 & -1 & -1 \\
+       1 & -1 & -1 & 1 
+       \end{bmatrix} \Rightarrow W_2 = \begin{bmatrix}
+       1 & 1 & 1 & 1 \\
+       1 & 1 & -1 & -1  \\
+       1 & -1 & -1 & 1  \\
+       1 & -1 & 1 & -1 
+       \end{bmatrix}.
+\end{equation}
+
+To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition. How the matrix was permutated is stored because the reconstruction algorithm uses that information. \cite{article:WalshHadamard_Max_Length, article:TVAL3}. 
+
+\subsection{Reconstruction method}
+To reconstruct the image $\textbf{x}$ the sparest set of coefficients in $\Theta$ is desired. The optimal approach to find these coefficients would be to use $\ell_0$ minimization
+
+
+\begin{equation}
+   \mathbf{ \hat{\theta}} = \text{arg min } ||\mathbf{\theta}||_0 \text{  subject to  } \mathbf{y = A\theta} \text{.}
+\end{equation}\\[0.1in]
+
+
+Simply minimizing nonzero indices $\mathbf{\Theta}$ in the sparsitfying basis $\mathbf{\Psi}$, but this problem is known to be NP-hard. A better approach is the $\ell_1$ minimization, for example Basis Pursuit denoise (BPDN),
+
+\begin{equation}
+    \mathbf{\hat{\theta}} = \text{arg min } ||\mathbf{\theta}||_1 \text{  subject to  } ||\mathbf{y - A\theta}||_2 < \mathbf{\epsilon} \text{.}
+\end{equation}\\[0.1in]
+
+In 2006 Donoho~\cite{article:CS_donoho1} for the fist time guarantied theoretical $\ell_0\text{/}\ell_1$ equivalence which holds in the CS case, which means using a $\ell_1$ minimizer is guaranteed to find the sparsest solution in polynomial time in the noiseless case which can be approximated in the noisy and compressible signal case. The drawback with the $\ell_1$ minimizer is that it require more measurements than the optimal case with $\ell_0$ but it is still $M \ll N$. Since 2006 many more types of optimization algorithms has evolved which solves the problem with different methods but with the same goal: finding the largest most significant coefficients of $\mathbf{\theta}$. \todo{Why use the TV algorithm} 
+
+
+\subsubsection{Total variation}
+\label{sec:TV}
+\todo[inline]{A closer look at the TVAL3 algorithm}
+The reconstruction algorithm that was chosen in this Master's thesis was a total variation regularization algorithm. Natural images often contains sharp edges and piecewise smooth areas  which the TV regularization algorithm is good at preserving. 
+
+\begin{equation}
+\text{min}_\mathbf{x} \Sigma_i ||D_i \mathbf{x} || \text{, subject to } \mathbf{\Phi x} = 	y \text{, } \mathbf{x} \geq 0 \text{,} 
+\end{equation}
+
+where 
+
+TV
+AL  Augmented Lagrangian - \todo[inline]{Augmented Lagrangian methods are a certain class of algorithms for solving constrained optimization problems. They have similarities to penalty methods in that they replace a constrained optimization problem by a series of unconstrained problems and add a penalty term to the objective; the difference is that the augmented Lagrangian method adds yet another term, designed to mimic a Lagrange multiplier.}
+AL  Alternating Direction - \todo[inline]{Alternating direction methods are a common tool for general mathematical programming and
+optimization. These methods have become particularly important in the field of variational image processing,
+which frequently requires the minimization of non-differentiable objectives. This paper considers accelerated
+(i.e., fast) variants of two common alternating direction methods: the Alternating Direction Method of
+Multipliers (ADMM) and the Alternating Minimization Algorithm (AMA). The proposed acceleration is of
+the form first proposed by Nesterov for gradient descent methods. In the case that the objective function is
+strongly convex, global convergence bounds are provided for both classical and accelerated variants of the
+methods. Numerical examples are presented to demonstrate the superior performance of the fast methods
+for a wide variety of problems.}
+\todo[inline]{The alternating direction method of multipliers (ADMM) is an algorithm that solves convex optimization problems by breaking them into smaller pieces, each of which are then easier to handle. It has recently found wide application in a number of areas. On this page, we provide a few links to to interesting applications and implementations of the method, along with a few primary references.
+
+ADMM is used in a large number of papers at this point, so it is impossible to be comprehensive here. We only intend to highlight a few representative examples in different areas. To keep the listing light, we have only listed more detailed bibliographic information for papers that are not easy to find online; in any case, the information given should be more than enough to track down the papers.
+%\url{http://stanford.edu/~boyd/admm.html}
+}
+AL  Algorithm
