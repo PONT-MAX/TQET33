@@ -174,7 +174,7 @@ for example
        \end{bmatrix}.
 \end{equation}
 
-To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition~\cite{article:SRM_long}. How the matrix was permutated is stored because the reconstruction algorithm uses that information. \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
+To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition~\cite{article:SRM_long}. How the matrix was permutated and which rows was choosen i which order is stored so the reconstruction algorithm can use that information. \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
 
 \subsection{Reconstruction method}
 To reconstruct the image $\textbf{x}$ the sparest set of coefficients in $\theta$ is desired. The optimal approach to find these coefficients would be to use $\ell_0$ minimization
@@ -207,9 +207,45 @@ where $D_i\mathbf{x}$ is the discrete gradient of $\mathbf{x}$ at position $i$.\
 
 TVAL3 stands for "Total Variation Augmented Lagrangian Alternating Direction Algorithm", accordingly is a TV regularization algorithm which uses augmented Lagrangian and alternating direction methods, where augmented Lagrangian is a method in optimization for solving constrained problems by substitute the original constrained problem with a series unconstrained subproblems and introduce a penalty term. To solve the new subproblems the alterning direction method is used~\cite{article:TVAL3}.\\[0.1in]
 
-As mentioned earlier in section~\ref{sec:SOWHMM} the main reason why the sequency ordered Walsh Hadamard is used is to eliminate the need to store the matrix in memory and a promise to speed up the reconstruction.   
+As mentioned earlier in section~\ref{sec:SOWHMM} the main reason why the sequency ordered Walsh Hadamard matrix is used is to eliminate the need to store the matrix in memory during reconstruction and a promise to speed up the reconstruction. In TVAL3 there are two multiplications between matrix and a vector that dominates the computation time,
 
-  
+\begin{equation}
+\mathbf{\Phi}\mathbf{x}^k \text{ and } \mathbf{\Phi}^\top(\mathbf{\Phi}\mathbf{x}^k-\mathbf{y})\text{.}
+\end{equation}
+
+The idea is to replace the multiplication with fast transforms. To explain the concept some observations and new functions need to be defined. The first observation is that the sequency ordered Walsh Hadamard matrix is a transform matrix which also can be computed with the fast Walsh Hadamard transform (fwht),
+
+\begin{equation}
+\mathbf{W}\mathbf{x} = \text{ fwht}(\mathbf{x}),
+\end{equation}
+
+where $W$ is a sequency ordered Walsh Hadamard matrix and $\mathbf{x}$ is the signal vector. The wht is a generalized class of Fourier transforms which decomposes input vector into superposition of Walsh functions.\\[0.1in]
+
+From section~\ref{sec:SOWHMM} it was briefly mention in the last paragraph that in order for the measurement matrix to fulfill RIP the columns is permutated and rows are chosen in random to create the measurement matrix from the sequency ordered Walsh Hadamard matrix, two functions is created to carry out does operations. First the permutation function $\pi(\cdot)$, which from a random seed permutate the order of the columns in a matrix or the order of a vector. The second function $\Pi_M(\cdot)$ chooses $M$ row in a matrix at random and stacks them in a new matrix. Then the definition of the measurement matrix $\mathbf{\Phi}$ constructed from the sequency ordered Walsh Hadamard matrix $\mathbf{W}$ leads to observation 2
+
+\begin{equation}
+\mathbf{\Phi} = \pi(\Pi_M(\mathbf{W})) = \Pi_M(\pi(\mathbf{W}))\text{.}
+\end{equation}
+
+It does not matter in which order the functions i applied, it gives the same result. With matrix $\mathbf{A}$ and vector $\mathbf{u}$ observation 3 is formulated as,
+
+\begin{equation}
+\pi(\mathbf{A})\mathbf{u} = \mathbf{A}\pi(\mathbf{u})\text{,}
+\end{equation}
+
+which shows that there is no difference between multiply a column-permutated matrix with a vector and multiply the same matrix with the vector permutated.\\[0.1in]
+
+With all observations combined the matrix multiplication is replaced with the fwht in observation 4
+
+\begin{equation}
+\mathbf{y} = \mathbf{\Phi}\mathbf{x} = \pi(\Pi_M(\mathbf{W}))\mathbf{x} = \Pi_M(\mathbf{W})\pi(\mathbf{x}) = \Pi_M(\mathbf{W}\pi(\mathbf{x})) = \Pi_M(\text{fwht}(\pi(\mathbf{x}))\text{,}
+\end{equation}
+
+with the conclusion that the multiplication between the measurement matrix constructed using the permutated sequency ordered Walsh Hadamard matrix and the signal can be performed with the signal permutated, fast transformed using fwht and choosing rows, both permutations using the same functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ and random seed as when the measurement matrix was created.\\[0.1in]
+
+Using this method will reduce the overall computational complexity considerably and it will make the measurement matrix redundant in the reconstruction, only the two permutation functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ needs to be stored. Excluding the measurement matrix in the reconstruction results in larger resolution images ($512\times512$ pixels and larger) can be reconstructed.
+
+
 
 
 \subsection{Image capturing and processing chain}
