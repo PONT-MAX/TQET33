@@ -245,10 +245,39 @@ with the conclusion that the multiplication between the measurement matrix const
 
 Using this method will reduce the overall computational complexity considerably and it will make the measurement matrix redundant in the reconstruction, only the two permutation functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ needs to be stored. Excluding the measurement matrix in the reconstruction results in larger resolution images ($512\times512$ pixels and larger) can be reconstructed.
 
-
+\subsection{Implementation}
 
 
 \subsection{Image capturing and processing chain}
+To capture an image the SPC setup is only a subsystem in the whole process from acquiring the signal to reconstructing the image. In figure~\ref{fig:flow_chart} the whole process of capturing an image is presented with all subsystems and signal/image processing steps included.
+
+\begin{figure}[H]
+\includegraphics[width = 1\linewidth]{gfx/flowchart3.pdf}
+\caption{Block diagram of image capturing and processing chain, from signal acquisition to final image. Each color represents different subsystems in hardware or software.}
+	\label{fig:flow_chart}
+\end{figure}
+
+This experimental setup has no full automatic system where a button can be pressed and the system produces an image. In the setup the subsystems works completely independently and needs to be operated manually in the right order at the right time. Each color in figure~\ref{fig:flow_chart} represents a subsystem in hardware or software. Each subsystem is be described in the following subsection.
+
+ 
+\subsubsection{Prepare the SPC}
+The first step in the yellow block "Prepare the SPC" is making sure the SPC is up and running but also to point the camera at the scene and set the correct focus. The scene is located with the aid of the reference visual camera (see figure~\ref{fig:system1}) with all the mirrors in the DMD directed to that camera. The focus is adjusted manually by moving the primary mirror back or forth, this procedure may introduce some error to the focus.\\[0.1in]
+
+\subsubsection{Sampling}
+The red blocks subsystem "Start sampling signal from SWIR photo diode" and "Store the raw signal" is conducted in a separate software which controls the A/D converter and thus the sampling. When the SPC i prepared the sampling of the signal is started with sampling rate such that every measurement has several sampling points thus oversampling the signal. The oversampling is needed because when the mirrors move from one pattern (measurement matrix) to the next the signal is uncertain for some time, the oversampling is also used to suppress noise from the photo diode, more on that in section~\ref{sec:signal_process}.
+
+\subsubsection{Streaming patterns to the DMD}
+The subsystem "Streaming patterns to the DMD" represented in purple in the block diagram is controlled by two different softwares, one which manipulates the pattern-signal received by the DMD and one which sends the patterns to the DMD. The patterns i.e. the measurement matrices is created    
+
+Programet & MPC HC
+
+
+\subsubsection{Image/signal processing and reconstruction}
+\label{sec:signal_process}  
+
+
+
+\pagebreak
 \todo[inline]{A section describing the process from sampling the signal to complete image. Which algorithms was used and an introduction to how the signal looks at different stages of the process.}
 \todo[inline]{Flowchart of the whole process.}
 \begin{itemize}
@@ -259,6 +288,9 @@ Using this method will reduce the overall computational complexity considerably 
 \item Reconstruct image from signal.
 \item Image processing: median filter. 
 \end{itemize}
+
+
+\subsubsection{Signal processing}
 
 \pagebreak
 \subsection{Evaluation: Image quality assessment}
