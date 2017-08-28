@@ -319,8 +319,10 @@ The next step is to determine one value for each measurement. This is done in tw
 
 
 
-\subsubsection{Dynamics in scene: luminance change}
-So far the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels which does not have a significant impact of the reconstructed image. But when capturing images outdoors with natural light and scenes in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and structure movement. In this section these two problems is modeled with corresponding algorithms to suppress the 	impact on the reconstructed image.\\[0.1in] 
+\subsubsection{Dynamics in scene} %: luminance change}
+So far the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels which does not have a significant impact of the reconstructed image. But when capturing images outdoors with natural light and scenes in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and structure movement. 
+
+\todo[inline]{In this subsection these two problems is modeled with corresponding algorithms to suppress the impact on the reconstructed image.}
 
 
 In natural outdoor images it can be assumed the the primary source of light comes from the sun, but even on a clear day the light intensity from the sun is not constant. If the scene is assumed to be completely stationary even the slightest intensity change will be added for all pixels being measured changing the mean intensity of the measured signal $\mathbf{y}$ which should be stationary. With the assumption that the image is constant and the luminance change uniformly adds the same intensity to each pixel per measurement the problem can be modeled.\\[0.1in]
@@ -354,8 +356,10 @@ where $\mathbf{c}$ is the intensity change vector.\\[0.1in]
 The goal is now to remove the intensity change vector from signal $\mathbf{y}$. Using the knowledge that the signal $\mathbf{y}$ should be stationary and assumes that the change in intensity has a much lower frequency than the intensity change between individual measurement matrices, then $\mathbf{c}$ can be approximated by the moving average and simply removed from signal $\mathbf{y}$. The moving average is calculated at each data point in the signal vector $y$ by calculating the average of $k$ points centered around the data point.    
 		 
 		 
-\subsubsection{Dynamics in scene: structure movement}
-
+%\subsubsection{Dynamics in scene: structure movement}
+%Moving objects in the scene is more complex problem than the previous luminance change, both detecting the movement by reading the measured signal and if detected how to remove the problem. In this master's thesis scenes which is known to contain large movement will be avoided, while some small movement for example created by the wind will have to be accepted. In this section a method i proposed to detect a large object rapidly moving in and out of the scene  
+%
+%In this section a model of a static      
 
 \subsubsection{Reconstruction}
 Reconstruction is performed using the TVAL3 algorithm described in section~\ref{sec:TV}. The algorithm takes in measurement matrix $\mathbf{\Phi}$, signal $\mathbf{y}$ and algorithm settings as arguments and outputs the reconstructed image. The setting used throughout all experments is:
