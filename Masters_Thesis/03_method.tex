@@ -319,7 +319,7 @@ The next step is to determine one value for each measurement. This is done in tw
 
 
 
-\subsubsection{Dynamics in scene model}
+\subsubsection{Dynamics in scene: luminance change}
 So far the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels which does not have a significant impact of the reconstructed image. But when capturing images outdoors with natural light and scenes in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and structure movement. In this section these two problems is modeled with corresponding algorithms to suppress the 	impact on the reconstructed image.\\[0.1in] 
 
 
@@ -347,14 +347,22 @@ where $c_i$ is the uniform intensity change coefficient for measurement $i$. Thi
 
 \begin{equation}
 \mathbf{y} = \mathbf{\Phi}\mathbf{x} + \frac{N}{2}c_i = \mathbf{\Phi}\mathbf{x} + \mathbf{c},
-\end{equation} 
+\end{equation}
+
+where $\mathbf{c}$ is the intensity change vector.\\[0.1in]
+
+The goal is now to remove the intensity change vector from signal $\mathbf{y}$. Using the knowledge that the signal $\mathbf{y}$ should be stationary and assumes that the change in intensity has a much lower frequency than the intensity change between individual measurement matrices, then $\mathbf{c}$ can be approximated by the moving average and simply removed from signal $\mathbf{y}$. The moving average is calculated at each data point in the signal vector $y$ by calculating the average of $k$ points centered around the data point.    
+		 
+		 
+\subsubsection{Dynamics in scene: structure movement}
+
 
 \subsubsection{Reconstruction}
-Reconstruction is performed using the TVAL3 algorithm described in section~\ref{sec:TV}. The algorithm takes in measurement matrix $\mathbf{\Phi}$, signal $\mathbf{y}$ and algorithm settings as arguments and outputs the reconstructed image. The setting used throughout all experiments is:
+Reconstruction is performed using the TVAL3 algorithm described in section~\ref{sec:TV}. The algorithm takes in measurement matrix $\mathbf{\Phi}$, signal $\mathbf{y}$ and algorithm settings as arguments and outputs the reconstructed image. The setting used throughout all experments is:
 
 \begin{itemize}
-\item \textit{opts.mu} $= 2^8$
-\item \textit{opts.beta} $= 2^5$
+\item \textit{opts.mu} $= 2^9$
+\item \textit{opts.beta} $= 2^6$
 \item \textit{opts.maxcnt} $= 10$
 \item \textit{opts.tol\_inn} $= 10^{-5}$
 \item \textit{opts.tol} $= 10^{-10}$ 
