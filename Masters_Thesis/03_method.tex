@@ -44,7 +44,7 @@ Because the reconstruction algorithm and measurement matrix needs to be a square
     \label{fig:dmd_index2}
 \end{figure}
 
-\todo[inline]{Connect the DMD to CS and the physical aspect (every mirror is an pixel)} 
+\todo[inline]{Connect the DMD to CS and the physical aspect (every mirror is an pixel). I:I:D gaussian with DMD only can take values 1,0 gives 50\% evenly distrubitated pixels measurements for every measurement matrix which looks something like figure~\ref{fig:dmd_pattern}.} 
 
 
 \begin{figure}[H]
@@ -93,6 +93,9 @@ $\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-
 \end{equation}\\[0.1in]
 
 where, $\textbf{A}_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible.
+
+\todo[inline]{Noise dose not effect the measurement very much because half the intensity from the image is measured in one pixel sensor bumping the signal to noise ratio from a conv camera where each pixel has some noise half the pixels share that noise making SPC bery robust to noise even in low light situations. }
+
 \subsection{Measurement matrix \& Restricted isometry property (RIP)}
 \todo[inline]{Introduce the topic.}
 
@@ -264,35 +267,100 @@ This experimental setup has no full automatic system where a button can be press
 The first step in the yellow block "Prepare the SPC" is making sure the SPC is up and running but also to point the camera at the scene and set the correct focus. The scene is located with the aid of the reference visual camera (see figure~\ref{fig:system1}) with all the mirrors in the DMD directed to that camera. The focus is adjusted manually by moving the primary mirror back or forth, this procedure may introduce some error to the focus.\\[0.1in]
 
 \subsubsection{Sampling}
-The red blocks subsystem "Start sampling signal from SWIR photo diode" and "Store the raw signal" is conducted in a separate software which controls the A/D converter and thus the sampling. When the SPC i prepared the sampling of the signal is started with sampling rate such that every measurement has several sampling points thus oversampling the signal. The oversampling is needed because when the mirrors move from one pattern (measurement matrix) to the next the signal is uncertain for some time, the oversampling is also used to suppress noise from the photo diode, more on that in section~\ref{sec:signal_process}.
+The red blocks subsystem "Start sampling signal from SWIR photo diode" and "Store the raw signal" is conducted in a separate software which controls the A/D converter and thus the sampling. When the SPC i prepared the sampling of the signal is started with sampling rate such that every measurement has several sampling points thus oversampling the signal. The oversampling is needed because when the mirrors move from one pattern (measurement matrix) to the next the signal is uncertain for some time, the oversampling is also used to suppress noise from the photo diode, more on that in section~\ref{sec:signal_process}. After the signal is sampled the obtained signal needs to be stored on the computer manually.
 
 \subsubsection{Streaming patterns to the DMD}
-The subsystem "Streaming patterns to the DMD" represented in purple in the block diagram is controlled by two different softwares, one which manipulates the pattern-signal received by the DMD and one which sends the patterns to the DMD. The patterns i.e. the measurement matrices is created    
+\label{sec:stream_dmd}
+The subsystem "Streaming patterns to the DMD" represented in purple in the block diagram is controlled by two different softwares, one which manipulates the pattern-signal received by the DMD and one which sends the patterns to the DMD. The patterns are sent to the DMD through a HDMI cable where the DMD is set up such that the DMD acts as an second screen to the computer. This enables to show anything on the DMD that a screen can show. The patterns are stored as a video and played back on the DMD "screen" with a media player which shows each pattern in consecutive order. This is the major bottleneck of the system where each measurement matrix needs to be displayed one after the other depending on how fast frame rate can be achieved. The naive approach would be to display one pattern per frame which is linked to the frame rate of the DMD, lets say for example 60 frames per second (fps) then for a $512\times 512$ pixel large image sampled with $M/N = 20\%$ measurement matrices gives $52428$ patterns which would take $52428/60 = 874 \text{ seconds} = 14.5 \text{ minutes}$ to sample which is a long exposure time for a still image with the constraint that the scene should be stationary to obtain a stationary signal.\\[0.1in]
 
-Programet & MPC HC
-
-
-\subsubsection{Image/signal processing and reconstruction}
-\label{sec:signal_process}  
+Fortunately with the software "DLP LightCrafter 4500 EVM GUI" controlling the DMD the received video signal can be manipulated before displayed onto the DMD. The software includes a function which can break down the received 24-bit color image into 1 bit planes which can be displayed in consecutive order, so for each frame received 24 patterns is encoded on that frame then the DMD software isolates each bit plane and displays them in consecutive order. This function improves the naive implementation by a factor of $24$, which reduces the time to sample the image from the last example from $874 \text{ seconds to } 874/24 = 36 \text{ seconds}$. This exposure time is of course not optimal for natural images outdoors but acceptably for the experimental setup.\\[0.1in]     
 
 
+To create the video that feeds the patterns to the DMD each pattern  i.e. measurement matrix is created as presented in section~\ref{sec:SOWHMM}. Then for each group of 8 unique patterns drawn from the rows of the measurement matrix are stacked in each bit plane of a 8 bit image as seen in figure~\ref{fig:8_to_1_8}.
 
-\pagebreak
-\todo[inline]{A section describing the process from sampling the signal to complete image. Which algorithms was used and an introduction to how the signal looks at different stages of the process.}
-\todo[inline]{Flowchart of the whole process.}
-\begin{itemize}
-\item A video containing the measurement matrix with 24 matrices per frame was streamed was stream through a HDMI port with the software MPC-HC. The DLP shows one bit plane at the time on the DMD until next frame arrives. 
-\item MATLAB was used for signal processing.
-\item Acquire signal: Start sampling signal from the single pixel sensor, and start chain of measurement matrices.
-\item From the raw signal: Extract value from each measurement matrix, Signal processing compensating for illumination change and delete if necessary disruption. We use the knowledge that the signal should be stationary.
-\item Reconstruct image from signal.
-\item Image processing: median filter. 
-\end{itemize}
+\begin{figure}[H]
+\includegraphics[width = 1\linewidth]{gfx/DMD_12.eps}
+\caption{Stack each group of 8 measurement matrices in separate  bit planes creating one 8 bit image with each matrix in one bit plane.}
+	\label{fig:8_to_1_8}
+\end{figure}
+
+Then for each group of three 8 bit images a 24 bit color image is constructed as seen in figure~\ref{fig:3_8_to_1_3}. 
+
+\begin{figure}[H]
+\includegraphics[width = 1\linewidth]{gfx/DMD_2.eps}
+\caption{Stack each group of three 8 bit plane images into one 24 bit color image. This is one frame in the video sent to the DMD.}
+	\label{fig:3_8_to_1_3}
+\end{figure}
+
+This 24 bit color image corresponds to one frame in the video, to create the video this is done so each pattern is represented in the video.
+
 
 
 \subsubsection{Signal processing}
+\label{sec:signal_process}  
+When the sampled signal is stored on the computer the remaining signal/image processing and reconstruction represented by blue blocks in figure~\ref{fig:flow_chart} is conducted in MATLAB. In this section the signal processing of the sampled signal is described.\\[0.1in]
 
-\pagebreak
+The first step is to refine the raw over sampled signal so that each measurement matrix correspond to one measurement in signal $\mathbf{y}$. This is done by first find every set of indices corresponds to every measurement matrix, as seen in figure~\ref{fig:raw_signal} where the signal indices which corresponds to one measurement matrix is isolated by the purple lines.
+
+
+\begin{figure}[H]
+\includegraphics[width = 1\linewidth]{gfx/signal_proc/isolated_raw_signal.eps}
+\caption{---}
+	\label{fig:raw_signal}
+\end{figure}
+
+The next step is to determine one value for each measurement. This is done in two steps the first is to omit values which corresponds to the DMD changing pattern seen in figure~\ref{fig:raw_signal} where the purple line divides the measurements the DMD is changing pattern which gives an uncertain signal. With the omitted parts of the signal corresponding to one measurement the mean is calculated and set to the value for each measurement, as seen in figure~\ref{fig:detarmain_signal}. 
+
+\begin{figure}[H]
+\includegraphics[width = 1\linewidth]{gfx/signal_proc/isolated_final_signal.eps}
+\caption{---}
+	\label{fig:detarmain_signal}
+\end{figure}
+
+So far the the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels. But when capturing images outdoors with natural light and scenes in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and structure movement. If a good model of this two cases \\[0.1in] 
+
+
+In natural outdoor images it can be assumed the the primary source of light comes from the sun, but even on a clear day the light intensity from the sun is not constant. If the scene is assumed to be completely stationary even the slightest intensity change will be added for all pixels being measured changing the mean intensity of the measured signal $\mathbf{y}$ which should be stationary. But 
+
+  
+
+ can change the mean intensity of the measurements over time 
+
+which reduce the reconstruction performance.  	    
+
+
+Due to the long exposure time two types of situation can arise where the image  	 
+
+Scenes where a lot of movement or the risk of movement is high can be avoided  
+
+
+\subsubsection{Reconstruction}
+Reconstruction is performed using the TVAL3 algorithm described in section~\ref{sec:TV}. The algorithm takes in measurement matrix $\mathbf{\Phi}$, signal $\mathbf{y}$ and algorithm settings as arguments and outputs the reconstructed image. The setting used throughout all experiments is:
+
+\begin{itemize}
+\item \textit{opts.mu} $= 2^8$
+\item \textit{opts.beta} $= 2^5$
+\item \textit{opts.maxcnt} $= 10$
+\item \textit{opts.tol\_inn} $= 10^{-5}$
+\item \textit{opts.tol} $= 10^{-10}$ 
+\item \textit{opts.maxit} $= 1000$
+\item \textit{opts.mu0} $= 2^4$ 
+\item \textit{opts.beta0} $= 2^0$
+\item \textit{opts.nonneg} $=$ true 
+\item \textit{opts.isreal} $=$ true	
+\end{itemize} 
+
+Which solves for a real non negative solution. 
+
+
+\subsubsection{Image processing}
+From the reconstructed image some light image processing is done. There are only two operations applied to the reconstructed image and the reason why is that the images presented in the evaluation should represent what can be expected from the system. Furthermore often image processing is applied on special problems or artifacts in the images and it is not desired to cover up if there exist such problems. Therefore the two operations used is median filter and adjusting the intensity for higher contrast.\\[0.1in]
+
+The reconstructed image has a high dynamic range and if only a small set of neighboring pixels is reconstructed with a high intensity peak which not correlates to the rest of the image these pixels will drop the contrast in the rest of the image, to remove these peaks the median filter is used. The median filter will also remove "salt and pepper" noise while edges are preserved. The built in MATLAB function \textit{medfilt2} will be used.\\[0.1in]
+
+The second operation is an intensity transform to maximize the contrast in the image, the built in MATLAB function \textit{imadjust} will be used.   
+
+
 \subsection{Evaluation: Image quality assessment}
 The evaluation will be divided in to two categories: reconstructed images from synthetic data and images reconstructed from data acquired by the SPC.\\[0.1in] 
 
@@ -300,7 +368,7 @@ The evaluation on synthetic data is focused on evaluating the performance of the
 
 Reconstructed image from synthetic data is acquired by creating a signal $ \mathbf{ y }_{M\times1}$ taking the inner product of $ \mathbf{y} = \mathbf{\Phi} \mathbf{x} + \epsilon$ where, $\mathbf{x}$ is the synthetic image reshaped to a vector, $\mathbf{\Phi}$ is the measurement matrix with the desired amount of measurements $M$ and synthetic noise $\epsilon$ which can be regulated to simulate different conditions, then using the reconstruction algorithm on the signal $\mathbf{y}$ to obtain the reconstructed image $\mathbf{\hat x}$. Because the measurement matrix and reconstruction algorithm is independent of the SPC hardware the subsystem can be evaluated independently. Two advantages of evaluation the sensing and reconstruction independently of the SPC is that parameters such as number of measurements and noise can be regulated easy and the second advantage is that a reference image is available for comparison.\\[0.1in] 
 
-With a reference image available two image quality assessments are performed on the result from the simulation: Peak signal-to-nise ratio (PSNR) and  SSIM. PSNR is defined as
+With a reference image available two image quality assessments are performed on the result from the simulation: Peak signal-to-noise ratio (PSNR) and  SSIM. PSNR is defined as
 
 \begin{equation}
     \text{PSNR}[f(x,y),g(x,y)] = 10 log_{10}\frac{E^2}{\text{MSE}[f(x,y),g(x,y)]}
@@ -309,9 +377,17 @@ With a reference image available two image quality assessments are performed on 
 where, $f(x,y)$ and $g(x,y)$ is intensity in pixel $(x,y)$...
  
 
+\todo[inline]{Large syntetic test of SWIR images, Whar result can be expected}
 
+\todo[inline]{Synthetic test of the methods presented in section~\ref{sec:signal_process} will be conducted to measure the performance and validity.}
 
+\todo[inline]{Number of measurements needed to get a good image}
 
+\todo[inline]{Homography test}
+
+\todo[inline]{Brisque}
+
+\todo[inline]{MTF which measures Edge response}
 
 
 \subsection{Method criticism}
