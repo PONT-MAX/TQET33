@@ -317,22 +317,37 @@ The next step is to determine one value for each measurement. This is done in tw
 	\label{fig:detarmain_signal}
 \end{figure}
 
-So far the the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels. But when capturing images outdoors with natural light and scenes in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and structure movement. If a good model of this two cases \\[0.1in] 
 
 
-In natural outdoor images it can be assumed the the primary source of light comes from the sun, but even on a clear day the light intensity from the sun is not constant. If the scene is assumed to be completely stationary even the slightest intensity change will be added for all pixels being measured changing the mean intensity of the measured signal $\mathbf{y}$ which should be stationary. But 
+\subsubsection{Dynamics in scene model}
+So far the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels which does not have a significant impact of the reconstructed image. But when capturing images outdoors with natural light and scenes in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and structure movement. In this section these two problems is modeled with corresponding algorithms to suppress the 	impact on the reconstructed image.\\[0.1in] 
 
+
+In natural outdoor images it can be assumed the the primary source of light comes from the sun, but even on a clear day the light intensity from the sun is not constant. If the scene is assumed to be completely stationary even the slightest intensity change will be added for all pixels being measured changing the mean intensity of the measured signal $\mathbf{y}$ which should be stationary. With the assumption that the image is constant and the luminance change uniformly adds the same intensity to each pixel per measurement the problem can be modeled.\\[0.1in]
+
+Start of with the original theorem and disregard the noise, 
+
+\begin{equation}
+\mathbf{y} = \mathbf{\Phi}\mathbf{x},
+\end{equation}  
+
+the image $\mathbf{x}$ can not longer be considered constant for all measurements, the luminance change will change image $\mathbf{x}$ for every measurement matrix $\mathbf{\Phi}_i$ depending on the uniform luminance change. This can be described for one measurement as,  
+
+\begin{equation}
+y_i = \mathbf{\Phi}_i\mathbf{x}_i = \mathbf{\Phi}_i(\mathbf{x} + \mathbf{l}_i) = \mathbf{\Phi}_i\mathbf{x} + \mathbf{\Phi}_i\mathbf{l}_i ,
+\end{equation}
   
+where $\mathbf{l}_i$ uniform adds the same intensity over the whole image $\mathbf{x}$ for measurement $i$. It is known from before that the measurement matrix $\mathbf{\Phi}_i$ contains $50\%$ zeros and ones which gives,
 
- can change the mean intensity of the measurements over time 
+\begin{equation}
+y_i = \mathbf{\Phi}_i\mathbf{x} + \mathbf{\Phi}_i\mathbf{l}_i = \mathbf{\Phi}_i\mathbf{x} + \frac{N}{2}c_i,
+\end{equation}
 
-which reduce the reconstruction performance.  	    
+where $c_i$ is the uniform intensity change coefficient for measurement $i$. This function can be generalized for all measurements,
 
-
-Due to the long exposure time two types of situation can arise where the image  	 
-
-Scenes where a lot of movement or the risk of movement is high can be avoided  
-
+\begin{equation}
+\mathbf{y} = \mathbf{\Phi}\mathbf{x} + \frac{N}{2}c_i = \mathbf{\Phi}\mathbf{x} + \mathbf{c},
+\end{equation} 
 
 \subsubsection{Reconstruction}
 Reconstruction is performed using the TVAL3 algorithm described in section~\ref{sec:TV}. The algorithm takes in measurement matrix $\mathbf{\Phi}$, signal $\mathbf{y}$ and algorithm settings as arguments and outputs the reconstructed image. The setting used throughout all experiments is:
