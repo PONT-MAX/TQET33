@@ -26,6 +26,8 @@ In this section important, relevant and fundamental articles to this master's th
 \item \cite{mt:EF} "Compressed Sensing for 3D Laser Radar"  
 
 \item \cite{article:misuperres} "Multi image super resolution using compressed sensing" 
+
+\item \cite{article:foiSPIS} An article presenting the setup used in this master's thesis with a proof of concept that the SPC setup works. 
 	
 \end{itemize}
     
@@ -37,7 +39,9 @@ In this section important, relevant and fundamental articles to this master's th
 
     \item \cite{article:SRM_short, article:SRM_long, article:SRM_block} Fast and Efficient Compressive Sensing Using Structurally Random Matrices (SRM). The articles describes why and how to implement SRM, in these articles the Hadamard or DCT matrices is proposed to replace the i.i.d random matrix. With SRM the reconstruction time is reduced by replacing matrix multiplication with fast transforms. In addition to improved reconstruction time the new method does not need to store the measurement matrix in memory which enables reconstruction of high resolution images. 
 
-	\item \cite{article:an_improved_WH_matrix} "An Improved Hadamard Measurement Matrix Based on Walsh Code For Compressive Sensing" Shows that sequency-ordered Walsh Hadamard matrix gives better reconstruction then the Hadamard matrix with the same benefits of using the Hadamard matrix. The resulting reconstructed image has near optimal reconstruction performance.
+\item \cite{article:an_improved_WH_matrix} "An Improved Hadamard Measurement Matrix Based on Walsh Code For Compressive Sensing" Shows that sequency-ordered Walsh Hadamard matrix gives better reconstruction then the Hadamard matrix with the same benefits of using the Hadamard matrix. The resulting reconstructed image has near optimal reconstruction performance.
+	
+\item \cite{article:WH_mixed_RIP_prof} Proof that permutated Wlash Hadamard measurement matrices fulfills RIP.
 
 \end{itemize}
 
@@ -48,10 +52,9 @@ In this section important, relevant and fundamental articles to this master's th
 
     \item Al Boviks book the essential guide to image processing \cite{book:image_processing} contains the majority of fundamental image processing techniques and measurements. Two image quality metrics of interest is PSNR and SSIM which can be used when a reference image is available.
     
-    \item \cite{article:il_niqe} A Feature-Enriched Completely Blind Image
-    Quality Evaluator describes how the no reference image quality assessment tool IL-NIQE works and compares to other NR-IQA algorithms. In the article a comparison with other state of the art NR-IQA is conducted which concludes that IL-NIQE is the best over all NR-IQA tool. This kind of QA is useful when there is no reference image available, which is true when taking photos with the SPC.
+\item \cite{article:brisque} "No-Reference Image Quality Assessment
+in the Spatial Domain" is the article describing the blind/referenceless image spatial quality evaluator (BRISQUE). The BRISQUE algorithm evaluates image quality and “naturalness” based on statistics in the image. BRISQUE is used when there is no reference image available therefore can be used to evaluate images produced by the SPC.  
     
-\todo[inline]{Change to BRISQUE}
     
 \end{itemize}
 

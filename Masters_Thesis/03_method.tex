@@ -92,7 +92,7 @@ $\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-
    \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \theta + \epsilon = A \theta + \epsilon }\text{,}
 \end{equation}\\[0.1in]
 
-where, $\textbf{A}_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible.
+where, $\textbf{A}_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible. \cite{book:sm}
 
 \todo[inline]{Noise dose not effect the measurement very much because half the intensity from the image is measured in one pixel sensor bumping the signal to noise ratio from a conv camera where each pixel has some noise half the pixels share that noise making SPC bery robust to noise even in low light situations. }
 
@@ -105,7 +105,7 @@ In the noiseless case exact recovery of the image $\mathbf{x}$ is achievable if 
     (1-\delta_K)||\mathbf{x}||_{\ell_2}^2\leq||\mathbf{Ax}||_{\ell_2}^2\leq(1+\delta_K)||\mathbf{x}||_{\ell_2}^2 \text{,}
 \end{equation}\\[0.1in]
 
-where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal reconstruction matrix) and generally $\textbf{x}$ is not known and varies which means that there are no general optimal reconstruction matrices for natural images. The solution is to find a general reconstruction matrix that satisfies RIP with high probability. The solution which also should be incoherent with the base matrix $\Psi$ is to construct the measurement matrix using a i.i.d random distribution which gives $\delta_K << 1$ with high probability. Using random measurement matrices the number of measurements needed to satisfy RIP with high probability is $M \geq O(K\text{log}(N/K) \ll N$.\\[0.1in]
+where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal reconstruction matrix) and generally $\textbf{x}$ is not known and varies which means that there are no general optimal reconstruction matrices for natural images. The solution is to find a general reconstruction matrix that satisfies RIP with high probability. The solution which also should be incoherent with the base matrix $\Psi$ is to construct the measurement matrix using a i.i.d random distribution which gives $\delta_K << 1$ with high probability. Using random measurement matrices the number of measurements needed to satisfy RIP with high probability is $M \geq O(K\text{log}(N/K) \ll N$. \cite{book:srr,article:CS_donoho1}\\[0.1in]
 
 The problem using random matrices is that they need to be stored i memory for the reconstruction algorithm, when the image resolution is increased the measurement matrix increases exponentially. For images with resolution of $512\times 512$ and larger the data gets infeasible for a normal computer to handle.  Fortunately using fast transforms in the reconstruction algorithm can exclude using vector multiplication resulting in faster reconstruction and the need to store the measurement matrix in memory. But in order to do so special measurement matrices are used, in this master's thesis the sequency ordered Walsh Hadamard measurement matrix will be used with the TVAL3 reconstruction algorithm described in section~\ref{sec:TV}.   
 
@@ -177,7 +177,9 @@ for example
        \end{bmatrix}.
 \end{equation}
 
-To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition~\cite{article:SRM_long}. How the matrix was permutated and which rows was choosen i which order is stored so the reconstruction algorithm can use that information. \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
+To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition~\cite{article:SRM_long, article:WH_RIP_SRM, article:WH_mixed_RIP_prof}. How the matrix was permutated and which rows was choosen i which order is stored so the reconstruction algorithm can use that information. \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
+
+\todo[inline]{permutation is not nessesary?}
 
 \subsection{Reconstruction method}
 To reconstruct the image $\textbf{x}$ the sparest set of coefficients in $\theta$ is desired. The optimal approach to find these coefficients would be to use $\ell_0$ minimization
@@ -195,7 +197,7 @@ Simply minimizing nonzero indices $\mathbf{\theta}$ in the sparsitfying basis $\
 \end{equation}\\[0.1in]
 
 
-In 2006 Donoho~\cite{article:CS_donoho1} for the fist time guarantied theoretical $\ell_0\text{/}\ell_1$ equivalence which holds in the CS case, which means using a $\ell_1$ minimizer is guaranteed to find the sparsest solution in polynomial time in the noiseless case which can be approximated in the noisy and compressible signal case. The drawback with the $\ell_1$ minimizer is that it require more measurements than the optimal case with $\ell_0$ but it is still $M \ll N$. Since 2006 many more types of optimization algorithms has evolved which solves the problem with different methods but with the same goal: finding the largest most significant coefficients of $\mathbf{\theta}$. 
+In 2006 Donoho~\cite{article:CS_donoho1} for the fist time guarantied theoretical $\ell_0\text{/}\ell_1$ equivalence which holds in the CS case, which means using a $\ell_1$ minimizer is guaranteed to find the sparsest solution in polynomial time in the noiseless case which can be approximated in the noisy and compressible signal case. The drawback with the $\ell_1$ minimizer is that it require more measurements than the optimal case with $\ell_0$ but it is still $M \ll N$. Since 2006 many more types of optimization algorithms has evolved which solves the problem with different methods but with the same goal: finding the largest most significant coefficients of $\mathbf{\theta}$. \cite{article:CS_donoho1, article:single_pixel_im_cs, article:a_new_ci_arc}
 
 
 \subsubsection{Total variation: TVAL3}
@@ -246,9 +248,8 @@ With all observations combined the matrix multiplication is replaced with the fw
 
 with the conclusion that the multiplication between the measurement matrix constructed using the permutated sequency ordered Walsh Hadamard matrix and the signal can be performed with the signal permutated, fast transformed using fwht and choosing rows, both permutations using the same functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ and random seed as when the measurement matrix was created.\\[0.1in]
 
-Using this method will reduce the overall computational complexity considerably and it will make the measurement matrix redundant in the reconstruction, only the two permutation functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ needs to be stored. Excluding the measurement matrix in the reconstruction results in larger resolution images ($512\times512$ pixels and larger) can be reconstructed.
+Using this method will reduce the overall computational complexity considerably and it will make the measurement matrix redundant in the reconstruction, only the two permutation functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ needs to be stored. Excluding the measurement matrix in the reconstruction results in larger resolution images ($512\times512$ pixels and larger) can be reconstructed. \cite{article:SRM_long, article:TVAL3}
 
-\subsection{Implementation}
 
 
 \subsection{Image capturing and processing chain}
@@ -320,9 +321,7 @@ The next step is to determine one value for each measurement. This is done in tw
 
 
 \subsubsection{Dynamics in scene} %: luminance change}
-So far the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels which does not have a significant impact of the reconstructed image. But when capturing images outdoors with natural light and scenes in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and structure movement. 
-
-\todo[inline]{In this subsection these two problems is modeled with corresponding algorithms to suppress the impact on the reconstructed image.}
+So far the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels which does not have a significant impact of the reconstructed image. But when capturing images outdoors with natural light in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and object movement. In this subsection the luminance change problem is modeled with corresponding algorithm to suppress the impact on the reconstructed image. The object movement problem will not be modeled, instead be avoided when capturing the signal by making sure the scene is as static as possible.\\[0.1in] 
 
 
 In natural outdoor images it can be assumed the the primary source of light comes from the sun, but even on a clear day the light intensity from the sun is not constant. If the scene is assumed to be completely stationary even the slightest intensity change will be added for all pixels being measured changing the mean intensity of the measured signal $\mathbf{y}$ which should be stationary. With the assumption that the image is constant and the luminance change uniformly adds the same intensity to each pixel per measurement the problem can be modeled.\\[0.1in]
@@ -353,7 +352,7 @@ where $c_i$ is the uniform intensity change coefficient for measurement $i$. Thi
 
 where $\mathbf{c}$ is the intensity change vector.\\[0.1in]
 
-The goal is now to remove the intensity change vector from signal $\mathbf{y}$. Using the knowledge that the signal $\mathbf{y}$ should be stationary and assumes that the change in intensity has a much lower frequency than the intensity change between individual measurement matrices, then $\mathbf{c}$ can be approximated by the moving average and simply removed from signal $\mathbf{y}$. The moving average is calculated at each data point in the signal vector $y$ by calculating the average of $k$ points centered around the data point.    
+The goal is now to remove the intensity change vector from signal $\mathbf{y}$. Using the knowledge that the signal $\mathbf{y}$ should be stationary and assumes that the rate of change in intensity has a much lower frequency than the intensity change between individual measurement matrices, then $\mathbf{c}$ can be approximated by the moving average and simply removed from signal $\mathbf{y}$. The moving average is calculated at each data point in the signal vector $\mathbf{y}$ by calculating the average of $k$ points centered around the data point.    
 		 
 		 
 %\subsubsection{Dynamics in scene: structure movement}
@@ -365,19 +364,19 @@ The goal is now to remove the intensity change vector from signal $\mathbf{y}$. 
 Reconstruction is performed using the TVAL3 algorithm described in section~\ref{sec:TV}. The algorithm takes in measurement matrix $\mathbf{\Phi}$, signal $\mathbf{y}$ and algorithm settings as arguments and outputs the reconstructed image. The setting used throughout all experments is:
 
 \begin{itemize}
-\item \textit{opts.mu} $= 2^9$
-\item \textit{opts.beta} $= 2^6$
+\item \textit{opts.mu} $= 2024$
+\item \textit{opts.beta} $= 64$
 \item \textit{opts.maxcnt} $= 10$
+\item \textit{opts.maxit} $= 1000$
 \item \textit{opts.tol\_inn} $= 10^{-5}$
 \item \textit{opts.tol} $= 10^{-10}$ 
-\item \textit{opts.maxit} $= 1000$
 \item \textit{opts.mu0} $= 2^4$ 
 \item \textit{opts.beta0} $= 2^0$
 \item \textit{opts.nonneg} $=$ true 
 \item \textit{opts.isreal} $=$ true	
 \end{itemize} 
 
-Which solves for a real non negative solution. 
+Which solves for a real non negative solution described in section~\ref{sec:TV}. 
 
 
 \subsubsection{Image processing}
