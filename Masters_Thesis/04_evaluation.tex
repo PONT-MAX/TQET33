@@ -119,7 +119,10 @@ As seen in figure~\ref{fig:noisy} the reconstructed image quality increases with
 A second observation is that, when the noise increases the  reconstructed image quality is not improved at the same rate as the noiseless case when increasing the sub sampling ratio, meaning that a bad signal can not be salvaged by more measurements.  
 
 \subsubsection{Reconstruction performance using no reference quality assessment}
-In this sub section the same reconstructed image set from section~\ref{sec:reconstruction_performance} is used to calculate the no reference image quality with the BRISQUE algorithm. 
+In this sub section the same reconstructed image set from section~\ref{sec:reconstruction_performance} is used to calculate the no reference image quality with the BRISQUE algorithm. This is the same algorithm which will be used to evaluate the results from the SPC therefore this experiments will yield a benchmark on how good results that can be obtained given the measurement matrix and reconstruction algorithm.\\[0.1in] 
+
+The results displayed in the graph in figure~\ref{fig:Brisque_3d} shows the same trend as the results from the previous section, less noise and more samples yields better performance in the reconstruction. The figure also contain the mean results from the original SWIR images as the flat blue surface, which has scored a far superior score then the reconstructed images.  
+  
 
 \begin{figure}[H]
     \centering
@@ -127,6 +130,8 @@ In this sub section the same reconstructed image set from section~\ref{sec:recon
     \caption{BRISQUE result depending on number of measurements and simulated noise level. Lower surface is reference image score.}
     \label{fig:Brisque_3d}
 \end{figure}
+
+In figure~\ref{fig:Brisque_2d} the result has been flatten to a 2D graph with fewer selected data points for clarity. Even in the noiseless case the score will not be better then approximately 40 for the reconstructed images while the SWIR images has a mean value of 15. The conclusion from this result is that, with the current measurement matrix and reconstruction method around 40 in BRISQUE score is what to expect as optimum given that the SPC will induce noise to the signal.   
 
 \begin{figure}[H]
     \centering
