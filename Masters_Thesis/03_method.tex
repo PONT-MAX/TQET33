@@ -400,9 +400,15 @@ With a reference image available two image quality assessments are performed on 
     \text{PSNR}[f(x,y),g(x,y)] = 10 log_{10}\frac{E^2}{\text{MSE}[f(x,y),g(x,y)]}
 \end{equation}
  
-where, $f(x,y)$ and $g(x,y)$ is intensity in pixel $(x,y)$...
+where, $f(x,y)$ and $g(x,y)$ is intensity in pixel $(x,y)$ and MSE is the mean square error between the images defined as
+
+\begin{equation}
+\text{MSE}[f(x,y),g(x,y)] = \frac{1}{mn}\sum_{x=0}^{y-1}\sum_{n=0}^{n-1}[f(x,y) - g(x,y)]^2.
+\end{equation}
+ 
  
 
+\pagebreak
 \todo[inline]{Large syntetic test of SWIR images, Whar result can be expected}
 
 \todo[inline]{Synthetic test of the methods presented in section~\ref{sec:signal_process} will be conducted to measure the performance and validity.}

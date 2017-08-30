@@ -11,9 +11,74 @@ In this section the results produces was simulated by using the reconstructing a
 
 \subsubsection{Reconstruction performance using reference image}
 \label{sec:reconstruction_performance}
-In these simulation XX images captured by a state of the art SWIR camera was reconstructed, the performance of the reconstruction was calculated using PSNR and SSIM. Different degree of noise was added to the signal vector to simulate noise from the SPC where the largest added noise could not reconstruct the image at all. The test also simulates different under sampling ratios $\frac{M}{N}$ ranging from 5\% to 30\%. 
+In these simulation 21 images captured with a state of the art SWIR camera was reconstructed, the performance of the reconstruction was calculated using PSNR and SSIM. Different degree of noise was added to the signal vector to simulate noise from the SPC where the largest added noise could not reconstruct the image. The test also simulates different under sampling ratios $\frac{M}{N}$ ranging from 5\% to 30\%. 
 
-\todo[inline]{Add pictures of the simulated result}
+White gaussian noise with standard deviation $\sigma$ ranging from $0-0.2$ was added to the normalized measurement vector. The limit of $0.2$ standard deviation was set where the most reconstructed images was to degenerate 
+
+\begin{figure}[H]
+\raggedright
+\begin{minipage}[h]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/noisy/1.png}
+    \subcaption{Refrence image}
+    \label{fig:noise_ref}
+\end{minipage}\linebreak
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/noisy/1_5_20.png}
+    \subcaption{$\frac{M}{N} = 5\% \text{, } \sigma = 0.2$}
+    \label{fig:noise_5_20}
+    \includegraphics[width = \textwidth]{result/noisy/1_5_12.png}
+    \subcaption{$\frac{M}{N} = 5\% \text{, } \sigma = 0.12$}
+    \label{fig:noise_5_12}
+        \includegraphics[width = \textwidth]{result/noisy/1_5_6.png}
+    \subcaption{$\frac{M}{N} = 5\% \text{, } \sigma = 0.06$}
+    \label{fig:noise_5_12}
+    \includegraphics[width = \textwidth]{result/noisy/1_5_0.png}
+    \subcaption{$\frac{M}{N} = 5\%$}
+    \label{fig:noise_5_12}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/noisy/1_15_20.png}
+    \subcaption{$\frac{M}{N} = 15\% \text{, } \sigma = 0.2$}
+    \label{fig:noise_15_20}
+    \includegraphics[width = \textwidth]{result/noisy/1_15_12.png}
+    \subcaption{$\frac{M}{N} = 15\% \text{, } \sigma = 0.12$}
+    \label{fig:noise_15_12}
+    \includegraphics[width = \textwidth]{result/noisy/1_15_6.png}
+    \subcaption{$\frac{M}{N} = 15\% \text{, } \sigma = 0.06$}
+    \label{fig:noise_15_6}
+    \includegraphics[width = \textwidth]{result/noisy/1_15_0.png}
+    \subcaption{$\frac{M}{N} = 15\%$}
+    \label{fig:noise_15_0}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/noisy/1_20_20.png}
+    \subcaption{$\frac{M}{N} = 20\% \text{, } \sigma = 0.2$}
+    \label{fig:noise_20_20}
+    \includegraphics[width = \textwidth]{result/noisy/1_20_12.png}
+    \subcaption{$\frac{M}{N} = 20\% \text{, } \sigma = 0.12$}
+    \label{fig:noise_20_12}
+    \includegraphics[width = \textwidth]{result/noisy/1_20_6.png}
+    \subcaption{$\frac{M}{N} = 20\% \text{, } \sigma = 0.06$}
+    \label{fig:noise_20_6}
+    \includegraphics[width = \textwidth]{result/noisy/1_20_0.png}
+    \subcaption{$\frac{M}{N} = 20\%$}
+    \label{fig:noise_20_0}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/noisy/1_30_20.png}
+    \subcaption{$\frac{M}{N} = 30\% \text{, } \sigma = 0.2$}
+    \label{fig:noise_30_20}
+    \includegraphics[width = \textwidth]{result/noisy/1_30_12.png}
+    \subcaption{$\frac{M}{N} = 30\% \text{, } \sigma = 0.12$}
+    \label{fig:noise_30_12}
+    \includegraphics[width = \textwidth]{result/noisy/1_30_6.png}
+    \subcaption{$\frac{M}{N} = 30\% \text{, } \sigma = 0.06$}
+    \label{fig:noise_30_6}
+    \includegraphics[width = \textwidth]{result/noisy/1_30_0.png}
+    \subcaption{$\frac{M}{N} = 30\%$}
+    \label{fig:noise_30_0}
+\end{minipage}
+\end{figure}
 
 \begin{figure}[H]
     \centering
