@@ -11,11 +11,29 @@ In this section the results produces was simulated by using the reconstructing a
 
 \subsubsection{Reconstruction performance using reference image}
 \label{sec:reconstruction_performance}
-In these simulation 21 images captured with a state of the art SWIR camera was reconstructed, the performance of the reconstruction was calculated using PSNR and SSIM. Different degree of noise was added to the signal vector to simulate noise from the SPC where the largest added noise could not reconstruct the image. The test also simulates different under sampling ratios $\frac{M}{N}$ ranging from 5\% to 30\%. 
+In these simulation 21 images captured with a state of the art SWIR camera was reconstructed. The performance of the reconstruction was calculated using PSNR and SSIM for different degree of noise and sub sampling ratios.\\[0.1in]
 
-White gaussian noise with standard deviation $\sigma$ ranging from $0-0.2$ was added to the normalized measurement vector. The limit of $0.2$ standard deviation was set where the most reconstructed images was to degenerate 
+To reconstruct the images first the measurement vector was created by calculating the inner product between the measurement matrix ${\mathbf{\Phi}}$ and SWIR image $\mathbf{x}$,
 
+\begin{equation}
+\mathbf{y}_{IDEAL} = \mathbf{\Phi}\mathbf{x},
+\end{equation}  
+
+where $\mathbf{y}_{IDEAL}$ is an ideal measurement vector given $\mathbf{\Phi} \text{ and } \mathbf{x}$. In the next step white Gaussian noise was added to the normalized measurement signal. The added noise represent a simple model of the noise perturbating the signal in the SPC.
+
+\begin{equation}
+\mathbf{y}_R = \mathbf{y}_{IDEAL\_NORMALIZED} + \epsilon,
+\end{equation}
+
+where $\mathbf{y}_R$ is the measurement vector used when reconstructing the image and the white Gaussian noise $\epsilon$ added was scaled with the standard deviation $\sigma$ between $0 - 0.2$. \\[0.1in] 
+
+To create the graphs in figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d} this procedure was applied to all 21 images for sub sampling ratio 5\% to 30\% and added noise with standard deviation between $0 - 0.2$. The standard deviation is not increased above $0.2$ because the reconstruction fails at that point. In figure~\ref{fig:noisy} a sample of reconstructed image from one of the SWIR images is presented with different amount of noise and sub sampling ratios.
+
+
+
+\todo[]{Describe how the graphs was created}
 \begin{figure}[H]
+\vspace*{-0.5cm}
 \raggedright
 \begin{minipage}[h]{0.245\textwidth}
     \includegraphics[width=1\textwidth]{result/noisy/1.png}
@@ -78,6 +96,8 @@ White gaussian noise with standard deviation $\sigma$ ranging from $0-0.2$ was a
     \subcaption{$\frac{M}{N} = 30\%$}
     \label{fig:noise_30_0}
 \end{minipage}
+	\caption{Example of reconstructed images with added noise at different sub sampling ratios.}
+	\label{fig:noisy}
 \end{figure}
 
 \begin{figure}[H]
@@ -86,7 +106,6 @@ White gaussian noise with standard deviation $\sigma$ ranging from $0-0.2$ was a
     \caption{Peak SNR result depending on number of measurements and simulated noise level.}
     \label{fig:psnr_3d}
 \end{figure}
-\todo[inline]{Change to dB}
 
 \begin{figure}[H]
     \centering
