@@ -100,6 +100,8 @@ To create the graphs in figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d} this proc
 	\label{fig:noisy}
 \end{figure}
 
+As seen in figure~\ref{fig:noisy} the reconstructed image quality increases with more measurements and lower noise levels. This observation is confirmed in the graphs i figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d} where PSNR and SSIM respectively has been calculated for all 21 reconstructed images and interpolated. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7\linewidth]{result/synt_sss/PSNR_fit.eps}
@@ -114,10 +116,10 @@ To create the graphs in figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d} this proc
     \label{fig:ssim_3d}
 \end{figure}
 
-In figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d} the reconstruction performance is presented in PSNR and SSIM score respectively. The reconstitution performance is increased when the under sampling ratio is increased and when the noise is decreased.  
+A second observation is that, when the noise increases the  reconstructed image quality is not improved at the same rate as the noiseless case when increasing the sub sampling ratio, meaning that a bad signal can not be salvaged by more measurements.  
 
 \subsubsection{Reconstruction performance using no reference quality assessment}
-BRISQUE lower score is better.
+In this sub section the same reconstructed image set from section~\ref{sec:reconstruction_performance} is used to calculate the no reference image quality with the BRISQUE algorithm. 
 
 \begin{figure}[H]
     \centering
@@ -132,7 +134,6 @@ BRISQUE lower score is better.
     \caption{BRISQUE result depending on number of measurements for different simulated noise levels.}
     \label{fig:Brisque_2d}
 \end{figure}
-\todo[inline]{Add "optimal performance into the graph"}
 
 
 
