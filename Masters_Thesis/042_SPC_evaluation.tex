@@ -128,31 +128,58 @@
 \todo[inline]{Todo: Skapa rekonstruerade bilder från homagraphin och jämnför de rekonstruerade med referensbilden}
 This evaluation is designed to confirm that the images reconstructed by the SPC follows the same characteristics as the reconstruction of the synthetic data.
 
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{result/homo/Hom_im.eps}
+\begin{minipage}[h]{0.3\textwidth}
+	\vspace*{1cm}
+    \includegraphics[width=1\textwidth]{result/hom/im_ref.png}
+    \subcaption{Refrence image}
+    \label{fig:hom_ref}
+\end{minipage}
+\begin{minipage}[t]{0.22\textwidth}
+    \includegraphics[width = \textwidth]{result/hom/im_m5.png}
+    \subcaption{5\%}
+    \label{fig:hom_5}
+    \includegraphics[width = \textwidth]{result/hom/im_m20.png}
+    \subcaption{20\%}
+    \label{fig:hom_20}
+\end{minipage}
+\begin{minipage}[t]{0.22\textwidth}
+    \includegraphics[width = \textwidth]{result/hom/im_m10.png}
+    \subcaption{10\%}
+    \label{fig:hom_10}
+    \includegraphics[width = \textwidth]{result/hom/im_m25.png}
+    \subcaption{25\%}
+    \label{fig:hom_25}
+\end{minipage}
+\begin{minipage}[t]{0.22\textwidth}
+    \includegraphics[width = \textwidth]{result/hom/im_m15.png}
+    \subcaption{15\%}
+    \label{fig:hom_15}
+    \includegraphics[width = \textwidth]{result/hom/im_m30.png}
+    \subcaption{30\%}
+    \label{fig:hom_30}
+\end{minipage}
+
     \caption{The reconstructed images with different number of measurements and the reference image transformed to fit the SPC images using homography.}
     \label{fig:hom_over_im}
 \end{figure}
 
+
 \begin{figure}[H]
     \centering
 \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{result/homo/hom_PSNR.eps}
-    \subcaption{Peak SNR for reconstructed images against reference image.}
+    \includegraphics[width=1\textwidth]{result/homo/PSNR_2.eps}
+    \subcaption{}
     \label{fig:hom_psnr}
 \end{minipage}
 \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width = \textwidth]{result/homo/hom_SNR.eps}
-    \subcaption{SNR for reconstructed images against reference image.}
-    \label{fig:hom_snr}
-\end{minipage}
-\begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{result/homo/hom_SSIM.eps}
-    \subcaption{SSIM score for reconstructed images against reference image.}
+    \includegraphics[width=1\textwidth]{result/homo/SSIM_2.eps}
+    \subcaption{}
     \label{fig:hom_ssim}
 \end{minipage}
-    \caption{Signal quality of SPC images compared to reference image}
+    \caption{Signal quality of SPC images compared to reference image. (a) Peak SNR for reconstructed images against reference image. (b) SSIM score for reconstructed images against reference image.}
     \label{fig:hom_score}
 \end{figure}
 
@@ -162,7 +189,7 @@ Using the no reference quality assessment measurement BRISQUE to evaluate the SP
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7\linewidth]{result/SPC_NRQA/plot.eps}
+    \includegraphics[width = 0.7\linewidth]{result/SPC_NRQA/brisque_spc.eps}
     \caption{BRISQUE result.}
     \label{fig:brisque_plot}
 \end{figure}
@@ -189,9 +216,9 @@ Using the no reference quality assessment measurement BRISQUE to evaluate the SP
 \end{figure}
 
 \begin{itemize}
-    \item Good images are:
-    \item Medium good images are:
-    \item Bad images are:
+    \item Good images are: Strong light, No movement in the image
+    \item Medium good images are: Good light, Movement, Brisque bad?
+    \item Bad images are: Can have bad light, movement 
 \end{itemize}
 
 
@@ -211,42 +238,45 @@ The MTF from the SPC is compared to a state of the art SWIR camera. Two scenes w
     \label{fig:mtf_target}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/swir2.png}
+    \subcaption{}
+    \label{fig:mtf_s2}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/spc2.png}
+    \subcaption{}
+    \label{fig:mtf_spc2}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/swir1.png}
+    \subcaption{}
+    \label{fig:mtf_s1}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/spc1.png}
+    \subcaption{}
+    \label{fig:mtf_spc1}
+\end{minipage}
+    \caption{SPC and state of the art SWIR camera output images.}
+    \label{fig:target_im}
+\end{figure}
+
 In the resulting images MTF measurements was performed on the specified edges to gather a mean and standard deviation for each camera. For the SPC, images reconstructed from 5\% to 30\% was tested in order to see if the number of measurements effected the MTF result. In figure~\ref{fig:mtf_target_im} the images from the SWIR camera and SPC are presented.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{result/mtf/Target_im.eps}
-    \caption{SPC and state of the art SWIR camera output images. (OBS! Bilder från Raptorn ska läggas till)}
-    \label{fig:mtf_target_im}
-\end{figure}
 
 
-\subsection{MTF}
+\todo[inline]{Light source 135W from 2m. Image on the board}
 
 
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{result/mtf/mtf30.eps}
-    \subcaption{MTF30 result.}
-    \label{fig:mtf30}
-\end{minipage}
-\begin{minipage}{0.49\textwidth}
-    \includegraphics[width = \textwidth]{result/mtf/mtf50.eps}
-    \subcaption{MTF50 result.}
-    \label{fig:i2}
-\end{minipage}
-    \caption{MTF results. (OBS! inte rätt figurer)}
-    \label{fig:mtf50}
-\end{figure}
-
-\subsection{Edge response}
 The edge response is measured in the distance (pixels) required for the edge to rise from $10\%$ to $90\%$. In figure~\ref{fig:rise} the result from the experiment in presented. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{result/mtf/10-90_rise.eps}
-    \caption{10-90\% rise in pixels. (OBS! inte rätt figur)}
+    \includegraphics[width=0.7\linewidth]{result/mtf/Rise10_90.eps}
+    \caption{10-90\% rise in pixels.}
     \label{fig:rise}
 \end{figure}
 
