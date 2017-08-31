@@ -138,73 +138,54 @@ Obviously in this context the samples with movement is very easy to spot and the
 
 %%%%%%%%%%%% Third %%%%%%%%%%%%%%%
 
-The third scenario i luminance change in the scene caused by clouds occludes the sun or the light intensity from the lights is not constant. This scenario is modeled by adding or subtracting the global intensity in the image over the measurements. 
+The third scenario i luminance change in the scene which is caused by inconsistency of light intensity from the source. Outdoors this means that the light intensity from the sun will vary over time, the most obvious being clouds occluding the sun but even change in air density can change the intensity. This scenario is modeled by adding or subtracting the global intensity in the image over the measurements. 
+
+\begin{figure}[H]
+    \includegraphics[width=0.6\textwidth]{result/dynamic/lum/intense_change1.eps}
+    \subcaption{Signal.}
+    \label{fig:lum_sig_1}
+\end{figure}
+
+As seen in figure~\ref{fig:lum_sig_1} the DC level of the signal will slowly change but the stricture of the signal stay the same. In figure~\ref{fig:lum_dyn} the reconstructed images from the perturbed signal and the reference signal is displayed. The reconstructed image from the dynamic signal has gained a lot of global noise even though the structure in the image has not been changed over the measurements.  
+
 
 \begin{figure}[H]
     \centering
-\begin{minipage}[t]{0.245\textwidth}
+\begin{minipage}[t]{0.32\textwidth}
     \includegraphics[width=1\textwidth]{result/dynamic/lum/intense_change_org.png}
-    \subcaption{Original reference image}
+    \subcaption{}
     \label{fig:lum_1}
 \end{minipage}
-\begin{minipage}[t]{0.245\textwidth}
+\begin{minipage}[t]{0.32\textwidth}
     \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change.png}
-    \subcaption{Reconstructed $30\%$ image from reference image without movement}
+    \subcaption{}
     \label{fig:lum_2}
 \end{minipage}
-\begin{minipage}[t]{0.245\textwidth}
+\begin{minipage}[t]{0.32\textwidth}
     \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png}
-    \subcaption{Reconstructed $30\%$ image with global luminance change}
+    \subcaption{}
     \label{fig:lum_3}
 \end{minipage}
-\begin{minipage}[t]{0.245\textwidth}
-    \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png}
-    \subcaption{Reconstructed $30\%$ image with mean subtraction}
-    \label{fig:lum_4}
-\end{minipage}
-    \caption{Global luminance change in scene.}
+    \caption{The result of global light intensity change on a reconstructed image sub sampled at 30\% (a) Original reference image. (b) Reference image reconstructed from the original image without light intensity change. (c) Reconstructed image from a scene with global light intensity change over the measurements.}
     \label{fig:lum_dyn}
 \end{figure}
 
-
-The difference between figure~\ref{fig:lum_2} and \ref{fig:lum_3} is visible with the naked eye, A global noise arises in the image, but as seen in figure~\ref{fig:lum_4} the effect can be suppressed explained under figure~\ref{fig:lum_sig}. In table~\ref{tab:fly_dyn}...
-
-
-\begin{table}[H]
-    \centering
-  \begin{tabular}{ | l | l | l | l |}
-    \hline
-     & Peak SNR & SNR & SSIM \\ \hline
-    Perturbed signal & 19 & 14 & 38 \\ \hline
-    Mean subtracted signal & 33 & 29 & 93 \\
-    \hline
-  \end{tabular}
-      \caption{Effects comparing non perturbed reconstructed image against reconstructed image with global luminance change}
-    \label{tab:lum_dyn}
-\end{table}
-
-
-Commenting the result from the table... In figure~\ref{fig:lum_sig} the effects of global luminance is shown plotted against the non perturbed signal.\\[0.1in]
+In section~\ref{sec:Dynamics_in_scene} a model of this problem was proposed with a algorithm to suppress the impact of global luminance change. The algorithm is applied to this experiment to evaluate its performance. The moving average subtraction method is applied and in figure~\ref{fig:lum_sig_2} the resulting signal is plotted over the dynamic signal, the improved signal is stationary again. In figure~\ref{fig:lum_sig_3} and \ref{fig:lum_sig_4} where the processed signal is plotted over the reference signal it can be seen that the processed signal has gained its original structure and almost fit exactly to the original.
 
 
 \begin{figure}[H]
     \centering
-\begin{minipage}[t]{0.55\textwidth}
-    \includegraphics[width=1\textwidth]{result/dynamic/lum/intense_change1.eps}
-    \subcaption{Signal.}
-    \label{fig:lum_sig_1}
-\end{minipage}
-\begin{minipage}[t]{0.44\textwidth}
+\begin{minipage}[t]{0.48\textwidth}
     \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_sp.eps}
     \subcaption{Zoomed in view of the signal.}
     \label{fig:lum_sig_2}
 \end{minipage}
-\begin{minipage}[t]{0.495\textwidth}
+\begin{minipage}[t]{0.51\textwidth}
     \includegraphics[width=1\textwidth]{result/dynamic/lum/intense_change_sp_ref1.eps}
     \subcaption{Signal.}
     \label{fig:lum_sig_3}
 \end{minipage}
-\begin{minipage}[t]{0.495\textwidth}
+\begin{minipage}[t]{0.50\textwidth}
     \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_sp_ref_win.eps}
     \subcaption{Zoomed in view of the signal.}
     \label{fig:lum_sig_4}
@@ -213,10 +194,46 @@ Commenting the result from the table... In figure~\ref{fig:lum_sig} the effects 
     \label{fig:lum_sig}
 \end{figure}
 
-\begin{itemize}
-    \item Dynamic signal v. Reference signal
-    \item Dynamic signal v. Mean subtracted signal
-    \item Reference signal v. Mean subtracted signal
-    \item Comment on the window, pretty good.
-    \item Can be detected with the knowledge that the signal should be stationary. Signal process the signal to look like a stationary signal.
-\end{itemize}
+In figure~\ref{fig:lum_rec} the processed signals reconstructed image is displayed between the reference and perturbed signals reconstructed images. The signal processing improve the reconstruction significantly, the image has gained some noise compared to the reference image but over all there is not much difference between them.
+
+
+\begin{figure}[H]
+    \centering
+\begin{minipage}[t]{0.32\textwidth}
+    \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change.png}
+    \subcaption{}
+    \label{fig:lum_22}
+\end{minipage}
+\begin{minipage}[t]{0.32\textwidth}
+    \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_movemean_psnr_33_snr_29_sssim_93.png}
+    \subcaption{}
+    \label{fig:lum_4}
+\end{minipage}
+\begin{minipage}[t]{0.32\textwidth}
+    \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_psnr_19_snr_14_sssim_38.png}
+    \subcaption{}
+    \label{fig:lum_32}
+\end{minipage}
+    \caption{The result of processed signal perturbed by light intensity change on a reconstructed image sub sampled at 30\% (a) Reference image reconstructed from the non perturbed signal without light intensity change. (b) Reconstructed image from a scene with global light intensity change over the measurements signal processed. (c)Reconstructed image from a scene with global light intensity change over the measurements.}
+    \label{fig:lum_rec}
+\end{figure}
+
+In table~\ref{tab:lum_dyn} the results from calculating PSNR and SSIM between the reconstructed images is presented. The effect on the perturbed signal i worse than scenes containing movement meaning that this problem can cause very bad reconstruction performance for natural images, but the algorithm handle the problem well which can be seen in PSNR, SSIM and the reconstructed image.  
+
+
+\begin{table}[H]
+    \centering
+  \begin{tabular}{ | l | l | l |}
+    \hline
+     & Peak SNR  & SSIM \\ \hline
+    Perturbed signal & 19  & 38 \\ \hline
+    Mean subtracted signal & 33  & 93 \\
+    \hline
+  \end{tabular}
+      \caption{Effects comparing non perturbed reconstructed image against global luminance change pertubated reconstructed image and mean subtracted signal reconstructed image.}
+    \label{tab:lum_dyn}
+\end{table}
+
+
+
+

@@ -2,6 +2,52 @@
 
 \subsection{SPC evaluation}
 \label{sec:eval_spc}
+The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using the using a range of methods to examine the performance of the SPC. In this section the BRISQUE algorithm will be used again where connections to the previous result is drawn, a reconstructed image will be compared to an ideal image using homography, a set of images is presented reconstructed at different subsampling ratios, a edge response analysis i performed and the correlation between reconstruction performance and noise is conducted. 
+
+
+
+\subsubsection{Image quality using no reference quality assessment}
+In this section the blind quality assessment tool BRISQUE will be used to score the reconstructed images from the SPC. The same algorithm was used on the simulated data where a benchmark was set as a theoretical limit to the reconstructed images.\\[0.1in]     
+
+Each image is evaluated at subsampling rate from $5\%$ to $30\%$ where the result is presented in figure~\ref{fig:brisque_plot}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\linewidth]{result/SPC_NRQA/brisque_spc.eps}
+    \caption{BRISQUE score for images reconstructed from the SPC with subsampling ratios from $5\%$ to $30\%$. Each line represent one image and is classified with different colors representing start score at smallest subsampling ratio and general trend when subsampling ratio is increased.}
+    \label{fig:brisque_plot}
+\end{figure}
+
+
+As seen in figure~\ref{fig:brisque_plot} each image as been plotted separately, this is because the high variance in the scores and the distinct different trends in the score. Furthermore the images has been classified into three different classes 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/good.eps}
+    \caption{Example of 'good' images corresponding to the green lines in figure~\ref{fig:brisque_plot}.}
+    \label{fig:good_plot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/half.eps}
+    \caption{Example of 'medium good' images corresponding to the yellow lines in figure~\ref{fig:brisque_plot}.}
+    \label{fig:half_plot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/bad.eps}
+    \caption{Example of 'bad' images corresponding to the red lines in figure~\ref{fig:brisque_plot}.}
+    \label{fig:bad_plot}
+\end{figure}
+
+\begin{itemize}
+    \item Good images are: Strong light, No movement in the image
+    \item Medium good images are: Good light, Movement, Brisque bad?
+    \item Bad images are: Can have bad light, movement 
+\end{itemize}
 
 \subsubsection{Number of measurements}
 \begin{figure}[H]
@@ -184,42 +230,7 @@ This evaluation is designed to confirm that the images reconstructed by the SPC 
 \end{figure}
 
 
-\subsubsection{No reference quality assessment}
-Using the no reference quality assessment measurement BRISQUE to evaluate the SPC images. Each image is evaluated at reconstruction rate $5\%$ to $30\%$.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.7\linewidth]{result/SPC_NRQA/brisque_spc.eps}
-    \caption{BRISQUE result.}
-    \label{fig:brisque_plot}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/good.eps}
-    \caption{Example of 'good' images corresponding to the green lines in figure~\ref{fig:brisque_plot}.}
-    \label{fig:good_plot}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/half.eps}
-    \caption{Example of 'medium good' images corresponding to the yellow lines in figure~\ref{fig:brisque_plot}.}
-    \label{fig:half_plot}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/bad.eps}
-    \caption{Example of 'bad' images corresponding to the red lines in figure~\ref{fig:brisque_plot}.}
-    \label{fig:bad_plot}
-\end{figure}
-
-\begin{itemize}
-    \item Good images are: Strong light, No movement in the image
-    \item Medium good images are: Good light, Movement, Brisque bad?
-    \item Bad images are: Can have bad light, movement 
-\end{itemize}
 
 
 \subsubsection{Modulation Transfer Function}
@@ -280,4 +291,9 @@ The edge response is measured in the distance (pixels) required for the edge to 
     \label{fig:rise}
 \end{figure}
 
+
+\subsection{Luminance change in scene}
+As predicted in section~\ref{sec:Dynamics_in_scene} dynamics in the scene could result in poor reconstruction performance.  
+
 \subsection{Noise analysis}
+Volt to variance

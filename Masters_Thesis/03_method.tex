@@ -321,6 +321,7 @@ The next step is to determine one value for each measurement. This is done in tw
 
 
 \subsubsection{Dynamics in scene} %: luminance change}
+\label{sec:Dynamics_in_scene}
 So far the measurement vector $\mathbf{y}$ has been determined, in the ideal case even with added noise the measured signal should be stationary because the image is assumed to be constant with half the pixels measured at random uniformed spread across the image. Each pixel in the image has the same value in each measurement with some noise added which is divided by all pixels being measured	 i.e. half the pixels which does not have a significant impact of the reconstructed image. But when capturing images outdoors with natural light in addition with long exposure time as described in section~\ref{sec:stream_dmd} it is not certain that the image (or every pixel) is constant over the exposure time which will reduce reconstruction performance because of the ambiguity of each pixel. The potential dynamics in a scene can be divided into two categories: luminance change and object movement. In this subsection the luminance change problem is modeled with corresponding algorithm to suppress the impact on the reconstructed image. The object movement problem will not be modeled, instead be avoided when capturing the signal by making sure the scene is as static as possible.\\[0.1in] 
 
 
