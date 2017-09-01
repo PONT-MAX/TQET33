@@ -295,5 +295,29 @@ The edge response is measured in the distance (pixels) required for the edge to 
 \subsection{Luminance change in scene}
 As predicted in section~\ref{sec:Dynamics_in_scene} dynamics in the scene could result in poor reconstruction performance.  
 
+\begin{figure}[H]
+\includegraphics[width = 0.7\linewidth]{result/luminance/li.eps}
+	\caption{Sampled signal from SPC with light intensity change and the improved moving mean processed signal.}
+	\label{fig:lc_plot}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{minipage}[t]{0.49\textwidth}
+\includegraphics[width = 1\linewidth]{result/luminance/24_512_m30.PNG}
+	\subcaption{}
+	\label{lc_bf}
+\end{minipage}
+\begin{minipage}[t]{0.49\textwidth}
+\includegraphics[width = 1\linewidth]{gfx/car/car_m30.png}
+	\subcaption{}
+	\label{lc_af}
+\end{minipage}
+	\caption{Reconstructed images before and after applying moving mean average.}
+	\label{fig:lc_image}
+\end{figure}
+
+
+
 \subsection{Noise analysis}
 Volt to variance
