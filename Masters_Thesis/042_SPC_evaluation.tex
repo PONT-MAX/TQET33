@@ -19,35 +19,113 @@ Each image is evaluated at subsampling rate from $5\%$ to $30\%$ where the resul
 \end{figure}
 
 
-As seen in figure~\ref{fig:brisque_plot} each image as been plotted separately, this is because the high variance in the scores and the distinct different trends in the score. Furthermore the images has been classified into three different classes 
+As seen in figure~\ref{fig:brisque_plot} each image as been plotted separately, this is because the high variance in the scores and the distinct different trends in the score. Furthermore the images has been classified into three different classes depending on the initial score at 5\% subsampling and the trend when increasing the subsampling ratio. The classes has been color coded where:
+
+\begin{itemize}
+\item Red means bad score from the first subsampling ratio and a trend line where the score gets worse with more samples.
+\item Yellow represent good initial score but the trend line indicates worse image quality when subsampling ratio is increased.
+\item Green represent both good initial score and better or stationary score when subsampling ratio is increased. 
+\end{itemize}
+
+In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are presented from each class with subsampling ratio 30\%. 
+
+
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/good.eps}
-    \caption{Example of 'good' images corresponding to the green lines in figure~\ref{fig:brisque_plot}.}
-    \label{fig:good_plot}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/SPC_NRQA/g64_512_m30.PNG}
+    \subcaption{}
+    \label{fig:good1}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/SPC_NRQA/g24_512_m30.PNG}
+    \subcaption{}
+    \label{fig:good2}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/SPC_NRQA/g22_512_m30.PNG}
+    \subcaption{}
+    \label{fig:good3}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/SPC_NRQA/g65_512_m30.PNG}
+    \subcaption{}
+    \label{fig:good4}
+\end{minipage}
+    \caption{Sample of "good" images corresponding to the green lines in figure~\ref{fig:brisque_plot}.
+    (a) and (d) People sitting in the edge of a forest.  (b) Stationary car. (c) Camouflage jackets and a AT-4 anti-tank weapon on the ground.}
+    \label{fig:good}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/half.eps}
-    \caption{Example of 'medium good' images corresponding to the yellow lines in figure~\ref{fig:brisque_plot}.}
-    \label{fig:half_plot}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/SPC_NRQA/h35_512_m30.PNG}
+    \subcaption{}
+    \label{fig:half1}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/SPC_NRQA/h37_512_m30.PNG}
+    \subcaption{}
+    \label{fig:half2}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/SPC_NRQA/h43_512_m30.PNG}
+    \subcaption{}
+    \label{fig:half3}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/SPC_NRQA/h62_512_m30.PNG}
+    \subcaption{}
+    \label{fig:half4}
+\end{minipage}
+    \caption{Sample of "medium good" images corresponding to the yellow lines in figure~\ref{fig:brisque_plot}.
+    (a)  People sitting next to a parking lot. (b) - (d) House facades.}
+    \label{fig:half}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 1\linewidth]{result/SPC_NRQA/bad.eps}
-    \caption{Example of 'bad' images corresponding to the red lines in figure~\ref{fig:brisque_plot}.}
-    \label{fig:bad_plot}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/SPC_NRQA/b20_512_m30.PNG}
+    \subcaption{}
+    \label{fig:bad1}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/SPC_NRQA/b46_512_m30.PNG}
+    \subcaption{}
+    \label{fig:bad2}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width=1\textwidth]{result/SPC_NRQA/b75_512_m30.PNG}
+    \subcaption{}
+    \label{fig:bad3}
+\end{minipage}
+\begin{minipage}[t]{0.245\textwidth}
+    \includegraphics[width = \textwidth]{result/SPC_NRQA/b79_512_m30.PNG}
+    \subcaption{}
+    \label{fig:bad4}
+\end{minipage}
+    \caption{Sample of "bad" images corresponding to the red lines in figure~\ref{fig:brisque_plot}.
+    (a)  House facade. (b) Crane. (c) Mjärdevi Center facade (d) Mjärdevi Center balcony with people having a break.}
+    \label{fig:bad}
 \end{figure}
+
+
+Lets now analyze the images in figure~\ref{fig:good} to \ref{fig:bad} in order to figure out why the BRISQUE score have such high variance and characteristics when increasing the subsampling ratio. The difference between "good" and "half good" images are very subtle, the intensity and visible noise level is a bit more favorable in the "good" images, but as stated in section~\ref{sec:method_eval} the naturalness of the images differ where the "good" images contains more natural shapes and objects. Between the "good"/"half good" and "bad" images there is a more noticeable difference, the images in the "bad" set has more distinct noise and lower over all intensity which most certainly effect the BRISQUE score. Further more some of the "bad" image set had movement when sampled which will definitely increase global noise in the images as concluded in section~\ref{sec:Dynamics_in_scene}.   
+
 
 \begin{itemize}
     \item Good images are: Strong light, No movement in the image
     \item Medium good images are: Good light, Movement, Brisque bad?
     \item Bad images are: Can have bad light, movement 
 \end{itemize}
+
+
+
+\pagebreak
 
 \subsubsection{Number of measurements}
 \begin{figure}[H]
@@ -321,3 +399,5 @@ As predicted in section~\ref{sec:Dynamics_in_scene} dynamics in the scene could 
 
 \subsection{Noise analysis}
 Volt to variance
+
+
