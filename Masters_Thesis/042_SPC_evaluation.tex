@@ -27,6 +27,9 @@ As seen in figure~\ref{fig:brisque_plot} each image as been plotted separately, 
 \item Green represent both good initial score and better or stationary score when subsampling ratio is increased. 
 \end{itemize}
 
+When studying the BRISQUE score plot in figure~\ref{fig:brisque_plot} from the SPC and comparing to the plot of BRISQUE scores from simulated images in figure~\ref{fig:Brisque_2d} some similarities can be found. The first one is that, the best scores from the SPC has the same score as the simulated images with small or no noise added, which means that the SPC can compare to the benchmark set by the simulated images and thus gives theoretical optimal reconstruction given the measurement matrix and reconstruction algorithm. The second similarity is the trend of the "bad" images which has approximately the same score and trend as the simulated images with larger noise added to the sampled signal. In the last part of this subsection the reconstructed images will first be presented an analyzed followed by a noise analysis to conclude if there is a correlation between noise level and BRISQUE score.\\[0.1in] 
+
+
 In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are presented from each class with subsampling ratio 30\%. 
 
 
@@ -114,14 +117,28 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
 \end{figure}
 
 
-Lets now analyze the images in figure~\ref{fig:good} to \ref{fig:bad} in order to figure out why the BRISQUE score have such high variance and characteristics when increasing the subsampling ratio. The difference between "good" and "half good" images are very subtle, the intensity and visible noise level is a bit more favorable in the "good" images, but as stated in section~\ref{sec:method_eval} the naturalness of the images differ where the "good" images contains more natural shapes and objects. Between the "good"/"half good" and "bad" images there is a more noticeable difference, the images in the "bad" set has more distinct noise and lower over all intensity which most certainly effect the BRISQUE score. Further more some of the "bad" image set had movement when sampled which will definitely increase global noise in the images as concluded in section~\ref{sec:Dynamics_in_scene}.   
+Lets analyze the images in figure~\ref{fig:good} to \ref{fig:bad} in order to figure out why the BRISQUE score have such high variance and characteristics when increasing the subsampling ratio. The difference between "good" and "half good" images are very subtle, the intensity and visible noise level is a bit more favorable in the "good" images, but as stated in section~\ref{sec:method_eval} the naturalness of the images differ where the "good" images contains more natural shapes and objects. Between the "good"/"half good" and "bad" images there is a more noticeable difference, the images in the "bad" set has more distinct noise and lower over all intensity which most certainly effect the BRISQUE score. Furthermore some of the "bad" image set had movement when sampled which will definitely increase global noise in the images as concluded in section~\ref{sec:Dynamics_in_scene}.\\[0.1in]
+
+When the images was sampled a correlation between the mean signal strength and reconstruction performance was noticed, this is due to the constant background noise from the SWIR photo diode. In figure~\ref{fig:snr} the mean sampled signal strength was plotted against SNR and signal variance calculated from normalizing the sample signal and background noise.
+ 
+
+\begin{figure}[H]
+    \centering
+\begin{minipage}[t]{0.495\textwidth}
+    \includegraphics[width=1\textwidth]{result/noise/meanV_sigma.eps}
+    \subcaption{}
+    \label{fig:snr_v_sigma}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+    \includegraphics[width = \textwidth]{result/noise/meanV_snr.eps}
+    \subcaption{}
+    \label{fig:snr_v_SNR}
+\end{minipage}
+    \caption{(a) Pertubated signal from local movement on top of reference signal. (b) Zoomed in view of some samples from figure (a).}
+    \label{fig:snr}
+\end{figure}
 
 
-\begin{itemize}
-    \item Good images are: Strong light, No movement in the image
-    \item Medium good images are: Good light, Movement, Brisque bad?
-    \item Bad images are: Can have bad light, movement 
-\end{itemize}
 
 
 
