@@ -19,7 +19,7 @@ Each image is evaluated at subsampling rate from $5\%$ to $30\%$ where the resul
 \end{figure}
 
 
-As seen in figure~\ref{fig:brisque_plot} each image as been plotted separately, this is because the high variance in the scores and the distinct different trends in the score. Furthermore the images has been classified into three different classes depending on the initial score at 5\% subsampling and the trend when increasing the subsampling ratio. The classes has been color coded where:
+As seen in figure~\ref{fig:brisque_plot} each image as been plotted separately, this is because the high variance in the scores and the distinct different trends in the score. Furthermore the images has been classified into three different classes depending on the initial score at 5\% subsampling and the trend when increasing the subsampling ratio\todo{an visually inspecting the images}. The classes has been color coded where:
 
 \begin{itemize}
 \item Red means bad score from the first subsampling ratio and a trend line where the score gets worse with more samples.
@@ -112,7 +112,7 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
     \label{fig:bad4}
 \end{minipage}
     \caption{Sample of "bad" images corresponding to the red lines in figure~\ref{fig:brisque_plot}.
-    (a)  House facade. (b) Crane. (c) Mjärdevi Center facade (d) Mjärdevi Center balcony with people having a break.}
+    (a)  House facade. (b) Crane (Moving clouds in background). (c) Mjärdevi Center facade (Moving clouds reflection in windows). (d) Mjärdevi Center balcony with people having a break (Moving clouds reflection in windows).}
     \label{fig:bad}
 \end{figure}
 
@@ -142,138 +142,137 @@ From the two plots in figure~\ref{fig:snr} there are some conclusions that can b
 
 
 \begin{itemize}
-\item From both plots in figure~\ref{fig:snr} there is a quite distinct threshold where the signals intensity overcomes the noise level to reconstructed "good" images around 1.2 volt. None of the "good"/"half good" images is below this signal intensity but is mixed over the threshold. 
+\item From both plots in figure~\ref{fig:snr} there is a quite distinct threshold where the signals intensity overcomes the noise level to reconstructed "good" images around 1.2 volt. None of the "good"/"half good" images are below this signal intensity but are mixed over the threshold. 
 %The exponential characteristics of the signal to noise ratio given the signal strength means that it should be easy to find a threshold for a given systems background noise.
 
-\item In the plots there is only two signals with higher variance than 0.04 which is the threshold where the the simulated images started to get both worse initial BRISQUE score and worse trend when increasing the subsampling ratio in figure~\ref{fig:Brisque_2d}. This implies that there must be at least one additional factor in play to reduce the image quality in the "bad" set. 
+\item In the plots there are only two signals with higher variance than 0.04 which is the threshold where the the simulated images started to get both worse initial BRISQUE score and worse trend when increasing the subsampling ratio in figure~\ref{fig:Brisque_2d}. This implies that there must be at least one additional factor at play to reduce the image quality in the "bad" set. 
 
-\item 
 
-\item We can see that some red images almoast has the same SNR and mean signal intesity as yellow and greeen images but yelds a worse BRISQUE score anyway.
+\item There are three red images with almost the same SNR and mean signal intensity as yellow and green images but yields a worse BRISQUE score anyway. This strengthening the statement the there is probably at least on more factor that reduces reconstruction performance.
+
+\item The yellow and green images is mixed for all mean signal strengths which implies that the motive in the images effecting the  BRISQUE score. 
+
 \end{itemize}
 
-
+\todo[inline]{End klam}
 
 
 
 \pagebreak
 
 \subsubsection{Number of measurements}
+From the theory of compressive sensing the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image, therefore it is hard to give an exact  subsampling ratio needed. In this context the number of measurements needed refers to 
+
+Using a SPC where noise contaminate the signal and the scene may not be completely stationary will increase the number of measurements needed. 
+
+
 \begin{figure}[H]
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_org.png}
+	\subcaption{Visual camera image.}
 	\label{fig:car_org}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_org.png}
+	\subcaption{}
 	\label{fig:hus_org}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_org.png}
+	\subcaption{}
 	\label{fig:sit_org}
 \end{minipage}
-\end{figure}
-\begin{figure}[H]
-\vspace*{-1.2cm}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m5.png}
+	\subcaption{Subsampling ratio 5\%}
 	\label{fig:car_m5}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m5.png}
+	\subcaption{}
 	\label{fig:hus_m5}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m10.png}
+	\subcaption{}
 	\label{fig:sit_m5}
 \end{minipage}
-\end{figure}
-\begin{figure}[H]
-\vspace*{-1.2cm}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m10.png}
-	%\subcaption{m15}
+	\subcaption{Subsampling ratio 10\%}
 	\label{fig:car_m10}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m10.png}
-	%\subcaption{m10}
+	\subcaption{}
 	\label{fig:hus_m10}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m10.png}
-	%\subcaption{m10}
+	\subcaption{}
 	\label{fig:sit_m10}
 \end{minipage}
 \end{figure}
 \begin{figure}[H]
-\vspace*{-1.2cm}
+\ContinuedFloat
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m15.png}
-	\subcaption{m15}
+	\subcaption{Subsampling ratio 15\%}
 	\label{fig:car_m15}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m15.png}
-	\subcaption{m10}
+	\subcaption{}
 	\label{fig:hus_m15}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m15.png}
-	\subcaption{m10}
+	\subcaption{}
 	\label{fig:sit_m15}
 \end{minipage}
-\end{figure}
-\begin{figure}[H]
-\vspace*{-1.2cm}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m20.png}
-	%\subcaption{m15}
+	\subcaption{Subsampling ratio 20\%}
 	\label{fig:car_m20}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m20.png}
-	%\subcaption{m10}
+	\subcaption{}
 	\label{fig:hus_m20}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m20.png}
-	%\subcaption{m10}
+	\subcaption{}
 	\label{fig:sit_m20}
 \end{minipage}
-\end{figure}
-\begin{figure}[H]
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m25.png}
-	%\subcaption{m15}
+	\subcaption{Subsampling ratio 25\%}
 	\label{fig:car_m25}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m25.png}
-	%\subcaption{m10}
+	\subcaption{}
 	\label{fig:hus_m25}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m25.png}
-	%\subcaption{m20}
+	\subcaption{}
 	\label{fig:sit_m25}
 \end{minipage}
-\end{figure}
-\begin{figure}[H]
-\vspace*{-1.2cm}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m30.png}
-	%\subcaption{m15}
+	\subcaption{Subsampling ratio 30\%}
 	\label{fig:car_m30}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m30.png}
-	%\subcaption{m10}
+	\subcaption{}
 	\label{fig:hus_m30}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m30.png}
-	%\subcaption{m10}
+	\subcaption{}
 	\label{fig:sit_m30}
 \end{minipage}
 	\caption{Images reconstructed using $M/N = 5\% \text{ to } 30\%$ measurements from top down.} 
