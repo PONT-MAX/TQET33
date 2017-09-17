@@ -161,10 +161,36 @@ From the two plots in figure~\ref{fig:snr} there are some conclusions that can b
 \pagebreak
 
 \subsubsection{Number of measurements}
-From the theory of compressive sensing the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image, therefore it is hard to give an exact  subsampling ratio needed. In this context the number of measurements needed refers to 
+From the theory of compressive sensing the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image, therefore it is hard to give a good estimate of a subsampling ratio needed to obtain a desired quality of the reconstruction. In addition, using a SPC where noise contaminate the signal and the scene may not be completely stationary, the number of measurements needed will increase in proportion to the noise and the change in the scene. In this subsection the minimum subsampling ratio will be presented followed by how the reconstructed image quality is effected by an increese of subsampling ratio.\\[0.1in]
 
-Using a SPC where noise contaminate the signal and the scene may not be completely stationary will increase the number of measurements needed. 
 
+The minimum number of measurements to reconstruct a image where the motive can be recognized is also effected by the factors described, trying to reconstruct an image under the minimum subsampling ratio results in an image with just noise. A survey of the minimum subsampling ratio was performed on all images captured by the SPC in this thesis, and the result ranged from 2\% to 4\% to obtain a recognizable images, in figure~\ref{fig:minimum_fig} a sample of three images with varying minimum subsambling ratios is displayed.
+
+
+\begin{figure}[H]
+\begin{minipage}[t]{0.32\linewidth} %Car
+	\includegraphics[width = 1\linewidth]{result/minimum/24_512_m2.PNG}
+	\subcaption{Subsampling ratio 2\%.}
+	\label{fig:minimum_car}
+\end{minipage}
+\begin{minipage}[t]{0.32\linewidth} % Hus
+	\includegraphics[width = 1\linewidth]{result/minimum/37_512_m3.PNG}
+	\subcaption{Subsampling ratio 3\%.}
+	\label{fig:minimum_house}
+\end{minipage}
+\begin{minipage}[t]{0.32\linewidth} %Sit
+	\includegraphics[width = 1\linewidth]{result/minimum/64_512_m3.PNG}
+	\subcaption{Subsampling ratio 3\%.}
+	\label{fig:minimum_forest}
+\end{minipage}
+	\caption{Varying minimum subsampling ratios to reconstruct sample images captured by the SPC.}
+	\label{fig:minimum_fig}
+\end{figure}
+
+In the sample images in figure~\ref{fig:minimum_fig} the minimum subsampling ratio varied between 2\% to 3\%, but as can be seen, this is only the minimum subsampling ratio where the motive is barley recognizable, large structure can be identified but detail is lost. In general a subsampling ratio of 5\% has always succeeded to reconstruct a identifiable image with some fine details, moving along this topic the results from higher subsampling ratios is presented.\\[0.1in]
+
+In figure~\ref{fig:subsampling_ratios} three scenes is reconstructed using different subsample ratios ranging from 5\% to 30\%, for each row the subsampling ratio is increased by 5\% and at the top a reference image from a visual camera is presented. What should be expected is increased image quality with increased subsampling ratio, this result can give an perception of which subsampling ratio is good enough for a given purpose, and as can be seen, the increase of subsampling ratio is not linear proportional to the increase in perceived image quality, just like regular image compression.
+     
 
 \begin{figure}[H]
 \begin{minipage}[t]{0.3\linewidth} %Car
@@ -193,7 +219,7 @@ Using a SPC where noise contaminate the signal and the scene may not be complete
 	\label{fig:hus_m5}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
-	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m10.png}
+	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m5.png}
 	\subcaption{}
 	\label{fig:sit_m5}
 \end{minipage}
@@ -275,8 +301,16 @@ Using a SPC where noise contaminate the signal and the scene may not be complete
 	\subcaption{}
 	\label{fig:sit_m30}
 \end{minipage}
-	\caption{Images reconstructed using $M/N = 5\% \text{ to } 30\%$ measurements from top down.} 
+	\caption{Images reconstructed using subsampling ratios between 5\% to 30\%. Reference image from a starting with 5\% from top down and .} 
+	\label{fig:subsampling_ratios}
 \end{figure}
+
+\begin{itemize}
+\item Redan vid 5\% kan bildens scen uppfattas till skillnad mot minimum där man skulle kunna anta vad som är i bilden men många detaljer är förlorade
+\item Bilderna beter sig som förväntat att kvaliten ökar med ration.
+\item Mellan 10-15\% börjar de finaste detaljenra komma fram så som skivorna i husfasaden, texten på bilen blir skarpare och ansiktena på människorna.
+\item Över 15\% är ökar inte bildkvaliten lika mycket, men förbättrad kvalitet i detaljerna kan ses.
+\end{itemize}
 
 \subsubsection{Soft chessboard}
 \todo[inline]{Todo: Skapa rekonstruerade bilder från homagraphin och jämnför de rekonstruerade med referensbilden}
