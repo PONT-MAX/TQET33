@@ -161,6 +161,7 @@ From the two plots in figure~\ref{fig:snr} there are some conclusions that can b
 \pagebreak
 
 \subsubsection{Number of measurements}
+\label{sec:measurements}
 From the theory of compressive sensing the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image, therefore it is hard to give a good estimate of a subsampling ratio needed to obtain a desired quality of the reconstruction. In addition, using a SPC where noise contaminate the signal and the scene may not be completely stationary, the number of measurements needed will increase in proportion to the noise and the change in the scene. In this subsection the minimum subsampling ratio will be presented followed by how the reconstructed image quality is effected by an increese of subsampling ratio.\\[0.1in]
 
 
@@ -195,126 +196,134 @@ In figure~\ref{fig:subsampling_ratios} three scenes is reconstructed using diffe
 \begin{figure}[H]
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_org.png}
-	\subcaption{Visual camera image.}
+	%\subcaption{Visual camera image.}
 	\label{fig:car_org}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_org.png}
-	\subcaption{}
+	\subcaption{Visual camera image.}
 	\label{fig:hus_org}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_org.png}
-	\subcaption{}
+	%\subcaption{}
 	\label{fig:sit_org}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m5.png}
-	\subcaption{Subsampling ratio 5\%}
+	%\subcaption{Subsampling ratio 5\%}
 	\label{fig:car_m5}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m5.png}
-	\subcaption{}
+	\subcaption{Subsampling ratio 5\%}
 	\label{fig:hus_m5}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m5.png}
-	\subcaption{}
+	%\subcaption{}
 	\label{fig:sit_m5}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m10.png}
-	\subcaption{Subsampling ratio 10\%}
+	%\subcaption{Subsampling ratio 10\%}
 	\label{fig:car_m10}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m10.png}
-	\subcaption{}
+	\subcaption{Subsampling ratio 10\%}
 	\label{fig:hus_m10}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m10.png}
-	\subcaption{}
+	%\subcaption{}
 	\label{fig:sit_m10}
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth} %Car
+	\includegraphics[width = 1\linewidth]{gfx/car/car_m15.png}
+	%\subcaption{Subsampling ratio 15\%}
+	\label{fig:car_m15}
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth} % Hus
+	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m15.png}
+	\subcaption{Subsampling ratio 15\%}
+	\label{fig:hus_m15}
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth} %Sit
+	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m15.png}
+	%\subcaption{}
+	\label{fig:sit_m15}
 \end{minipage}
 \end{figure}
 \begin{figure}[H]
 \ContinuedFloat
 \begin{minipage}[t]{0.3\linewidth} %Car
-	\includegraphics[width = 1\linewidth]{gfx/car/car_m15.png}
-	\subcaption{Subsampling ratio 15\%}
-	\label{fig:car_m15}
-\end{minipage}
-\begin{minipage}[t]{0.3\linewidth} % Hus
-	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m15.png}
-	\subcaption{}
-	\label{fig:hus_m15}
-\end{minipage}
-\begin{minipage}[t]{0.3\linewidth} %Sit
-	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m15.png}
-	\subcaption{}
-	\label{fig:sit_m15}
-\end{minipage}
-\begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m20.png}
-	\subcaption{Subsampling ratio 20\%}
+	%\subcaption{Subsampling ratio 20\%}
 	\label{fig:car_m20}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m20.png}
-	\subcaption{}
+	\subcaption{Subsampling ratio 20\%}
 	\label{fig:hus_m20}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m20.png}
-	\subcaption{}
+	%\subcaption{}
 	\label{fig:sit_m20}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m25.png}
-	\subcaption{Subsampling ratio 25\%}
+	%
 	\label{fig:car_m25}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m25.png}
-	\subcaption{}
+	\subcaption{Subsampling ratio 25\%}
 	\label{fig:hus_m25}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m25.png}
-	\subcaption{}
+	%\subcaption{}
 	\label{fig:sit_m25}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Car
 	\includegraphics[width = 1\linewidth]{gfx/car/car_m30.png}
-	\subcaption{Subsampling ratio 30\%}
+	%\subcaption{Subsampling ratio 30\%}
 	\label{fig:car_m30}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m30.png}
-	\subcaption{}
+	\subcaption{Subsampling ratio 30\%}
 	\label{fig:hus_m30}
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m30.png}
-	\subcaption{}
+	%\subcaption{}
 	\label{fig:sit_m30}
 \end{minipage}
-	\caption{Images reconstructed using subsampling ratios between 5\% to 30\%. Reference image from a starting with 5\% from top down and .} 
 	\label{fig:subsampling_ratios}
+	\caption{Reconstructed images captured by the SPC with increasing subsampling ratios. First row showing a reference visual spectrum image followed by SPC images reconstructed with 5\% from top then increased subsampling ratio by 5\% for each row to 30\% on the last row.} 
 \end{figure}
 
+The are a few thinks that can be noted in the images in figure~\ref{fig:subsampling_ratios}, 
+
 \begin{itemize}
-\item Redan vid 5\% kan bildens scen uppfattas till skillnad mot minimum där man skulle kunna anta vad som är i bilden men många detaljer är förlorade
-\item Bilderna beter sig som förväntat att kvaliten ökar med ration.
-\item Mellan 10-15\% börjar de finaste detaljenra komma fram så som skivorna i husfasaden, texten på bilen blir skarpare och ansiktena på människorna.
-\item Över 15\% är ökar inte bildkvaliten lika mycket, men förbättrad kvalitet i detaljerna kan ses.
+\item the reconstructed images behave as expected, when the subsample ratio increases the image quality increases. 
+
+\item Already at 5\% subsampling ratio the scene can be properly identified unlike the case in minimal subsamples ratio. The images has some artifacts that can be linked to the reconstruction algorithm, the images looks like the made of small patches.
+
+\item Between 10-15\% the finer details start to appear, like the gap between the panels in the facade, the text on the car and door are getting sharper and the structure of the faces start to appear.
+
+\item As stated before, the image quality does not increase at the same rate as the subsampling ratio, this is most noticeable when increasing the subsampling ratio above 15\%. The improvement after 15\% is not as easy to spot as from the increments before, but they can be found in the details. 
 \end{itemize}
 
-\subsubsection{Soft chessboard}
-\todo[inline]{Todo: Skapa rekonstruerade bilder från homagraphin och jämnför de rekonstruerade med referensbilden}
-This evaluation is designed to confirm that the images reconstructed by the SPC follows the same characteristics as the reconstruction of the synthetic data.
+
+
+\subsubsection{Reconstructed SPC image versus optimal image}
+This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image to the images produced by the SPC. One solution to obtain a reference image is to calculate a homography between images. But there are two problems of just performing a homography to obtain a reference image, the fist on is that, homography estimates the transformation between flat surfaces which excludes most natural images, and the second is that, the estimated homography will not be perfect an thus for example high contrast edges in the images will not match and then produce large errors in the performance measurements. To solve these two problems the scene is a flat surface with a printed pattern and to avoid the the error from sharp edges the pettern is constructed without any. To not complicate this experiment the reference image is the computer generated optimal images which is being transformed to fit the image captured by the SPC.\\[0.1in] 
+
+The reference homography transformed image which was created using sine functions to avoid edges can be seen in figure~\ref{fig:hom_over_im} with the reconstructed images with different subsampling ratio.   
 
 
 \begin{figure}[H]
@@ -322,7 +331,7 @@ This evaluation is designed to confirm that the images reconstructed by the SPC 
 \begin{minipage}[h]{0.3\textwidth}
 	\vspace*{1cm}
     \includegraphics[width=1\textwidth]{result/hom/im_ref.png}
-    \subcaption{Refrence image}
+    \subcaption{Homography transformed refrence image}
     \label{fig:hom_ref}
 \end{minipage}
 \begin{minipage}[t]{0.22\textwidth}
@@ -349,11 +358,11 @@ This evaluation is designed to confirm that the images reconstructed by the SPC 
     \subcaption{30\%}
     \label{fig:hom_30}
 \end{minipage}
-
     \caption{The reconstructed images with different number of measurements and the reference image transformed to fit the SPC images using homography.}
     \label{fig:hom_over_im}
 \end{figure}
 
+Before the results from the evaluation is presented it is worth noting that the reference image is a perfect image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. 
 
 \begin{figure}[H]
     \centering
@@ -371,6 +380,7 @@ This evaluation is designed to confirm that the images reconstructed by the SPC 
     \label{fig:hom_score}
 \end{figure}
 
+Confirming the observation made in section~\ref{sec:measurements}, The larges increase is seen between 5-15\%, with a decrease of improvement after.
 
 
 
