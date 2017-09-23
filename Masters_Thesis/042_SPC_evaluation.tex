@@ -362,7 +362,8 @@ The reference homography transformed image which was created using sine function
     \label{fig:hom_over_im}
 \end{figure}
 
-Before the results from the evaluation is presented it is worth noting that the reference image is a perfect image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. 
+Before the results from the evaluation is presented it is worth noting that the reference image is a perfect simulated reference image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. In figure~\ref{fig:hom_score} below the same evaluation method as the reconstructed simulated images in section~\ref{sec:simulated_results} is used, PSNR and SSIM, because there is a reference image again. 
+
 
 \begin{figure}[H]
     \centering
@@ -380,8 +381,7 @@ Before the results from the evaluation is presented it is worth noting that the 
     \label{fig:hom_score}
 \end{figure}
 
-Confirming the observation made in section~\ref{sec:measurements}, The larges increase is seen between 5-15\%, with a decrease of improvement after.
-
+The result shows the same expected result as before with increased quality with increased subsample ratio. An second observation confirms the observation made in section~\ref{sec:measurements}, where the image quality is rapidly improves when increasing subsample ratio to to 15\%, then the improvement rate stagnates. 
 
 
 
@@ -396,42 +396,40 @@ The MTF from the SPC is compared to a state of the art SWIR camera. Two scenes w
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{result/mtf/Target.eps}
+    \includegraphics[width=0.8\linewidth]{result/mtf/Target.eps}
     \caption{Printed targets with markings where the MTF measurements was performed}
     \label{fig:mtf_target}
 \end{figure}
 
+In the resulting images, MTF measurements was gathered from the specified edges in figure~\ref{fig:mtf_target}, with the result from all edges and both images for respective cameras, a mean and standard deviation is calculated. For the SPC, images reconstructed from 5\% to 30\% was tested in order to see if the subsampling ratio effected the MTF result. In figure~\ref{fig:mtf_target_im} the images from the SWIR camera and SPC are presented.
+
 \begin{figure}[H]
     \centering
-\begin{minipage}[t]{0.45\textwidth}
+\begin{minipage}[t]{0.40\textwidth}
     \includegraphics[width=1\textwidth]{result/mtf/swir2.png}
     \subcaption{}
     \label{fig:mtf_s2}
 \end{minipage}
-\begin{minipage}[t]{0.45\textwidth}
+\begin{minipage}[t]{0.40\textwidth}
     \includegraphics[width=1\textwidth]{result/mtf/spc22.png}
     \subcaption{}
     \label{fig:mtf_spc2}
 \end{minipage}
-\begin{minipage}[t]{0.45\textwidth}
+\begin{minipage}[t]{0.40\textwidth}
     \includegraphics[width=1\textwidth]{result/mtf/swir1.png}
     \subcaption{}
     \label{fig:mtf_s1}
 \end{minipage}
-\begin{minipage}[t]{0.45\textwidth}
+\begin{minipage}[t]{0.40\textwidth}
     \includegraphics[width=1\textwidth]{result/mtf/spc12.png}
     \subcaption{}
     \label{fig:mtf_spc1}
 \end{minipage}
-    \caption{SPC and state of the art SWIR camera output images.}
+    \caption{SPC and state of the art SWIR camera images. (a) and (c) from the conventional SWIR camera and (b) and (c) captured with the SPC.}
     \label{fig:mtf_target_im}
 \end{figure}
 
-In the resulting images MTF measurements was performed on the specified edges to gather a mean and standard deviation for each camera. For the SPC, images reconstructed from 5\% to 30\% was tested in order to see if the number of measurements effected the MTF result. In figure~\ref{fig:mtf_target_im} the images from the SWIR camera and SPC are presented.
 
-
-
-\todo[inline]{Light source 135W from 2m. Image on the board}
 
 
 The edge response is measured in the distance (pixels) required for the edge to rise from $10\%$ to $90\%$. In figure~\ref{fig:rise} the result from the experiment in presented. 
