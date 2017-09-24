@@ -110,7 +110,7 @@ where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sp
 The problem using random matrices is that they need to be stored i memory for the reconstruction algorithm, when the image resolution is increased the measurement matrix increases exponentially. For images with resolution of $512\times 512$ and larger the data gets infeasible for a normal computer to handle.  Fortunately using fast transforms in the reconstruction algorithm can exclude using vector multiplication resulting in faster reconstruction and the need to store the measurement matrix in memory. But in order to do so special measurement matrices are used, in this master's thesis the sequency ordered Walsh Hadamard measurement matrix will be used with the TVAL3 reconstruction algorithm described in section~\ref{sec:TV}.   
 
 
-\subsubsection{Sequency ordered Walsh Hadamard measurement matrix}
+\subsubsection{Sequency Ordered Walsh Hadamard measurement matrix}
 \label{sec:SOWHMM}
 Besides from eliminating the need to store the measuring matrix for reconstruction the sequency ordered Walsh Hadamard (SOWH) matrix can be generated when sent to the DMD eliminating the need to store the matrix at all. SOWH has the same characteristics and properties of an i.i.d random matrix and therefore also fulfills the RIP condition with high probability and research has shown that there is no significant loss in recovery of the signal relative i.i.d random measurement matrix~\cite{article:an_improved_WH_matrix}.  An other property of SOHW is that it only contains -1 an 1 which easily be converted to 0 and 1 when sent to the DMD. \\[0.1in]
 
@@ -252,7 +252,7 @@ Using this method will reduce the overall computational complexity considerably 
 
 
 
-\subsection{Image capturing and processing chain}
+\subsection{Image Capturing and processing chain}
 To capture an image the SPC setup is only a subsystem in the whole process from acquiring the signal to reconstructing the image. In figure~\ref{fig:flow_chart} the whole process of capturing an image is presented with all subsystems and signal/image processing steps included.
 
 \begin{figure}[H]

@@ -4,12 +4,12 @@ This section is structured as, for each experiment and setup a detailed explanat
 
 
 
-\subsection{Simulated results}
+\subsection{Simulated Results}
 \label{sec:simulated_results}
 In this section the results produces was simulated by using the reconstructing algorithm and measurement matrix described in section~\ref{sec:TV} and \ref{sec:SOWHMM} on high quality images captured with a state of the art SWIR camera. The images captured by the SWIR camera acts as a ideal reference to the reconstructed images. By simulating the result from "ideal" images the reconstruction process gets a benchmark independent of the SPC.
 
 
-\subsubsection{Reconstruction performance using reference image}
+\subsubsection{Reconstruction performance Using reference image}
 \label{sec:reconstruction_performance}
 In these simulation 21 images captured with a state of the art SWIR camera was reconstructed. The performance of the reconstruction was calculated using PSNR and SSIM for different degree of noise and sub sampling ratios.\\[0.1in]
 
@@ -116,12 +116,12 @@ As seen in figure~\ref{fig:noisy} the reconstructed image quality increases with
     \label{fig:ssim_3d}
 \end{figure}
 
-A second observation is that, when the noise increases the  reconstructed image quality is not improved at the same rate as the noiseless case when increasing the sub sampling ratio, meaning that a bad signal can not be salvaged by more measurements.  
+A second observation is that, when the noise increases the  reconstructed image quality is not improved at the same rate as the noiseless case when increasing the sub sampling ratio.
 
-\subsubsection{Reconstruction performance using no reference quality assessment}
+\subsubsection{Reconstruction performance Using no reference quality assessment}
 In this sub section the same reconstructed image set from section~\ref{sec:reconstruction_performance} is used to calculate the no reference image quality with the BRISQUE algorithm. This is the same algorithm which will be used to evaluate the results from the SPC therefore this experiments will yield a benchmark on how good results that can be obtained given the measurement matrix and reconstruction algorithm.\\[0.1in] 
 
-The results displayed in the graph in figure~\ref{fig:Brisque_3d} shows the same trend as the results from the previous section, less noise and more samples yields better performance in the reconstruction. The figure also contain the mean results from the original SWIR images as the flat blue surface, which has scored a far superior score then the reconstructed images.  
+The results displayed in the graph in figure~\ref{fig:Brisque_3d} shows the same trend as the results from the previous section, less noise and more samples yields better performance in the reconstruction. The figure also contain the mean results from the original SWIR images as the flat blue surface, which has scored a far superior score than the reconstructed images.
   
 
 \begin{figure}[H]
