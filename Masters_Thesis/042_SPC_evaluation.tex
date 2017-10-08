@@ -74,6 +74,7 @@ The result shows the same expected result as before with increased quality with 
 
 
 \subsubsection{Reconstruction performance Using no reference quality assessment}
+\label{sec:SPC_BRISQUE}
 In this section the blind quality assessment tool BRISQUE will be used to score the reconstructed images from the SPC. The same algorithm was used on the simulated data where a benchmark was set as a theoretical limit to the reconstructed images.\\[0.1in]     
 
 Each image is evaluated at subsampling rate from $5\%$ to $30\%$ where the result is presented in figure~\ref{fig:brisque_plot}.
@@ -183,7 +184,7 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
     \label{fig:bad}
 \end{figure}
 
-
+\todo[inline]{Not analyse, What is the difference?}
 Lets analyze the images in figure~\ref{fig:good} to \ref{fig:bad} in order to figure out why the BRISQUE score have such high variance and characteristics when increasing the subsampling ratio. The difference between "good" and "half good" images are very subtle, the intensity and visible noise level is a bit more favorable in the "good" images, but as stated in section~\ref{sec:method_eval} the naturalness of the images differ where the "good" images contains more natural shapes and objects. Between the "good"/"half good" and "bad" images there is a more noticeable difference, the images in the "bad" set has more distinct noise and lower over all intensity which most certainly effect the BRISQUE score. Furthermore some of the "bad" image set had movement when sampled which will definitely increase global noise in the images as concluded in section~\ref{sec:Dynamics_in_scene}.\\[0.1in]
 
 When the images was sampled a correlation between the mean signal strength and reconstruction performance was noticed, this is due to the constant background noise from the SWIR photo diode. In figure~\ref{fig:snr} the mean sampled signal strength was plotted against SNR and signal variance calculated from normalizing the sample signal and background noise. The variance was calculated in the same way as the simulated signals in section\ref{sec:simulated_results}.  Each signal has the same corresponding color code from the BRISQUE plot in figure~\ref{fig:brisque_plot}.

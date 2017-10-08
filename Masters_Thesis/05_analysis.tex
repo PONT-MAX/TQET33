@@ -16,9 +16,11 @@ When obtaining the same measurements with the SPC one low frequency image was ca
 
 
 \subsubsection{Reconstruction performance Using no reference quality assessment}
-%In figure~\ref{fig:Brisque_2d} the result has been flatten to a 2D graph with fewer selected data points for clarity. Even in the noiseless case the score will not be better then approximately 40 for the reconstructed images while the SWIR images has a mean value of 15. 
-The conclusion from this result is that, with the current measurement matrix and reconstruction method around 40 in BRISQUE score is what to expect as optimum given that the SPC will induce noise to the signal. 
+For the simulated reconstruction in figure~\ref{fig:Brisque_3d}, we can see that the graph looks like a upside down version of the PSNR and SSIM graphs of the simulated images. This results alone is positive for this theses because it was unknown if this method would work well for SWIR images and reconstructed images. An observation that can be made, is that the reference images score about 20 BRISQUE points better then the best reconstructed images and we can conclude that the sampling and reconstruction even in the best case scenario without noise, will not be as good as an conventional camera. We can see from the plot that in the ideal case the score will not be better then approximately 40 BRISQUE points for the reconstructed images while the SWIR images has a mean value of 15. We can concluded from this result that, with the current measurement matrix and reconstruction method, around 40 in BRISQUE score is what to expect as optimum given that the SPC will induce some noise to the signal.\\[0.1in]
 
+When studying the plot with BRISQUE score given by the results from images reconstructed from the SPC in figure~\ref{fig:brisque_plot}, we can see that the best images score just over 40 BRISQUE points, which is the same score as score as simulated images with small or no nois added, which means that the SPC can compare to the benchmark set by the simulation and thus gives a theoretical optimal reconstuction given the measurement matrix and reconstruction algorithm. Furthermore we can see that the trend of the images follows the same characteristics as the simulation in figure~\ref{fig:Brisque_2d} for different noise levels, thus we can conclude that simulations gives a good indication of where the real images will score given a noise level.\\[0.1in]
+
+In figure~\ref{fig:good} to \ref{fig:bad}, we see the images divided into three classes given there BRISQUE score and trend as decribed in section~\ref{sec:SPC_BRISQUE}, Anlys why the images scorred different <-----
 
 
 \subsubsection{Dynamics in scene}
