@@ -8,9 +8,72 @@ The evaluation section is now shifted to examine the images produced by the SPC.
 
 \todo[inline]{List the specs?}
 
+\subsubsection{Reconstructed performance Using reference image}
+This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image to the images produced by the SPC. One solution to obtain a reference image is to calculate a homography between images. But there are two problems of just performing a homography to obtain a reference image, the fist on is that, homography estimates the transformation between flat surfaces which excludes most natural images, and the second is that, the estimated homography will not be perfect an thus for example high contrast edges in the images will not match and then produce large errors in the performance measurements. To solve these two problems the scene is a flat surface with a printed pattern and to avoid the the error from sharp edges the pettern is constructed without any. To not complicate this experiment the reference image is the computer generated optimal images which is being transformed to fit the image captured by the SPC.\\[0.1in] 
+
+The reference homography transformed image which was created using sine functions to avoid edges can be seen in figure~\ref{fig:hom_over_im} with the reconstructed images with different subsampling ratio.   
 
 
-\subsubsection{Image quality Using no reference quality assessment}
+\begin{figure}[H]
+    \centering
+\begin{minipage}[h]{0.3\textwidth}
+	\vspace*{1cm}
+    \includegraphics[width=1\textwidth]{result/hom/im_ref.png}
+    \subcaption{Homography transformed refrence image}
+    \label{fig:hom_ref}
+\end{minipage}
+\begin{minipage}[t]{0.22\textwidth}
+    \includegraphics[width = \textwidth]{result/hom/im_m5.png}
+    \subcaption{5\%}
+    \label{fig:hom_5}
+    \includegraphics[width = \textwidth]{result/hom/im_m20.png}
+    \subcaption{20\%}
+    \label{fig:hom_20}
+\end{minipage}
+\begin{minipage}[t]{0.22\textwidth}
+    \includegraphics[width = \textwidth]{result/hom/im_m10.png}
+    \subcaption{10\%}
+    \label{fig:hom_10}
+    \includegraphics[width = \textwidth]{result/hom/im_m25.png}
+    \subcaption{25\%}
+    \label{fig:hom_25}
+\end{minipage}
+\begin{minipage}[t]{0.22\textwidth}
+    \includegraphics[width = \textwidth]{result/hom/im_m15.png}
+    \subcaption{15\%}
+    \label{fig:hom_15}
+    \includegraphics[width = \textwidth]{result/hom/im_m30.png}
+    \subcaption{30\%}
+    \label{fig:hom_30}
+\end{minipage}
+    \caption{The reconstructed images with different number of measurements and the reference image transformed to fit the SPC images using homography.}
+    \label{fig:hom_over_im}
+\end{figure}
+
+Before the results from the evaluation is presented it is worth noting that the reference image is a perfect simulated reference image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. In figure~\ref{fig:hom_score} below the same evaluation method as the reconstructed simulated images in section~\ref{sec:simulated_results} is used, PSNR and SSIM, because there is a reference image again. 
+
+
+\begin{figure}[H]
+    \centering
+\begin{minipage}[t]{0.49\textwidth}
+    \includegraphics[width=1\textwidth]{result/homo/PSNR_2.eps}
+    \subcaption{}
+    \label{fig:hom_psnr}
+\end{minipage}
+\begin{minipage}[t]{0.49\textwidth}
+    \includegraphics[width=1\textwidth]{result/homo/SSIM_2.eps}
+    \subcaption{}
+    \label{fig:hom_ssim}
+\end{minipage}
+    \caption{Signal quality of SPC images compared to reference image. (a) Peak SNR for reconstructed images against reference image. (b) SSIM score for reconstructed images against reference image.}
+    \label{fig:hom_score}
+\end{figure}
+
+The result shows the same expected result as before with increased quality with increased subsample ratio. An second observation confirms the observation made in section~\ref{sec:measurements}, where the image quality is rapidly improves when increasing subsample ratio to to 15\%, then the improvement rate stagnates. 
+
+
+
+\subsubsection{Reconstruction performance Using no reference quality assessment}
 In this section the blind quality assessment tool BRISQUE will be used to score the reconstructed images from the SPC. The same algorithm was used on the simulated data where a benchmark was set as a theoretical limit to the reconstructed images.\\[0.1in]     
 
 Each image is evaluated at subsampling rate from $5\%$ to $30\%$ where the result is presented in figure~\ref{fig:brisque_plot}.
@@ -161,8 +224,90 @@ From the two plots in figure~\ref{fig:snr} there are some conclusions that can b
 \todo[inline]{End klam}
 
 
+\subsubsection{Luminance Change in scene}
+As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress this distortion was proposed and tested with good result in the simulated case in section~\ref{sec:dyn_sim}. With a exposure time of just under one minute for the SPC this problem turned out to be constantly present when taking photos at natural scenes outdoors, and the luminace change over time was more complex then the simulated test case. It turned out that the sensor was highly sensitive to luminace change which could not be perceived with the naked eye. This observation should not be unanticipated, the sensor sums up half the scenes light which make the tiniest intensity change for each pixel a large global change. So how did the algorithm hold up for the real application? In figure~\ref{fig:lc_plot} the raw sampled signal is colored red which clearly is not a stationary signal, with the moving average in green and the final improved signal in blue. 
 
-\pagebreak
+\begin{figure}[H]
+\includegraphics[width = 0.8\linewidth]{result/luminance/li.eps}
+	\caption{Sampled signal from SPC with light intensity change and the improved moving mean processed signal.}
+	\label{fig:lc_plot}
+\end{figure}
+
+As can be seen on the moving average plotted, the intensity change is very fast and can change in matter of a split of a second, "k" which is the number of neighboring samples to calculate the average  was set to 75 to match the fast change which corresponds to a window of 50 milliseconds.\\[0.1in]
+
+In figure~\ref{fig:lc_image} a reconstructed image without the method used and one with the method used is displayed.
+
+\begin{figure}[H]
+\begin{minipage}[t]{0.49\textwidth}
+\includegraphics[width = 1\linewidth]{result/luminance/24_512_m30.PNG}
+	\subcaption{}
+	\label{lc_bf}
+\end{minipage}
+\begin{minipage}[t]{0.49\textwidth}
+\includegraphics[width = 1\linewidth]{gfx/car/car_m30.png}
+	\subcaption{}
+	\label{lc_af}
+\end{minipage}
+	\caption{Reconstructed images, (a) before and (b) after applying moving mean average method.}
+	\label{fig:lc_image}
+\end{figure}
+
+As can be seen in the figure, the method produces good result, the image reconstructed without the signal processing has a severe global noise due to the non stationary signal and the reconstruction performance significantly significantly lower. This images is actually one of the images captured in good conditions with strong lighting and mild intensity change overall.
+
+
+\subsubsection{Edge response}
+The edge response is used to comparing the sharpness of cameras and lenses. The edge response from the SPC is compared to a state of the art SWIR camera. Two scenes was captured by the SPC and a conventional SWIR camera containing printed sheath of paper with simple tilted shapes on them, see figure~\ref{fig:mtf_target}. 
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{result/mtf/Target.eps}
+    \caption{Printed targets with markings where the edge response measurements was performed}
+    \label{fig:mtf_target}
+\end{figure}
+
+In the resulting images, edge response measurements was gathered from the specified edges in figure~\ref{fig:mtf_target}, with the result from all edges and both images for respective cameras, a mean and standard deviation is calculated. For the SPC, images reconstructed from 5\% to 30\% was tested in order to see if the subsampling ratio effected the MTF result. In figure~\ref{fig:mtf_target_im} the images from the SWIR camera and SPC are presented.
+
+\begin{figure}[H]
+    \centering
+\begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/swir2.png}
+    \subcaption{}
+    \label{fig:mtf_s2}
+\end{minipage}
+\begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/spc22.png}
+    \subcaption{}
+    \label{fig:mtf_spc2}
+\end{minipage}
+\begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/swir1.png}
+    \subcaption{}
+    \label{fig:mtf_s1}
+\end{minipage}
+\begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=1\textwidth]{result/mtf/spc12.png}
+    \subcaption{}
+    \label{fig:mtf_spc1}
+\end{minipage}
+    \caption{SPC and state of the art SWIR camera images. (a) and (c) from the conventional SWIR camera and (b) and (c) captured with the SPC.}
+    \label{fig:mtf_target_im}
+\end{figure}
+
+
+
+
+The edge response is measured in the distance (pixels) required for a edge to rise from $10\%$ to $90\%$ intensity change. In figure~\ref{fig:rise} the result from the experiment in presented. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{result/mtf/Rise10_90.eps}
+    \caption{Edge response, distance (pixels) to rise from 10-90\% in average for an edge.}
+    \label{fig:rise}
+\end{figure}
+
+From the plot in figure~\ref{fig:rise}, a clear difference between the SPC and state of the art SWIR camera can be seen, where the conventional SWIR camera has in average half the distance against the SPC images. Some improvement is seen when the subsample ratio is increased, but the standard deviation is almost constant, meaning that the difference between the state of the art SWIR camera and the SPC, in best case only differ about 0.5 pixels, but in the worst case differ about 1.7 pixels and in average 1.2 pixel.
 
 \subsubsection{Number of measurements}
 \label{sec:measurements}
@@ -324,155 +469,8 @@ The are a few thinks that can be noted in the images in figure~\ref{fig:subsampl
 
 
 
-\subsubsection{Reconstructed SPC image versus Optimal image}
-This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image to the images produced by the SPC. One solution to obtain a reference image is to calculate a homography between images. But there are two problems of just performing a homography to obtain a reference image, the fist on is that, homography estimates the transformation between flat surfaces which excludes most natural images, and the second is that, the estimated homography will not be perfect an thus for example high contrast edges in the images will not match and then produce large errors in the performance measurements. To solve these two problems the scene is a flat surface with a printed pattern and to avoid the the error from sharp edges the pettern is constructed without any. To not complicate this experiment the reference image is the computer generated optimal images which is being transformed to fit the image captured by the SPC.\\[0.1in] 
+ 
 
-The reference homography transformed image which was created using sine functions to avoid edges can be seen in figure~\ref{fig:hom_over_im} with the reconstructed images with different subsampling ratio.   
-
-
-\begin{figure}[H]
-    \centering
-\begin{minipage}[h]{0.3\textwidth}
-	\vspace*{1cm}
-    \includegraphics[width=1\textwidth]{result/hom/im_ref.png}
-    \subcaption{Homography transformed refrence image}
-    \label{fig:hom_ref}
-\end{minipage}
-\begin{minipage}[t]{0.22\textwidth}
-    \includegraphics[width = \textwidth]{result/hom/im_m5.png}
-    \subcaption{5\%}
-    \label{fig:hom_5}
-    \includegraphics[width = \textwidth]{result/hom/im_m20.png}
-    \subcaption{20\%}
-    \label{fig:hom_20}
-\end{minipage}
-\begin{minipage}[t]{0.22\textwidth}
-    \includegraphics[width = \textwidth]{result/hom/im_m10.png}
-    \subcaption{10\%}
-    \label{fig:hom_10}
-    \includegraphics[width = \textwidth]{result/hom/im_m25.png}
-    \subcaption{25\%}
-    \label{fig:hom_25}
-\end{minipage}
-\begin{minipage}[t]{0.22\textwidth}
-    \includegraphics[width = \textwidth]{result/hom/im_m15.png}
-    \subcaption{15\%}
-    \label{fig:hom_15}
-    \includegraphics[width = \textwidth]{result/hom/im_m30.png}
-    \subcaption{30\%}
-    \label{fig:hom_30}
-\end{minipage}
-    \caption{The reconstructed images with different number of measurements and the reference image transformed to fit the SPC images using homography.}
-    \label{fig:hom_over_im}
-\end{figure}
-
-Before the results from the evaluation is presented it is worth noting that the reference image is a perfect simulated reference image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. In figure~\ref{fig:hom_score} below the same evaluation method as the reconstructed simulated images in section~\ref{sec:simulated_results} is used, PSNR and SSIM, because there is a reference image again. 
-
-
-\begin{figure}[H]
-    \centering
-\begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{result/homo/PSNR_2.eps}
-    \subcaption{}
-    \label{fig:hom_psnr}
-\end{minipage}
-\begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{result/homo/SSIM_2.eps}
-    \subcaption{}
-    \label{fig:hom_ssim}
-\end{minipage}
-    \caption{Signal quality of SPC images compared to reference image. (a) Peak SNR for reconstructed images against reference image. (b) SSIM score for reconstructed images against reference image.}
-    \label{fig:hom_score}
-\end{figure}
-
-The result shows the same expected result as before with increased quality with increased subsample ratio. An second observation confirms the observation made in section~\ref{sec:measurements}, where the image quality is rapidly improves when increasing subsample ratio to to 15\%, then the improvement rate stagnates. 
-
-
-
-\subsubsection{Edge response}
-The edge response is used to comparing the sharpness of cameras and lenses. The edge response from the SPC is compared to a state of the art SWIR camera. Two scenes was captured by the SPC and a conventional SWIR camera containing printed sheath of paper with simple tilted shapes on them, see figure~\ref{fig:mtf_target}. 
-
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{result/mtf/Target.eps}
-    \caption{Printed targets with markings where the edge response measurements was performed}
-    \label{fig:mtf_target}
-\end{figure}
-
-In the resulting images, edge response measurements was gathered from the specified edges in figure~\ref{fig:mtf_target}, with the result from all edges and both images for respective cameras, a mean and standard deviation is calculated. For the SPC, images reconstructed from 5\% to 30\% was tested in order to see if the subsampling ratio effected the MTF result. In figure~\ref{fig:mtf_target_im} the images from the SWIR camera and SPC are presented.
-
-\begin{figure}[H]
-    \centering
-\begin{minipage}[t]{0.40\textwidth}
-    \includegraphics[width=1\textwidth]{result/mtf/swir2.png}
-    \subcaption{}
-    \label{fig:mtf_s2}
-\end{minipage}
-\begin{minipage}[t]{0.40\textwidth}
-    \includegraphics[width=1\textwidth]{result/mtf/spc22.png}
-    \subcaption{}
-    \label{fig:mtf_spc2}
-\end{minipage}
-\begin{minipage}[t]{0.40\textwidth}
-    \includegraphics[width=1\textwidth]{result/mtf/swir1.png}
-    \subcaption{}
-    \label{fig:mtf_s1}
-\end{minipage}
-\begin{minipage}[t]{0.40\textwidth}
-    \includegraphics[width=1\textwidth]{result/mtf/spc12.png}
-    \subcaption{}
-    \label{fig:mtf_spc1}
-\end{minipage}
-    \caption{SPC and state of the art SWIR camera images. (a) and (c) from the conventional SWIR camera and (b) and (c) captured with the SPC.}
-    \label{fig:mtf_target_im}
-\end{figure}
-
-
-
-
-The edge response is measured in the distance (pixels) required for a edge to rise from $10\%$ to $90\%$ intensity change. In figure~\ref{fig:rise} the result from the experiment in presented. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{result/mtf/Rise10_90.eps}
-    \caption{Edge response, distance (pixels) to rise from 10-90\% in average for an edge.}
-    \label{fig:rise}
-\end{figure}
-
-From the plot in figure~\ref{fig:rise}, a clear difference between the SPC and state of the art SWIR camera can be seen, where the conventional SWIR camera has in average half the distance against the SPC images. Some improvement is seen when the subsample ratio is increased, but the standard deviation is almost constant, meaning that the difference between the state of the art SWIR camera and the SPC, in best case only differ about 0.5 pixels, but in the worst case differ about 1.7 pixels and in average 1.2 pixel. 
-
-
-\subsubsection{Luminance Change in scene}
-As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress this distortion was proposed and tested with good result in the simulated case in section~\ref{sec:dyn_sim}. With a exposure time of just under one minute for the SPC this problem turned out to be constantly present when taking photos at natural scenes outdoors, and the luminace change over time was more complex then the simulated test case. It turned out that the sensor was highly sensitive to luminace change which could not be perceived with the naked eye. This observation should not be unanticipated, the sensor sums up half the scenes light which make the tiniest intensity change for each pixel a large global change. So how did the algorithm hold up for the real application? In figure~\ref{fig:lc_plot} the raw sampled signal is colored red which clearly is not a stationary signal, with the moving average in green and the final improved signal in blue. 
-
-\begin{figure}[H]
-\includegraphics[width = 0.8\linewidth]{result/luminance/li.eps}
-	\caption{Sampled signal from SPC with light intensity change and the improved moving mean processed signal.}
-	\label{fig:lc_plot}
-\end{figure}
-
-As can be seen on the moving average plotted, the intensity change is very fast and can change in matter of a split of a second, "k" which is the number of neighboring samples to calculate the average  was set to 75 to match the fast change which corresponds to a window of 50 milliseconds.\\[0.1in]
-
-In figure~\ref{fig:lc_image} a reconstructed image without the method used and one with the method used is displayed.
-
-\begin{figure}[H]
-\begin{minipage}[t]{0.49\textwidth}
-\includegraphics[width = 1\linewidth]{result/luminance/24_512_m30.PNG}
-	\subcaption{}
-	\label{lc_bf}
-\end{minipage}
-\begin{minipage}[t]{0.49\textwidth}
-\includegraphics[width = 1\linewidth]{gfx/car/car_m30.png}
-	\subcaption{}
-	\label{lc_af}
-\end{minipage}
-	\caption{Reconstructed images, (a) before and (b) after applying moving mean average method.}
-	\label{fig:lc_image}
-\end{figure}
-
-As can be seen in the figure, the method produces good result, the image reconstructed without the signal processing has a severe global noise due to the non stationary signal and the reconstruction performance significantly significantly lower. This images is actually one of the images captured in very good conditions with strong lighting and mild intensity change overall, considering this observation this method became essential for this master's thesis to produce any good result at all. As stated before, this method is an model of global luminance change in the image, and therefore it is hard to know which side effects this method have on image quality. But as the test show, the method is essential and was used for all images captured by the SPC and presented and evaluated upon in this masters.  
 
 
 

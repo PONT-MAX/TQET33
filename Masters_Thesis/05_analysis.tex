@@ -1,36 +1,56 @@
-\section{Discussion}
-In this section an analysis and discussion is held to describe how to interpret and explain the result from the evaluation section given the theory in related work.
+\section{Discussion} %Resultat ska inte analyseras, diskuteras eller värderas. Detta lämnas till diskussionskapitlet. 
+In this section the results and method is analyzed and discussed. When discussing results a focus on consistency, relation to theory and real world applicability is held. In the discussion of method an analysis of replicability, reliability and  validity is held.
 
 \subsection{Result} 
 %Finns det något i resultaten som står ut och behöver analyseras och kommenteras? Hur förhåller sig resultaten till det material som togs upp i teorigenomgången? Vad säger teorin om vad resultaten egentligen betyder? Vad innebär det till exempel att man vid en användbarhetsmätning av ett nytt system fått ett visst värde; hur bra eller dåligt är det? Finns det något i resultaten som är oväntat baserat på teorigenomgången, eller stämmer det bra överens med vad man teoretiskt kunde förvänta sig? 
+Overall the results obtained in this thesis reflects what has been stated in the theory and research, but no reference to the use of SPC in natural environment could be found and thus this thesis will present the link between real world application and theory/lab results and the challenges that come with it. 
 
 
-\subsection{Evaluation Using reference image}
+
+\subsubsection{Reconstruction performance Using reference image}
 %Sec:reconstruction performance using ref im
 %A second observation is that, when the noise increases the  reconstructed image quality is not improved at the same rate as the noiseless case when increasing the sub sampling ratio.
-meaning that a bad signal can not be salvaged by more measurements.
+In the simulated reconstruction the results behaved in most part as expected given the CS theory, with increased subsampling ratio the performance increased. But the interesting part of this results is whats happening when increasing the noise, not only does the general performance drop for all subsample ratios, but also the improvement rate by increasing the subsample ratio drops, which figure~\ref{fig:snr} and \ref{fig:ssim_3d} shows. This result tells us that if the signal contains a high degree of noise, a larger subsampling ratio may not improve the reconstructed image as mush as expected.\\[0.1in]
+
+When obtaining the same measurements with the SPC one low frequency image was captured and reconstructed, with near optimal SNR and environment such that a homography between the reconstructed image and reference image could be made with good precision. In figure~\ref{fig:hom_psnr} and \ref{fig:hom_ssim} we can see the PSNR and SSIM of the image given the reference image, as expected from theory and confirmed in the simulated case the performance increases when the subsampling ratio increases. But if we look closer at the PSNR plot we can see that the largest increase in performance is up to 15\% subsampling ratio, which can be confirmed when inspecting the images in figure~\ref{fig:hom_5}-\ref{fig:hom_30}, where the image quality rapidly improves when increasing subsample ratio up to 15\%, then the improvement rate stagnates.
 
 
-
-\subsubsection{Evaluating Using BRISQUE}
+\subsubsection{Reconstruction performance Using no reference quality assessment}
 %In figure~\ref{fig:Brisque_2d} the result has been flatten to a 2D graph with fewer selected data points for clarity. Even in the noiseless case the score will not be better then approximately 40 for the reconstructed images while the SWIR images has a mean value of 15. 
 The conclusion from this result is that, with the current measurement matrix and reconstruction method around 40 in BRISQUE score is what to expect as optimum given that the SPC will induce noise to the signal. 
 
-\subsubsection{Number of measurements}
+
+
+\subsubsection{Dynamics in scene}
+In this category there are results both from the simulated images and from the SPC, where the results was divided into three characteristic dynamics: small local changes in the scene, large global changes and luminance change.\\[0.1in]
+
+The effect on the signal of local movements result shown in figure~\ref{fig:local_}, we can see that there is no significant difference between the non perturbed reference signal and the distorted signal. It can even be interpreted as added noise to the signal and it is barely detectable even if the signal is known. The effect on the reconstructed image, seen in figure~\ref{fig:local_1}, looks like global noise is added. The conclusion of that test implies that local movement in a scene will distort the reconstructed image globally and especially locally where the movement occurred. It also tells that local movement is very hard to detect in the signal even if a reference signal is available.\\[0.1in] 
+\todo[inline]{Write here about always local movement or in a "conclusion"?}
+
+When increasing the movement and modeled an unseen object pass through, the samples with movement was very easy to spot, which figure~\ref{fig:local_sig_2} shows. The effect in the reconstructed image is as expected even worse then local movement, with a global distortion, seen in figure~\ref{fig:local_2}. In this simple isolated case the image could be saved by removing the measurements when the object was moving, reconstructing an image with fewer measurements. The resulting image would not be as good as the image in figure~\ref{fig:fly_2} but it would not contain the noise present in figure~\ref{fig:fly_3}. \\[0.1in]
+
+
+%Comment luminance change case ?
+In the case of luminance change, the effect on the reconstructed image is even worse than scenes containing movement, which figure~\ref{fig:local_3} and comparing table~\ref{tab:local_dyn}, \ref{tab:fly_dyn} and \ref{tab:lum_dyn}. Because we know that this problem is real and can not be avoided in natural scenes, a model to suppress this issue was tested with good result, but as can be seen in figure~\ref{fig:lum_sig_3}, \ref{fig:lum_dyn} and table~\ref{tab:lum_dyn}, the method will not suppress the effect completely even on a simulation and thus add some global noise in the same form as local movement will.\\[0.1in]
+
+% SPC
+When capturing images using the SPC, the luminance change became a larger problem than anticipated. All image captured in natural lighting had luminance change and it changed at a higher frequency and larger amplitude even in scenes where the intensity seemed stationary. This is of course due to the fact that the intensity change from every mirror in the DMD is summed in the sensor, so even for small changes the sum will change the signal significantly, as seen in figure~\ref{fig:lc_plot}. But as seen in the results in figure~\ref{fig:lc_image}, the moving average method worked despite the more complex changes to the signal. Considering that this problem was consistent for all natural images this method became essential for this thesis to produce any good result at all. As stated before, this method is an model of global luminance change in the image, and therefore it is hard to know which side effects this method have on image quality. But as the test show, the method is essential and was used for all images captured by the SPC and presented and evaluated in this thesis.\\[0.1in]
+
+This method was mainly constructed because I knew the SPC would have a long exposure time, but even if the exposure time is reduced to a a few seconds or less, there is some indication that the luminance change will still effect the result. In this thesis, the moving average window corresponded to 50 milliseconds which indicates that the luminance change is so fast that even reducing exposure time could benefit to this method.\\[0.1in]
+
+
+Basically all scenes i natural environment contained both dynamics from local movement and luminance change, local movement often arose from vegetation, objects or clouds moving in the wind but also from turbulence which not move the object but how it is perceived on the DMD. Because of all the dynamics presented that is persistent even in a "static" scene, I decided to not photograph scenes where large movement occurred as a car, object or human, even though it could be detected, because it could also be detected as luminance change.\\[0.1in]
+
+As stated, even "static" scenes will with high probability contain both movement and luminance change which will effect the reconstructed images. Therefor I can conclude that all reconstructed images in this thesis has to some degree added global noise from local movement and the signal processing to counter luminnnce change.
+
 
 \subsubsection{Edge response}
 
-\subsubsection{Dynamics in scene}
-%As seen in figure~\ref{fig:local_sig_1} there is no obvious difference between the non perturbed reference signal and the distorted signal. In figure~\ref{fig:local_sig_2} where some of the samples is displayed no large difference can be seen either. It can be interpreted as added noise to the signal and it is barely detectable even if the signal is known.
+\subsubsection{Subsampling ratio}
+In this 
+% Simulated Result 
+% SPC Results
 
-%The conclusion of this test implies that local movement in a scene will cause noise in the image globally and especially locally where the movement occurred. It also implies that local movement is very hard to detect in the signal even if a reference signal is available.\\[0.1in] 
-
-%Obviously in this context the samples with movement is very easy to spot and the easiest fix would be to just remove those measurements, reconstructing an image with fewer measurements. The resulting image would not be as good as the image in figure~\ref{fig:fly_2} but it would not be contain the noise present in figure~\ref{fig:fly_3}.\\[0.1in]
-
-%Comment luminance change case ?
-
-
-Even when the Exposure time is reduced to a second there is some indication that the Luminance change will still effect the result (k corresponds to 50 ms) so it might be a good idea for faster SPC to use this method also.
 
 \subsection{Method} %Vad jag tycker om det (personliga tankar)
 
