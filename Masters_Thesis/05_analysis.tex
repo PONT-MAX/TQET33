@@ -47,6 +47,22 @@ As stated, even "static" scenes will with high probability contain both movement
 
 
 \subsubsection{Edge response}
+When comparing the edge response between the conventional camera against the SPC the results was very clear, the conventional camera outperformed the SPC with one to two pixels in distance. I think there are multiple factors why the results from the SPC differed so much from the conventional camera, and have listed them below,
+
+\begin{itemize}
+\item The largest impact on image quality is probably the reconstruction algorithm which produces "patches", which can be seen in the SPC images in figure~\ref{fig:mtf_target_im}, especially in the contrast of the white background where the light intensity drops. The "patch" artifact from the reconstruction algorithm can effect the sharpness of the image. We can also see from previous test that even from synthetic data the BRISQUE score is significantly worse then the original image.
+
+\item The pixel grid setup in the DMD has two problems that could effect the sharpness. In the DMD the mirrors is aligned in a diamond shape of pattern and in the current setup to fix the ratio and index two mirrors is merged to form one pixel. The reconstruction algorithm will still interpret the measurement as a regular square pixel which can distort the image.
+
+\item The focus in the DMD is set manually.
+
+\item In this thesis no significant image improvement from post processing such as denoise or sharpening was performed unlike the conventional camera.
+
+\item And as stated before, with the long exposure, vibrations and light intensity change effected the results (the SPC could detect significant light intensity change from the halogen lamp powered by a DC-unit), which contribute to global noise in the reconstruction.
+
+\end{itemize}
+
+
 
 \subsubsection{Subsampling ratio}
 In this 
