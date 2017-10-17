@@ -185,7 +185,7 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
 \end{figure}
 
 \todo[inline]{Not analyse, What is the difference?}
-Lets analyze the images in figure~\ref{fig:good} to \ref{fig:bad} in order to figure out why the BRISQUE score have such high variance and characteristics when increasing the subsampling ratio. The difference between "good" and "half good" images are very subtle, the intensity and visible noise level is a bit more favorable in the "good" images, but as stated in section~\ref{sec:method_eval} the naturalness of the images differ where the "good" images contains more natural shapes and objects. Between the "good"/"half good" and "bad" images there is a more noticeable difference, the images in the "bad" set has more distinct noise and lower over all intensity which most certainly effect the BRISQUE score. Furthermore some of the "bad" image set had movement when sampled which will definitely increase global noise in the images as concluded in section~\ref{sec:Dynamics_in_scene}.\\[0.1in]
+Lets study the images in figure~\ref{fig:good} to \ref{fig:bad}, the difference between "good" and "half good" images are very subtle, the intensity and visible noise level is a bit better in the "good" images. Between the "good"/"half good" and "bad" images there is a more noticeable difference, the images in the "bad" set has more distinct noise and lower over all intensity.\\[0.1in]
 
 When the images was sampled a correlation between the mean signal strength and reconstruction performance was noticed, this is due to the constant background noise from the SWIR photo diode. In figure~\ref{fig:snr} the mean sampled signal strength was plotted against SNR and signal variance calculated from normalizing the sample signal and background noise. The variance was calculated in the same way as the simulated signals in section\ref{sec:simulated_results}.  Each signal has the same corresponding color code from the BRISQUE plot in figure~\ref{fig:brisque_plot}.
  
@@ -206,23 +206,23 @@ When the images was sampled a correlation between the mean signal strength and r
     \label{fig:snr}
 \end{figure}
 
-From the two plots in figure~\ref{fig:snr} there are some conclusions that can be made:
+From the two plots in figure~\ref{fig:snr}, some observations can be made:
 
 
 \begin{itemize}
 \item From both plots in figure~\ref{fig:snr} there is a quite distinct threshold where the signals intensity overcomes the noise level to reconstructed "good" images around 1.2 volt. None of the "good"/"half good" images are below this signal intensity but are mixed over the threshold. 
-%The exponential characteristics of the signal to noise ratio given the signal strength means that it should be easy to find a threshold for a given systems background noise.
-
-\item In the plots there are only two signals with higher variance than 0.04 which is the threshold where the the simulated images started to get both worse initial BRISQUE score and worse trend when increasing the subsampling ratio in figure~\ref{fig:Brisque_2d}. This implies that there must be at least one additional factor at play to reduce the image quality in the "bad" set. 
 
 
-\item There are three red images with almost the same SNR and mean signal intensity as yellow and green images but yields a worse BRISQUE score anyway. This strengthening the statement the there is probably at least on more factor that reduces reconstruction performance.
+\item In the plots there are only two signals with higher variance than 0.04.
 
-\item The yellow and green images is mixed for all mean signal strengths which implies that the motive in the images effecting the  BRISQUE score. 
+
+\item There are three red images with almost the same SNR and mean signal intensity as yellow and green images but yields a worse BRISQUE score anyway.
+
+\item The yellow and green images is mixed for all mean signal strengths.
 
 \end{itemize}
 
-\todo[inline]{End klam}
+\todo[inline]{Finich this section?}
 
 
 \subsubsection{Luminance Change in scene}
