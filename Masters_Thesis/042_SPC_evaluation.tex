@@ -310,7 +310,7 @@ The edge response is measured in the distance (pixels) required for a edge to ri
 
 From the plot in figure~\ref{fig:rise}, a clear difference between the SPC and state of the art SWIR camera can be seen, where the conventional SWIR camera has in average half the distance against the SPC images. Some improvement is seen when the subsample ratio is increased, but the standard deviation is almost constant, meaning that the difference between the state of the art SWIR camera and the SPC, in best case only differ about 0.5 pixels, but in the worst case differ about 1.7 pixels and in average 1.2 pixel.
 
-\subsubsection{Number of measurements}
+\subsubsection{Subsampling ratio}
 \label{sec:measurements}
 From the theory of compressive sensing the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image, therefore it is hard to give a good estimate of a subsampling ratio needed to obtain a desired quality of the reconstruction. In addition, using a SPC where noise contaminate the signal and the scene may not be completely stationary, the number of measurements needed will increase in proportion to the noise and the change in the scene. In this subsection the minimum subsampling ratio will be presented followed by how the reconstructed image quality is effected by an increese of subsampling ratio.\\[0.1in]
 
@@ -338,7 +338,7 @@ The minimum number of measurements to reconstruct a image where the motive can b
 	\label{fig:minimum_fig}
 \end{figure}
 
-In the sample images in figure~\ref{fig:minimum_fig} the minimum subsampling ratio varied between 2\% to 3\%, but as can be seen, this is only the minimum subsampling ratio where the motive is barley recognizable, large structure can be identified but detail is lost. In general a subsampling ratio of 5\% has always succeeded to reconstruct a identifiable image with some fine details, moving along this topic the results from higher subsampling ratios is presented.\\[0.1in]
+In the sample images in figure~\ref{fig:minimum_fig} the minimum subsampling ratio varied between 2\% to 3\%, but as can be seen, this is only the minimum subsampling ratio where the motive is merely recognizable, large structure can be identified but detail is lost. In general a subsampling ratio of 5\% has always succeeded to reconstruct a identifiable image with some fine details, moving along this topic the results from higher subsampling ratios is presented.\\[0.1in]
 
 In figure~\ref{fig:subsampling_ratios} three scenes is reconstructed using different subsample ratios ranging from 5\% to 30\%, for each row the subsampling ratio is increased by 5\% and at the top a reference image from a visual camera is presented. What should be expected is increased image quality with increased subsampling ratio, this result can give an perception of which subsampling ratio is good enough for a given purpose, and as can be seen, the increase of subsampling ratio is not linear proportional to the increase in perceived image quality, just like regular image compression.
      
@@ -452,8 +452,8 @@ In figure~\ref{fig:subsampling_ratios} three scenes is reconstructed using diffe
 	%\subcaption{}
 	\label{fig:sit_m30}
 \end{minipage}
+	\caption{Reconstructed images captured by the SPC with increasing subsampling ratios. First row showing a reference visual spectrum image followed by SPC images reconstructed with 5\% from top then increased subsampling ratio by 5\% for each row to 30\% on the last row.}
 	\label{fig:subsampling_ratios}
-	\caption{Reconstructed images captured by the SPC with increasing subsampling ratios. First row showing a reference visual spectrum image followed by SPC images reconstructed with 5\% from top then increased subsampling ratio by 5\% for each row to 30\% on the last row.} 
 \end{figure}
 
 The are a few thinks that can be noted in the images in figure~\ref{fig:subsampling_ratios}, 

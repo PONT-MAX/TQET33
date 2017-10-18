@@ -44,7 +44,7 @@ The last observation in these plots are the mix of "good" and "half good" images
 \subsubsection{Dynamics in scene}
 In this category there are results both from the simulated images and from the SPC, where the results was divided into three characteristic dynamics: small local changes in the scene, large global changes and luminance change.\\[0.1in]
 
-The effect on the signal of local movements result shown in figure~\ref{fig:local_}, we can see that there is no significant difference between the non perturbed reference signal and the distorted signal. It can even be interpreted as added noise to the signal and it is barely detectable even if the signal is known. The effect on the reconstructed image, seen in figure~\ref{fig:local_1}, looks like global noise is added. The conclusion of that test implies that local movement in a scene will distort the reconstructed image globally and especially locally where the movement occurred. It also tells that local movement is very hard to detect in the signal even if a reference signal is available.\\[0.1in] 
+The effect on the signal of local movements result shown in figure~\ref{fig:local_dyn}, we can see that there is no significant difference between the non perturbed reference signal and the distorted signal. It can even be interpreted as added noise to the signal and it is barely detectable even if the signal is known. The effect on the reconstructed image, seen in figure~\ref{fig:local_1}, looks like global noise is added. The conclusion of that test implies that local movement in a scene will distort the reconstructed image globally and especially locally where the movement occurred. It also tells that local movement is very hard to detect in the signal even if a reference signal is available.\\[0.1in] 
 \todo[inline]{Write here about always local movement or in a "conclusion"?}
 
 When increasing the movement and modeled an unseen object pass through, the samples with movement was very easy to spot, which figure~\ref{fig:local_sig_2} shows. The effect in the reconstructed image is as expected even worse then local movement, with a global distortion, seen in figure~\ref{fig:local_2}. In this simple isolated case the image could be saved by removing the measurements when the object was moving, reconstructing an image with fewer measurements. The resulting image would not be as good as the image in figure~\ref{fig:fly_2} but it would not contain the noise present in figure~\ref{fig:fly_3}. \\[0.1in]
@@ -78,16 +78,22 @@ When comparing the edge response between the conventional camera against the SPC
 
 \item And as stated before, with the long exposure, vibrations and light intensity change effected the results (the SPC could detect significant light intensity change from the halogen lamp powered by a DC-unit), which contribute to global noise in the reconstruction.
 
-
-
 \end{itemize}
 
 
 
 \subsubsection{Subsampling ratio}
-In this 
-% Simulated Result 
-% SPC Results
+The first results from section~\ref{sec:measurements} was the minimum subsampling ratio required to reconstruct a merely recognizable image, for the whole image set the results varied between 2-4\%. The variance could be effected by several factors such as image complexity, SNR and dynamics in the scene, which contribute to add uncertainty to the equation system. With the knowledge of minimum subsampling ratio a fast exposure and thus a fast reconstruction could be applied to form a test image, which could be used to calibrate and make decision how to sample the long exposure real image.\\[0.1in]
+
+In the second part of section~\ref{sec:measurements}, a set of images reconstructed with different subsampling ratio was presented. 
+
+\begin{itemize}
+\item Subjective 
+\just Present the result for the reader to give an intuition and 
+\end{itemize}
+
+
+ Even though facts could be pointed out given different subsampling ratios, "good enough" for a particular application is subjective,  
 
 
 \subsection{Method} %Vad jag tycker om det (personliga tankar)
@@ -96,9 +102,32 @@ In this
 
 %En studie är sällan perfekt. Det finns nästan alltid saker man skulle vilja gjort annorlunda om man kunnat göra om studien eller haft extra resurser. Gå igenom de viktigaste bristerna du ser med din metod och diskutera tänkbara konsekvenser för resultaten. Koppla tillbaka till den metodteori som togs upp i teorikapitlet. Referera explicit till relevanta källor. 
 
+\begin{itemize}
+\item Better sensor with lower background noise, preferably of CCD type where each measurement matrix light intensity over the exposure time gets integrated and read out, which would lower the noise even more.
+
+\item A faster DMD to shorten the exposure time to under a second, this would reduce most of the problems with the current setup which comes from a non static scene.
+
+\item A GPU accelerated reconstruction algorithm
+
+\item Put down more work to be able to measure even higher resolution images. It became harder to construct the measurement matrix, but would have taken more time to sample images and reconstruct them.
+
+\item 
+
+
+\end{itemize}
+
 % Reliabilitet är ett begrepp som beskriver mätningens kvalitet: hur väl kan man lita på data som insamlats och hur det används för att dra slutsatser. Om reliabiliteten är hög, så bör samma/liknande resultat kunna uppnås om man gör om studien med samma metod.
 
+\begin{itemize}
+\item The reliability is quiet consistent, a lot of photos has been captured and the reason for flawed photos has been explained to the extent i know.
+
+\item The method is very easy to replicate, and could be very cheap, especial in the visual spectrum. 
+\end{itemize}
+
 %Validitet handlar lite förenklat om huruvida man i en mätning mätt det man tror sig mäta. En studie med hög validitet har alltså en hög grad av trovärdighet.
+\begin{itemize}
+\item The system is very simple, and it is easy to see when it is done correctly, if the measurement comes out of sync or if the measurement is wrong the reconstruction will break and therefore no result. Therefore this is a binary system, either one get images or not.
+\end{itemize}
 
 \subsection{Work in a Broader context}
 %Det ska ingå ett stycke med en diskussion om etiska och samhälleliga aspekter relaterade till arbetet. Detta är viktigt för att påvisa professionell mognad samt för att utbildningsmålen ska kunna uppnås. Om arbetet av någon anledning helt saknar koppling till etiska eller samhälleliga aspekter ska detta explicit anges i stycket Avgränsningar i inledningskapitlet. 
