@@ -392,6 +392,8 @@ The second operation is an intensity transform to maximize the contrast in the i
 \label{sec:method_eval}
 The evaluation will be divided in to two categories: reconstructed images from synthetic data and images reconstructed from data acquired by the SPC.\\[0.1in] 
 
+\todo[inline]{All results is produced with subsampling ratios ranging from 5-30\%, the upper limit was set to 30\% because, the whole point with CS/CI is to minimize the subsampling ratio needed and with the current set up, higher subsampling ratios which gives longer exposure time would become impractical for natural outdoors images.  }
+
 The evaluation on synthetic data is focused on evaluating the performance of the measurement matrix and reconstruction algorithm. Evaluating synthetic data gives two possibilities that can not be achieved with images reconstructed using the SPC which is that there is a reference image which the resulting image can be compared to.
 
 Reconstructed image from synthetic data is acquired by creating a signal $ \mathbf{ y }_{M\times1}$ taking the inner product of $ \mathbf{y} = \mathbf{\Phi} \mathbf{x} + \epsilon$ where, $\mathbf{x}$ is the synthetic image reshaped to a vector, $\mathbf{\Phi}$ is the measurement matrix with the desired amount of measurements $M$ and synthetic noise $\epsilon$ which can be regulated to simulate different conditions, then using the reconstruction algorithm on the signal $\mathbf{y}$ to obtain the reconstructed image $\mathbf{\hat x}$. Because the measurement matrix and reconstruction algorithm is independent of the SPC hardware the subsystem can be evaluated independently. Two advantages of evaluation the sensing and reconstruction independently of the SPC is that parameters such as number of measurements and noise can be regulated easy and the second advantage is that a reference image is available for comparison.\\[0.1in] 
@@ -456,15 +458,7 @@ Edge response
 \end{figure}
 
 \pagebreak
-\todo[inline]{Large syntetic test of SWIR images, Whar result can be expected}
 
-\todo[inline]{All results is produced with subsampling ratios ranging from 5-30\%, the upper limit was set to 30\% because, the whole point with CS/CI is to minimize the subsampling ratio needed and with the current set up, higher subsampling ratios which gives longer exposure time would become impractical for natural outdoors images.  }
-
-\todo[inline]{Synthetic test of the methods presented in section~\ref{sec:signal_process} will be conducted to measure the performance and validity.}
-
-
-
-\todo[inline]{Light source 135W from 2m. Image on the board}
 
 
 \subsection{Method criticism}
