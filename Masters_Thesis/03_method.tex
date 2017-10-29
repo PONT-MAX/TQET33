@@ -396,6 +396,7 @@ The evaluation on synthetic data is focused on evaluating the performance of the
 
 Reconstructed image from synthetic data is acquired by creating a signal $ \mathbf{ y }_{M\times1}$ taking the inner product of $ \mathbf{y} = \mathbf{\Phi} \mathbf{x} + \epsilon$ where, $\mathbf{x}$ is the synthetic image reshaped to a vector, $\mathbf{\Phi}$ is the measurement matrix with the desired amount of measurements $M$ and synthetic noise $\epsilon$ which can be regulated to simulate different conditions, then using the reconstruction algorithm on the signal $\mathbf{y}$ to obtain the reconstructed image $\mathbf{\hat x}$. Because the measurement matrix and reconstruction algorithm is independent of the SPC hardware the subsystem can be evaluated independently. Two advantages of evaluation the sensing and reconstruction independently of the SPC is that parameters such as number of measurements and noise can be regulated easy and the second advantage is that a reference image is available for comparison.\\[0.1in] 
 
+\subsubsection{Evaluation Using reference image}
 With a reference image available two image quality assessments are performed on the result from the simulation: Peak signal-to-noise ratio (PSNR) and  SSIM. PSNR is defined as
 
 \begin{equation}
@@ -407,8 +408,52 @@ where, $f(x,y)$ and $g(x,y)$ is intensity in pixel $(x,y)$ and MSE is the mean s
 \begin{equation}
 \text{MSE}[f(x,y),g(x,y)] = \frac{1}{mn}\sum_{x=0}^{y-1}\sum_{n=0}^{n-1}[f(x,y) - g(x,y)]^2.
 \end{equation}
- 
- 
+
+The SSIM algorithm is not focused on pixel to pixel differences like PSNR but instead of the structure of the image in small windows. SSIM separates  luminance, contrast and structure and calculates the difference in each category in a small window to calculate the similarity of the images. SSIM index is defined as
+
+\begin{equation}
+\text{SSIM}[f(x,y),g(x,y)] = \sum_nl[f(n),g(n)]^\alpha c[f(n),g(n)]^\beta s[f(n),g(n)]^\gamma ,
+\end{equation}
+
+where $n$ is the window, $\alpha=\beta=\gamma = 1$ and 
+
+\begin{equation}
+\displaystyle \text{luminance: } l = \frac{2\mu_{f(n)}\mu_{g(n)} + C_1}{\mu_{f(n)}^2 + \mu_{g(n)}^2 + C_1},
+\end{equation}
+\begin{equation}
+\text{contrast: } c = \frac{2\sigma_{f(n)}\sigma_{g(n)} + C_2}{\sigma_{f(n)}^2 + \sigma_{g(n)}^2 + C_2},
+\end{equation}
+\begin{equation}
+\text{structure: } s = \frac{\sigma_{f(n)g(n)} + C_3}{\sigma_{f(n)} \sigma_{g(n)} + C_3},
+\end{equation}
+
+where,
+
+\begin{itemize}
+\item $\mu_{f(n)}$ and $\mu_{g(n)}$ is window mean.
+\item $\sigma_{f(n)}$ and $\sigma_{g(n)}$ is window standard deviation.
+\item $\sigma_{f(n)g(n)}$ is window cross covariance.
+\item $C_1 = 0.01*255$, (MATLAB default).
+\item $C_2 = 0.03*255$, (MATLAB default).
+\item $C_1 = C_2/2$, (MATLAB default).
+\end{itemize} 
+
+Which summarizes to
+
+\begin{equation}
+\text{SSIM}[f(x,y),g(x,y)] = \sum_n \frac{(2\mu_{f(n)}\mu_{g(n)} + C_1)(2\sigma_{f(n)g(n)} + C_2)}{(\mu_{f(n)}^2 + \mu_{g(n)}^2 + C_1)(\sigma_{f(n)}^2 + \sigma_{g(n)}^2 + C_2)}.
+\end{equation} 
+
+\subsubsection{Evaluation Using no reference quality assessment}
+BRISQUE
+
+\subsubsection{Evaluating the Edge response}
+Edge response
+\begin{figure}[H]
+\includegraphics[width = 1\textwidth]{./result/edge_response.eps}
+	\caption{Definition of 10-90\% Edge response.}
+	\label{fig:edge_response_def}
+\end{figure}
 
 \pagebreak
 \todo[inline]{Large syntetic test of SWIR images, Whar result can be expected}
@@ -417,19 +462,7 @@ where, $f(x,y)$ and $g(x,y)$ is intensity in pixel $(x,y)$ and MSE is the mean s
 
 \todo[inline]{Synthetic test of the methods presented in section~\ref{sec:signal_process} will be conducted to measure the performance and validity.}
 
-\todo[inline]{Number of measurements needed to get a good image}
 
-\todo[inline]{Homography test}
-
-\todo[inline]{Brisque}
-
-\todo[inline]{MTF which measures Edge response}
-
-\begin{figure}[H]
-\includegraphics[width = 1\textwidth]{./result/edge_response.eps}
-	\caption{Definition of 10-90\% Edge response.}
-	\label{fig:edge_response_def}
-\end{figure}
 
 \todo[inline]{Light source 135W from 2m. Image on the board}
 
