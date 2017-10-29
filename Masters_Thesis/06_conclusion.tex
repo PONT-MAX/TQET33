@@ -1,7 +1,27 @@
 \section{Conclusion \& Future Work}
 Explicit answers to research questions and a summary of the whole masters thesis.
 
+\begin{itemize}
+    \item How can the quality of images reconstructed by CS or a SPC be evaluated?
+    \item What is the state of the art method to capture and reconstruct images using a SPC architecture?
+    \item What image quality is achieved using state of the art methods applied to the SPC?
+\end{itemize}
+
+What image quality can be achieved in natural images captured with a single pixel camera in daylight using state of the art methods? 
+
 \subsection{Conclusion}
+\begin{itemize}
+\item In this thesis a state of the art SWIR SPC arcitecture with corresponding software was developed and evaluated. 
+
+\item Results show that
+
+\item The method used
+
+\item 
+\end{itemize}
+
+
+
 
 \subsection{Future work}
 This thesis shows that there is possible to use the SPC architecture to capture and reconstruct natural scenes in daylight, but for the technology to be used in a realistic application some improvements need to be made. And I think the most crucial problems could be "bought out" by more sophisticated hardware.\\[0.1in]
@@ -10,19 +30,9 @@ As identified multiple times in this thesis, the largest contributor to decrease
 
 Ether if a new transfer approach is implemented or not, a more sophisticated method of generating each measurement matrix should be implemented, the current method of generating all  measurement matrices offline to a video file and then playbacked by a third Party video player has a limitiation of FPS but also a reliability problem. The software was not designed to necessarily show every frame in the video file, which is a problem where each measurement needs to be paired with the correct measurement matrix. My suggestion would be a program which would calculate all matrices at start up and upload them to video memory ready for to display at the DMD. This solution would also be more agile where subsampling ratio, which type of measurement matrix and exposure time could easily be adjusted prior to sampling.\\[0.1in]
 
-The second hardware upgrade 
+The second hardware upgrade, to reduce noise, would be to replace the photo diode used in this thesis to a more appropriate sensor for the application. The new sensor should have less background noise and the surface area of the doid should be analyzed to match the rest of the architecture to maximize the incoming light onto the sensor through the focusing lens. This upgrade could also unlock the true potential of the SWIR spectrum where images could be captured in dark environments illuminated by the moon, stars and night glow.\\[0.1in]
+
+New research shows promising results by adding a second sensor which measures the intensity of the mirrors representing zero or turned away from the sensor and being dumped in the current architecture. The compliment of each unique measurement matrix could also be seen as a unique measurement matrix and thus more information is collected in each measurement and thus reduce the subsampling ratio needed to reconstruct a corresponding single sensor image.\todo{Add reference}\\[0.1in]
+
+The last future work proposition will not increase image quality but would simplify research or usage and time consumption taking pictures with the SPC. The second and third most time consuming task after exposure time is the complexity of sampling the scene and the reconstruction algorithm in the post process. A fully integrated capturing and reconstruction chain with a gpu accelerated reconstruction algorithm should ease the work and save a lot of time for the user. 
  
-
-\begin{itemize}
-\item Better sensor with lower background noise, preferably of CCD type where each measurement matrix light intensity over the exposure time gets integrated and read out, which would lower the noise.
-
-\item A faster DMD to shorten the exposure time to under a second, this would reduce most of the problems with the current setup which comes from a non static scene.
-
-\item A GPU accelerated reconstruction algorithm, to shorten the reconstruction time.
-
-\item A automatic system to measure and reconstruct the image
-
-\item 
-
-
-\end{itemize}
