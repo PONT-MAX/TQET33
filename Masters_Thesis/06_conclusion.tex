@@ -6,7 +6,12 @@ Explicit answers to research questions and a summary of the whole masters thesis
 \subsection{Future work}
 This thesis shows that there is possible to use the SPC architecture to capture and reconstruct natural scenes in daylight, but for the technology to be used in a realistic application some improvements need to be made. And I think the most crucial problems could be "bought out" by more sophisticated hardware.\\[0.1in]
 
-As identified multiple times in this thesis, the largest contributor to decreased image quality is exposure time and noise. 
+As identified multiple times in this thesis, the largest contributor to decreased image quality is exposure time and noise. The exposure time can be decreased by a faster DMD, today there exist a DMD:s with 8 times the maximum pattern rate of the DMD used in this thesis (which was operated at half the maximum speed), which would enable an exposure time of 1.125 seconds at 10\% subsampling ratio. This upgrade would however require a new approach to feeding the measurements matrices to the DMD because of the limitations of the HDMI cables transfer speed.\\[0.1in]
+
+Ether if a new transfer approach is implemented or not, a more sophisticated method of generating each measurement matrix should be implemented, the current method of generating all  measurement matrices offline to a video file and then playbacked by a third Party video player has a limitiation of FPS but also a reliability problem. The software was not designed to necessarily show every frame in the video file, which is a problem where each measurement needs to be paired with the correct measurement matrix. My suggestion would be a program which would calculate all matrices at start up and upload them to video memory ready for to display at the DMD. This solution would also be more agile where subsampling ratio, which type of measurement matrix and exposure time could easily be adjusted prior to sampling.\\[0.1in]
+
+The second hardware upgrade 
+ 
 
 \begin{itemize}
 \item Better sensor with lower background noise, preferably of CCD type where each measurement matrix light intensity over the exposure time gets integrated and read out, which would lower the noise.
