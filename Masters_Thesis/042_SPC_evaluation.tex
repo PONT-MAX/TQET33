@@ -2,11 +2,8 @@
 
 \subsection{SPC evaluation}
 \label{sec:eval_spc}
-The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using the using a range of methods to examine the performance of the SPC. In this section the BRISQUE algorithm will be used again where connections to the previous result is drawn, a reconstructed image will be compared to an ideal image using homography, a set of images is presented reconstructed at different subsampling ratios, a edge response analysis i performed and the correlation between reconstruction performance and noise is conducted. 
+The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using the using a range of methods to examine the performance of the SPC. In this section the BRISQUE algorithm will be used again where connections to the previous result is drawn, a reconstructed image will be compared to an ideal image using homography, a set of images is presented reconstructed at different subsampling ratios, a edge response analysis i performed and the correlation between reconstruction performance and noise is conducted. All images captured by the SPC with natural scenes was taken at a distance between 200 to 900 meter in sunny days with some clouds.
 
-\todo[inline]{The images captured was taken at a distance between 200 to 900 m}
-
-\todo[inline]{List the specs?}
 
 \subsubsection{Reconstructed performance Using reference image}
 This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image to the images produced by the SPC. One solution to obtain a reference image is to calculate a homography between images. But there are two problems of just performing a homography to obtain a reference image, the fist on is that, homography estimates the transformation between flat surfaces which excludes most natural images, and the second is that, the estimated homography will not be perfect an thus for example high contrast edges in the images will not match and then produce large errors in the performance measurements. To solve these two problems the scene is a flat surface with a printed pattern and to avoid the the error from sharp edges the pettern is constructed without any. To not complicate this experiment the reference image is the computer generated optimal images which is being transformed to fit the image captured by the SPC.\\[0.1in] 

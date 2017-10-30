@@ -179,7 +179,6 @@ for example
 
 To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition~\cite{article:SRM_long, article:WH_RIP_SRM, article:WH_mixed_RIP_prof}. How the matrix was permutated and which rows was choosen i which order is stored so the reconstruction algorithm can use that information. \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
 
-\todo[inline]{permutation is not nessesary?}
 
 \subsection{Reconstruction method}
 To reconstruct the image $\textbf{x}$ the sparest set of coefficients in $\theta$ is desired. The optimal approach to find these coefficients would be to use $\ell_0$ minimization
@@ -408,7 +407,7 @@ With a reference image available two image quality assessments are performed on 
 where, $f(x,y)$ and $g(x,y)$ is intensity in pixel $(x,y)$ and MSE is the mean square error between the images defined as
 
 \begin{equation}
-\text{MSE}[f(x,y),g(x,y)] = \frac{1}{mn}\sum_{x=0}^{y-1}\sum_{n=0}^{n-1}[f(x,y) - g(x,y)]^2.
+\text{MSE}[f(x,y),g(x,y)] = \frac{1}{mn}\sum_{x=0}^{m-1}\sum_{y=0}^{n-1}[f(x,y) - g(x,y)]^2.
 \end{equation}
 
 The SSIM algorithm is not focused on pixel to pixel differences like PSNR but instead of the structure of the image in small windows. SSIM separates  luminance, contrast and structure and calculates the difference in each category in a small window to calculate the similarity of the images. SSIM index is defined as
@@ -446,11 +445,14 @@ Which summarizes to
 \text{SSIM}[f(x,y),g(x,y)] = \sum_n \frac{(2\mu_{f(n)}\mu_{g(n)} + C_1)(2\sigma_{f(n)g(n)} + C_2)}{(\mu_{f(n)}^2 + \mu_{g(n)}^2 + C_1)(\sigma_{f(n)}^2 + \sigma_{g(n)}^2 + C_2)}.
 \end{equation} 
 
-\subsubsection{Evaluation Using no reference quality assessment}
-BRISQUE
+The SSIM index has a max value of 1 when the images are identical which makes it easy to read. \cite{book:image_processing}
 
-\subsubsection{Evaluating the Edge response}
-Edge response
+\subsubsection{Evaluation Using no reference quality assessment}
+In order to evaluate image quality when there is no reference image to compare against the BRISQUE algorithm is used as a complement. BRISQUE is a no reference image quality assessment model which is based on natural scene statistics and quantifies the "naturalness" of the image.   \cite{article:brisque}
+
+\subsubsection{Evaluating Using Edge response}
+The edge response measures the sharpness of the image by calculating the distance in pixels required for an edge in the image to rise. In this thesis the distance required for the edge response to rise from 10\% to 90\% was chosen, in figure~\ref{fig:edge_response_def} an illustration of the definition is shown. This evaluation is performed on static images captured in constant light indoors for consistent results, furthermore the motive of the image is slanted geometric objects printed on a sheet of paper.\cite{article:FOI_pres_sens}
+ 
 \begin{figure}[H]
 \includegraphics[width = 1\textwidth]{./result/edge_response.eps}
 	\caption{Definition of 10-90\% Edge response.}
@@ -463,7 +465,7 @@ Edge response
 
 \subsection{Method criticism}
 \begin{itemize}
-    \item No Reference Image Quality Assessment is not designed for SWIR images or SPC:s characteristics noise therefore the results may not reflect how the QA would answer to visual wavelength cameras. 
+    \item No Reference Image Quality Assessment is not designed for SWIR images or SPC:s characteristics noise therefore the results may not reflect how the QA would answer to visual wavelength cameras. BRISQUE definition of "naturalness" may not reflect the images captured by the SPC. 
 \end{itemize}
 %LSE - absolute error but does not say much about how humans perceives the image.\\
 
