@@ -87,29 +87,31 @@ The first results from section~\ref{sec:measurements} was the minimum subsamplin
 In the second part of section~\ref{sec:measurements}, a set of images reconstructed with different subsampling ratio was presented. The result is presented for the reader to obtain a more concrete perception of the generated image quality and a supplement to the numerical results given subsampling ratio, but also overall expected image quality.
 
 \subsection{Method} %Vad jag tycker om det (personliga tankar)
+%In the discussion of method an analysis of replicability, reliability and  validity is held.
 
-%Här ska den använda metoden diskuteras och kritiseras. Att ha ett kritiskt förhållningssätt till använd metod är en viktig del av vetenskaplighet.
+The methods used in thesis can be divided into four categories, the SPC hardware, the sampling matrix and reconstruction, post processing and the method used to capture the images. Two of these categories, the hardware setup and the sampling matrix and reconstruction was heavily influenced and implemented by widely accepted methods from articles and experiments. While the two other categories, the post process and the image capturing dependent more on the hardware limitation and competence achieved from the university.\\[0.1in]
 
-%En studie är sällan perfekt. Det finns nästan alltid saker man skulle vilja gjort annorlunda om man kunnat göra om studien eller haft extra resurser. Gå igenom de viktigaste bristerna du ser med din metod och diskutera tänkbara konsekvenser för resultaten. Koppla tillbaka till den metodteori som togs upp i teorikapitlet. Referera explicit till relevanta källor. 
+The first method in the chain was feeding the DMD measurement matrices and sampling the signal. Because of the interface to the DMD, which acted as a second monitor to the computer, the method to stream the measurement matrices as a video was thought to be a good method because it was easy to implement. In the early stages of this thesis a much smaller resolution of $128 \times 128$ pixels was thought to be a feasible maximum and thus much less measurement matrices needed to be streamed to the DMD while having the same exposure time. With that initial goal in mind the video player steaming method would have worked well. But when the target resolution was pushed the video players frame rate had to be pushed to its limits in an application it was not designed to handle. This resulted in a higher probability that the video player would go out of sync and thus ruin the reconstruction and there was no way of knowing if this had happen. By the time this issue was discovered there where no time of changing and implement a new method but was much needed.\\[0.1in]
 
-\begin{itemize}
-\item Make a more agile feeding program of the measurements matrices. The videos took some time to generate and with a third party video player which was not designed for this kinds of application was not reliable. If I had more time I would have created a simple graphics application which could feed the measurement matrices.
-\end{itemize}
+The sampling matrix chosen in this thesis was the sequency ordered Walsh Hadamard measurement matrix, this sampling matrix in unison with implemented fast transform in the reconstruction algorithm enabled the huge increase in image resolution. This method of using structurally random matrices is the only feasible method today to enable high resolution and fast reconstruction with low memory usage in the computer thus if implemented optimally both the feeding of measurement matrices to the DMD and reconstruction could be calculated in run time in a memory efficient program.\\[0.1in]
 
+The reconstruction algorithm TVAL3 was used throughout this masters thesis and was chosen after the literature study where several articles mentioned total variation as a good optimization algorithm for compressive imaging. The algorithm worked as described and according to the developer and is one of the fastest and best reconstruction algorithms that are free to use and available. The only negative criticism of using this algorithm is that it seems to produce a dark tint in the edges of the reconstructed images.\\[0.1in]
+
+In the post process quite basic signal and image processing was performed and was intentional designed that way in order to present the result as true as possible. One algorithm was developed specific for the SPC which was the average mean algorithm to suppress the impact of lumination change in the sampled signal. The algorithm showed great result and became essential when taking photos of scenes outdoor. Both hardware and software signal denoising was implemented to the architecture but had to be changed every time the DMD update rate was changed, which happened a couple of times. Finding a new solution every time was a time consuming task and dropped completely in the end when good results was achieved anyway. If I had more time or a target DMD rate would have been set earlier a good signal denoising implementation could have improve the result.\\[0.1in]
+
+\subsubsection{Replicability, reliability \& validity}
+Given the description of method in this thesis I think it would be quiet straight forward to replicate this experimental setup and architecture. The setup is quiet simple and the software developed is not so heavy, therefor I think this experiment have good replicability.\\[0.1in]
+
+In the case of compressive imaging the reliability and validity goes hand in hand, if whats being measured is not the correct data the reconstruction will fail and if the reconstruction succeed the measurement must be correct. Therefore copressive sensing is very binary, ether you get it right or you fail and thus I think my result have both high validity and reliability.  
+
+ 
 % Reliabilitet är ett begrepp som beskriver mätningens kvalitet: hur väl kan man lita på data som insamlats och hur det används för att dra slutsatser. Om reliabiliteten är hög, så bör samma/liknande resultat kunna uppnås om man gör om studien med samma metod.
 
-\begin{itemize}
-\item The reliability is quiet consistent, a lot of photos has been captured and the reason for flawed photos has been explained to the extent i know.
-
-\item The method is very easy to replicate, and could be very cheap, especial in the visual spectrum. 
-\end{itemize}
-
 %Validitet handlar lite förenklat om huruvida man i en mätning mätt det man tror sig mäta. En studie med hög validitet har alltså en hög grad av trovärdighet.
-\begin{itemize}
-\item The system is very simple, and it is easy to see when it is done correctly, if the measurement comes out of sync or if the measurement is wrong the reconstruction will break and therefore no result. Therefore this is a binary system, either one get images or not.
-\end{itemize}
 
-\subsection{Work in a Broader context}
+
+
+%\subsection{Work in a Broader context}
 %Det ska ingå ett stycke med en diskussion om etiska och samhälleliga aspekter relaterade till arbetet. Detta är viktigt för att påvisa professionell mognad samt för att utbildningsmålen ska kunna uppnås. Om arbetet av någon anledning helt saknar koppling till etiska eller samhälleliga aspekter ska detta explicit anges i stycket Avgränsningar i inledningskapitlet. 
 
 % Jag tror detta är fallet då det är en ny sorts kamera, det finns väl inget morariskt fel att bygga en kamera som är effektivare? och den borde inte få några samhelliga effekter?
