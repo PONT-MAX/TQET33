@@ -5,29 +5,33 @@ In this section important, relevant and fundamental articles to this master's th
 \begin{itemize}
 
 
-\item \cite{book:sm, book:srr} Two books which thoroughly presents the topic sparse and redundant representation and sparse modeling. The fundamental principles and constraints that needs to be fulfilled in CS. The books presents different minimization algorithms and how to implement them.   
+\item \cite{book:sm, book:srr} "Sparse Modeling" by G. Y. Grabarnik and  I. Rish and "Sparse and redundant representation" by M Elad is two books which thoroughly presents the topic of sparse and redundant representation and modeling. The fundamental principles and constraints that needs to be fulfilled in CS. The books presents different minimization algorithms and how to implement them.   
 
-\item In~\cite{article:CS_donoho1} David L. Donoho proposed the framework of compressed sensing and its application to images.
+\item In~\cite{article:CS_donoho1} "Compressed sensing" David L. Donoho proposed the framework of compressed sensing and the application of images capturing.
+
+\item \cite{article:CS_from_theory_a_sur} "Compressive Sensing: From Theory to Applications, A survey" by S. Qaisar et al. 2013, reviews CS background, theory and mathematics and has a extensive survey of reconstruction algorithm and potential CS applications.
 
 \end{itemize}
 \subsection{Compressive imaging}
 \begin{itemize}
-\item \cite{article:single_pixel_im_cs} "Single-Pixel Imaging via Compressive Sampling"
-\item \cite{article:cs_for_prac_ios_a_tut} "Compressed sensing for practical optical imaging systems: a tutorial"
 
-\item \cite{article:a_new_ci_arc} "A New compressive imaging camera architecture using Optical-Domain Compression"
+\item \cite{article:an_Arcitecture_for_CI,article:a_new_ci_arc} "An architechture for compressive imaging" and "A New compressive imaging camera architecture using Optical-Domain Compression" by M. B. Wakin, D Takhar, et al. 2006, presents the first single pixel camera architecture using CS to reconstruct the images. 
 
-\item \cite{article:an_Arcitecture_for_CI} "An architechture for compressive imaging"
+\item \cite{article:single_pixel_im_cs} "Single-Pixel Imaging via Compressive Sampling" by M. F. Duarte et al. 2008, is an introduction and summary to CS and CI including the SPC architecture. This article also compares different scanning methodologies and their conditions.   
 
-\item \cite{article:a_high_res_swir} "A high resolution SWIR camera via compressed sensing"
+\item \cite{article:foiSPIS} "Single Pixel SWIR Imaging using Compressed Sensing" by C. Brännlund and D. Gustafsson. 2016, was written to show the initial results and proof of concept of the SPC architecture at FOI.
+  
+%\item \cite{article:cs_for_prac_ios_a_tut} "Compressed sensing for practical optical imaging systems: a tutorial"
 
-\item \cite{article:cs_for_prac_ios_a_tut} "Compressive Sensing: From Theory to Applications, A survey"
 
-\item \cite{mt:EF} "Compressed Sensing for 3D Laser Radar"  
+\item \cite{article:a_high_res_swir} "A high resolution SWIR camera via compressed sensing" is a paper from L. McMackin et al. 2012 at Inveiw Technology which develop and produces compressive sensing cameras. The paper contains a brief review of CS and CI followed by a presentation of their camera architecture. 
 
-\item \cite{article:misuperres} "Multi image super resolution using compressed sensing" 
+ 
+\item \cite{mt:EF} "Compressed Sensing for 3D Laser Radar" by E. Fall. 2014, is a master's thesis where CS/CI is evaluated for a potential depth camera architecture using a one pixel sensor.   
 
-\item \cite{article:foiSPIS} An article presenting the setup used in this master's thesis with a proof of concept that the SPC setup works. 
+\item \cite{article:misuperres} "Multi image super resolution using compressed sensing" by T. Edler et al. 2011, presents the results from using a small detector array instead of just one single sensor, but still using CS to reconstruct the images. With this technique the subsampling ratio and the exposure time is reduced. 
+
+ 
 	
 \end{itemize}
     
@@ -35,13 +39,12 @@ In this section important, relevant and fundamental articles to this master's th
 
 \begin{itemize}
     
-    \item \cite{article:TVAL3} Chengbo Li:s master's thesis "An Efficient Algorithm For Total Variation Regularization with Applications to the Single Pixel Camera and Compressive Sensing" describes his new total variation algorithm Li constructed which solve the CS problem. The algorithm is faster and produces better results for images than previous popular algorithms.   
+\item \cite{article:TVAL3} Chengbo Li:s master's thesis "An Efficient Algorithm For Total Variation Regularization with Applications to the Single Pixel Camera and Compressive Sensing" describes a total variation algorithm Li constructed which solve the CS problem. The algorithm is faster and produces better results for images than previous popular algorithms.   
 
-    \item \cite{article:SRM_short, article:SRM_long, article:SRM_block} Fast and Efficient Compressive Sensing Using Structurally Random Matrices (SRM). The articles describes why and how to implement SRM, in these articles the Hadamard or DCT matrices is proposed to replace the i.i.d random matrix. With SRM the reconstruction time is reduced by replacing matrix multiplication with fast transforms. In addition to improved reconstruction time the new method does not need to store the measurement matrix in memory which enables reconstruction of high resolution images. 
+\item \cite{article:SRM_short, article:SRM_long, article:SRM_block} Fast and Efficient Compressive Sensing Using Structurally Random Matrices (SRM). The articles describes why and how to implement SRM, in these articles the Hadamard or DCT matrices is proposed to replace the i.i.d random matrix. With SRM the reconstruction time is reduced by replacing matrix multiplication with fast transforms. In addition to improved reconstruction time the new method does not need to store the measurement matrix in memory which enables reconstruction of high resolution images. 
 
 \item \cite{article:an_improved_WH_matrix} "An Improved Hadamard Measurement Matrix Based on Walsh Code For Compressive Sensing" Shows that sequency-ordered Walsh Hadamard matrix gives better reconstruction then the Hadamard matrix with the same benefits of using the Hadamard matrix. The resulting reconstructed image has near optimal reconstruction performance.
 	
-\item \cite{article:WH_mixed_RIP_prof} Proof that permutated Wlash Hadamard measurement matrices fulfills RIP.
 
 \end{itemize}
 
@@ -50,11 +53,12 @@ In this section important, relevant and fundamental articles to this master's th
 
 \begin{itemize}
 
-    \item Al Boviks book the essential guide to image processing \cite{book:image_processing} contains the majority of fundamental image processing techniques and measurements. Two image quality metrics of interest is PSNR and SSIM which can be used when a reference image is available.
+\item \cite{book:image_processing} "The essential guide to image processing" by Al Boviks contains the majority of fundamental image processing techniques and measurements. Two image quality metrics of interest is PSNR and SSIM which can be used when a reference image is available.
     
 \item \cite{article:brisque} "No-Reference Image Quality Assessment
-in the Spatial Domain" is the article describing the blind/referenceless image spatial quality evaluator (BRISQUE). The BRISQUE algorithm evaluates image quality and “naturalness” based on statistics in the image. BRISQUE is used when there is no reference image available therefore can be used to evaluate images produced by the SPC.  
+in the Spatial Domain" is the article describing the blind/referenceless image spatial quality evaluator (BRISQUE). The BRISQUE algorithm evaluates image quality and “naturalness” based on statistics in the image. BRISQUE is used when there is no reference image available and therefore can be used to evaluate images produced by the SPC.  
     
+\item \cite{article:FOI_pres_sens} "Prestandamått för sensorsystem" by F Näsström et al. 2016, describes methods and tools to evaluate sensor systems at FOI. 
     
 \end{itemize}
 
