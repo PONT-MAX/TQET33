@@ -1,7 +1,6 @@
 \section{Method}
 \label{sec:method}
-\todo[inline]{New method introduction depending on how the disposition will be in the final form}
-In order to answer the research questions stated in section~\ref{sec:RQ} a state of the art SPC, experiments and evaluation methods needs to be set up. In this section the SPC hardware and image sensing and reconstruction scheme is described.
+In order to answer the research questions stated in section~\ref{sec:RQ} a state of the art SPC, experiments and evaluation methods needs to be set up. In this section all the necessary hardware and software components and theory will be presented as well as the evaluation techniques. 
 
 
 \subsection{Single pixel camera architecture \& hardware}
@@ -11,32 +10,32 @@ FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a sing
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.9\textwidth]{gfx/SPC.png}
-    \caption{Single pixel imaging system (SPIS), adopted from \cite{article:foiSPIS}.}
+    \caption{The single pixel camera architecture used in this thesis. In the image the aperture, reflective optics, DMD, reference camera and the single pixel sensor are shown from an areal view including red lines showing the incoming light path.}
     \label{fig:system1}
 \end{figure}
 
 
 
-As seen in figure~\ref{fig:system1} light from the scene is focused by the Newtonian telescope and reflected onto the DMD. The mirrors on the DMD can turned individually either into the single pixel sensor or the reference camera. The DMD acts as a Spatial Light Modulator (SLM) and reflects different patterns which is 'summed up' in the single pixel sensor as an intensity. The reconstructed image from the system will have the same resolution as the DMD patterns. The DLP is the DMD control unit which controls which patterns are displayed on the DMD either by reading images from memory or the video port.   
-
+As seen in figure~\ref{fig:system1} light from the scene is focused by the Newtonian telescope and reflected onto the DMD. The mirrors on the DMD can reflect the light individually either into the single pixel sensor or the reference camera. The DMD acts as a Spatial Light Modulator (SLM) and reflects different patterns which is 'summed up' in the single pixel sensor as an voltage intensity. The reconstructed image from the system will have the same resolution as the DMD patterns. The DLP is the DMD:s control unit which controls which patterns are displayed on the DMD either by reading images from memory or the HDMI video port. 
 
 \subsubsection{Newtonian telescope}
-A Newtonian telescope is a reflecting telescope, using a concave primary mirror and a flat diagonal secondary mirror, see figure~\ref{fig:system1}. In this set-up the telescope act as a lens focusing the scene onto the DMD. The motivation to use a Newtonian telescope instead of a lens system is partly that chromatic aberration is eliminated and partly that a reflective optical system works over a greater range of wavelengths that includes SWIR, near infrared (NIR) and the visible spectrum.
+A Newtonian telescope is a reflecting telescope, using a concave primary mirror and a flat diagonal secondary mirror, see figure~\ref{fig:system1}. In this set-up the telescope act as a lens focusing the scene onto the DMD. The motivation to use a Newtonian telescope instead of a lens system is partly that chromatic aberration is eliminated and partly that a reflective optical system works over a greater range of wavelengths that includes SWIR, near infrared (NIR) and the visible spectrum. This design has a very narrow field of view which give high detailed scenes from a great distance. 
+
 
 \subsubsection{DLP and DMD}
-The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP LightCrafter 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster than the video port but due to constraints in both memory and memory bandwidth the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time from a $24$ bit signal, which gives a maximum measurement matrix rate at $120 \times 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz. At this rate with the number of measurements relative to number of pixels in reconstructed image between $20\% - 30\%$ a $256\times256$ pixel images data would be acquired in $9 - 13$ seconds and for a $512\times512$ pixel image $36-53$ seconds. To control the DMD the software 'DLP LightCrafter 4500 Control Software' is used.\\[0.1in] 
+The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP LightCrafter 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster than the video port but due to constraints in both memory and memory bandwidth the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time from a $24$ bit signal, which gives a maximum measurement matrix rate at $120 \times 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz. At this rate with subsampling ratio (the number of measurements relative number of pixels) between $20\% - 30\%$ with $512\times512$ pixel images, the sampling would be acquired in $36 - 52$ seconds. To control the DMD the software "DLP LightCrafter 4500 Control Software" is used.\\[0.1in] 
 
-The DMD in the setup is constructed with a diamond shaped pattern instead of a regular square grid which is used in regular camera image sensors. The diamond shape causes the index of each mirror to be skewed against what a normal grid would look like. As seen in figure~\ref{fig:dmd_index} the indexes of the mirrors column is two mirror column arrays wide while a row is a single row. 
+The DMD used in the setup is constructed with a diamond shaped pattern instead of a regular square grid which is used in regular camera image sensors. The diamond shape causes the index of each mirror to be skewed against what a normal grid would look like. As seen in figure~\ref{fig:dmd_index} the indexes of the mirrors column is two mirror column arrays wide while a row is a single row. 
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.8\textwidth]{gfx/DMD_grid.png}
-    \caption{DMD matrix, left shows each tiles index and right shows second row and second column in black.}
+    \caption{DMD matrix mirror index, left shows each tiles index and right shows the second row and second column in black as set by default.}
     \label{fig:dmd_index}
 \end{figure}
 
-Because the reconstruction algorithm and measurement matrix needs to be a square matrix with the side length with a power of 2 the resulting images ratio would be 2 to 1 while the image should have the ratio 1 to 1. The resulting image would need to be transformed into the real ratio where information potentially gets lost. Therefore the index of mirrors was changed so that each 'pixel' gets two mirrors as seen in figure~\ref{fig:dmd_index2}. This will result in rows and columns gets equal amount of space and the aspect ratio will be preserved to 1 to 1. 
+Because the reconstruction algorithm and measurement matrix needs to be a square matrix with the side length with a power of 2 the resulting images ratio would be 2 to 1 while the image should have the ratio 1 to 1. The resulting image would need to be transformed into the real ratio where information potentially gets lost. Therefore the index of mirrors was changed so that each 'pixel' gets two mirrors as seen in figure~\ref{fig:dmd_index2}. This will result in rows and columns gets equal amount of space and the aspect ratio will be preserved 1 to 1. 
 
 \begin{figure}[H]
     \centering
@@ -45,20 +44,19 @@ Because the reconstruction algorithm and measurement matrix needs to be a square
     \label{fig:dmd_index2}
 \end{figure}
 
-\todo[inline]{Connect the DMD to CS and the physical aspect (every mirror is an pixel). I:I:D gaussian with DMD only can take values 1,0 gives 50\% evenly distrubitated pixels measurements for every measurement matrix which looks something like figure~\ref{fig:dmd_pattern}.} 
-
+Mathematically the DMD is a binary operator which lets light pass or not, in figure~\ref{fig:dmd_pattern} a typical pattern that could be sent to the DMD is shown.  
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.5\textwidth]{gfx/DMD_pattern.png}
-    \caption{A typical measurement matrix presented on the DMD with the resolution $256 \times 256$ pixels.}
+    \caption{A typical pseudo random measurement matrix sent to the DMD with the resolution $256 \times 256$ pixels.}
     \label{fig:dmd_pattern}
 \end{figure}
 
 
 
 \subsubsection{Lens}
-The lens mounted on the single pixel sensor is an 50mm SWIR Fixed Focal Length Lens with an variable appature from f1.4 designed for wavelengths ranging from the 800 nm in the visual spectrum to 2000 nm in the SWIR spectrum. \cite{website:SWIR_objective}
+The lens mounted on the single pixel sensor is an 50 mm SWIR Fixed Focal Length Lens with an variable appature from f1.4 designed for wavelengths ranging from the 800 nm in the visual spectrum to 2000 nm in the SWIR spectrum. \cite{website:SWIR_objective}
 
 \subsubsection{Single pixel sensor}
 The single pixel sensor is a Thorlabs PDA20C/M and is sensitive in wavelength range 800-1700 nm which is beyond the visual spectrum (390-700 nm). The sensor outputs an analog signal in volt which the sampler converts to a discret value. \cite{manual:PDA}
@@ -69,7 +67,6 @@ All components characteristics assembled the wavelengths that pass trough the sy
 
 
 \subsection{Compressive imaging}
-\todo[inline]{Write introduction to CS, create some intuition}
 The single pixel sensor captures a scene by measuring the light intensity focused into the detector reflected from the DMD matrix. The DMD sensing matrix changes to obtain new measurements, $M$ unique sensing matrix measurements is captured to reconstruct an image with $N$ pixels. Each sensing matrix index is encoded either  by a one or a zero (turning the mirror onto or away from the sensor). The compressive imaging sampling model is defined as
 
 \begin{equation}
@@ -78,22 +75,23 @@ The single pixel sensor captures a scene by measuring the light intensity focuse
 \end{equation}\\[0.1in]
 
 
-, $\mathbf{x}_{N\times1}$ is the signal (image) with $N$ samples (pixels), $\mathbf{y}_{M\times1}$ is the vector with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix $\Phi_{1 \times N}$ as a row vector) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the signal is. The signal $\mathbf{x}$ can be represented as  
+where $\mathbf{x}_{N\times1}$ is the image arranged as an array with $N$ pixels, $\mathbf{y}_{M\times1}$ is the sampled signal with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix $\Phi_{1 \times N}$ as a row vector) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the image is. This is because the image $\mathbf{x}$ can be represented as  
 
 \begin{equation}
 \label{eq:CS2}
    \mathbf{ \Psi \theta = x }\text{,}
 \end{equation}\\[0.1in]
 
-where, $\mathbf{\Psi}_{N \times N}$ is some  basis matrix and
-$\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-sparse. $K$-sparse means that the signal $\mathbf{x}$ has $K$ non zero elements in basis $\mathbf{\Psi}$, $||\mathbf{\theta}||_0 = K$. Given equation~\ref{eq:CS2}, equation~\ref{eq:CS1} can be expand to
+where, $\mathbf{\Psi}_{N \times N}$ is some basis matrix and
+$\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-sparse. $K$-sparse means that the image $\mathbf{x}$ has $K$ non zero elements in basis $\mathbf{\Psi}$, $||\mathbf{\theta}||_0 = K$. Given equation~\ref{eq:CS2}, equation~\ref{eq:CS1} can be expand to
 
 
 \begin{equation}
    \mathbf{ y = \Phi x + \epsilon = \Phi \Psi \theta + \epsilon = A \theta + \epsilon }\text{,}
+   \label{eq:CS}
 \end{equation}\\[0.1in]
 
-where, $\textbf{A}_{M \times N} = \Phi \Psi$ is the reconstruction matrix. The last statement is what makes CS powerful, a signal which is not sparse can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible. \cite{book:sm}
+where, $\textbf{A}_{M \times N} = \Phi \Psi$ is called the reconstruction matrix. The revelation in equation~\ref{eq:CS}  is what makes CS powerful, an image which is not sparse in the spatial domain can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible for example the wavelet or fourier domain. \cite{book:sm}
 
 \todo[inline]{Noise dose not effect the measurement very much because half the intensity from the image is measured in one pixel sensor bumping the signal to noise ratio from a conv camera where each pixel has some noise half the pixels share that noise making SPC bery robust to noise even in low light situations. }
 
