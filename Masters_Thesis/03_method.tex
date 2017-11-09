@@ -67,6 +67,7 @@ All components characteristics assembled the wavelengths that pass trough the sy
 
 
 \subsection{Compressive imaging}
+\todo[inline]{Give more intuition}
 The single pixel sensor captures a scene by measuring the light intensity focused into the detector reflected from the DMD matrix. The DMD sensing matrix changes to obtain new measurements, $M$ unique sensing matrix measurements is captured to reconstruct an image with $N$ pixels. Each sensing matrix index is encoded either  by a one or a zero (turning the mirror onto or away from the sensor). The compressive imaging sampling model is defined as
 
 \begin{equation}
@@ -91,9 +92,11 @@ $\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-
    \label{eq:CS}
 \end{equation}\\[0.1in]
 
-where, $\textbf{A}_{M \times N} = \Phi \Psi$ is called the reconstruction matrix. The revelation in equation~\ref{eq:CS}  is what makes CS powerful, an image which is not sparse in the spatial domain can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible for example the wavelet or fourier domain. \cite{book:sm}
+where, $\textbf{A}_{M \times N} = \Phi \Psi$ is called the reconstruction matrix. The revelation in equation~\ref{eq:CS}  is what makes CS powerful, an image which is not sparse in the spatial domain can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible for example the wavelet or fourier domain. \cite{book:sm}\\[0.1in]
 
-\todo[inline]{Noise dose not effect the measurement very much because half the intensity from the image is measured in one pixel sensor bumping the signal to noise ratio from a conv camera where each pixel has some noise half the pixels share that noise making SPC bery robust to noise even in low light situations. }
+A grate advantage CI has over regular cameras where each pixel is sampled separately is that roughly half the pixels is sampled in one sensor meaning that background noise of the sensor will be surpassed by the great intensity of half the pixels combined making CI very robust to noise.  
+
+\todo[inline]{Must write something about the properies of the measurement matrix.}
 
 \subsection{Measurement matrix \& Restricted isometry property (RIP)}
 \todo[inline]{Introduce the topic.}
