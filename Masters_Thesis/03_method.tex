@@ -67,8 +67,15 @@ All components characteristics assembled the wavelengths that pass trough the sy
 
 
 \subsection{Compressive imaging}
-\todo[inline]{Give more intuition}
-The single pixel sensor captures a scene by measuring the light intensity focused into the detector reflected from the DMD matrix. The DMD sensing matrix changes to obtain new measurements, $M$ unique sensing matrix measurements is captured to reconstruct an image with $N$ pixels. Each sensing matrix index is encoded either  by a one or a zero (turning the mirror onto or away from the sensor). The compressive imaging sampling model is defined as
+\label{sec:CI}
+Compressive imaging is the name used when sampling and reconstructing images using the compressive sensing method. CI is often realized in form of a SPC but can have different shapes, but in this thesis CI is used on the SPC architecture presented in section~\ref{sec:system}. CI exploits the fact that natural images are compressible or approximately sparse in some basis and therefore only a few measurements relative the image pixel resolution needs to measured in order to reconstruct the image.\\[0.1in]
+
+CI need to fulfill two constraints in order to utilize CS sampling,  the image needs to be compressible and the complete measurement matrix need to be incoherent with the sparse transform. The first constraint is fulfilled because it is known that natural images are compressible using for example JPEG (using Discrete cosine transform) or JPEG2000 (using wavelet transform) and the second constraint is fulfilled using a measurement matrix with a random characteristic and will be more detailed explained in section~\ref{sec:mm_RIP}.\\[0.1in]
+ 
+
+The single pixel sensor captures a scene by measuring the light intensity focused into the detector reflected from the DMD pattern. The DMD pattern changes to obtain new measurements, $M$  measurements is sampled to reconstruct an image with $N$ pixels, where $M \ll N$. Each measurement matrix index is encoded either  by a one or a zero (turning the mirror onto or away from the sensor).\\[0.1in] 
+
+The compressive imaging sampling model is defined as
 
 \begin{equation}
 \label{eq:CS1}
@@ -76,7 +83,12 @@ The single pixel sensor captures a scene by measuring the light intensity focuse
 \end{equation}\\[0.1in]
 
 
-where $\mathbf{x}_{N\times1}$ is the image arranged as an array with $N$ pixels, $\mathbf{y}_{M\times1}$ is the sampled signal with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the measurements matrix (each unique sensing matrix $\Phi_{1 \times N}$ as a row vector) and $\mathbf{\epsilon}$ is the noise. In conventional sampling the number of measurements $M$ needs to be at least equal to the number of samples $N$ to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the image is. This is because the image $\mathbf{x}$ can be represented as  
+where $\mathbf{x}_{N\times1}$ is the image arranged as an array with $N$ pixels, $\mathbf{y}_{M\times1}$ is the sampled signal with $M$ measurements, $\mathbf{\Phi}_{M \times N}$ is the complete measurements matrix and $\mathbf{\epsilon}$ is the noise.\\[0.1in] 
+
+In this thesis $\mathbf{\Phi}$ is defined as the \textit{complete measurement matrix} and mainly used in mathematical context, the rows of the complete measurement matrix contains the \textit{measurement matrices}, where one measurement matrix is denoted $\mathbf{\phi}_m$ but can also be denoted as \textit{DMD patterns}. The complete measurement matrix thus contain $M$ measurement matrices.\\[0.1in]
+
+
+In conventional sampling the number of measurements $M$ needs to be at least equal to the number of pixels $N$ in the image to recover the signal but CS states that $M$ can be relatively small compared to $N$ given how compressible the image is. This is because the image $\mathbf{x}$ can be represented as  
 
 \begin{equation}
 \label{eq:CS2}
@@ -92,14 +104,16 @@ $\mathbf{\theta}_{N\times1}$ is the coefficients where $\mathbf{\theta}$ is $K$-
    \label{eq:CS}
 \end{equation}\\[0.1in]
 
-where, $\textbf{A}_{M \times N} = \Phi \Psi$ is called the reconstruction matrix. The revelation in equation~\ref{eq:CS}  is what makes CS powerful, an image which is not sparse in the spatial domain can be sampled with measurement matrix $\Phi$ and then reconstructed with reconstruction matrix $\textbf{A}$ in a basis where $\textbf{x}$ is sparse or compressible for example the wavelet or fourier domain. \cite{book:sm}\\[0.1in]
+where, $\textbf{A}_{M \times N} = \mathbf{\Phi \Psi}$ is called the reconstruction matrix.\\[0.1in] 
 
-A grate advantage CI has over regular cameras where each pixel is sampled separately is that roughly half the pixels is sampled in one sensor meaning that background noise of the sensor will be surpassed by the great intensity of half the pixels combined making CI very robust to noise.  
+The revelation in equation~\ref{eq:CS} is what makes CS powerful, by sampling the scene using the complete measurement matrix $\mathbf{\Phi}$ (as equation~\ref{eq:CS1}) but then in the reconstruction process transforming the complete measurement matrix $\mathbf{\Phi}$ to the reconstruction matrix $\mathbf{A}$ using some basis $\mathbf{\Psi}$ the optimization algorithm can solve the system for the sparse coefficients $\theta$ instead of the spatial image coefficients in $\mathbf{x}$ which is not sparse.\cite{book:sm}\\[0.1in]
 
-\todo[inline]{Must write something about the properies of the measurement matrix.}
+A grate advantage CI has over regular cameras where each pixel is sampled separately is that roughly half the pixels is sampled in one sensor meaning that background noise of the sensor will be surpassed by the summed intensity of half the pixels making CI very robust to noise.  
+
 
 \subsection{Measurement matrix \& Restricted isometry property (RIP)}
-\todo[inline]{Introduce the topic.}
+\label{sec:mm_RIP}
+As stated in section~\ref{sec:CI}, the complete measurement matrix needs to be incoherent with the sparse transform, in this section the most powerful constraint on a complete measurement matrix is shown, the restricted isometry property (RIP). \\[0.1in]
 
 In the noiseless case exact recovery of the image $\mathbf{x}$ is achievable if RIP holds for the reconstruction matrix $\mathbf{\Phi} \Rightarrow \mathbf{\Phi\Psi = A}$, the constraint is defined as,
 
@@ -107,17 +121,19 @@ In the noiseless case exact recovery of the image $\mathbf{x}$ is achievable if 
     (1-\delta_K)||\mathbf{x}||_{\ell_2}^2\leq||\mathbf{Ax}||_{\ell_2}^2\leq(1+\delta_K)||\mathbf{x}||_{\ell_2}^2 \text{,}
 \end{equation}\\[0.1in]
 
-where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal reconstruction matrix) and generally $\textbf{x}$ is not known and varies which means that there are no general optimal reconstruction matrices for natural images. The solution is to find a general reconstruction matrix that satisfies RIP with high probability. The solution which also should be incoherent with the base matrix $\Psi$ is to construct the measurement matrix using a i.i.d random distribution which gives $\delta_K << 1$ with high probability. Using random measurement matrices the number of measurements needed to satisfy RIP with high probability is $M \geq O(K\text{log}(N/K) \ll N$. \cite{book:srr,article:CS_donoho1}\\[0.1in]
+where $\delta_K \in [0.1)$ is the smallest constant to to satisfy RIP for a K-sparse signal $\mathbf{x}$. To determine a sampling matrix is a NP-hard problem (which means that there are no feasible way of creating a optimal reconstruction matrix) and generally $\textbf{x}$ is not known and varies which means that there are no general optimal reconstruction matrices for natural images. Therefore it is desired to find a general reconstruction matrix that satisfies RIP with high probability. It has been proved that constructing the complete measurement matrix by picking independent and identically distributed (i.i.d) random variables gives $\delta_K << 1$ with high probability. Constructing the measurement matrices using i.i.d random variables has showed that the number of measurements $M$ needed to satisfy RIP with high probability is $M \geq O(K\text{log}(N/K) \ll N$. \cite{book:srr}\\[0.1in]
 
-The problem using random matrices is that they need to be stored i memory for the reconstruction algorithm, when the image resolution is increased the measurement matrix increases exponentially. For images with resolution of $512\times 512$ and larger the data gets infeasible for a normal computer to handle.  Fortunately using fast transforms in the reconstruction algorithm can exclude using vector multiplication resulting in faster reconstruction and the need to store the measurement matrix in memory. But in order to do so special measurement matrices are used, in this master's thesis the sequency ordered Walsh Hadamard measurement matrix will be used with the TVAL3 reconstruction algorithm described in section~\ref{sec:TV}.   
+The problem of using random matrices is that they need to be stored in memory for the reconstruction algorithm, so when the image resolution is increased the measurement matrix increases exponentially. For images with resolution of $512\times 512$ and larger the data gets unfeasible for a normal computer to handle.\\[0.1in]  
+
+Fortunately by changing the complete measurement matrix to structurally random matrices, fast transforms can be used in the reconstruction algorithm instead of vector multiplication resulting in both faster reconstruction and the need to store the measurement matrix in memory. In this thesis the permutated sequency ordered Walsh Hadamard measurement matrix (described in section~\ref{sec:SOWHMM}) will be used with the TVAL3 reconstruction algorithm described in section~\ref{sec:TV} to achieve higher resolution photos and faster reconstruction.   
 
 
-\subsubsection{Sequency Ordered Walsh Hadamard measurement matrix}
+\subsubsection{Permutated sequency ordered Walsh Hadamard measurement matrix}
 \label{sec:SOWHMM}
-Besides from eliminating the need to store the measuring matrix for reconstruction the sequency ordered Walsh Hadamard (SOWH) matrix can be generated when sent to the DMD eliminating the need to store the matrix at all. SOWH has the same characteristics and properties of an i.i.d random matrix and therefore also fulfills the RIP condition with high probability and research has shown that there is no significant loss in recovery of the signal relative i.i.d random measurement matrix~\cite{article:an_improved_WH_matrix}.  An other property of SOHW is that it only contains -1 an 1 which easily be converted to 0 and 1 when sent to the DMD. \\[0.1in]
+Besides from eliminating the need to store the measuring matrix in computer memory for reconstruction the permutated sequency ordered Walsh Hadamard matrix (PSOWHM) can be generated when sent to the DMD and thus eliminating the need to store the matrix at all. PSOWHM has approxamatly the same characteristics and properties as an i.i.d random matrix but has a higher number of measurements for exact reconstruction of the image, $M \sim (KNs)\log^2(N)$, where $s$ is the average number of non zero indexes in the measurement matrix \cite{lec:fast_CS_SRM}. Research has shown that there is no significant loss in recovery of the image relative the i.i.d random measurement matrix~\cite{article:an_improved_WH_matrix} and an other property of PSOWHM is that it only contains -1 an 1 which easily be converted to 0 and 1 when sent to the DMD. \\[0.1in]
 
 
-The naturally ordered Hadamard matrix of dimension $2^k$, $k \in \mathbb{N}$ are constructed by the recursive formula    
+In order to construct the PSOWHM, the fist step is to define the naturally ordered Hadamard matrix and then follow a few additional steps. The naturally ordered Hadamard matrix of dimension $2^k$, $k \in \mathbb{N}$ are constructed by the recursive formula    
 
 \begin{equation}
     H_0 = 1,
@@ -136,15 +152,17 @@ and in general,
         H_k = \begin{bmatrix}
        H_{k-1} & H_{k-1} \\
        H_{k-1} & -H_{k-1}\\
-       \end{bmatrix} = H_1 \oplus H_{k-1}
+       \end{bmatrix} = H_1 \otimes H_{k-1}
 \end{equation}
 
-where $\oplus$ denotes the Kronecker product. To construct the sequency ordered Walsh Hadamard matrix from the naturally ordered Hadamard matrix three steps is required:
+where $\otimes$ denotes the Kronecker product. To construct the permuated sequency ordered Walsh Hadamard matrix from the naturally ordered Hadamard matrix three steps is required:
 
 \begin{itemize}
     \item Convert row index to binary.
     \item Convert the binary row index to gray code.
     \item Apply bit reverse on the gray code index.
+    \item Remove first row with only ones.
+    \item Permutate columns and choose $M$ row at random.
 \end{itemize}
 
 then order the rows after the bit reverse to obtain the sequency ordered Walsh Hadamard matrix.
@@ -179,7 +197,7 @@ for example
        \end{bmatrix}.
 \end{equation}
 
-To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with a $-1$ is shifted to $0$. This last step is required to convert the measurement matrix so it gets the characteristics of an i.i.d random matrix and thus fulfill the RIP condition~\cite{article:SRM_long, article:WH_RIP_SRM, article:WH_mixed_RIP_prof}. How the matrix was permutated and which rows was choosen i which order is stored so the reconstruction algorithm can use that information. \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
+To use the sequency ordered Walsh Hadamard matrix as an measurement matrix the fist row is omitted, permutations to the columns is performed, $M$ rows are choosen at random and the indices with $-1$ is shifted to $0$. How the matrix was permutated and which rows was choosen i which order is stored so the reconstruction algorithm can use that information to reverese the process. \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
 
 
 \subsection{Reconstruction method}
@@ -191,7 +209,7 @@ To reconstruct the image $\textbf{x}$ the sparest set of coefficients in $\theta
 \end{equation}\\[0.1in]
 
 
-Simply minimizing nonzero indices $\mathbf{\theta}$ in the sparsitfying basis $\mathbf{\Psi}$, but this problem is known to be NP-hard. A better approach is the $\ell_1$ minimization, for example Basis Pursuit denoise (BPDN),
+Simply minimizing nonzero indices in $\mathbf{\theta}$ in the sparsitfying basis $\mathbf{\Psi}$, but this problem is known to be NP-hard. A better approach is the $\ell_1$ minimization, for example Basis Pursuit denoise (BPDN),
 
 \begin{equation}
     \mathbf{\hat{\theta}} = \text{arg min } ||\mathbf{\theta}||_1 \text{  subject to  } ||\mathbf{y - A\theta}||_2 < \mathbf{\epsilon} \text{.}
