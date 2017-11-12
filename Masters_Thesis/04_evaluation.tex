@@ -1,31 +1,28 @@
 \section{Evaluation}
-\label{sec:Evaluation}
-This section is structured as, for each experiment and setup a detailed explanation and motivation on how and why the experiment is needed followed by the results of that experiment. The experiments are motivated by gathering as much information and results as possible to answer the research questions. The first subsection~\ref{sec:simulated_results} will present the results from experiments with synthetic data where a reference image is available. The second subsection~\ref{sec:eval_spc} will present the result from images reconstructed from the SPC. No perfect reference image is available in those experiments therefore the images will be evaluated against near optimal image, no reference QA and against a state of the art SWIR camera. 
+\label{sec:Evaluation} 
+This section is divided into two categories, simulated results and SPC results. In both sections the same evaluation is performed in order to draw conclusions about the performances of the different parts of the SPC chain and to be able to answer the questions in section~\ref{sec:RQ} and \ref{sec:aim}.\\[0.1in]
 
 
 
 \subsection{Simulated Results}
 \label{sec:simulated_results}
-In this section the results produces was simulated by using the reconstructing algorithm and measurement matrix described in section~\ref{sec:TV} and \ref{sec:SOWHMM} on high quality images captured with a state of the art SWIR camera. The images captured by the SWIR camera acts as a ideal reference to the reconstructed images. By simulating the result from "ideal" images the reconstruction process gets a benchmark independent of the SPC.
+In this section the results produces was simulated by using the reconstructing algorithm and measurement matrix described in section~\ref{sec:TV} and \ref{sec:SOWHMM} on high quality images captured with a state of the art SWIR camera. The images captured by the SWIR camera acts as a ideal reference to the reconstructed images. By simulating the result from "ideal" images the reconstruction process gets a benchmark independent of the SPC hardware.\\[0.1in]
 
+To generate the \textit{simulated reconstructed images} the inner product between the complete measurement matrix $\mathbf{\Phi}$ and the reshaped "ideal" image vector $\mathbf{x}$ was calculated to obtain an simulated signal vector $\mathbf{y}$
+
+\begin{equation}
+\mathbf{y} = \mathbf{\Phi}\mathbf{x} + \epsilon,
+\end{equation} 
+ 
+this operation was calculated for different subsampling ratios between 5-30\% and different noise levels. The noise, white Gaussian noise, was added to the normalized measurement signal $\mathbf{y}$. The added noise represent a simple model of the noise expected in the SPC and was scaled with the standard deviation $\sigma$ between $0 - 0.2$. \\[0.1in] 
+
+Then the simulated images was produced by the reconstruction algorithm using signal vector $\mathbf{y}$. 21 images was simulated in 6 different subsampling ratios and 10 different noise levels yielding 1260 simulated images as foundation in this sections result and evaluation.
 
 \subsubsection{Reconstruction performance Using reference image}
 \label{sec:reconstruction_performance}
-In these simulation 21 images captured with a state of the art SWIR camera was reconstructed. The performance of the reconstruction was calculated using PSNR and SSIM for different degree of noise and sub sampling ratios.\\[0.1in]
+The performance of the reconstruction was calculated using PSNR and SSIM for different degree of noise and sub sampling ratios.\\[0.1in]
 
-To reconstruct the images first the measurement vector was created by calculating the inner product between the measurement matrix ${\mathbf{\Phi}}$ and SWIR image $\mathbf{x}$,
 
-\begin{equation}
-\mathbf{y}_{IDEAL} = \mathbf{\Phi}\mathbf{x},
-\end{equation}  
-
-where $\mathbf{y}_{IDEAL}$ is an ideal measurement vector given $\mathbf{\Phi} \text{ and } \mathbf{x}$. In the next step white Gaussian noise was added to the normalized measurement signal. The added noise represent a simple model of the noise perturbating the signal in the SPC.
-
-\begin{equation}
-\mathbf{y}_R = \mathbf{y}_{IDEAL\_NORMALIZED} + \epsilon,
-\end{equation}
-
-where $\mathbf{y}_R$ is the measurement vector used when reconstructing the image and the white Gaussian noise $\epsilon$ added was scaled with the standard deviation $\sigma$ between $0 - 0.2$. \\[0.1in] 
 
 To create the graphs in figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d} this procedure was applied to all 21 images for sub sampling ratio 5\% to 30\% and added noise with standard deviation between $0 - 0.2$. The standard deviation is not increased above $0.2$ because the reconstruction fails at that point. In figure~\ref{fig:noisy} a sample of reconstructed image from one of the SWIR images is presented with different amount of noise and sub sampling ratios.
 
@@ -114,22 +111,23 @@ As seen in figure~\ref{fig:noisy} the reconstructed image quality increases with
     \label{fig:ssim_3d}
 \end{figure}
 
-A second observation is that, when the noise increases the  reconstructed image quality is not improved at the same rate as the noiseless case when increasing the sub sampling ratio.
+In both figures~\ref{fig:psnr_3d} and \ref{fig:ssim_3d}, it can be seen that when the noise increases the reconstructed image quality is not improved at the same rate as the noiseless case when the subsampling ratio is increased.
 
 \subsubsection{Reconstruction performance Using no reference quality assessment}
-In this sub section the same reconstructed image set from section~\ref{sec:reconstruction_performance} is used to calculate the no reference image quality with the BRISQUE algorithm. This is the same algorithm which will be used to evaluate the results from the SPC therefore this experiments will yield a benchmark on how good results that can be obtained given the measurement matrix and reconstruction algorithm.\\[0.1in] 
+In this sub section the same reconstructed image set from section~\ref{sec:reconstruction_performance} is used to calculate the no reference image quality with the BRISQUE algorithm.\\[0.1in] 
 
-The results displayed in the graph in figure~\ref{fig:Brisque_3d} shows the same trend as the results from the previous section, less noise and more samples yields better performance in the reconstruction. The figure also contain the mean results from the original SWIR images as the flat blue surface, which has scored a far superior score than the reconstructed images.
+The results displayed in the graph in figure~\ref{fig:Brisque_3d} shows less noise and more samples yields better performance in the reconstruction. The figure also contain the mean results from the "ideal" SWIR images as the flat blue surface, which has scored a far greater score than the reconstructed images.
   
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7\linewidth]{result/synt_brisque/BRISQUE_fit.eps}
-    \caption{BRISQUE result depending on number of measurements and simulated noise level. Lower surface is reference image score.}
+    \caption{BRISQUE result depending on number of measurements and simulated noise level. Lower surface is reference image score. (Lower score are better)}
     \label{fig:Brisque_3d}
 \end{figure}
 
-In figure~\ref{fig:Brisque_2d} the result has been flatten to a 2D graph with fewer selected data points for clarity. Even in the noiseless case the score will not be better then approximately 40 for the reconstructed images while the SWIR images has a mean value of 15. The conclusion from this result is that, with the current measurement matrix and reconstruction method around 40 in BRISQUE score is what to expect as optimum given that the SPC will induce noise to the signal.   
+In figure~\ref{fig:Brisque_2d} the result has been flatten to a 2D graph with fewer selected data points for clarity. In the noiseless case the score will not be better then approximately 40 for the reconstructed images while the SWIR images has a mean value of 15.
+
 
 \begin{figure}[H]
     \centering
@@ -137,3 +135,5 @@ In figure~\ref{fig:Brisque_2d} the result has been flatten to a 2D graph with fe
     \caption{BRISQUE result depending on number of measurements for different simulated noise levels.}
     \label{fig:Brisque_2d}
 \end{figure}
+
+In the simulated images with $\sigma > 0.08$ the BRISQUE score start to get unexpected results, first yielding a worse BRISQUE score when increasing the subsampling ratio up to 15-20\%  but then get better after, as seen in figure~\ref{fig:Brisque_2d}.

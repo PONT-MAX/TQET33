@@ -1,9 +1,12 @@
 \subsubsection{Dynamics in scene}
 \label{sec:dyn_sim}
-In the current experimental SPC setup the exposure time is between 10 to 50 seconds which increases the chance of dynamics in the scene. Dynamics in the scene will reduce the reconstruction performance because the signal is assumed to be constant. By simulating dynamics in a controlled environment the measured signal characteristics for different cases can be identified. Dynamics in the scene can roughly be roughly divided into two separate categories, luminance change and movement. In this section global luminance change and two kinds of motion be simulated. The goal is to interpret how the signal change and if it can be suppressed for better reconstruction.\\[0.1in]
+In the current experimental SPC setup the exposure time is between 10 to 50 seconds which increases the chance of dynamics in the scene. Dynamics in the scene will reduce the reconstruction performance because the scene is assumed to be constant. By simulating dynamics in a controlled environment the measured signal characteristics for different cases can be identified. Dynamics in the scene can roughly be divided into two separate categories, luminance change and movement. In this section global luminance change and two kinds of motions be simulated. The goal is to see how the signal change when dynamics is introduced in the scene. In the case of luminance change the moving mean algorithm presented in section~\ref{sec:Dynamics_in_scene} is evaluated.\\[0.1in]
 
+To generate the images representing a dynamic scene each sample $\mathbf{y}[m]$ is constructed using an unique image $\mathbf{x}_m$,
 
-
+\begin{equation}
+\mathbf{y}[m] = \mathbf{\psi}_m\mathbf{x}_m.
+\end{equation}
 
 In the first scenario a object is placed in an image but for each measurement the location of the object will be moved in a bounded area of the image. This model represents a scene where the background is static but a person is standing in the same area but moves around.
 
@@ -61,7 +64,7 @@ In table~\ref{tab:local_dyn} the results from calculating PSNR and SSIM between 
     29  & 91 \\ 
     \hline
   \end{tabular}
-      \caption{Effects comparing non perturbed reconstructed image against reconstructed image with local movement}
+      \caption{Evaluation comparing non perturbed reconstructed image against reconstructed image with local movement}
     \label{tab:local_dyn}
 \end{table}
 
@@ -94,7 +97,7 @@ The second scenario is an object passing through, moves out or moves to an other
 
 As seen in figure~\ref{fig:fly_sig} the exact moment the object enters the scene the signal changes. This is because a completely new structure has entered the scene and therefore changing the DC level. It can also be noted that the object passed something which has approximately the same intensity as the background and therefore the DC signal almost comes back up to its original state for a brief moment.\\[0.1in] 
 
-In figure~\ref{fig:fly_dyn} the effect of the moving object can be seen in the reconstructed image which has gained a lot of global noise. Note that the object passing trough can not be seen because there is more measurements with the background and the object moving creating uncertainty in the whole image.   
+In figure~\ref{fig:fly_dyn} the effect of the moving object can be seen in the reconstructed image which has gained a lot of global noise. Note that the object passing trough can not be seen because there is more measurements of the background than of the object moving, but the object is creating uncertainty in the whole image, resulting in global noise.   
 
 \begin{figure}[H]
     \centering
@@ -122,13 +125,13 @@ In table~\ref{tab:fly_dyn} the results from calculating PSNR and SSIM between th
 
 \begin{table}[H]
     \centering
-  \begin{tabular}{ | l | l | l |}
+  \begin{tabular}{ | l | l |}
     \hline
-    Peak SNR & SNR & SSIM \\ \hline
-    23 & 18 & 58 \\ 
+    Peak SNR  & SSIM \\ \hline
+    23 &  58 \\ 
     \hline
   \end{tabular}
-      \caption{Effects comparing non perturbed reconstructed image against reconstructed image with local movement}
+      \caption{Evaluation comparing non perturbed reconstructed image against reconstructed image with local movement}
     \label{tab:fly_dyn}
 \end{table}
 
@@ -143,7 +146,7 @@ The third scenario i luminance change in the scene which is caused by inconsiste
 
 \begin{figure}[H]
     \includegraphics[width=0.6\textwidth]{result/dynamic/lum/intense_change1.eps}
-    \subcaption{Signal.}
+    \caption{Signal effected by light intensity change on top of reference signal.}
     \label{fig:lum_sig_1}
 \end{figure}
 
@@ -171,27 +174,27 @@ As seen in figure~\ref{fig:lum_sig_1} the DC level of the signal will slowly cha
     \label{fig:lum_dyn}
 \end{figure}
 
-In section~\ref{sec:Dynamics_in_scene} a model of this problem was proposed with a algorithm to suppress the impact of global luminance change. The algorithm is applied to this experiment to evaluate its performance. The moving mean subtraction method is applied and in figure~\ref{fig:lum_sig_2} the resulting signal is plotted over the dynamic signal, the improved signal is stationary again. In figure~\ref{fig:lum_sig_3} and \ref{fig:lum_sig_4} where the processed signal is plotted over the reference signal it can be seen that the processed signal has gained its original structure and almost fit exactly to the original.
+In section~\ref{sec:Dynamics_in_scene} a model of this problem was proposed with a algorithm to suppress the impact of global luminance change. The algorithm is applied to this experiment to evaluate its performance. The moving mean subtraction method is applied and in figure~\ref{fig:lum_sig_2} the resulting signal is plotted over the dynamic signal, the processed signal is stationary again. In figure~\ref{fig:lum_sig_3} and \ref{fig:lum_sig_4} where the processed signal is plotted over the reference signal it can be seen that the processed signal has gained its original structure and almost fit exactly to the original.
 
 
 \begin{figure}[H]
     \centering
 \begin{minipage}[t]{0.48\textwidth}
     \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_sp.eps}
-    \subcaption{Zoomed in view of the signal.}
+    \subcaption{}
     \label{fig:lum_sig_2}
 \end{minipage}
 \begin{minipage}[t]{0.51\textwidth}
     \includegraphics[width=1\textwidth]{result/dynamic/lum/intense_change_sp_ref1.eps}
-    \subcaption{Signal.}
+    \subcaption{}
     \label{fig:lum_sig_3}
 \end{minipage}
 \begin{minipage}[t]{0.50\textwidth}
     \includegraphics[width = \textwidth]{result/dynamic/lum/intense_change_sp_ref_win.eps}
-    \subcaption{Zoomed in view of the signal.}
+    \subcaption{}
     \label{fig:lum_sig_4}
 \end{minipage}
-    \caption{Global movement, acquired signal}
+    \caption{Post processed signal using moving mean subtraction. (a) Post processed signal on top of the dynamic signal. (b) Post processed signal on top of the reference signal. (c) Zoomed in view of (b).}
     \label{fig:lum_sig}
 \end{figure}
 
@@ -215,7 +218,7 @@ In figure~\ref{fig:lum_rec} the processed signals reconstructed image is display
     \subcaption{}
     \label{fig:lum_32}
 \end{minipage}
-    \caption{The result of processed signal perturbed by light intensity change on a reconstructed image sub sampled at 30\% (a) Reference image reconstructed from the non perturbed signal without light intensity change. (b) Reconstructed image from a scene with global light intensity change over the measurements signal processed. (c)Reconstructed image from a scene with global light intensity change over the measurements.}
+    \caption{The result of processed signal perturbed by light intensity change on a reconstructed image sub sampled at 30\% (a) Reference image reconstructed from the non perturbed signal without light intensity change. (b) Reconstructed image from a scene with global light intensity change and post processed by moving mean subtraction. (c) Reconstructed image from a scene with global light intensity change over the measurements.}
     \label{fig:lum_rec}
 \end{figure}
 
@@ -226,12 +229,12 @@ In table~\ref{tab:lum_dyn} the results from calculating PSNR and SSIM between th
     \centering
   \begin{tabular}{ | l | l | l |}
     \hline
-     & Peak SNR  & SSIM \\ \hline
+    Signal & Peak SNR  & SSIM \\ \hline
     Perturbed signal & 19  & 38 \\ \hline
     Mean subtracted signal & 33  & 93 \\
     \hline
   \end{tabular}
-      \caption{Effects comparing non perturbed reconstructed image against global luminance change pertubated reconstructed image and mean subtracted signal reconstructed image.}
+      \caption{Evaluation comparing non perturbed reconstructed image against global luminance change reconstructed image and mean subtracted signal processed reconstructed image.}
     \label{tab:lum_dyn}
 \end{table}
 
