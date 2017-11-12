@@ -223,7 +223,7 @@ From the two plots in figure~\ref{fig:snr}, some observations can be made:
 
 
 \subsubsection{Luminance Change in scene}
-As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress this distortion was proposed and tested with good result in the simulated case in section~\ref{sec:dyn_sim}. With a exposure time of just under one minute for the SPC this problem turned out to be constantly present when taking photos at natural scenes outdoors, and the luminace change over time was more complex then the simulated test case. It turned out that the sensor was highly sensitive to luminace change which could not be perceived with the naked eye. This observation should not be unanticipated, the sensor sums up half the scenes light which make the tiniest intensity change for each pixel a large global change. So how did the algorithm hold up for the real application? In figure~\ref{fig:lc_plot} the raw sampled signal is colored red which clearly is not a stationary signal, with the moving average in green and the final improved signal in blue. 
+As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress this distortion was proposed and tested with good result in the simulated case in section~\ref{sec:dyn_sim}. With a exposure time of just under one minute for the SPC this problem turned out to be constantly present when taking photos at natural scenes outdoors, and the luminace change over time was more complex then the simulated test case. It turned out that the sensor was highly sensitive to luminace change which could not be perceived with the naked eye. This observation should not be unanticipated, the sensor sums up half the scenes light which make the tiniest intensity change for each pixel a large global change. So how did the algorithm hold up for the real application? In figure~\ref{fig:lc_plot} the raw sampled signal is colored red which clearly is not a stationary signal, with the moving mean in green and the final improved signal in blue. 
 
 \begin{figure}[H]
 \includegraphics[width = 0.8\linewidth]{result/luminance/li.eps}
@@ -231,7 +231,7 @@ As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could
 	\label{fig:lc_plot}
 \end{figure}
 
-As can be seen on the moving average plotted, the intensity change is very fast and can change in matter of a split of a second, "k" which is the number of neighboring samples to calculate the average  was set to 75 to match the fast change which corresponds to a window of 50 milliseconds.\\[0.1in]
+As can be seen on the moving mean plotted, the intensity change is very fast and can change in matter of a split of a second, "k" which is the number of neighboring samples to calculate the average  was set to 75 to match the fast change which corresponds to a window of 50 milliseconds.\\[0.1in]
 
 In figure~\ref{fig:lc_image} a reconstructed image without the method used and one with the method used is displayed.
 
