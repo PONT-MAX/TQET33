@@ -2,13 +2,13 @@
 
 \subsection{SPC evaluation}
 \label{sec:eval_spc}
-The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using the using a range of methods to examine the performance of the SPC. In this section the BRISQUE algorithm will be used again where connections to the previous result is drawn, a reconstructed image will be compared to an ideal image using homography, a set of images is presented reconstructed at different subsampling ratios, a edge response analysis i performed and the correlation between reconstruction performance and noise is conducted. All images captured by the SPC with natural scenes was taken at a distance between 200 to 900 meter in sunny days with some clouds.
+The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using a range of methods to examine the performance of the SPC. This section will start with the same evaluations performed in the previous section and will end with two new evaluation, edge response and subsampling ratio. All images captured by the SPC of natural scenes was taken at a distance between 200 to 900 meter on sunny days with some clouds.
 
 
 \subsubsection{Reconstructed performance Using reference image}
-This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image to the images produced by the SPC. One solution to obtain a reference image is to calculate a homography between images. But there are two problems of just performing a homography to obtain a reference image, the fist on is that, homography estimates the transformation between flat surfaces which excludes most natural images, and the second is that, the estimated homography will not be perfect an thus for example high contrast edges in the images will not match and then produce large errors in the performance measurements. To solve these two problems the scene is a flat surface with a printed pattern and to avoid the the error from sharp edges the pettern is constructed without any. To not complicate this experiment the reference image is the computer generated optimal images which is being transformed to fit the image captured by the SPC.\\[0.1in] 
+This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image to the images produced by the SPC. One solution to obtain a reference image is to calculate a homography between images. But there are two problems of just performing a homography to obtain a reference image, the fist on is that, homography estimates the transformation between flat surfaces which excludes most natural images, and the second is that, the estimated homography will not be perfect an thus for example high contrast edges in the images will not match and produce large errors in the performance measurements. To solve these two problems the scene is a flat surface with a printed pattern and to avoid the the error from sharp edges the pattern is constructed with smooth contrast changes. To not complicate this experiment the reference image is the computer generated optimal images which was being transformed to fit the image captured by the SPC.\\[0.1in] 
 
-The reference homography transformed image which was created using sine functions to avoid edges can be seen in figure~\ref{fig:hom_over_im} with the reconstructed images with different subsampling ratio.   
+The reference image which was created using sine functions to avoid edges can be seen in figure~\ref{fig:hom_over_im} and the reconstructed images with different subsampling ratio.   
 
 
 \begin{figure}[H]
@@ -43,11 +43,11 @@ The reference homography transformed image which was created using sine function
     \subcaption{30\%}
     \label{fig:hom_30}
 \end{minipage}
-    \caption{The reconstructed images with different number of measurements and the reference image transformed to fit the SPC images using homography.}
+    \caption{The reconstructed images with subsampling ratios between 5-30\% and the reference image transformed to fit the SPC images using homography.}
     \label{fig:hom_over_im}
 \end{figure}
 
-Before the results from the evaluation is presented it is worth noting that the reference image is a perfect simulated reference image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. In figure~\ref{fig:hom_score} below the same evaluation method as the reconstructed simulated images in section~\ref{sec:simulated_results} is used, PSNR and SSIM, because there is a reference image again. 
+Before the results from the evaluation is presented it is worth noting that the reference image is a perfect simulated reference image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. In figure~\ref{fig:hom_score}, PSNR and SSIM has been calculated for each subsampling ratio. 
 
 
 \begin{figure}[H]
@@ -66,37 +66,40 @@ Before the results from the evaluation is presented it is worth noting that the 
     \label{fig:hom_score}
 \end{figure}
 
-The result shows the same expected result as before with increased quality with increased subsample ratio. An second observation confirms the observation made in section~\ref{sec:measurements}, where the image quality is rapidly improves when increasing subsample ratio to to 15\%, then the improvement rate stagnates. 
+The result shows increased quality with increased subsample ratio. In the case of PSNR the image quality rapidly improves when increasing subsample ratio up to 15\%. 
 
 
 
 \subsubsection{Reconstruction performance Using no reference quality assessment}
 \label{sec:SPC_BRISQUE}
-In this section the blind quality assessment tool BRISQUE will be used to score the reconstructed images from the SPC. The same algorithm was used on the simulated data where a benchmark was set as a theoretical limit to the reconstructed images.\\[0.1in]     
+In this section the blind quality assessment tool BRISQUE is used to evaluate the reconstructed images from the SPC. In addition to presenting the BRISQUE score for the images, each image has been classified into three distinct groups in order to link the BRISQUE scores to each image and their sampled signal.\\[0.1in] 
 
-Each image is evaluated at subsampling rate from $5\%$ to $30\%$ where the result is presented in figure~\ref{fig:brisque_plot}.
+In figure~\ref{fig:brisque_plot} each image is evaluated using BRISQUE with subsampling rate from $5-30\%$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7\linewidth]{result/SPC_NRQA/brisque_spc.eps}
-    \caption{BRISQUE score for images reconstructed from the SPC with subsampling ratios from $5\%$ to $30\%$. Each line represent one image and is classified with different colors representing start score at smallest subsampling ratio and general trend when subsampling ratio is increased.}
+    \caption{BRISQUE score for images reconstructed from the SPC with subsampling ratios from $5\%$ to $30\%$. Each line represent one image and is classified with different colors depending on the initial score at subsampling ratio 5\% and the general trend for higher subsampling ratios. Lower score is better.}
     \label{fig:brisque_plot}
 \end{figure}
 
 
-As seen in figure~\ref{fig:brisque_plot} each image as been plotted separately, this is because the high variance in the scores and the distinct different trends in the score. Furthermore the images has been classified into three different classes depending on the initial score at 5\% subsampling and the trend when increasing the subsampling ratio\todo{an visually inspecting the images}. The classes has been color coded where:
+As seen in figure~\ref{fig:brisque_plot} each image has been plotted separately due the high variance in the image set and the distinct different trends. 
+
+
+The images has been classified into three different classes depending on the initial score at 5\% subsampling ratio and the trend when increasing the subsampling ratio. The classes has been color coded where:
 
 \begin{itemize}
-\item Red means bad score from the first subsampling ratio and a trend line where the score gets worse with more samples.
-\item Yellow represent good initial score but the trend line indicates worse image quality when subsampling ratio is increased.
-\item Green represent both good initial score and better or stationary score when subsampling ratio is increased. 
+\item the \textit{red image set} has a higher initial BRISQUE score than the rest of the set and a got worse BRISQUE score at a relative high rate when increasing the subsampling ratio.
+
+\item The \textit{yellow image set} is distinguish by gradual decrease in BRISQUE score when the subsampling ratio is increased.
+
+\item The \textit{green image set} has a plain trend or increased BRISQUE score when the subsampling ratio is increased.
 \end{itemize}
 
-When studying the BRISQUE score plot in figure~\ref{fig:brisque_plot} from the SPC and comparing to the plot of BRISQUE scores from simulated images in figure~\ref{fig:Brisque_2d} some similarities can be found. The first one is that, the best scores from the SPC has the same score as the simulated images with small or no noise added, which means that the SPC can compare to the benchmark set by the simulated images and thus gives theoretical optimal reconstruction given the measurement matrix and reconstruction algorithm. The second similarity is the trend of the "bad" images which has approximately the same score and trend as the simulated images with larger noise added to the sampled signal. In the last part of this subsection the reconstructed images will first be presented an analyzed followed by a noise analysis to conclude if there is a correlation between noise level and BRISQUE score.\\[0.1in] 
+ 
 
-
-In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are presented from each class with subsampling ratio 30\%. 
-
+In figure~\ref{fig:good}-\ref{fig:bad} a subset of four images from each class is presented. All images is reconstructed using 30\% subsampling ratio. 
 
 
 
@@ -122,7 +125,7 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
     \subcaption{}
     \label{fig:good4}
 \end{minipage}
-    \caption{Sample of "good" images corresponding to the green lines in figure~\ref{fig:brisque_plot}.
+    \caption{Sample images from the green image set.
     (a) and (d) People sitting in the edge of a forest.  (b) Stationary car. (c) Camouflage jackets and a AT-4 anti-tank weapon on the ground.}
     \label{fig:good}
 \end{figure}
@@ -130,7 +133,7 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
 \begin{figure}[H]
     \centering
 \begin{minipage}[t]{0.245\textwidth}
-    \includegraphics[width=1\textwidth]{result/SPC_NRQA/h35_512_m30.PNG}
+    \includegraphics[width=1\textwidth]{result/SPC_NRQA/h62_512_m30.PNG}
     \subcaption{}
     \label{fig:half1}
 \end{minipage}
@@ -145,11 +148,11 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
     \label{fig:half3}
 \end{minipage}
 \begin{minipage}[t]{0.245\textwidth}
-    \includegraphics[width = \textwidth]{result/SPC_NRQA/h62_512_m30.PNG}
+    \includegraphics[width = \textwidth]{result/SPC_NRQA/h35_512_m30.PNG}
     \subcaption{}
     \label{fig:half4}
 \end{minipage}
-    \caption{Sample of "medium good" images corresponding to the yellow lines in figure~\ref{fig:brisque_plot}.
+    \caption{Sample images from the yellow image set.
     (a)  People sitting next to a parking lot. (b) - (d) House facades.}
     \label{fig:half}
 \end{figure}
@@ -176,54 +179,46 @@ In figure~\ref{fig:good} to \ref{fig:bad} a sample of reconstructed  images are 
     \subcaption{}
     \label{fig:bad4}
 \end{minipage}
-    \caption{Sample of "bad" images corresponding to the red lines in figure~\ref{fig:brisque_plot}.
-    (a)  House facade. (b) Crane (Moving clouds in background). (c) Mjärdevi Center facade (Moving clouds reflection in windows). (d) Mjärdevi Center balcony with people having a break (Moving clouds reflection in windows).}
+    \caption{Sample images from the red image set.
+    (a) House facade. (b) Construction crane (Moving clouds in background). (c) Mjärdevi Center facade (Moving clouds reflected in the windows). (d) Mjärdevi Center balcony with people having a break (Moving clouds reflected in the windows).}
     \label{fig:bad}
 \end{figure}
 
 
-Lets study the images in figure~\ref{fig:good} to \ref{fig:bad}, the difference between "good" and "half good" images are very subtle, the intensity and visible noise level is a bit better in the "good" images. Between the "good"/"half good" and "bad" images there is a more noticeable difference, the images in the "bad" set has more distinct noise and lower over all intensity.\\[0.1in]
+As seen in the images in figure~\ref{fig:good} - \ref{fig:bad}, the motive in each class is quite different, the images from the green image set contains forest, people and things, images from the yellow image set contains buildings and structures with horizontal and vertical lines and images from the red image set includes the sky but are also a bit darker and overall noisier. 
 
-When the images was sampled a correlation between the mean signal strength and reconstruction performance was noticed, this is due to the constant background noise from the SWIR photo diode. In figure~\ref{fig:snr} the mean sampled signal strength was plotted against SNR and signal variance calculated from normalizing the sample signal and background noise. The variance was calculated in the same way as the simulated signals in section\ref{sec:simulated_results}.  Each signal has the same corresponding color code from the BRISQUE plot in figure~\ref{fig:brisque_plot}.
+
+The last result in this section is the mean signal strength plotted against the normalized signal variance of the background noise where each signal has the same corresponding color classification as given before.\\[0.1in]
+
+The background noise normalized signal variance was calculated by normalizing the background noise relative the desired signal and then calculating the variance. The mean signal intensity is the DC level of the measurement i.e the signal strength of approximately half the pixels of scene. 
+
  
 
 \begin{figure}[H]
     \centering
-\begin{minipage}[t]{0.495\textwidth}
-    \includegraphics[width=1\textwidth]{result/noise/meanV_sigma.eps}
-    \subcaption{}
+%\begin{minipage}[t]{0.495\textwidth}
+    \includegraphics[width=0.7\textwidth]{result/noise/meanV_sigma.eps}
+%    \subcaption{}
+%    \label{fig:snr_v_sigma}
+%\end{minipage}
+%\begin{minipage}[t]{0.495\textwidth}
+%    \includegraphics[width = \textwidth]{result/noise/meanV_snr.eps}
+%    \subcaption{}
+%    \label{fig:snr_v_SNR}
+%\end{minipage}
+    \caption{Mean sampled signal intensity compared to the normalized background noise variance, each signal has the same corresponding color classification as given before, shown in figure~\ref{fig:brisque_plot}.}
     \label{fig:snr_v_sigma}
-\end{minipage}
-\begin{minipage}[t]{0.495\textwidth}
-    \includegraphics[width = \textwidth]{result/noise/meanV_snr.eps}
-    \subcaption{}
-    \label{fig:snr_v_SNR}
-\end{minipage}
-    \caption{Mean sampled signal intensity compared to normalized signal and background noise where each signal has the same corresponding color code from the BRISQUE plot in figure~\ref{fig:brisque_plot}.  (a) Signal intensity against normalized variance from background noise. (b) Signal intensity against SNR from normalized signal and background noise.}
-    \label{fig:snr}
 \end{figure}
 
-From the two plots in figure~\ref{fig:snr}, some observations can be made:
-
-
-\begin{itemize}
-\item From both plots in figure~\ref{fig:snr} there is a quite distinct threshold where the signals intensity overcomes the noise level to reconstructed "good" images around 1.2 volt. None of the "good"/"half good" images are below this signal intensity but are mixed over the threshold. 
-
-
-\item In the plots there are only two signals with higher variance than 0.04.
-
-
-\item There are three red images with almost the same SNR and mean signal intensity as yellow and green images but yields a worse BRISQUE score anyway.
-
-\item The yellow and green images is mixed for all mean signal strengths.
-
-\end{itemize}
-
-\todo[inline]{Finich this section?}
+From the plot in figure~\ref{fig:snr_v_sigma}, it can be seen that over approximately 1.2 volt mean signal intensity there are no images from the red image set while images from both the yellow and green image set is mixed over 1.2 volt. Under 1.2 volt mean signal intensity the noise variance to desired signal rapidly increases.
 
 
 \subsubsection{Luminance Change in scene}
-As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress this distortion was proposed and tested with good result in the simulated case in section~\ref{sec:dyn_sim}. With a exposure time of just under one minute for the SPC this problem turned out to be constantly present when taking photos at natural scenes outdoors, and the luminace change over time was more complex then the simulated test case. It turned out that the sensor was highly sensitive to luminace change which could not be perceived with the naked eye. This observation should not be unanticipated, the sensor sums up half the scenes light which make the tiniest intensity change for each pixel a large global change. So how did the algorithm hold up for the real application? In figure~\ref{fig:lc_plot} the raw sampled signal is colored red which clearly is not a stationary signal, with the moving mean in green and the final improved signal in blue. 
+As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress the distortion caused by luminance change was tested in the simulated case in section~\ref{sec:dyn_sim}. With an exposure time of just under one minute for the SPC this problem turned out to be constantly present when taking photos of natural scenes outdoors and the luminace change in the signal was more complex then the simulated test case, the sensor was highly sensitive to luminace change. This observation should not be unanticipated, the sensor sums up half the scenes light which make the tiniest intensity change for each pixel a large global change.\\[0.1in] 
+
+In this section the impact of luminnace change on the signal and the results of using the moving mean algorithm (defined in section~\ref{sec:Dynamics_in_scene}) is presented. In figure~\ref{fig:lc_plot} the sampled signal effected by luminance change and the signal proceeded by the moving mean algorithm in blue is shown. 
+
+
 
 \begin{figure}[H]
 \includegraphics[width = 0.8\linewidth]{result/luminance/li.eps}
