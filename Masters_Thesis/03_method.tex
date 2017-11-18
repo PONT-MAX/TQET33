@@ -5,7 +5,7 @@ In order to answer the research questions stated in section~\ref{sec:RQ} a state
 
 \subsection{Single pixel camera architecture \& hardware}
 \label{sec:system}
-FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a single pixel SWIR detector. The system also has a reference camera in the visual spectrum  which can capture images if all micro mirrors in the DMD are turned away from the single pixel sensor and towards the reference camera, it can also be used to check that the patterns are displayed correct on the DMD.  
+FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a single pixel SWIR detector. The system also has a reference camera in the visual spectrum  which can capture images of the scene reflected on the DMD, which can also be used to check that the patterns are displayed correct on the DMD and focusing the image.  
 
 \begin{figure}[H]
     \centering
@@ -16,14 +16,14 @@ FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a sing
 
 
 
-As seen in figure~\ref{fig:system1} light from the scene is focused by the Newtonian telescope and reflected onto the DMD. The mirrors on the DMD can reflect the light individually either into the single pixel sensor or the reference camera. The DMD acts as a Spatial Light Modulator (SLM) and reflects different patterns which is 'summed up' in the single pixel sensor as an voltage intensity. The reconstructed image from the system will have the same resolution as the DMD patterns. The DLP is the DMD:s control unit which controls which patterns are displayed on the DMD either by reading images from memory or the HDMI video port. 
+As seen in figure~\ref{fig:system1} light from the scene is focused by the Newtonian telescope and reflected onto the DMD. The mirrors on the DMD can reflect the light individually either into the single pixel sensor or the reference camera. The DMD acts as a Spatial Light Modulator (SLM) and reflects different patterns which is 'summed up' in the single pixel sensor as an voltage intensity. The reconstructed image from the system will have the same resolution as the DMD patterns. The digital light processor (DLP) is the DMD:s control unit which controls which patterns are displayed on the DMD either by reading images from memory or the HDMI video port. 
 
 \subsubsection{Newtonian telescope}
 A Newtonian telescope is a reflecting telescope, using a concave primary mirror and a flat diagonal secondary mirror, see figure~\ref{fig:system1}. In this set-up the telescope act as a lens focusing the scene onto the DMD. The motivation to use a Newtonian telescope instead of a lens system is partly that chromatic aberration is eliminated and partly that a reflective optical system works over a greater range of wavelengths that includes SWIR, near infrared (NIR) and the visible spectrum. This design has a very narrow field of view which give high detailed scenes from a great distance. 
 
 
 \subsubsection{DLP and DMD}
-The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP LightCrafter 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster than the video port but due to constraints in both memory and memory bandwidth the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time from a $24$ bit signal, which gives a maximum measurement matrix rate at $120 \times 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz. At this rate with subsampling ratio (the number of measurements relative number of pixels) between $20\% - 30\%$ with $512\times512$ pixel images, the sampling would be acquired in $36 - 52$ seconds. To control the DMD the software "DLP LightCrafter 4500 Control Software" is used.\\[0.1in] 
+The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP\textregistered ~LightCrafter\textsuperscript{TM} 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster than the video port but due to constraints in both memory and memory bandwidth the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time from a $24$ bit signal, which gives a maximum measurement matrix rate at $120 \times 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz. At this rate with subsampling ratio (the number of measurements relative number of pixels) between $20\% - 30\%$ with $512\times512$ pixel images, the sampling would be acquired in $36 - 52$ seconds. To control the DMD the software "DLP LightCrafter 4500 Control Software" is used.\\[0.1in] 
 
 The DMD used in the setup is constructed with a diamond shaped pattern instead of a regular square grid which is used in regular camera image sensors. The diamond shape causes the index of each mirror to be skewed against what a normal grid would look like. As seen in figure~\ref{fig:dmd_index} the indexes of the mirrors column is two mirror column arrays wide while a row is a single row. 
 
@@ -35,7 +35,7 @@ The DMD used in the setup is constructed with a diamond shaped pattern instead o
     \label{fig:dmd_index}
 \end{figure}
 
-Because the reconstruction algorithm and measurement matrix needs to be a square matrix with the side length with a power of 2 the resulting images ratio would be 2 to 1 while the image should have the ratio 1 to 1. The resulting image would need to be transformed into the real ratio where information potentially gets lost. Therefore the index of mirrors was changed so that each 'pixel' gets two mirrors as seen in figure~\ref{fig:dmd_index2}. This will result in rows and columns gets equal amount of space and the aspect ratio will be preserved 1 to 1. 
+Because the reconstruction algorithm and measurement matrix needs to be a square matrix with the side length with a power of 2 the resulting images ratio would be 2 to 1 while the image should have the ratio 1 to 1. The resulting image would need to be transformed into the real ratio where information potentially gets lost. Therefore the index of mirrors was changed so that each 'pixel' gets two mirrors as seen in figure~\ref{fig:dmd_index2}. This will result in rows and columns gets equal amount of space and the aspect ratio will be preserved 1 to 1. By grouping two mirrors the amount of light from each "pixel" is doubled and thus should improve the sampled signal quality.
 
 \begin{figure}[H]
     \centering
@@ -521,6 +521,7 @@ The edge response measures the sharpness of the image by calculating the distanc
 \subsection{Method criticism}
 \begin{itemize}
     \item No Reference Image Quality Assessment is not designed for SWIR images or SPC:s characteristics noise therefore the results may not reflect how the QA would answer to visual wavelength cameras. BRISQUE definition of "naturalness" may not reflect the images captured by the SPC. 
+    \item The effect of DMD alignment is not known.
 \end{itemize}
 %LSE - absolute error but does not say much about how humans perceives the image.\\
 
