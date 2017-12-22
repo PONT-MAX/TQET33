@@ -2,13 +2,13 @@
 
 \subsection{SPC evaluation}
 \label{sec:eval_spc}
-The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using a range of methods to examine the performance of the SPC. This section will start with the same evaluations performed in the previous section and will end with two new evaluation, edge response and subsampling ratio. All images captured by the SPC of natural scenes was taken at a distance between 200 to 900 meter on sunny days with some clouds.
+The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using a range of methods to examine the performance of the SPC. This section will start with the same evaluations performed in the previous section and will end with two new evaluations, edge response and subsampling ratio. All images captured by the SPC of natural scenes were taken at a distance between 200 to 900 meter on sunny days with some clouds.
 
 
-\subsubsection{Reconstructed performance Using reference image}
-This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image to the images produced by the SPC. One solution to obtain a reference image is to calculate a homography between images. But there are two problems of just performing a homography to obtain a reference image, the fist on is that, homography estimates the transformation between flat surfaces which excludes most natural images, and the second is that, the estimated homography will not be perfect an thus for example high contrast edges in the images will not match and produce large errors in the performance measurements. To solve these two problems the scene is a flat surface with a printed pattern and to avoid the the error from sharp edges the pattern is constructed with smooth contrast changes. To not complicate this experiment the reference image is the computer generated optimal images which was being transformed to fit the image captured by the SPC.\\[0.1in] 
+\subsubsection{Reconstructed performance using reference image}
+This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image for the images produced by the SPC. One solution to obtain a reference image is to adjust a homography between two images taken by the SPC and a high quality SWIR camera respectively. But there are two problems of just performing a homography to obtain a reference image. The first on is that a homography estimates the transformation between flat surfaces, which excludes most natural images, and the second is that the estimated homography will not be perfect and thus high contrast edges in the images will not match and produce large errors in the performance measurements. To solve the first problem, the scene is a flat surface with a printed pattern. To avoid the second problem, error from sharp edges, the pattern is constructed with smooth contrast changes. To not complicate this experiment, the reference image is a computer generated optimal image which was transformed via a homography to fit the image captured by the SPC.\\[0.1in] 
 
-The reference image which was created using sine functions to avoid edges can be seen in figure~\ref{fig:hom_over_im} and the reconstructed images with different subsampling ratio.   
+The reference image which was created using sine functions to avoid edges and the reconstructed images with different subsampling ratio can be seen in figure~\ref{fig:hom_over_im}.   
 
 
 \begin{figure}[H]
@@ -47,7 +47,9 @@ The reference image which was created using sine functions to avoid edges can be
     \label{fig:hom_over_im}
 \end{figure}
 
-Before the results from the evaluation is presented it is worth noting that the reference image is a perfect simulated reference image, which was not effected by the uneven light source and quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}. In figure~\ref{fig:hom_score}, PSNR and SSIM has been calculated for each subsampling ratio. 
+Before the results from the evaluation is presented, it is worth noting that the reference image is a perfectly simulated reference image, which was not affected by any uneven light source or quality of the print as the reconstructed image from the SPC, which for example can be seen in the edges of the reconstructed images in figure~\ref{fig:hom_5} to \ref{fig:hom_30}.\\[0.1in] 
+
+In figure~\ref{fig:hom_score}, PSNR and SSIM has been calculated for each subsampling ratio. 
 
 
 \begin{figure}[H]
@@ -66,40 +68,40 @@ Before the results from the evaluation is presented it is worth noting that the 
     \label{fig:hom_score}
 \end{figure}
 
-The result shows increased quality with increased subsample ratio. In the case of PSNR the image quality rapidly improves when increasing subsample ratio up to 15\%. 
+The results show increased quality with increased subsample ratio. In the case of PSNR the image quality rapidly improves when increasing the subsample ratio up to 15\% and then flattens out. 
 
 
 
-\subsubsection{Reconstruction performance Using no reference quality assessment}
+\subsubsection{Reconstruction performance using no reference quality assessment}
 \label{sec:SPC_BRISQUE}
-In this section the blind quality assessment tool BRISQUE is used to evaluate the reconstructed images from the SPC. In addition to presenting the BRISQUE score for the images, each image has been classified into three distinct groups in order to link the BRISQUE scores to each image and their sampled signal.\\[0.1in] 
+In this section the blind quality assessment tool BRISQUE is used to evaluate the reconstructed images from the SPC, examples of these images are shown in figure~\ref{fig:good} to \ref{fig:bad}. In addition to presenting the BRISQUE score for the images, each image has been classified into one of three distinct groups in order to link the BRISQUE scores to each image and their sampled signal.\\[0.1in] 
 
 In figure~\ref{fig:brisque_plot} each image is evaluated using BRISQUE with subsampling rate from $5-30\%$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7\linewidth]{result/SPC_NRQA/brisque_spc.eps}
-    \caption{BRISQUE score for images reconstructed from the SPC with subsampling ratios from $5\%$ to $30\%$. Each line represent one image and is classified with different colors depending on the initial score at subsampling ratio 5\% and the general trend for higher subsampling ratios. Lower score is better.}
+    \caption{BRISQUE score for images reconstructed from the SPC with subsampling ratios from $5\%$ to $30\%$. Each line represent one image and is classified in three different groups indicated in different colors depending on the initial score at subsampling ratio 5\% and the general trend for higher subsampling ratios. Lower score is better. Examples of these images are shown in figure~\ref{fig:good} to \ref{fig:bad}.}
     \label{fig:brisque_plot}
 \end{figure}
 
 
-As seen in figure~\ref{fig:brisque_plot} each image has been plotted separately due the high variance in the image set and the distinct different trends. 
+As seen in figure~\ref{fig:brisque_plot}, each image has been plotted separately due the high variance in the image set and the distinct different trends. Note that lower BRISQUE score is better.
 
 
-The images has been classified into three different classes depending on the initial score at 5\% subsampling ratio and the trend when increasing the subsampling ratio. The classes has been color coded where:
+The images have been classified into three different classes depending on the initial score at 5\% subsampling ratio and the trend when increasing the subsampling ratio. The classes have been color coded where:
 
 \begin{itemize}
-\item the \textit{red image set} has a higher initial BRISQUE score than the rest of the set and a got worse BRISQUE score at a relative high rate when increasing the subsampling ratio.
+\item the \textit{red image set} has a higher initial BRISQUE score than the rest of the set and and got worse BRISQUE score at a relative high rate when increasing the subsampling ratio.
 
-\item The \textit{yellow image set} is distinguish by gradual decrease in BRISQUE score when the subsampling ratio is increased.
+\item The \textit{yellow image set} is distinguish by gradual increase in BRISQUE score when the subsampling ratio is increased.
 
-\item The \textit{green image set} has a plain trend or increased BRISQUE score when the subsampling ratio is increased.
+\item The \textit{green image set} has a plain trend or decreased BRISQUE score when the subsampling ratio is increased.
 \end{itemize}
 
  
 
-In figure~\ref{fig:good}-\ref{fig:bad} a subset of four images from each class is presented. All images is reconstructed using 30\% subsampling ratio. 
+In figure~\ref{fig:good}-\ref{fig:bad} a subset of four images from each class is presented. All images are reconstructed using 30\% subsampling ratio. 
 
 
 
@@ -185,12 +187,12 @@ In figure~\ref{fig:good}-\ref{fig:bad} a subset of four images from each class i
 \end{figure}
 
 
-As seen in the images in figure~\ref{fig:good} - \ref{fig:bad}, the motive in each class is quite different, the images from the green image set contains forest, people and things, images from the yellow image set contains buildings and structures with horizontal and vertical lines and images from the red image set includes the sky but are also a bit darker and overall noisier. 
+As seen in the images in figure~\ref{fig:good} - \ref{fig:bad}, the motive in each class is quite different, the images from the green image set contains forest, people and objects, images from the yellow image set contains buildings and structures with horizontal and vertical lines and images from the red image set includes the sky but are also a bit darker and overall noisier. 
 
 
 The last result in this section is the mean signal strength plotted against the normalized signal variance of the background noise where each signal has the same corresponding color classification as given before.\\[0.1in]
 
-The background noise normalized signal variance was calculated by normalizing the background noise relative the desired signal and then calculating the variance. The mean signal intensity is the DC level of the measurement i.e the signal strength of approximately half the pixels of scene. 
+The background noise normalized signal variance was calculated by normalizing the background noise relative the desired signal and then calculating the variance. The mean signal intensity is the DC level of the measurement i.e the signal strength of approximately half the pixels of the scene. 
 
  
 
@@ -206,17 +208,17 @@ The background noise normalized signal variance was calculated by normalizing th
 %    \subcaption{}
 %    \label{fig:snr_v_SNR}
 %\end{minipage}
-    \caption{Mean sampled signal intensity compared to the normalized background noise variance, each signal has the same corresponding color classification as given before, shown in figure~\ref{fig:brisque_plot}.}
+    \caption{Normalized background noise, measured in standard deviation $\sigma$ plotted against mean sampled signal intensity, each signal has the same color classification as given before and shown in figure~\ref{fig:brisque_plot}.}
     \label{fig:snr_v_sigma}
 \end{figure}
 
-From the plot in figure~\ref{fig:snr_v_sigma}, it can be seen that over approximately 1.2 volt mean signal intensity there are no images from the red image set while images from both the yellow and green image set is mixed over 1.2 volt. Under 1.2 volt mean signal intensity the noise variance to desired signal rapidly increases.
+From the plot in figure~\ref{fig:snr_v_sigma}, it can be seen that for a mean signal intensity over approximately 1.2 volt, there are no images from the red image set, while images from both the yellow and green image set are mixed over 1.2 volt. For a mean signal intensity under 1.2 volt, the noise standard deviation rapidly increases.
 
 
-\subsubsection{Luminance Change in scene}
-As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress the distortion caused by luminance change was tested in the simulated case in section~\ref{sec:dyn_sim}. With an exposure time of just under one minute for the SPC this problem turned out to be constantly present when taking photos of natural scenes outdoors and the luminace change in the signal was more complex then the simulated test case, the sensor was highly sensitive to luminace change. This observation should not be unanticipated, the sensor sums up half the scenes light which make the tiniest intensity change for each pixel a large global change.\\[0.1in] 
+\subsubsection{Luminance change in scene}
+As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress the distortion caused by luminance change was tested in the simulated evaluation in section~\ref{sec:dyn_sim}. With an exposure time of just under one minute for the SPC, this problem turned out to be constantly present when taking photos of natural scenes outdoors. Moreover the luminace change in the signal was more complex than in the simulated test case and the sensor was highly sensitive to luminace change. This observation should be anticipated, the sensor sums up half the scenes light, which make the tiniest intensity change for each pixel a large global change.\\[0.1in] 
 
-In this section the impact of luminnace change on the signal and the results of using the moving mean algorithm (defined in section~\ref{sec:Dynamics_in_scene}) is presented. In figure~\ref{fig:lc_plot} the sampled signal effected by luminance change and the signal proceeded by the moving mean algorithm in blue is shown. 
+In this section the impact of luminance change on the signal and the results of using the moving mean algorithm (defined in section~\ref{sec:Dynamics_in_scene}) is presented. In figure~\ref{fig:lc_plot} the sampled signal effected by luminance change is plotted in red and the signal processed by the moving mean algorithm is shown in blue. 
 
 
 
@@ -228,10 +230,7 @@ In this section the impact of luminnace change on the signal and the results of 
 
 
 
-As can be seen 
-In figure~\ref{fig:lc_plot} it can bee seen that the moving mean plotted in green which corresponds to light intensity change, change with a high frequency. "k" which is the number of neighboring samples to calculate the average was set to 75 to match the fast change which corresponds to a window of 50 milliseconds.\\[0.1in]
-
-In figure~\ref{fig:lc_image} a reconstructed image without the moving mean algorithm used and one with the method used is displayed.
+As can be seen in figure~\ref{fig:lc_plot}, the moving mean (plotted in green) and corresponding to light intensity change, change with a high frequency. The number of neighboring samples to calculate the average was set to $k=75$ to match the fast change which corresponds to a window of 50 milliseconds. In figure~\ref{fig:lc_image}, a reconstructed image without the moving mean algorithm used and one with the method used is displayed.
 
 \begin{figure}[H]
 \begin{minipage}[t]{0.49\textwidth}
@@ -244,24 +243,24 @@ In figure~\ref{fig:lc_image} a reconstructed image without the moving mean algor
 	\subcaption{}
 	\label{lc_af}
 \end{minipage}
-	\caption{Reconstructed images, (a) before and (b) after applying moving mean mean algorithm on the sampled signal.}
+	\caption{Reconstructed images, (a) before and (b) after applying moving mean algorithm on the sampled signal.}
 	\label{fig:lc_image}
 \end{figure}
 
-As can be seen in the figure~\ref{fig:lc_image}, the method increments image quality significantly and the image reconstructed without the signal processing has a severe global noise due to the non stationary sampled signal. This image was captured in good conditions with strong lighting and relative mild intensity change compared to the majority of the signals sampled.
+As can be seen in figure~\ref{fig:lc_image}, the method increase image quality significantly and the image reconstructed without the moving mean algorithm has a severe global noise due to the non-stationary sampled signal. This image was captured in good conditions with strong lighting and relative mild intensity change compared to the majority of the sampled signals.
 
 
 \subsubsection{Edge response}
-The edge response is used to comparing the sharpness of cameras and lenses and in this section the SPC is compared to a state of the art SWIR camera. Two scenes was captured by the SPC and the conventional SWIR camera containing printed sheath of paper with simple tilted shapes on them, see figure~\ref{fig:mtf_target}. The scene was lit by a 135 Watt halogen lamp placed two meters from the sheath.
+The edge response is used to compare the sharpness of cameras and lenses and in this section the SPC is compared to a state of the art SWIR camera. Two scenes were captured by the SPC and the conventional SWIR camera respectively, containing printed sheet of paper with simple tilted shapes on them, see figure~\ref{fig:mtf_target}. The scene was lit by a 135 Watt halogen lamp placed two meters from the sheet.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{result/mtf/Target.eps}
-    \caption{Printed targets with markings where the edge response measurements was performed}
+    \caption{Printed targets with markings where the edge response measurements where performed.}
     \label{fig:mtf_target}
 \end{figure}
 
-In the resulting images, edge response measurements was gathered from the specified edges in figure~\ref{fig:mtf_target}, with the result from all edges and both images for each camera, a mean and standard deviation is calculated. For the SPC, images reconstructed from 5\% to 30\% was tested in order to see if the subsampling ratio effected the edge response result. In figure~\ref{fig:mtf_target_im} the images from the SWIR camera and SPC are presented.
+In the resulting images, edge response measurements were gathered from the specified edges in figure~\ref{fig:mtf_target}. With the result from all edges and both images for each camera, a mean and standard deviation is calculated. For the SPC, images reconstructed from 5\% to 30\% was tested in order to see if the subsampling ratio affected the edge response result. The images from the SWIR camera and SPC are presented in figure~\ref{fig:mtf_target_im}.
 
 \begin{figure}[H]
     \centering
@@ -285,14 +284,14 @@ In the resulting images, edge response measurements was gathered from the specif
     \subcaption{}
     \label{fig:mtf_spc1}
 \end{minipage}
-    \caption{SPC and state of the art SWIR camera images. (a) and (c) from the conventional SWIR camera and (b) and (c) captured with the SPC. The images contains a zoomed in view of an sample edge.}
+    \caption{SPC and state of the art SWIR camera images. (a) and (c) shows images from the conventional SWIR camera and (b) and (d) shows images captured with the SPC. The images contain a zoomed in view of a sample edge.}
     \label{fig:mtf_target_im}
 \end{figure}
 
 
 
 
-The edge response is measured in the distance (pixels) required for a edge to rise from $10\%$ to $90\%$ intensity change. In figure~\ref{fig:rise} the result from the experiment in presented. 
+The edge response is measured as the distance in (pixels) required for an edge to rise from $10\%$ to $90\%$ intensity change, see section~\ref{sec:edge_res_def_method}. The result from the experiment in presented in figure~\ref{fig:rise}. 
 
 \begin{figure}[H]
     \centering
@@ -301,14 +300,14 @@ The edge response is measured in the distance (pixels) required for a edge to ri
     \label{fig:rise}
 \end{figure}
 
-From the plot in figure~\ref{fig:rise}, a clear difference between the SPC and state of the art SWIR camera can be seen, where the conventional SWIR camera has in average half the distance against the SPC images. Some improvement is seen when the subsample ratio is increased, but the standard deviation is almost constant, meaning that the difference between the state of the art SWIR camera and the SPC, in best case only differ about 0.5 pixels, but in the worst case differ about 1.7 pixels and in average 1.2 pixel.
+From the plot in figure~\ref{fig:rise}, a clear difference between the SPC and state of the art SWIR camera can be seen, where the conventional SWIR camera has in average half the edge distance compared to the SPC images. Some improvement is seen when the subsample ratio is increased, but the standard deviation is almost constant, meaning that the difference between the state of the art SWIR camera and the SPC, in best case only differ about 0.5 pixels, but in the worst case differ about 1.7 pixels and in average 1.2 pixels.
 
 \subsubsection{Subsampling ratio}
 \label{sec:measurements}
-From the theory of compressive sensing the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image, therefore it is hard to give a good estimate of a subsampling ratio needed to obtain a desired quality of the reconstruction. In addition, using a SPC where noise contaminate the signal and the scene may not be completely stationary, the number of measurements needed will increase in proportion to the noise and the change in the scene. In this subsection the minimum subsampling ratio will be presented followed by how the reconstructed image quality is effected by an increese of subsampling ratio.\\[0.1in]
+From the theory of compressive sensing, the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image. Therefore it is hard to give a good estimate of the subsampling ratio needed to obtain a desired quality of the reconstruction. In addition, using an SPC where noise contaminate the signal and the scene may not be completely stationary, the number of measurements needed will increase in proportion to the noise and the change in the scene. In this subsection the minimum subsampling ratio will be presented followed by how the reconstructed image quality is affected by an increese of subsampling ratio.\\[0.1in]
 
 
-The minimum number of measurements to reconstruct a image where the motive can be recognized is also effected by the factors described in the previous paragraph, trying to reconstruct an image under the minimum subsampling ratio results in an image with noise. A survey of the minimum subsampling ratio was performed on all images captured by the SPC in this thesis, and the result ranged from 2\% to 4\% to obtain a recognizable image, in figure~\ref{fig:minimum_fig} a sample of three images with varying minimum subsambling ratios is displayed.
+The minimum number of measurements to reconstruct an image where the motive can be recognized is also affected by the factors described in the previous paragraph. Trying to reconstruct an image under the minimum subsampling ratio results in an image with noise. A subjective investigation of the minimum subsampling ratio was performed on all images captured by the SPC in this thesis, the quality of each image was studied in 1\% subsample ratio increment. The result ranged from 2\% to 4\% to obtain a recognizable image. In figure~\ref{fig:minimum_fig}, a sample of three images with varying minimum subsambling ratios are displayed.
 
 
 \begin{figure}[H]
@@ -331,10 +330,10 @@ The minimum number of measurements to reconstruct a image where the motive can b
 	\label{fig:minimum_fig}
 \end{figure}
 
-In the sample images in figure~\ref{fig:minimum_fig} the minimum subsampling ratio varied between 2\% to 3\%, but as can be seen, this is only the minimum subsampling ratio where the motive is merely recognizable, large structure can be identified but detail is lost. In general a subsampling ratio of 5\% has always succeeded to reconstruct a identifiable image with some fine details.\\[0.1in]
+In the sample images in figure~\ref{fig:minimum_fig}, the minimum subsampling ratio varied between 2\% to 3\%. However, as can be seen in the images, the motive is merely recognizable, large structures can be identified but details are lost. In general a subsampling ratio of 5\% has always succeeded to reconstruct a identifiable image with some fine details.\\[0.1in]
 
 
-In figure~\ref{fig:subsampling_ratios} three scenes is reconstructed using different subsample ratios ranging from 5\% to 30\%, for each row the subsampling ratio is increased by 5\% and at the top a reference image from a visual camera is presented. This result can give an perception of which subsampling ratio is good enough for a given purpose, and as can be seen, the increase of subsampling ratio is not linear proportional to the increase in perceived image quality, like regular image compression.
+In figure~\ref{fig:subsampling_ratios} three scenes are reconstructed using different subsample ratios ranging from 5\% to 30\%. For each row the subsampling ratio is increased by 5\% and at the top a reference image from a visual camera is presented. This result can give a perception of which subsampling ratio is good enough for a given purpose, and as can be seen, the increase of the subsampling ratio is not linearly proportional to the increase in perceived image quality, like in regular image compression.
      
 
 \begin{figure}[H]
@@ -446,20 +445,20 @@ In figure~\ref{fig:subsampling_ratios} three scenes is reconstructed using diffe
 	%\subcaption{}
 	\label{fig:sit_m30}
 \end{minipage}
-	\caption{Reconstructed images captured by the SPC with increasing subsampling ratios. First row showing a reference visual spectrum image followed by SPC images reconstructed with 5\% from top then increased subsampling ratio by 5\% for each row to 30\% on the last row.}
+	\caption{Reconstructed images captured by the SPC with increasing subsampling ratios. The first row shows a reference visual spectrum image and the following rows show SPC images reconstructed from 5\% up to 30\% subsampling ratio.}
 	\label{fig:subsampling_ratios}
 \end{figure}
 
-As seen in the images in figure~\ref{fig:subsampling_ratios}, 
+From the images in figure~\ref{fig:subsampling_ratios}, it can be observed that:
 
 \begin{itemize}
-\item the reconstructed images behave as expected, when the subsample ratio increases the image quality increases. 
+\item The reconstructed images behave as expected, when the subsample ratio increases, the image quality increases. 
 
-\item Already at 5\% subsampling ratio the scene can be properly identified unlike the case in minimal subsamples ratio. The images has some artifacts, the images looks like they are made of small patches.
+\item Already at 5\% subsampling ratio the scene can be properly identified unlike the case in minimal subsamples ratio, shown in figure~\ref{fig:minimum_fig}. The images have some artifacts, it look like they are made of small patches.
 
-\item Between 10-15\% the finer details start to appear, like the gap between the panels in the facade, the text on the car and door are getting sharper and the structure of the faces start to appear.
+\item Between 10-15\% the finer details start to appear, like the gap between the panels in the facade. The outline of the text on the car and door are getting sharper and the structures in the faces start to appear.
 
-\item As stated before, the image quality does not increase at the same rate as the subsampling ratio, this is most noticeable when increasing the subsampling ratio above 15\%. The improvement after 15\% is not as easy to spot as from the increments before, but they can be found in the details. 
+\item As stated before, the image quality does not increase at the same rate as the subsampling ratio. This is most noticeable when increasing the subsampling ratio above 15\%. The improvement after 15\% is not as easy to spot as before, but can be found in the details. 
 \end{itemize}
 
 

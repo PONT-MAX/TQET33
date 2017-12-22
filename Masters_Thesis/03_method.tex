@@ -511,6 +511,7 @@ The SSIM index has a max value of 1 when the images are identical which makes it
 In order to evaluate image quality when there is no reference image to compare against, the BRISQUE algorithm is used as a complement. BRISQUE is a no reference image quality assessment model which is based on natural scene statistics and quantifies the "naturalness" of the image.    \cite{article:brisque}
 
 \subsubsection{Evaluating Using Edge response}
+\label{sec:edge_res_def_method}
 The edge response measures the sharpness of the image by calculating the distance in pixels required for an edge in the image to rise. In this master's thesis, the distance required for the edge response to rise from 10\% to 90\% was chosen, see figure~\ref{fig:edge_response_def}. This evaluation is performed on static images captured in constant light indoors for consistent results. Furthermore, the motive of the image is slanted geometric objects printed on a sheet of paper.\cite{article:FOI_pres_sens}
  
 \begin{figure}[H]
