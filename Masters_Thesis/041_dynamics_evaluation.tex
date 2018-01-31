@@ -1,14 +1,14 @@
-\subsubsection{Dynamics in scene}
+\subsection{Dynamics in scene}
 \label{sec:dyn_sim}
-In the SPC setup, the exposure time was between 10 to 50 seconds, which increased the risk of dynamics in the scene. Dynamics in the scene reduces the reconstruction performance because the scene is assumed to be constant. By simulating dynamic scenes in a controlled environment, their individual effects to the sampled signal $\mathbf{y}$ could be identified and evaluated. As mentioned in section~\ref{sec:Dynamics_in_scene} dynamics in the scene can roughly be divided into two separate categories, luminance change and movement. In this section, global luminance change and two kinds of movement are simulated. The goal was to see how the signal changes when dynamics are introduced in the scene. In the case of luminance change, the moving mean algorithm presented in section~\ref{sec:Dynamics_in_scene} was evaluated.\\[0.1in]
+In the SPC setup, the exposure time was between 10 and 50 seconds, which increased the risk of dynamics in the scene. Dynamics in the scene reduces the reconstruction performance because the scene is assumed to be constant. By simulating dynamic scenes in a controlled environment, their individual effects to the sampled signal $\mathbf{y}$ could be identified and evaluated. As mentioned in section~\ref{sec:Dynamics_in_scene} dynamics in the scene can roughly be divided into two separate categories, luminance change and movement. In this section, global luminance change and two kinds of movement are simulated. The goal was to see how the signal changes when dynamics are introduced in the scene. In the case of luminance change, the moving mean algorithm presented in section~\ref{sec:Dynamics_in_scene} was evaluated.\\[0.1in]
 
 To generate a simulated measurement representing a dynamic scene each sample $\mathbf{y}[m]$ is constructed using a unique image $\mathbf{x}_m$, which has been changed from the previous image,
 
 \begin{equation}
 \mathbf{y}[m] = \mathbf{\phi}_m\mathbf{x}_m.
 \end{equation}
-
-In the first scenario an object was placed in an image, but for each measurement the location of the object was be moved in a small bounded area of the image. Consequently, his model represents a scene where the background is static with a person moving in a small area.
+\newpage
+In the first scenario an object was placed in an image, but for each measurement the location of the object was moved in a small bounded area of the image. Consequently, this model represents a scene where the background is static with a person moving in a small area.
 
 
 
@@ -56,7 +56,7 @@ The reconstructed images from the reference signal and the perturbed signal are 
     \label{fig:local_dyn}
 \end{figure}
 
-In table~\ref{tab:local_dyn} the results from calculating PSNR and SSIM of the the reconstructed images are presented. It can be observed that the dynamic test image has been affected to some degree by the movement.
+In table~\ref{tab:local_dyn} the results from calculating PSNR and SSIM of the the reconstructed images are presented. It can be observed that the dynamic test image (figure~\ref{fig:local_3}) has been affected to some degree by the movement compared to the unperturbed image in figure~\ref{fig:local_2}.
 
 \begin{table}[H]
     \centering
@@ -66,7 +66,7 @@ In table~\ref{tab:local_dyn} the results from calculating PSNR and SSIM of the t
     29  & 0.91 \\ 
     \hline
   \end{tabular}
-      \caption{Evaluation comparing a unperturbed reconstructed images against reconstructed images with local movement.}
+      \caption{Evaluation comparing unperturbed reconstructed images against reconstructed images with local movement.}
     \label{tab:local_dyn}
 \end{table}
 
@@ -147,6 +147,7 @@ In table~\ref{tab:fly_dyn} the results from calculating PSNR and SSIM of the rec
 The third scenario is luminance change in the scene caused by inconsistency of light intensity from the source. Outdoors this means that the light intensity from the sun will vary over time, the most obvious being clouds occluding the sun but for example even change in air density can change the intensity. This scenario is modeled by adding or subtracting the global intensity in the image over the measurements. 
 
 \begin{figure}[H]
+\centering
     \includegraphics[width=0.6\textwidth]{result/dynamic/lum/intense_change1.eps}
     \caption{Signal effected by light intensity change on top of reference signal.}
     \label{fig:lum_sig_1}

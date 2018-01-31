@@ -1,11 +1,11 @@
 
 
-\subsection{SPC evaluation}
+\section{SPC evaluation}
 \label{sec:eval_spc}
 The evaluation section is now shifted to examine the images produced by the SPC. The images will be analyzed using a range of methods to examine the performance of the SPC. This section will start with the same evaluations performed in the previous section and will end with two new evaluations, edge response and subsampling ratio. All images captured by the SPC of natural scenes were taken at a distance between 200 to 900 meter on sunny days with some clouds.
 
 
-\subsubsection{Reconstructed performance using reference image}
+\subsection{Reconstructed performance using reference image}
 This evaluation is designed to get a measurement of expected image quality with the same metrics used in the synthetic case. As stated before, it is hard to obtain a reference image for the images produced by the SPC. One solution to obtain a reference image is to adjust a homography between two images taken by the SPC and a high quality SWIR camera respectively. But there are two problems of just performing a homography to obtain a reference image. The first on is that a homography estimates the transformation between flat surfaces, which excludes most natural images, and the second is that the estimated homography will not be perfect and thus high contrast edges in the images will not match and produce large errors in the performance measurements. To solve the first problem, the scene is a flat surface with a printed pattern. To avoid the second problem, error from sharp edges, the pattern is constructed with smooth contrast changes. To not complicate this experiment, the reference image is a computer generated optimal image which was transformed via a homography to fit the image captured by the SPC.\\[0.1in] 
 
 The reference image which was created using sine functions to avoid edges and the reconstructed images with different subsampling ratio can be seen in figure~\ref{fig:hom_over_im}.   
@@ -72,7 +72,7 @@ The results show increased quality with increased subsample ratio. In the case o
 
 
 
-\subsubsection{Reconstruction performance using no reference quality assessment}
+\subsection{Reconstruction performance using no reference quality assessment}
 \label{sec:SPC_BRISQUE}
 In this section the blind quality assessment tool BRISQUE is used to evaluate the reconstructed images from the SPC, examples of these images are shown in figure~\ref{fig:good} to \ref{fig:bad}. In addition to presenting the BRISQUE score for the images, each image has been classified into one of three distinct groups in order to link the BRISQUE scores to each image and their sampled signal.\\[0.1in] 
 
@@ -215,7 +215,7 @@ The background noise normalized signal variance was calculated by normalizing th
 From the plot in figure~\ref{fig:snr_v_sigma}, it can be seen that for a mean signal intensity over approximately 1.2 volt, there are no images from the red image set, while images from both the yellow and green image set are mixed over 1.2 volt. For a mean signal intensity under 1.2 volt, the noise standard deviation rapidly increases.
 
 
-\subsubsection{Luminance change in scene}
+\subsection{Luminance change in scene}
 As predicted in section~\ref{sec:Dynamics_in_scene}, dynamics in the scene could result in poor reconstruction performance and an algorithm to suppress the distortion caused by luminance change was tested in the simulated evaluation in section~\ref{sec:dyn_sim}. With an exposure time of just under one minute for the SPC, this problem turned out to be constantly present when taking photos of natural scenes outdoors. Moreover the luminace change in the signal was more complex than in the simulated test case and the sensor was highly sensitive to luminace change. This observation should be anticipated, the sensor sums up half the scenes light, which make the tiniest intensity change for each pixel a large global change.\\[0.1in] 
 
 In this section the impact of luminance change on the signal and the results of using the moving mean algorithm (defined in section~\ref{sec:Dynamics_in_scene}) is presented. In figure~\ref{fig:lc_plot} the sampled signal effected by luminance change is plotted in red and the signal processed by the moving mean algorithm is shown in blue. 
@@ -223,6 +223,7 @@ In this section the impact of luminance change on the signal and the results of 
 
 
 \begin{figure}[H]
+\centering
 \includegraphics[width = 0.8\linewidth]{result/luminance/li.eps}
 	\caption{Sampled signal from SPC with light intensity change distortion and the signal processed by the moving mean algorithm.}
 	\label{fig:lc_plot}
@@ -233,6 +234,7 @@ In this section the impact of luminance change on the signal and the results of 
 As can be seen in figure~\ref{fig:lc_plot}, the moving mean (plotted in green) and corresponding to light intensity change, change with a high frequency. The number of neighboring samples to calculate the average was set to $k=75$ to match the fast change which corresponds to a window of 50 milliseconds. In figure~\ref{fig:lc_image}, a reconstructed image without the moving mean algorithm used and one with the method used is displayed.
 
 \begin{figure}[H]
+\centering
 \begin{minipage}[t]{0.49\textwidth}
 \includegraphics[width = 1\linewidth]{result/luminance/24_512_m30.PNG}
 	\subcaption{}
@@ -250,7 +252,7 @@ As can be seen in figure~\ref{fig:lc_plot}, the moving mean (plotted in green) a
 As can be seen in figure~\ref{fig:lc_image}, the method increase image quality significantly and the image reconstructed without the moving mean algorithm has a severe global noise due to the non-stationary sampled signal. This image was captured in good conditions with strong lighting and relative mild intensity change compared to the majority of the sampled signals.
 
 
-\subsubsection{Edge response}
+\subsection{Edge response}
 The edge response is used to compare the sharpness of cameras and lenses and in this section the SPC is compared to a state of the art SWIR camera. Two scenes were captured by the SPC and the conventional SWIR camera respectively, containing printed sheet of paper with simple tilted shapes on them, see figure~\ref{fig:mtf_target}. The scene was lit by a 135 Watt halogen lamp placed two meters from the sheet.
 
 \begin{figure}[H]
@@ -302,7 +304,7 @@ The edge response is measured as the distance in (pixels) required for an edge t
 
 From the plot in figure~\ref{fig:rise}, a clear difference between the SPC and state of the art SWIR camera can be seen, where the conventional SWIR camera has in average half the edge distance compared to the SPC images. Some improvement is seen when the subsample ratio is increased, but the standard deviation is almost constant, meaning that the difference between the state of the art SWIR camera and the SPC, in best case only differ about 0.5 pixels, but in the worst case differ about 1.7 pixels and in average 1.2 pixels.
 
-\subsubsection{Subsampling ratio}
+\subsection{Subsampling ratio}
 \label{sec:measurements}
 From the theory of compressive sensing, the number of measurements needed to reconstruct an image is correlated with the sparsity or compressibility of the image. Therefore it is hard to give a good estimate of the subsampling ratio needed to obtain a desired quality of the reconstruction. In addition, using an SPC where noise contaminate the signal and the scene may not be completely stationary, the number of measurements needed will increase in proportion to the noise and the change in the scene. In this subsection the minimum subsampling ratio will be presented followed by how the reconstructed image quality is affected by an increese of subsampling ratio.\\[0.1in]
 
@@ -387,16 +389,23 @@ In figure~\ref{fig:subsampling_ratios} three scenes are reconstructed using diff
 	%\subcaption{Subsampling ratio 15\%}
 	\label{fig:car_m15}
 \end{minipage}
+\begin{minipage}[t]{0.036\linewidth} %Car
+~~
+\end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m15.png}
 	\subcaption{Subsampling ratio 15\%}
 	\label{fig:hus_m15}
+\end{minipage}
+\begin{minipage}[t]{0.036\linewidth} %Car
+~~
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m15.png}
 	%\subcaption{}
 	\label{fig:sit_m15}
 \end{minipage}
+
 \end{figure}
 \begin{figure}[H]
 \ContinuedFloat
@@ -435,10 +444,16 @@ In figure~\ref{fig:subsampling_ratios} three scenes are reconstructed using diff
 	%\subcaption{Subsampling ratio 30\%}
 	\label{fig:car_m30}
 \end{minipage}
+\begin{minipage}[t]{0.036\linewidth} %Car
+~~~~~
+\end{minipage}
 \begin{minipage}[t]{0.3\linewidth} % Hus
 	\includegraphics[width = 1\linewidth]{gfx/hus/hus_m30.png}
 	\subcaption{Subsampling ratio 30\%}
 	\label{fig:hus_m30}
+\end{minipage}
+\begin{minipage}[t]{0.036\linewidth} %Car
+~~~~~~
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth} %Sit
 	\includegraphics[width = 1\linewidth]{gfx/sit/sit_m30.png}

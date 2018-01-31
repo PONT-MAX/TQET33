@@ -1,9 +1,8 @@
-\section{Method}
-\label{sec:method}
+\chapter{Method} \label{sec:method}
 In order to answer the research questions stated in section~\ref{sec:RQ}, a state of the art SPC, experiments and evaluation methods needs to be set up. In this section all the necessary hardware and software components and theory will be presented as well as the evaluation techniques. 
 
 
-\subsection{Single pixel camera architecture \& hardware}
+\section{Single pixel camera architecture \& hardware}
 \label{sec:system}
 FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a single pixel SWIR detector. The system also has a reference camera in the visual spectrum  which can capture images of the scene reflected on the DMD, check that the patterns are displayed correct on the DMD and simplifying focusing of the image.  
 
@@ -18,12 +17,12 @@ FOI designed the SWIR SPC platform using a DMD, a Newtonian telescope and a sing
 
 As seen in figure~\ref{fig:system1}, light from the scene is focused by the Newtonian telescope and reflected onto the DMD. The mirrors on the DMD can reflect the light individually either into the single pixel sensor or the reference camera. The DMD acts as a Spatial Light Modulator (SLM) and reflects different patterns which is 'summed up' in the single pixel sensor as a voltage intensity. The reconstructed image from the system will have the same resolution as the DMD patterns. The digital light processor (DLP) is the DMD:s control unit which controls which patterns are displayed on the DMD either by reading images from memory or the HDMI video port. 
 
-\subsubsection{Newtonian telescope}
+\subsection{Newtonian telescope}
 A Newtonian telescope is a reflecting telescope, using a concave primary mirror and a flat diagonal secondary mirror, see figure~\ref{fig:system1}. In this set-up the telescope act as a lens focusing the scene onto the DMD. The motivation to use a Newtonian telescope instead of a lens system is partly that chromatic aberration is eliminated and partly that a reflective optical system works over a greater range of wavelengths that includes SWIR, near infrared (NIR) and the visible spectrum. This design has a very narrow field of view which give high detailed scenes from a great distance. 
 
 
-\subsubsection{DLP and DMD}
-The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP\textregistered ~LightCrafter\textsuperscript{TM} 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster than the video port, but due to constraints in both memory and memory bandwidth, the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time from a $24$ bit signal, which gives a maximum measurement matrix rate at $120 \times 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz. At this rate with subsampling ratio (the number of measurements relative number of pixels) between $20\% - 30\%$ with $512\times512$ pixel images, the sampling would be acquired in $36 - 52$ seconds. To control the DMD the software "DLP LightCrafter 4500 Control Software" is used.\cite{manual:DLP}\\[0.1in] 
+\subsection{DLP and DMD}
+The DMD (Texas Instruments DLP4500NIR) is a matrix of micro mirrors that can be individually tilted $\pm 12^{\circ}$ and reflects wavelengths in the range 700-2500 nm. The DMD is controlled by the DLP (DLP\textregistered ~LightCrafter\textsuperscript{TM} 4500) which can be controlled either by video port (HDMI) or by the internal flash memory. The internal memory can theoretically be faster than the video port, but due to constraints in both memory and memory bandwidth, the fastest measurement matrix rate gets stuck at $270 - 300$ Hz. The video port can be operated at 120 Hz and display one bit plane at the time from a $24$ bit signal, which gives a maximum measurement matrix rate $120 \times 24 = 2880$ Hz, but in the current configuration only $60$ Hz frame rate was achieved giving a measurement matrix rate at $1440$ Hz. At this rate with subsampling ratio (the number of measurements relative number of pixels) between $20\% - 30\%$ with $512\times512$ pixel images, the sampling would be acquired in $36 - 52$ seconds. To control the DMD the software "DLP LightCrafter 4500 Control Software" is used.\cite{manual:DLP}\\[0.1in] 
 
 The DMD used in the setup is constructed with a diamond shaped pattern instead of a regular square grid which is used in regular camera image sensors. The diamond shape causes the index of each mirror to be skewed against what a normal grid would look like. As seen in figure~\ref{fig:dmd_index}, the indexes of the mirrors column is two mirror column arrays wide while a row is a single row. 
 
@@ -55,18 +54,18 @@ Mathematically the DMD is a binary operator which lets light pass or not, in fig
 
 
 
-\subsubsection{Lens}
-The lens mounted on the single pixel sensor is a 50 mm SWIR Fixed Focal Length Lens with a variable aperture from f-stop f/1.4 designed for wavelengths ranging from the 800 nm in the visual spectrum to 2000 nm in the SWIR spectrum. \cite{website:SWIR_objective}
+\subsection{Lens}
+The lens mounted on the single pixel sensor is a 50 mm SWIR Fixed Focal Length Lens with a variable aperture from f-stop f/1.4 designed for wavelengths ranging from 800 nm in the visual spectrum to 2000 nm in the SWIR spectrum. \cite{website:SWIR_objective}
 
-\subsubsection{Single pixel sensor}
+\subsection{Single pixel sensor}
 The single pixel sensor is a Thorlabs PDA20C/M and is sensitive in wavelength range 800-1700 nm which is beyond the visual spectrum (390-700 nm). The sensors built-in amplifier outputs an analog signal in volt which the sampler converts to a discrete value. \cite{manual:PDA}
 
-\subsubsection{Signal spectrum}
+\subsection{Signal spectrum}
 All components characteristics assembled, the wavelengths that pass trough the system and measured in the single pixel sensor is between 800-1700 nm.
 
 
 
-\subsection{Compressive imaging}
+\section{Compressive imaging}
 \label{sec:CI}
 Compressive imaging is the name used when sampling and reconstructing images using the compressive sensing method. CI is often realized in form of a SPC but can have different shapes. In this thesis CI is used on the SPC architecture presented in section~\ref{sec:system}. CI exploits the fact that natural images are compressible or approximately sparse in some basis and therefore only a few measurements relative to the image pixel resolution needs to be measured in order to reconstruct the image.\\[0.1in]
 
@@ -111,7 +110,7 @@ The revelation in~(\ref{eq:CS}) is what makes CS powerful. By sampling the scene
 A great advantage CI has over regular cameras, where each pixel is sampled separately, is that roughly half the pixels is sampled in one sensor, meaning that background noise of the sensor will be surpassed by the summed intensity of half the pixels making CI very robust to noise.  
 
 
-\subsection{Measurement matrix and Restricted isometry property (RIP)}
+\section{Measurement matrix and Restricted isometry property (RIP)}
 \label{sec:mm_RIP}
 As stated in section~\ref{sec:CI}, the complete measurement matrix needs to be incoherent with the sparse transform. In this section the most powerful constraint on a complete measurement matrix is shown, the restricted isometry property (RIP). \\[0.1in]
 
@@ -125,10 +124,10 @@ where $\delta_K \in [0.1)$ is the smallest constant to satisfy RIP for a K-spars
 
 The problem of using random matrices is that they need to be stored in memory for the reconstruction algorithm, so when the image resolution is increased the measurement matrix increases exponentially. For images with resolution of $512\times 512$ and larger, the data gets unfeasible for a normal computer to handle.\\[0.1in]  
 
-Fortunately, by changing the complete measurement matrix to structurally random matrices, fast transforms can be used in the reconstruction algorithm instead of vector multiplication, resulting in both faster reconstruction and the need to store the measurement matrix in memory. In this thesis, the permutated sequency ordered Walsh Hadamard measurement matrix (described in section~\ref{sec:SOWHMM}) will be used with the TVAL3 reconstruction algorithm (described in section~\ref{sec:TV}) to achieve higher resolution photos and faster reconstruction.   
+Fortunately, by changing the complete measurement matrix to structurally random matrices, fast transforms can be used in the reconstruction algorithm instead of vector multiplication, resulting in both faster reconstruction and no need to store the measurement matrix in memory. In this thesis, the permutated sequency ordered Walsh Hadamard measurement matrix (described in section~\ref{sec:SOWHMM}) will be used with the TVAL3 reconstruction algorithm (described in section~\ref{sec:TV}) to achieve higher resolution photos and faster reconstruction.   
 
 
-\subsubsection{Permutated sequency ordered Walsh Hadamard measurement matrix}
+\subsection{Permutated sequency ordered Walsh Hadamard measurement matrix}
 \label{sec:SOWHMM}
 Besides from eliminating the need to store the measuring matrix in computer memory for reconstruction, the permutated sequency ordered Walsh Hadamard matrix (PSOWHM) can be generated when sent to the DMD and thus eliminating the need to store the matrix at all. PSOWHM has approximatly the same characteristics and properties as an i.i.d. random matrix but generally has a higher number of measurements for exact reconstruction of the image, $M \sim (KNs)\log^2(N)$, where $s$ is the average number of non zero indexes in the measurement matrix \cite{lec:fast_CS_SRM}. Research has however shown that there is no significant loss in recovery of the image relative the i.i.d. random measurement matrix~\cite{article:an_improved_WH_matrix}. An other property of PSOWHM is that it only contains -1 and 1, which can easily be converted to 0 and 1 when sent to the DMD. \\[0.1in]
 
@@ -163,13 +162,15 @@ To construct the permutated sequency ordered Walsh Hadamard matrix from the natu
     \item Convert row index $n_H$ to binary.
     \item Convert the binary row index to Gray code.
     \item Apply bit reverse on the Gray code index.
-    \item Remove first row with only ones.
-    \item Permutate columns and choose $M$ rows at random.
+%    \item Remove first row with only ones.
+%    \item Permutate columns and choose $M$ rows at random.
+\item Order the rows after the bit-reverse to obtain the sequency ordered Walsh Hadamard matrix.
 \end{itemize}
 
-Then order the rows after the bit-reverse to obtain the sequency ordered Walsh Hadamard matrix.
+The procedure is illustrated with an example in table~\ref{tab:Hadamard_2_Walsh} and equation (\ref{eq:hadamard_2_walsh}).  
 
 \begin{table}[H]
+\centering
 \begin{tabular}{|r|c|c|c|c|}
 \hline
     $n_H$        & 0    & 1     & 2     & 3     \\ \hline
@@ -179,13 +180,13 @@ Then order the rows after the bit-reverse to obtain the sequency ordered Walsh H
     $n_W$        & 0    & 2     & 3     & 1     \\ \hline
     
 \end{tabular}
+	\caption{Example how to convert a naturally ordered Hadamard matrix to a sequency ordered Walsh Hadamard matrix by shifting row with index $n_W$ to $n_H$.}
 	\label{tab:Hadamard_2_Walsh}
-	\caption{Example how to convert a naturally ordered Hadamard matrix to a sequency ordered Walsh Hadamard matrix by shifting row with index $n_W$ to $n_H$}
 \end{table}
 
-for example
 
 \begin{equation}
+\label{eq:hadamard_2_walsh}
     H_2 =  \begin{bmatrix}
        1 & 1 & 1 & 1 \\
        1 & -1 & 1 & -1 \\
@@ -202,7 +203,7 @@ for example
 To use the sequency ordered Walsh Hadamard matrix as a measurement matrix the first row is omitted, permutations to the columns are performed, $M$ rows are choosen at random and the indices with $-1$ shifted to $0$. How the matrix are permutated and which rows are choosen in which order are stored so the reconstruction algorithm can use that information to reverese the process. This method is used to distribute the energy of the signal's sample across all measurements.   \cite{article:SRM_long, article:TVAL3, article:an_improved_WH_matrix}. 
 
 
-\subsection{Reconstruction method}
+\section{Reconstruction method}
 To reconstruct the image $\textbf{x}$, the sparsest set of coefficients in $\theta$ is desired. The optimal approach to find these coefficients would be to use $\ell_0$ minimization
 
 
@@ -221,7 +222,7 @@ This seems simply to be minimizing nonzero indices in $\mathbf{\theta}$ in the s
 In 2006 Donoho~\cite{article:CS_donoho1} for the first time guarantied theoretical $\ell_0\text{/}\ell_1$ equivalence which holds in the CS case, which means using a $\ell_1$ minimizer is guaranteed to find the sparsest solution in polynomial time in the noiseless case which can be approximated in the noisy and compressible signal case. The drawback with the $\ell_1$ minimizer is that it requires more measurements than the optimal case with $\ell_0$ but $M \ll N$ still holds. Since 2006 many more types of optimization algorithms have evolved which solves the problem with different methods but with the same goal: finding the largest, most significant coefficients of $\mathbf{\theta}$. \cite{article:CS_donoho1, article:single_pixel_im_cs, article:a_new_ci_arc}
 
 
-\subsubsection{Total variation: TVAL3}
+\subsection{Total variation: TVAL3}
 \label{sec:TV}
 The reconstruction algorithm that was chosen in this thesis was a total variation (TV) regularization algorithm called TVAL3 and was chosen for its speed and good results in image reconstruction compared to other reconstruction algorithms created for the CS problem \cite{article:TVAL3}. Natural images often contains sharp edges and piecewise smooth areas which the TV regularization algorithm is good at preserving. The main difference between TV and other reconstruction algorithms is that TV considers the gradient of signal to be sparse instead of the signal itself, thus finding the sparsest gradient. 
 
@@ -251,7 +252,7 @@ The idea is to replace the multiplication with fast transforms. To explain the c
 
 where $W$ is a sequency ordered Walsh Hadamard matrix and $\mathbf{x}$ is the image vector. The Walsh Hadamard transform (WHT) is a generalized class of Fourier transforms, which decomposes the input vector into superposition of Walsh functions.\\[0.1in]
 
-In section~\ref{sec:SOWHMM} it was briefly mentioned in the last paragraph that the measurement matrix columns is permutated and rows are chosen at random to create the measurement matrix from the sequency ordered Walsh Hadamard matrix. To describe the different permutations two functions is defined.\\[0.1in] 
+In section~\ref{sec:SOWHMM} it was briefly mentioned in the last paragraph that the measurement matrix columns is permutated and rows are chosen at random to create the measurement matrix from the sequency ordered Walsh Hadamard matrix. To describe the different permutations two functions are defined.\\[0.1in] 
 
 \theoremstyle{definition}
 \begin{definition}{Column permutation operator}
@@ -261,7 +262,7 @@ $\pi(\cdot)$, permutates the order of the columns in a matrix or a vector from a
 
 \theoremstyle{definition}
 \begin{definition}{Subsampling matrix operator}
-$\Pi_M(\cdot)$ chooses $M$ row in a matrix at random and stacks them in a new matrix.
+$\Pi_M(\cdot)$, chooses $M$ row in a matrix at random and stacks them in a new matrix.
 \label{def:subsamp_perm}
 \end{definition}
 
@@ -288,11 +289,11 @@ With all observations combined, the matrix multiplication is replaced with the F
 \label{eq:fwht_def}
 \end{equation}
 
-Using this method will reduce the overall computational complexity considerably and it will make the measurement matrix redundant in the reconstruction. Only the two permutation functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ needs to be stored. Eliminating the need of the complete measurement matrix in the reconstruction unlocks the potential to reconstruct images with high resolution ($512\times512$ pixels and larger). \cite{article:SRM_long, article:TVAL3}
+Using this method will reduce the overall computational complexity considerably and it will make the measurement matrix redundant in the reconstruction. Only the two permutation functions $\pi(\cdot) \text{ and } \Pi_M(\cdot)$ needs to be stored. Eliminating the need for the complete measurement matrix in the reconstruction unlocks the potential to reconstruct images with high resolution ($512\times512$ pixels and larger). \cite{article:SRM_long, article:TVAL3}
 
 
 
-\subsection{Image Capturing and processing chain}
+\section{Image capturing and processing chain}
 \label{sec:image_capturing_and_process_chain}
 In figure~\ref{fig:flow_chart} the whole process of capturing an image is presented with all subsystems and signal/image processing steps included.
 
@@ -305,14 +306,14 @@ In figure~\ref{fig:flow_chart} the whole process of capturing an image is presen
 This experimental setup is not a fully automatic system where a button can be pressed and the system produces an image. In the setup the subsystems works completely independently and needs to be operated manually in the right order at the right time. Each color in figure~\ref{fig:flow_chart} represents a subsystem in hardware or software. Each subsystem is described in the following subsections.
 
  
-\subsubsection{Prepare the SPC}
+\subsection{Prepare the SPC}
 \label{sec:p_spc}
 The first step in the yellow block "Prepare the SPC" (figure~\ref{fig:flow_chart}) is to make sure that the SPC is up and running but also to point the camera at the scene and set the correct focus. The scene is located with the aid of the reference camera (see figure~\ref{fig:system1}), with all the mirrors in the DMD directed to that camera. The focus is adjusted manually by moving the primary mirror back or forth, this procedure may introduce some error to the focus.\\[0.1in]
 
-\subsubsection{Sampling}
+\subsection{Sampling}
 The red blocks subsystem "Start sampling signal from SWIR photo diode" and "Store the raw signal" (figure~\ref{fig:flow_chart}) is conducted in a separate software which controls the A/D converter and thus the sampling. When the SPC is prepared, the sampling of the signal is started with a sampling rate such that every measurement has several sampling points and thus over-samples the signal. The oversampling is needed because when the mirrors move from one pattern to the next, the signal is uncertain for some time. The oversampling is also used to suppress noise from the photo diode (see further section~\ref{sec:signal_process}). After the signal is sampled the obtained signal is stored on the computer manually.
 
-\subsubsection{Streaming patterns to the DMD}
+\subsection{Streaming patterns to the DMD}
 \label{sec:stream_dmd}
 The subsystem "Streaming patterns to the DMD" (figure~\ref{fig:flow_chart}), represented in the purple block, is controlled by two different softwares, one which manipulates the pattern-signal received by the DMD and one which sends the patterns to the DMD. The patterns are sent to the DMD through a HDMI cable where the DMD is set up such that the DMD acts as a second screen to the computer. This enables to show anything on the DMD that the screen can show. The patterns are stored as a video and played back on the DMD "screen" with a media player, which shows each pattern in consecutive order. This is the major bottleneck of the system where each measurement matrix needs to be displayed one after the other depending on how fast frame rate that can be achieved. The naive approach would be to display one pattern per frame which is linked to the frame rate of the DMD. For example, 60 frames per second (fps). For a $512\times 512$ image subsampled at $20\%$ which corresponds to $512\times 512 \times 0.2 = 52429$ patterns which would take $52429/60 = 874 \text{ seconds} = 14.5 \text{ minutes}$ to sample. This is a long exposure time for a still image with the constraint that the scene should be stationary to obtain a stationary signal.\\[0.1in]
 
@@ -339,7 +340,7 @@ The 24 bit color image corresponds to one frame in the video.
 
 
 
-\subsubsection{Signal processing}
+\subsection{Signal processing}
 \label{sec:signal_process}  
 When the sampled signal is stored in the computer the remaining signal/image processing and reconstruction represented by blue blocks in figure~\ref{fig:flow_chart} is conducted in MATLAB. In this section the signal processing of the sampled signal is described.\\[0.1in]
 
@@ -362,12 +363,12 @@ The next step is to determine one value for each measurement. This is done in tw
 
 
 
-\subsubsection{Dynamics in scene} %: luminance change}
+\subsection{Dynamics in scene} %: luminance change}
 \label{sec:Dynamics_in_scene}
 The measured signal $\mathbf{y}$ should be stationary because the image (scene) is assumed to be static. When capturing images outdoors with natural light and long exposure times the image (or every pixel) may not be constant. This ambiguity of each pixel will reduce the reconstruction performance. The potential dynamics in a scene can be divided into two categories, luminance change and object movement. In this subsection the luminance change problem is modeled, and the corresponding algorithm will suppress the impact on the reconstructed image. The object movement problem will not be modeled, but will be avoided by ensuring that the scene is as static as possible.\\[0.1in] 
 
 
-In natural outdoor images it can be assumed the primary source of light comes from the sun, but even on a clear day the light intensity from the sun is not constant. If the scene is assumed to be completely stationary, even the slightest intensity change will be amplified by all pixels being measured and thus changing the mean intensity of the measured signal $\mathbf{y}$ which should be stationary. The consequence of the sampled signal $\mathbf{y}$ not being stationary is that reconstruction performance will drop significantly. Therefore a model of light intensity change is created together with an algorithm to restore the signals stationary characteristics.\\[0.1in] 
+In natural outdoor images it can be assumed that the primary source of light comes from the sun, but even on a clear day the light intensity from the sun is not constant. If the scene is assumed to be completely stationary, even the slightest intensity change will be amplified by all pixels being measured and thus changing the mean intensity of the measured signal $\mathbf{y}$ which should be stationary. The consequence of the sampled signal $\mathbf{y}$ not being stationary is that reconstruction performance will drop significantly. Therefore a model of light intensity change is created together with an algorithm to restore the signals stationary characteristics.\\[0.1in] 
 
 
 With the assumption that the scene is constant and the luminance change is uniform over the scene, the problem can be modeled.\\[0.1in]
@@ -419,7 +420,7 @@ The built in MATLAB function \texttt{movmean} will be used.
 %
 %In this section a model of a static      
 
-\subsubsection{Reconstruction}
+\subsection{Reconstruction}
 Reconstruction is performed using the TVAL3 algorithm described in section~\ref{sec:TV}. The algorithm takes the measurement matrix $\mathbf{\Phi}$, the sampled signal $\mathbf{y}$ and the algorithm settings as input arguments and outputs the reconstructed image. The settings used throughout all experments is:
 
 \begin{itemize}
@@ -435,29 +436,29 @@ Reconstruction is performed using the TVAL3 algorithm described in section~\ref{
 \item \textit{opts.isreal} = \texttt{true}	
 \end{itemize} 
 
-This solves for a real non-negative solution as shown in equation~\ref{eq:tval3}. 
+This solves for a real non-negative solution as shown in equation~\ref{eq:tval3}. The variables was derived from TVAL3 default image reconstruction settings and then tweaked by changing each variable independently and inspecting the results on a set of test images.
 
 
-\subsubsection{Image processing}
+\subsection{Image processing}
 \label{sec:ip}
 After reconstruction of the image some simple image processing is performed. There are only two operations applied to the reconstructed image and the reason is that the presented image results should represent what can be expected from the system. Furthermore image processing is often applied on special problems or artifacts in the images and it is not desired to cover up if such artifacts exist. Therefore the only two operations used are the median filter and adjusting the intensity for higher contrast.\\[0.1in]
 
-The reconstructed image has a high dynamic range and if only a small set of neighboring pixels is reconstructed with a high intensity peak, which not correlates with the rest of the image, these pixels will drop the contrast in the rest of the image. To remove these peaks the median filter is used. The median filter will also remove "salt and pepper" noise while edges are preserved. The built in MATLAB function \texttt{medfilt2} is be used.\\[0.1in]
+The reconstructed image has a high dynamic range and if only a small set of neighboring pixels are reconstructed with a high intensity peak, which not correlates with the rest of the image, these pixels will drop the contrast in the rest of the image. To remove these peaks the median filter is used. The median filter will also remove "salt and pepper" noise while edges are preserved. The built in MATLAB function \texttt{medfilt2} is used.\\[0.1in]
 
-The second operation is an intensity transform to maximize the contrast in the image, the built in MATLAB function \texttt{imadjust} is be used.   
+The second operation is an intensity transform to maximize the contrast in the image, the built in MATLAB function \texttt{imadjust} is used.   
 
 
-\subsection{Evaluation: Image quality assessment}
+\section{Evaluation: Image quality assessment}
 \label{sec:method_eval}
-The evaluation will be divided in to two categories: reconstructed images from synthetic data and images reconstructed from data acquired by the SPC.\\[0.1in] 
+The evaluation will be divided into two categories: reconstructed images from synthetic data and images reconstructed from data acquired by the SPC.\\[0.1in] 
 
 All results are produced with subsampling ratios ranging from 5-30\% and evaluated. The upper limit was set to 30\% partly because of the hardware limitations with long exposure time and partly because the main advantage of CS/CI is to minimize the required subsampling ratio.\\[0.1in]
 
 The evaluation on synthetic data is focused on evaluating the performance of the measurement matrix and reconstruction algorithm. Evaluating synthetic data gives advantages that can not be achieved with images reconstructed using the SPC which is that there is a reference image which the resulting image can be compared to.\\[0.1in]
 
-A reconstructed image from synthetic data is acquired by creating a signal $ \mathbf{ y }_{M\times1}$ taking the inner product of $ \mathbf{y} = \mathbf{\Phi} \mathbf{x} + \epsilon$ where, $\mathbf{x}$ is the synthetic image reshaped to a vector, $\mathbf{\Phi}$ is the measurement matrix with the desired amount of measurements $M$ and synthetic noise $\epsilon$ which can be regulated to simulate different conditions, then using the reconstruction algorithm on the signal $\mathbf{y}$ to obtain the reconstructed image $\mathbf{\hat x}$. Because the measurement matrix and reconstruction algorithm is independent of the SPC hardware the subsystem can be evaluated independently. Two advantages of evaluating the sensing and reconstruction independently of the SPC is that parameters such as number of measurements and noise can be regulated easy and the second advantage is that a reference image is available for comparison.\\[0.1in] 
+A reconstructed image from synthetic data is acquired by creating a signal $ \mathbf{ y }_{M\times1}$ taking the inner product of $ \mathbf{y} = \mathbf{\Phi} \mathbf{x} + \epsilon$ where, $\mathbf{x}$ is the synthetic image reshaped to a vector, $\mathbf{\Phi}$ is the measurement matrix with the desired amount of measurements $M$ and synthetic noise $\epsilon$ which can be regulated to simulate different conditions, then using the reconstruction algorithm on the signal $\mathbf{y}$ to obtain the reconstructed image $\mathbf{\hat x}$. Since the measurement matrix and the reconstruction algorithm are independent of the SPC hardware the subsystem can be evaluated independently. Two advantages of evaluating the sensing and reconstruction independently of the SPC is that parameters such as number of measurements and noise can be regulated easy and the second advantage is that a reference image is available for comparison.\\[0.1in] 
 
-\subsubsection{Evaluation Using reference image}
+\subsection{Evaluation Using reference image}
 With a reference image available, two image quality assessments are performed on the result from the simulation: Peak signal-to-noise ratio (PSNR) and structural similarity (SSIM) index. PSNR is defined as
 
 \begin{equation}
@@ -507,10 +508,10 @@ Which summarizes to
 
 The SSIM index has a max value of 1 when the images are identical which makes it easy to read. \cite{book:image_processing}
 
-\subsubsection{Evaluation Using no reference quality assessment}
+\subsection{Evaluation Using no reference quality assessment}
 In order to evaluate image quality when there is no reference image to compare against, the BRISQUE algorithm is used as a complement. BRISQUE is a no reference image quality assessment model which is based on natural scene statistics and quantifies the "naturalness" of the image.    \cite{article:brisque}
 
-\subsubsection{Evaluating Using Edge response}
+\subsection{Evaluating Using Edge response}
 \label{sec:edge_res_def_method}
 The edge response measures the sharpness of the image by calculating the distance in pixels required for an edge in the image to rise. In this master's thesis, the distance required for the edge response to rise from 10\% to 90\% was chosen, see figure~\ref{fig:edge_response_def}. This evaluation is performed on static images captured in constant light indoors for consistent results. Furthermore, the motive of the image is slanted geometric objects printed on a sheet of paper.\cite{article:FOI_pres_sens}
  
@@ -520,11 +521,11 @@ The edge response measures the sharpness of the image by calculating the distanc
 	\label{fig:edge_response_def}
 \end{figure}
 
-\pagebreak
 
 
 
-\subsection{Method criticism}
+
+\section{Method criticism}
 \begin{itemize}
     \item The BRISQUE algorith is not designed for SWIR images or SPC:s characteristics noise. Therefore the results may not reflect how the quality assessment would answer to visual wavelength cameras. BRISQUE definition of "naturalness" may not reflect the images captured by the SPC. 
     \item The effect on the reconstructed images caused by the DMD mirrors alignment and pairing is not known.

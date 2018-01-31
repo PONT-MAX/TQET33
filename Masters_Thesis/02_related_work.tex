@@ -1,8 +1,8 @@
-\section{Related work}
-\label{sec:related_work}
-In this section important, relevant and fundamental articles to this master's thesis is presented each with a summary. The articles covers compressed sensing theory applied to compressed imaging, SPC architecture and how to evaluate the images i.e. the fundamental source of information on how to build a state of the art SPC system and how to evaluate its performance. 
+%\section{Related work}
+\chapter{Related work} \label{sec:related_work}
+In this section important, relevant and fundamental articles to this master's thesis are presented each with a summary. The articles covers compressed sensing theory applied to compressed imaging, SPC architecture and how to evaluate the images i.e. the fundamental source of information on how to build a state of the art SPC system and how to evaluate its performance. 
 
-\subsection{Compressive sensing}
+\section{Compressive sensing}
 \begin{itemize}
 
 
@@ -13,14 +13,14 @@ In this section important, relevant and fundamental articles to this master's th
 \item \cite{article:CS_from_theory_a_sur} "Compressive Sensing: From Theory to Applications, A survey" by S. Qaisar et al. 2013, reviews CS background, theory and mathematics and has a extensive survey of reconstruction algorithm and potential CS applications.
 
 \end{itemize}
-\subsection{Compressive imaging}
+\section{Compressive imaging}
 \begin{itemize}
 
 \item \cite{article:an_Arcitecture_for_CI,article:a_new_ci_arc} "An architechture for compressive imaging" and "A New compressive imaging camera architecture using Optical-Domain Compression" by M. B. Wakin, D Takhar, et al. 2006, presents the first single pixel camera architecture using CS to reconstruct the images. 
 
 \item \cite{article:single_pixel_im_cs} "Single-Pixel Imaging via Compressive Sampling" by M. F. Duarte et al. 2008, is an introduction and summary to CS and CI including the SPC architecture. This article also compares different scanning methodologies and their conditions.   
 
-\item \cite{article:foiSPIS} "Single Pixel SWIR Imaging using Compressed Sensing" by C. Brännlund and D. Gustafsson, 2016, shows the initial results and proof of concept of the SPC architecture at FOI.
+\item \cite{article:foiSPIS} "Single Pixel SWIR Imaging using Compressed Sensing" by C. Br\"{a}nnlund and D. Gustafsson, 2016, shows the initial results and proof of concept of the SPC architecture at FOI.
   
 %\item \cite{article:cs_for_prac_ios_a_tut} "Compressed sensing for practical optical imaging systems: a tutorial"
 
@@ -30,13 +30,13 @@ In this section important, relevant and fundamental articles to this master's th
  
 \item \cite{mt:EF} "Compressed Sensing for 3D Laser Radar" by E. Fall, 2014, is a master's thesis where CS/CI is evaluated for a potential depth camera architecture using a one pixel sensor.   
 
-\item \cite{article:misuperres} "Multi image super resolution using compressed sensing" by T. Edler et al. 2011, presents the results from using a small detector array instead of just one single sensor, but still using CS to reconstruct the images. With this technique the subsampling ratio and the exposure time is reduced. 
+\item \cite{article:misuperres} "Multi image super resolution using compressed sensing" by T. Edler et al. 2011, presents the results from using a small detector array instead of just one single sensor, but still using CS to reconstruct the images. With this technique the subsampling ratio and the exposure time is reduced compared to using a single photo diode. 
 
  
 	
 \end{itemize}
     
-\subsection{Measurement matrix \& reconstruction}
+\section{Measurement matrix \& reconstruction}
 
 \begin{itemize}
     
@@ -50,16 +50,16 @@ In this section important, relevant and fundamental articles to this master's th
 \end{itemize}
 
 
-\subsection{Evaluation}
+\section{Evaluation}
 
 \begin{itemize}
 
-\item \cite{book:image_processing} "The essential guide to image processing" by Al Boviks contains the majority of fundamental image processing techniques and measurements. Two image quality metrics of interest is PSNR and SSIM which can be used when a reference image is available.
+\item \cite{book:image_processing} "The essential guide to image processing" by Al Boviks contains the majority of fundamental image processing techniques and measurements. Two image quality metrics of interest is peak signal-to-noise ratio (PSNR) and structural similarity (SSIM) which can be used when a reference image is available.
     
 \item \cite{article:brisque} "No-Reference Image Quality Assessment
 in the Spatial Domain" by M. Anish et al. 2012, is the article describing the blind/referenceless image spatial quality evaluator (BRISQUE). The BRISQUE algorithm evaluates image quality and “naturalness” based on statistics in the image. BRISQUE is used when there is no reference image available and therefore can be used to evaluate images produced by the SPC.  
     
-\item \cite{article:FOI_pres_sens} "Prestandamått för sensorsystem" by F. Näsström et al. 2016, describes methods and tools to evaluate sensor systems at FOI. 
+\item \cite{article:FOI_pres_sens} "Prestandam\aa tt f\"{o}r sensorsystem" by F. N\"{a}sstr\"{o}m et al. 2016, describes methods and tools to evaluate sensor systems at FOI. 
     
 \end{itemize}
 

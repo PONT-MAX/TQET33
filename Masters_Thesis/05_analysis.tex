@@ -1,13 +1,13 @@
-\section{Discussion} %Resultat ska inte analyseras, diskuteras eller värderas. Detta lämnas till diskussionskapitlet. 
+\chapter{Discussion} %Resultat ska inte analyseras, diskuteras eller värderas. Detta lämnas till diskussionskapitlet. 
 \label{sec:discussion}
 In this section the results and the method are analyzed and discussed. When discussing results, a focus on consistency, relation to theory and real world applicability is held. In the discussion of method, an analysis of replicability, reliability and  validity is held as well as the method used to capture images with the SPC.
 
-\subsection{Results} 
+\section{Results} 
 Overall, the results obtained in this thesis reflect what has been stated in theory and research before. However no reference of using the SPC to capture natural scene has been found and thus this thesis will present the link between real world applications and theory/lab results and the challenges that come with it. 
 
 
 
-\subsubsection{Reconstruction performance using reference image}
+\subsection{Reconstruction performance using reference image}
 \label{sec:anlys_ref_im}
 
 In the simulated reconstruction, the results behaved in most parts as expected given the CS theory i.e. with increased subsampling ratio, the performance increased. However the interesting part of the results is what happens when increasing the noise. Not only does the general performance drop for all subsample ratios, but also the improvement rate by increasing the subsample ratio drops, which figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d} shows. This result tells us that if the signal contains a high degree of noise, a higher subsampling ratio may not improve the reconstructed image as much as expected. However, the result could be questioned in images with a lot of noise, where both PSNR ans SSIM shows worse results with higher subsampling ratio, but the images subjectively looks better as seen in figure~\ref{fig:noisy}.\\[0.1in]
@@ -15,7 +15,7 @@ In the simulated reconstruction, the results behaved in most parts as expected g
 When performing similar measurements with the SPC, one low frequency image was captured and reconstructed. The images were captured in a near optimal environment, so that a homography could be established between the reconstructed image and the reference image with good precision. In figure~\ref{fig:hom_psnr}, we can see that the PSNR and SSIM of the SPC images compared to reference images act as theory predicted and confirmed in simulations. The performance increases non linearly when the subsampling ratio increases. If we look closer at the PSNR plot, we can see that the largest increase in performance is up to 15\% subsampling ratio, which can be confirmed when inspecting the images in figure~\ref{fig:hom_over_im}, where the image quality rapidly improves when increasing subsample ratio up to 15\%, then the improvement rate stagnates.
 
 
-\subsubsection{Reconstruction performance using no reference quality assessment}
+\subsection{Reconstruction performance using no reference quality assessment}
 The graph of the simulated reconstruction results in figure~\ref{fig:Brisque_3d} looks like an inverted version of the PSNR and SSIM graphs in figure~\ref{fig:psnr_3d} and \ref{fig:ssim_3d}. This results alone are positive for this thesis, because it was unknown if the BRISQUE evaluation method would work well for SWIR images and  reconstructed images from the SPC. However, the result is not perfect for images with a lot of noise, where the BRISQUE score gets worse with higher subsampling ratio while the corresponding images subjectively looks better as seen in figure~\ref{fig:noisy}. We can also see that the reference images score about 20 BRISQUE points better than the best reconstructed images. Consequently even in the best case scenario without noise and a high subsampling ratio, the SPC will not yield as good results as a conventional camera. This evaluation was performed with the specific motivation to evaluate the measurement matrix and reconstruction method, and these results shows that an SPC will not be able to reconstruct images with the same quality as a conventional SWIR camera. Besides these results give a hint of which BRISQUE score can be expected from the SPC in the optimal case. Consequently a BRISQUE score equal to 40 can be seen as the optimum given that noise and post processing have affected the sampled signal.\\[0.1in]
 %When studying the more sparse 2D plot in figure~\ref{fig:Brisque_2d}, the observations from section~\ref{sec:anlys_ref_im} is confirmed that the improvement in image quality  
 
@@ -36,11 +36,11 @@ In figure~\ref{fig:good} to \ref{fig:bad}, we see sample images from three class
 In the last part of section~\ref{sec:SPC_BRISQUE}, the results from plotting normalized noise standard deviation against mean signal intensity in figure~\ref{fig:snr_v_sigma}, was presented. The plot give more information on why the BRISQUE score differed between the sets. From the plot it becomes clear at which mean signal intensity we can expect to produce good images given that the background noise becomes insignificant. But in the plots there are only two signals with higher standard deviation than 0.04, which is the threshold where the the simulated images started to get both worse initial BRISQUE score and worse trend when increasing the subsampling ratio in figure~\ref{fig:Brisque_2d}. This implies that there probably must be at least one additional factor at play to reduce the image quality in the red image set.\\[0.1in]
 
 
-In figure~\ref{fig:snr_v_sigma}, we can see that there are a subset of images from the red image set with almost the same normalized noise standard deviation and mean signal intensity as from the yellow and green image sets but yields a worse BRISQUE score anyway. This strengthens the statement the there probably is at least on more factor that reduces reconstruction performance. Furthermore as stated in the third point above, this is probably due to motion in the scene when sampling the signal. Unfortunately for this experiment, it seams like the images containing motion also had a low mean signal intensity, otherwise we would probably also have "bad" images for stronger mean signals.\\[0.1in] 
+In figure~\ref{fig:snr_v_sigma}, we can see that there are a subset of images from the red image set with almost the same normalized noise standard deviation and mean signal intensity as from the yellow and green image sets but yields a worse BRISQUE score anyway. This strengthens the statement the there probably is at least one more factor that reduces reconstruction performance. Furthermore as stated in the third point above, this is probably due to motion in the scene when sampling the signal. Unfortunately for this experiment, it seams like the images containing motion also had a low mean signal intensity, otherwise we would probably also have "bad" images for stronger mean signals.\\[0.1in] 
 
 The last observation in these plots is the mix of images from the green and yellow image set in the whole mean intensity span, which tells that a strong signal will not yield a good BRISUQE score, which implies that the motive in the images affecting the BRISQUE score as suspected when inspecting the reconstructed image sets.
 
-\subsubsection{Dynamics in scene}
+\subsection{Dynamics in scene}
 In this category there are results both from the simulated images and from the SPC, where the results was divided into three characteristic dynamics: small local changes in the scene, large global changes and luminance change.\\[0.1in]
 
 The effect of local movements on the sampled signal is shown in figure~\ref{fig:local_dyn}. We can see that there is no significant difference between the unperturbed reference signal and the distorted signal. The effect on the reconstructed image, seen in figure~\ref{fig:local_3}, looks like global noise is added and where the object is moving the image gets extra blurry. The test implies that local movement in a scene will slightly distort the reconstructed image globally and especially locally where the movement occurred. It also tells that local movement is very hard to detect in the signal even if a reference signal is available.\\[0.1in]
@@ -62,7 +62,7 @@ Basically all scenes in natural environments contained both dynamics from local 
 As stated, even "static" scenes will with high probability contain both movement and luminance change which will affect the reconstructed images. Therefor it can be concluded that all reconstructed images in this thesis have to some degree, added global noise from local movement and the moving mean algorithm.
 
 
-\subsubsection{Edge response}
+\subsection{Edge response}
 When comparing the edge response between the conventional camera against the SPC the results was very clear, the conventional camera outperformed the SPC with one to two pixels in distance. I think that there are multiple factors why the results from the SPC differed so much from the conventional camera, and they are listed below,
 
 \begin{itemize}
@@ -80,7 +80,7 @@ When comparing the edge response between the conventional camera against the SPC
 
 Even though the image quality is not in favor to the SPC, I think that the results looks promising and can be improved both by changing to more suitable hardware, such as a DMD with "regular" square mirrors and by using more advanced image denoising algorithms.
 
-\subsubsection{Subsampling ratio}
+\subsection{Subsampling ratio}
 The first results from section~\ref{sec:measurements} was the minimum subsampling ratio required to reconstruct a merely recognizable image. It turned out that for the whole image set, the results varied between 2-4\%. The differance in value could depend on several factors such as image complexity, SNR and dynamics in the scene, which everyone contribute to add uncertainty to the equation system.\\[0.1in]
 
 One possible application that take advantage of sampling an image with minimum subsampling ratio is to construct a test image and calibrate the camera for the longer exposure high quality image. The calibration could for example be used to set focus, determine which pixels to include in the image and calculate which subsampling ratio to use given the complexity of the image. The test image is sampled with fewer samples and thus reconstructed faster relative to the high quality images.\\[0.1in]
@@ -89,7 +89,7 @@ In the second part of section~\ref{sec:measurements}, a set of images reconstruc
 
 The results show that a stable reconstruction was obtained at 5\% subsampling ratio for all images and that a higher subsampling ratio increased the image quality. With greater subsambling ratio than 15\%, the images start to reach their highest potential where details start to show up and the images gets sharp. Some global noise is present in all images. This noise is probably mainly due to the long exposure time, where dynamics in the scene play a big role. 
 
-\subsection{Method} %Vad jag tycker om det (personliga tankar)
+\section{Method} %Vad jag tycker om det (personliga tankar)
 %In the discussion of method an analysis of replicability, reliability and  validity is held.
 
 The methods used in thesis can be divided into four categories, the SPC hardware, the sampling matrix and reconstruction, post processing and the method used to capture the images. Two of these categories, the hardware setup and the sampling matrix and reconstruction were heavily influenced and implemented by widely accepted methods from articles and experiments. The other two categories, the post-processing and the image capturing, depended more on the hardware limitation and competence achieved from the university.\\[0.1in]
@@ -100,9 +100,9 @@ The sampling matrix chosen in this thesis was the permutated sequency ordered Wa
 
 The reconstruction algorithm TVAL3 was used throughout this masters thesis work and was chosen after the literature study where several articles mentioned total variation as a good optimization algorithm for compressive imaging. The algorithm worked as described and according to the developer it is one of the fastest and best reconstruction algorithms that are free to use and available. The only negative criticism of using this algorithm is that it seems to produce a dark tint in the edges of the reconstructed images.\\[0.1in]
 
-In the post-processing quite basic signal and image processing was performed and was intentional designed that way in order to present the result as true as possible. One algorithm that was developed specific for the SPC, was the moving mean algorithm to suppress the impact of lumination change in the sampled signal. The algorithm showed great result and became essential when taking photos of scenes outdoor. Both hardware and software signal denoising was implemented to the architecture, but had to be changed every time the DMD update rate was changed, which happened a couple of times. Finding a new solution every time was a time consuming task and dropped completely in the end when good results was achieved anyway. If there had been had more time or a target DMD pattern rate had been set earlier, a good signal denoising implementation could have improved the result.\\[0.1in]
+In the post-processing quite basic signal and image processing was performed and was intentional designed that way in order to present the result as true as possible. One algorithm that was developed specific for the SPC, was the moving mean algorithm to suppress the impact of lumination change in the sampled signal. The algorithm showed great result and became essential when taking photos of scenes outdoor. Both hardware and software signal denoising was implemented to the architecture, but had to be changed every time the DMD update rate was changed, which happened a couple of times. Finding a new solution every time was a time consuming task and dropped completely in the end when good results was achieved anyway. If there had been more time or a target DMD pattern rate had been set earlier, a good signal denoising implementation could have improved the result.\\[0.1in]
 
-\subsubsection{Replicability, reliability \& validity}
+\subsection{Replicability, reliability and validity}
 Given the methods in this thesis, I think it would be quite straight forward to replicate this experimental setup and architecture. The setup is quite simple and the software developed is not so heavy, therefore I think the experiments have good replicability.\\[0.1in]
 
 In the case of compressive imaging, the reliability and validity goes hand in hand, if whats being measured is not the correct data, the reconstruction will fail and if the reconstruction succeed, the measurement must be correct. Therefore compressive sensing is very binary, either you get it right or you fail and thus I think my results have both high validity and reliability.  
