@@ -1,0 +1,44 @@
+% Define some abbreviations
+\RequirePackage{xspace}
+\let\textabbr\textsc
+\newcommand{\abbrPID}{\texorpdfstring{\textabbr{pid}}{PID}\xspace}
+\newcommand{\abbrARMA}{\texorpdfstring{\textabbr{arma}}{ARMA}\xspace}
+\newcommand{\abbrCS}{\texorpdfstring{\textabbr{cs}}{CS}\xspace}
+\newcommand{\abbrCI}{\texorpdfstring{\textabbr{ci}}{CI}\xspace}
+\newcommand{\abbrIID}{\texorpdfstring{\textabbr{iid}}{IID}\xspace}
+\newcommand{\abbrFOI}{\texorpdfstring{\textabbr{FOI}}{FOI}\xspace}
+\newcommand{\abbrSWIR}{\texorpdfstring{\textabbr{swir}}{SWIR}\xspace}
+\newcommand{\abbrDMD}{\texorpdfstring{\textabbr{dmd}}{DMD}\xspace}
+\newcommand{\abbrSRM}{\texorpdfstring{\textabbr{srm}}{SRM}\xspace}
+\newcommand{\abbrSPC}{\texorpdfstring{\textabbr{SPC}}{SPC}\xspace}
+
+\newcommand{\abbrBRISQUE}{\texorpdfstring{\textabbr{BRISQUE}}{BRISQUE}\xspace}
+
+\newcommand{\abbrSLM}{\texorpdfstring{\textabbr{SLM}}{SLM}\xspace}
+
+\newcommand{\abbrDLP}{\texorpdfstring{\textabbr{DLP}}{DLP}\xspace}
+
+\newcommand{\abbrRIP}{\texorpdfstring{\textabbr{RIP}}{RIP}\xspace}
+
+\newcommand{\abbrTV}{\texorpdfstring{\textabbr{TV}}{TV}\xspace}
+
+
+% Common sets
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexes}{\mathbb{C}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+
+% Text style for different kinds of words.
+\newcommand{\textfilename}[1]{\mbox{\emph{#1}}}% The command \filename is already used by some other package.
+\newcommand{\styname}[1]{\texorpdfstring{{\fontsize{0.9em}{1\baselineskip}\selectfont\mbox{\textsf{#1}}}}{#1}}
+\newcommand{\classoption}[1]{\mbox{\texttt{#1}}}
+\newcommand{\texcommand}[1]{\mbox{\texttt{\textbackslash #1}}}
+\newcommand{\envname}[1]{\mbox{\texttt{#1}}}
+
+% Miscellaneous strings with special formatting
+\newcommand{\rtthesis}{\emph{\styname{rtthesis}}\xspace}% It's not really a style file (package), but it is close enough.
+
+% It's hard to get good-looking underscores in filenames.  This is one attempt...
+\newcommand{\usc}{\hspace{0.1ex}\rule{1ex}{0.1ex}\hspace{0.1ex}}%\raisebox{2.5pt}{\_}
